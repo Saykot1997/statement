@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FormateOne() {
+function JamunaBankOne() {
     return (
         <div className=" w-full min-h-screen bg-gray-100 p-5">
 
@@ -285,4 +285,4 @@ function FormateOne() {
     )
 }
 
-export default FormateOne
+export default JamunaBankOne

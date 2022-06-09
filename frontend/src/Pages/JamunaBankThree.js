@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FormateThree() {
+function JamunaBankThree() {
     return (
         <div className=' w-full min-h-screen bg-gray-100 px-20 py-10'>
             <div className=' flex justify-between items-center '>
@@ -28,36 +28,47 @@ function FormateThree() {
             </div>
 
             <div className=' mt-10'>
-
                 <table className=' w-full'>
                     <thead>
                         <tr className='border'>
-                            <td className=' font-medium p-2'>Trans Date</td>
-                            <td className=' font-medium p-2'>Value Date</td>
-                            <td className=' font-medium p-2'>Particulars</td>
-                            <td className=' font-medium p-2'>Ref/Cheque No</td>
-                            <td className=' font-medium p-2'>Debit</td>
-                            <td className=' font-medium p-2'>Credit</td>
-                            <td className=' font-medium p-2'>Balance</td>
-                            <td className=' font-medium p-2'>Tran Branch</td>
+                            <td className=' font-medium p-2'>A/c No</td>
+                            <td className=' font-medium p-2'>Type of Account</td>
+                            <td className=' font-medium p-2'>Account Name</td>
+                            <td className=' font-medium p-2'>Opening Date</td>
+                            <td className=' font-medium p-2'>Present Balance (Tk.)</td>
+                            <td className=' font-medium p-2'>Present Balance (USD)</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td className=' border p-2'>13/04/22 16:09</td>
-                            <td className=' border p-2'>13/04/22 16:09</td>
-                            <td className=' border p-2'>CW-Halkhul ATM-001287934678423898743</td>
-                            <td className=' border p-2'></td>
-                            <td className=' border p-2'>10,00000</td>
-                            <td className=' border p-2'></td>
-                            <td className=' border p-2'>2390856</td>
-                            <td className=' border p-2'>1978344</td>
+                            <td className=' border p-2'>
+                                <p>13/04/22 16:09</p>
+                                <p>Update A/C Number</p>
+                                <p>110100445399</p>
+                            </td>
+                            <td className=' border p-2'>Saving</td>
+                            <td className=' border p-2'>MOHD. MOMINUR RAHMAN</td>
+                            <td className=' border p-2'>04/08/2004</td>
+                            <td className=' border p-2'>494421.52</td>
+                            <td className=' border p-2'>5244.08</td>
                         </tr>
                     </tbody>
                 </table>
+                <p className=' my-5'>1 USD = 87.60</p>
+                <p className=' mt-20'>We wish him every success in life.</p>
+                <div className=' flex justify-between w-full mt-32'>
+                    <div className=' w-1/2'>
+                        <p className=' font-semibold'>Mrinalni Saha</p>
+                        <p className=' font-semibold'>SEO & GB Incharge</p>
+                    </div>
+                    <div className=' w-1/2'>
+                        <p className=' font-semibold'>K.M Khairul Islam</p>
+                        <p className=' font-semibold'>FAVP & Manager Operations</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
-export default FormateThree
+export default JamunaBankThree

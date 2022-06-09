@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FormateTwo() {
+function JamunaBankTwo() {
     return (
         <div className=' w-full min-h-screen bg-gray-100 p-5'>
             <div className=' flex justify-between'>
@@ -310,4 +310,4 @@ function FormateTwo() {
     )
 }
 
-export default FormateTwo
+export default JamunaBankTwo
