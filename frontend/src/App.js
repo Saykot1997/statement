@@ -13,11 +13,11 @@ import HSBCBankOne from "./Pages/HSBCBankOne";
 function App() {
   return (
     <div className="">
-      {/* <JamunaBankOne /> */}
+      <JamunaBankOne />
       {/* <JamunaBankTwo /> */}
       {/* <JamunaBankThree /> */}
       {/* <IslamiBankOne /> */}
-      <BankAsiaOne />
+      {/* <BankAsiaOne /> */}
       {/* <BankAsiaTwo /> */}
       {/* <NCCBankOne /> */}
       {/* <NCCBankTwo /> */}
