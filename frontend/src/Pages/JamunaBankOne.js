@@ -6,8 +6,8 @@ function JamunaBankOne() {
     const [randomTransictions, setRandomTransictions] = useState([])
     const [randomParticulars, setRandomParticulars] = useState(["On-Line Cash - Aminul-1036 Batch-Online-Cash-Collection-Jamuna Bank", "TRANSFER -  eFTN iNWARDCLTI bank", "ATM-Cash-Collection-Jamuna Bank", "ATM-Cash- Motigil"]);
     const [randomBranchCodes, setRandomBranchCodes] = useState(["97", "100", "92", "36"]);
-    const [transactionQuantity, setTransactionQuantity] = useState(20);
-    const [initialBalance, setInitialBalance] = useState(300000);
+    const [transactionQuantity, setTransactionQuantity] = useState(40);
+    const [initialBalance, setInitialBalance] = useState(400000);
     const [editMode, setEditMode] = useState(false);
     const [branchName, setBranchName] = useState("Shantinagar Branch");
     const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
@@ -26,16 +26,8 @@ function JamunaBankOne() {
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
-
-    // const [transactionDate, setTransactionDate] = useState("");
-    // const [valueDate, setValueDate] = useState("");
-    // const [particular, setParticular] = useState("");
-    // const [withdrawal, setWithdrawal] = useState("");
-    // const [deposit, setDeposit] = useState("");
-    // const [balance, setBalance] = useState("");
-    // const [branch, setBranch] = useState("");
-    // const [time, setTime] = useState("");
-
+    const [totalWithdrawal, setTotalWithdrawal] = useState(0);
+    const [totalDeposit, setTotalDeposit] = useState(0);
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -69,7 +61,7 @@ function JamunaBankOne() {
 
         let totalDays = (new Date(hideEndStatementDate).getTime() - new Date(hideStartStatementDate).getTime()) / (1000 * 3600 * 24);
         let totalYears = totalDays / 365;
-        let totalMonths = totalDays / 30;
+        let totalMonths = totalDays / 25;
 
         // randomTransictionsDate between hideStartStatementDate and hideEndStatementDate with trantions quantity
 
@@ -117,10 +109,11 @@ function JamunaBankOne() {
 
                 randomTransictionsObject.withdrawal = randomWithdrawal;
                 randomTransictionsObject.deposit = 0;
+                setTotalWithdrawal(totalWithdrawal + randomWithdrawal);
 
                 if (i === 0) {
 
-                    randomTransictionsObject.balance = parseInt(initialBalance)
+                    randomTransictionsObject.balance = parseInt(initialBalance) - parseInt(randomWithdrawal);
 
                 } else {
 
@@ -131,10 +124,11 @@ function JamunaBankOne() {
 
                 randomTransictionsObject.withdrawal = 0;
                 randomTransictionsObject.deposit = randomDeposit;
+                setTotalDeposit(totalDeposit + randomDeposit);
 
                 if (i === 0) {
 
-                    randomTransictionsObject.balance = parseInt(initialBalance)
+                    randomTransictionsObject.balance = parseInt(initialBalance) + parseInt(randomDeposit);
 
                 } else {
 
@@ -146,9 +140,12 @@ function JamunaBankOne() {
         }
 
         setRandomTransictions(randomTransictions);
+        toggleEditMode();
     }
 
-    console.log(randomTransictions);
+    const printWebPage = () => {
+        window.print();
+    }
 
     return (
         <div className="p-5">
@@ -159,8 +156,10 @@ function JamunaBankOne() {
                         <button onClick={toggleEditMode} className="bg-red-500 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                     </div>
                     :
-
-                    <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 absolute top-5 right-5 print:hidden'>Edit</button>
+                    <div className='absolute top-5 right-0 print:hidden'>
+                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
+                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
+                    </div>
             }
             {/* topbar start */}
             <div className=" w-full flex justify-between">
@@ -272,10 +271,25 @@ function JamunaBankOne() {
                 <div className=" w-1/3">
                     {
                         editMode ?
-                            <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                            <div>
+                                <div className=' flex items-center'>
+                                    <span className=' font-semibold mr-2'>Status</span>
+                                    <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                </div>
+                                <div>
+                                    <div className=' flex items-center'>
+                                        <span className=' font-semibold mr-2'>Initial Blance</span>
+                                        <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                    </div>
+                                    <div className=' flex items-center'>
+                                        <span className=' font-semibold mr-2'>Number of row</span>
+                                        <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                    </div>
+                                </div>
+                            </div>
                             :
 
-                            <p className=" font-semibold print:font-normal my-1 print:my-0">Status <span className=' uppercase'>{accountStatus}</span></p>
+                            <p className=" font-semibold print:font-normal my-1 print:my-0">Status: <span className=' uppercase'>{accountStatus}</span></p>
                     }
                 </div>
             </div>
@@ -306,43 +320,56 @@ function JamunaBankOne() {
                 <table className=" w-full">
                     <thead className=''>
                         <tr className=" border border-dashed">
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1 text-left">Date</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1">Value Date</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1">Particular</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1">Withdrawal(Dr)</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1">Deposit(Cr)</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1">Balance</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1">Branch</th>
-                            <th className=" font-medium print:font-normal print:text-[12px] pb-3 pt-1 px-1 text-right">Time</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left">Date</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left">Value Date</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left w-[27%]">Particular</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-center">Withdrawal(Dr)</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-center">Deposit(Cr)</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Balance</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1  text-right">Branch</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Time</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr className="">
-                            <td className=" text-sm print:text-[10px] px-1">{startStatementDate}</td>
-                            <td className=" text-center text-sm print:text-[12px] px-1">{startStatementDate}</td>
-                            <td className=" text-center text-sm print:text-[12px] px-1">Opening Balance</td>
-                            <td className=" text-center text-sm print:text-[12px] px-1">0.00</td>
-                            <td className=" text-center text-sm print:text-[12px] px-1">0.00</td>
-                            <td className=" text-center text-sm print:text-[12px] px-1">{initialBalance} CR</td>
-                            <td className=" text-center text-sm print:text-[12px] px-1">{randomBranchCodes[Math.floor(Math.random() * randomBranchCodes.length)]}</td>
-                            <td className=" text-right text-sm print:text-[12px] px-1">12:00</td>
+                            <td className=" text-sm print:text-[9px] print:mr-[2px]">{startStatementDate}</td>
+                            <td className="text-sm print:text-[9px] print:mr-[2px]">{startStatementDate}</td>
+                            <td className="text-sm print:text-[9px] print:mr-[2px] w-[27%] uppercase">Opening Balance</td>
+                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right"></td>
+                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right"></td>
+                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right">{initialBalance}CR</td>
+                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right">{randomBranchCodes[Math.floor(Math.random() * randomBranchCodes.length)]}</td>
+                            <td className=" text-right text-sm print:text-[9px] print:ml-[2px]">12:00</td>
                         </tr>
 
                         {
                             randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                                 return (
                                     <tr className="">
-                                        <td className=" text-sm print:text-[10px] px-1">{item.date}</td>
-                                        <td className=" text-center text-sm print:text-[12px] px-1">{item.date}</td>
-                                        <td className=" text-center text-sm print:text-[12px] px-1">
+                                        <td className=" text-sm print:text-[10px] print:leading-[12px] uppercase">
+                                            <p>{item.date}</p>
+                                        </td>
+                                        <td className="text-sm print:text-[10px] print:leading-[12px] uppercase">
+                                            <p>{item.date}</p>
+                                        </td>
+                                        <td className="text-sm print:text-[10px] print:leading-[12px] uppercase w-[27%] pr-2">
                                             <p>{item.particular}</p>
                                         </td>
-                                        <td className=" text-center text-sm print:text-[12px] px-1">{item.withdrawal}</td>
-                                        <td className=" text-center text-sm print:text-[12px] px-1">{item.deposit}</td>
-                                        <td className=" text-center text-sm print:text-[12px] px-1">{item.balance} CR</td>
-                                        <td className=" text-center text-sm print:text-[12px] px-1">{item.branchCode}</td>
-                                        <td className=" text-right text-sm print:text-[12px] px-1">{item.time}</td>
+                                        <td className="text-sm print:text-[10px] print:leading-[12px] uppercase text-right pr-5">
+                                            <p>{item.withdrawal > 0 && item.withdrawal}</p>
+                                        </td>
+                                        <td className="text-sm print:text-[10px] print:leading-[12px] uppercase text-right pr-5">
+                                            <p>{item.deposit > 0 && item.deposit}</p>
+                                        </td>
+                                        <td className="text-sm print:text-[10px] print:leading-[12px] uppercase text-right">
+                                            <p>{item.balance} CR</p>
+                                        </td>
+                                        <td className="text-sm print:text-[10px] print:leading-[12px] uppercase text-right">
+                                            <p>{item.branchCode}</p>
+                                        </td>
+                                        <td className=" text-right text-sm print:text-[10px] print:leading-[12px] uppercase">
+                                            <p>{item.time}</p>
+                                        </td>
                                     </tr>
                                 )
                             })
@@ -358,19 +385,20 @@ function JamunaBankOne() {
                             <td></td>
                             <td></td>
                         </tr>
+
                         <tr>
-                            <td className=" text-sm p-2"></td>
-                            <td className=" text-center text-sm p-2"></td>
-                            <td className=" text-center text-sm p-2">Total</td>
-                            <td className=" text-center text-sm p-2">5000000000</td>
-                            <td className=" text-center text-sm p-2">567878900</td>
-                            <td className=" text-center text-sm p-2"></td>
-                            <td className=" text-center text-sm p-2"></td>
-                            <td className=" text-right text-sm p-2"></td>
+                            <td className=" text-sm print:text-[10px] p-2"></td>
+                            <td className=" text-center text-sm print:text-[10px] p-2"></td>
+                            <td className=" text-center text-sm print:text-[10px] p-2">Total</td>
+                            <td className=" text-center text-sm print:text-[10px] p-2">{totalWithdrawal}</td>
+                            <td className=" text-center text-sm print:text-[10px] p-2">{totalDeposit}</td>
+                            <td className=" text-center text-sm print:text-[10px] p-2"></td>
+                            <td className=" text-center text-sm print:text-[10px] p-2"></td>
+                            <td className=" text-right text-sm print:text-[10px] p-2"></td>
                         </tr>
                     </tbody>
                 </table>
-                <p className=' font-medium text-center print:text-[10px] mt-2'>This is a computer generated statement and does not require any signature</p>
+                <p className=' font-medium text-center print:text-[9px] mt-2'>This is a computer generated statement and does not require any signature</p>
             </div>
 
             {/* info end */}
