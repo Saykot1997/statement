@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import logo from "../Photos/jamunabank.jpg"
+import axios from 'axios';
+import { Host } from "../Data"
 
 function JamunaBankOne() {
-
     const [randomTransictions, setRandomTransictions] = useState([])
     const [randomParticulars, setRandomParticulars] = useState(["On-Line Cash - Aminul-1036 Batch-Online-Cash-Collection-Jamuna Bank", "TRANSFER -  eFTN iNWARDCLTI bank", "ATM-Cash-Collection-Jamuna Bank", "ATM-Cash- Motigil"]);
     const [randomBranchCodes, setRandomBranchCodes] = useState(["97", "100", "92", "36"]);
@@ -28,6 +30,10 @@ function JamunaBankOne() {
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
     const [totalDeposit, setTotalDeposit] = useState(0);
+    const Transactions = useSelector(state => state.Transactions.Transactions);
+    const Banks = useSelector(state => state.Banks.Banks);
+    // console.log(Transactions);
+    // console.log(Banks);
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -146,6 +152,13 @@ function JamunaBankOne() {
     const printWebPage = () => {
         window.print();
     }
+
+
+    useEffect(() => {
+
+
+
+    }, [])
 
     return (
         <div className="p-5">

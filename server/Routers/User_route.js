@@ -20,39 +20,26 @@ Router.post('/login', async (req, res) => {
 
         if (!user) {
 
-            return res.status(400).json({
-                message: "User not found"
-            })
+            return res.status(400).json("User not found");
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
 
-            return res.status(400).json({
-                message: "Invalid Password"
-            })
+            return res.status(400).json("Invalid Password")
         }
 
         if (!process.env.TOKENSECRATE) {
-            return res.status(500).json({
-                message: "Token Secrate is not defined"
-            })
+            return res.status(500).json("Token Secrate is not defined")
         }
 
         const token = jwt.sign({ id: user._id }, process.env.TOKENSECRATE);
-
-        return res.status(200).json({
-            message: "Login Successful",
-            token
-        })
-
+        return res.status(200).json(token)
 
     } catch (error) {
 
-        return res.status(500).json({
-            message: "Something went wrong"
-        })
+        return res.status(500).json("Something went wrong")
     }
 });
 
@@ -64,9 +51,7 @@ Router.post('/register', async (req, res) => {
 
     if (!email || !password) {
 
-        return res.status(400).json({
-            message: "Please enter all fields"
-        })
+        return res.status(400).json("Please fill all fields")
     }
 
     try {
@@ -75,9 +60,7 @@ Router.post('/register', async (req, res) => {
 
         if (user) {
 
-            return res.status(400).json({
-                message: "User already exists"
-            })
+            return res.status(400).json("User already exists")
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -89,15 +72,11 @@ Router.post('/register', async (req, res) => {
 
         await newUser.save();
 
-        return res.status(200).json({
-            message: "User created successfully"
-        })
+        return res.status(200).json("User created")
 
     } catch (error) {
 
-        return res.status(500).json({
-            message: "Something went wrong"
-        })
+        return res.status(500).json("Something went wrong")
     }
 });
 
@@ -109,9 +88,7 @@ Router.post('/banks', Authguard, async (req, res) => {
 
     if (!bankName) {
 
-        return res.status(400).json({
-            message: "Please enter all fields"
-        })
+        return res.status(400).json("Please fill all fields")
     }
 
     try {
@@ -120,24 +97,18 @@ Router.post('/banks', Authguard, async (req, res) => {
 
         if (bank) {
 
-            return res.status(400).json({
-                message: "Bank already exists"
-            })
+            return res.status(400).json("Bank already exists")
         }
 
         const newBank = new Bank({
             bankName
         }).save();
 
-        return res.status(200).json({
-            message: "Bank created successfully"
-        })
+        return res.status(200).json("Bank created")
 
     } catch (error) {
 
-        return res.status(500).json({
-            message: "Something went wrong"
-        })
+        return res.status(500).json("Something went wrong")
     }
 });
 
@@ -149,16 +120,11 @@ Router.get('/banks', Authguard, async (req, res) => {
 
         const banks = await Bank.find();
 
-        return res.status(200).json({
-            message: "Banks fetched successfully",
-            data: banks
-        })
+        return res.status(200).json(banks)
 
     } catch (error) {
 
-        return res.status(500).json({
-            message: "Something went wrong"
-        })
+        return res.status(500).json("Something went wrong")
     }
 })
 
@@ -171,9 +137,7 @@ Router.post('/transaction', Authguard, async (req, res) => {
 
     if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch) {
 
-        return res.status(400).json({
-            message: "Please enter all fields"
-        })
+        return res.status(400).json("Please fill all fields")
     }
 
     try {
@@ -187,9 +151,7 @@ Router.post('/transaction', Authguard, async (req, res) => {
 
         if (isExist) {
 
-            return res.status(400).json({
-                message: "Transaction already exists"
-            })
+            return res.status(400).json("Transaction already exists")
         }
 
         const newTransaction = new Transiction({
@@ -202,17 +164,12 @@ Router.post('/transaction', Authguard, async (req, res) => {
 
         const saveTransiction = await newTransaction.save();
 
-        return res.status(200).json({
-            message: "Transaction created successfully",
-            data: saveTransiction
-        })
+        return res.status(200).json("Transaction created")
 
     } catch (error) {
 
         console.log(error);
-        return res.status(500).json({
-            message: "Something went wrong"
-        })
+        return res.status(500).json("Something went wrong")
     }
 })
 
@@ -225,18 +182,13 @@ Router.get('/transaction/:bankId', Authguard, async (req, res) => {
 
     try {
 
-        const transactions = await Transiction.find({ bankId: bankId });
+        const transactions = await Transiction.find({ bankId: bankId }).populate('bankId');
 
-        return res.status(200).json({
-            message: "Transactions fetched successfully",
-            data: transactions
-        })
+        return res.status(200).json(transactions)
 
     } catch (error) {
 
-        return res.status(500).json({
-            message: "Something went wrong"
-        })
+        return res.status(500).json("Something went wrong")
     }
 })
 

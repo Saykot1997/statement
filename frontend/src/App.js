@@ -1,28 +1,41 @@
-import IslamiBankOne from "./Pages/IslamiBankOne";
-import JamunaBankOne from "./Pages/JamunaBankOne";
-import JamunaBankTwo from "./Pages/JamunaBankTwo";
-import JamunaBankThree from "./Pages/JamunaBankThree";
-import BankAsiaOne from "./Pages/BankAsiaOne";
-import NCCBankOne from "./Pages/NCCBankOne";
-import NCCBankTwo from "./Pages/NCCBankTwo";
-import BankAsiaTwo from "./Pages/BankAsiaTwo";
-import HSBCBankOne from "./Pages/HSBCBankOne";
-
-
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import PrivateRoute from "./Components/PrivateRoute";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Laout from "./Components/Laout";
+import AddBanks from "./Pages/AddBanks";
+import SingleBank from "./Pages/SingleBank";
 
 function App() {
+
   return (
-    <div className="">
-      <JamunaBankOne />
-      {/* <JamunaBankTwo /> */}
-      {/* <JamunaBankThree /> */}
-      {/* <IslamiBankOne /> */}
-      {/* <BankAsiaOne /> */}
-      {/* <BankAsiaTwo /> */}
-      {/* <NCCBankOne /> */}
-      {/* <NCCBankTwo /> */}
-      {/* <HSBCBankOne /> */}
-    </div>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/"
+          element={<PrivateRoute>
+            <Laout>
+              <Home />
+            </Laout>
+          </PrivateRoute>} />
+
+        <Route path="/addbanks"
+          element={<PrivateRoute>
+            <Laout>
+              <AddBanks />
+            </Laout>
+          </PrivateRoute>} />
+
+        <Route path="/singlebank/:id"
+          element={<PrivateRoute>
+            <Laout>
+              <SingleBank />
+            </Laout>
+          </PrivateRoute>} />
+
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

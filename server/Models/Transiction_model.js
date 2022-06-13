@@ -23,6 +23,6 @@ const BankTransictionSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-}, { strict: false }, { timestamps: true });
+}, { timestamps: true });
 
 module.exports = mongoose.model('BankTransiction', BankTransictionSchema);

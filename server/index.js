@@ -5,14 +5,13 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const userRouter = require('./Routers/User_route');
 
-dotenv.config();
 app.use(cors());
+dotenv.config();
 app.use(express.json());
 
 
 // Connect to MongoDB
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log('MongoDB Connected') }).catch(err => { console.log(err) })
-
 
 app.get("/", (req, res) => {
     res.send("Hello World")
