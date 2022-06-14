@@ -45,7 +45,7 @@ function SingleBank() {
         <div className='w-full h-[calc(100vh-64px)] bg-gray-100 overflow-y-scroll p-5'>
             {
                 Transaction.length > 0 ?
-                    <p className=' text-center font-medium'>{Transaction[0].bankId.bankName}</p>
+                    <p className=' text-center font-medium'>{Transaction[0].bankId.bankName} Transaction Details</p>
                     :
                     <p className=' text-center font-medium'>No Transactions Added</p>
             }

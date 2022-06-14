@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const Transiction = require('../Models/Transiction_model');
 const Bank = require('../Models/Bank_model');
 const Authguard = require('../Authgurd/Authgurd');
+const TAmount = require('../Models/TAmount_model');
 
 
 // login
@@ -190,7 +191,180 @@ Router.get('/transaction/:bankId', Authguard, async (req, res) => {
 
         return res.status(500).json("Something went wrong")
     }
+});
+
+
+// save transaction amount
+
+Router.post('/transactionAmount', Authguard, async (req, res) => {
+
+    if (!req.body.amounts) {
+        return res.status(400).json("Amounts array is required")
+    }
+
+    try {
+
+        const isAvailable = await TAmount.find()
+
+        if (isAvailable.length > 0) {
+
+            if (req.body.amounts.ATM) {
+
+                let isAtmExist = isAvailable[0].ATM.length > 0;
+                let isChequeExist = isAvailable[0].Cheque.length > 0;
+
+                let objectId = ""
+
+                if (isAtmExist && isChequeExist) {
+
+                    objectId = isAvailable[0]._id
+
+                    const updateAbleObject = {
+                        ...isAvailable[0]._doc
+                    }
+
+                    updateAbleObject.ATM = req.body.amounts.ATM
+
+                    await TAmount.findByIdAndUpdate(objectId, updateAbleObject)
+
+                    return res.status(200).json("ATM updated")
+
+                }
+
+                if (isAtmExist && !isChequeExist) {
+
+                    objectId = isAvailable[0]._id
+
+                    const updateAbleObject = {
+                        ...isAvailable[0]._doc
+                    }
+
+                    updateAbleObject.ATM = req.body.amounts.ATM
+
+                    await TAmount.findByIdAndUpdate(objectId, updateAbleObject)
+
+                    return res.status(200).json("ATM updated")
+                }
+
+                if (!isAtmExist && isChequeExist) {
+
+                    objectId = isAvailable[0]._id
+
+                    const updateAbleObject = {
+                        ...isAvailable[0]._doc
+                    }
+
+                    updateAbleObject.ATM = req.body.amounts.ATM
+
+                    await TAmount.findByIdAndUpdate(objectId, updateAbleObject)
+
+                    return res.status(200).json("ATM updated")
+
+                }
+
+            } else if (req.body.amounts.Cheque) {
+
+                let objectId = ""
+
+                let isAtmExist = isAvailable[0].ATM.length > 0;
+                let isChequeExist = isAvailable[0].Cheque.length > 0;
+
+                if (isAtmExist && isChequeExist) {
+
+                    objectId = isAvailable[0]._id
+
+                    const updateAbleObject = {
+                        ...isAvailable[0]._doc
+                    }
+
+                    updateAbleObject.Cheque = req.body.amounts.Cheque
+
+                    await TAmount.findByIdAndUpdate(objectId, updateAbleObject, { new: true })
+
+                    return res.status(200).json("Cheque amount saved")
+
+                }
+
+                if (!isAtmExist && isChequeExist) {
+
+                    objectId = isAvailable[0]._id
+
+                    const updateAbleObject = {
+                        ...isAvailable[0]._doc
+                    }
+
+                    updateAbleObject.Cheque = req.body.amounts.Cheque
+
+                    await TAmount.findByIdAndUpdate(objectId, updateAbleObject, { new: true })
+
+                    return res.status(200).json("Cheque amount saved")
+
+                }
+
+                if (isAtmExist && !isChequeExist) {
+
+                    objectId = isAvailable[0]._id
+
+                    const updateAbleObject = {
+                        ...isAvailable[0]._doc
+                    }
+
+                    updateAbleObject.Cheque = req.body.amounts.Cheque
+
+                    await TAmount.findByIdAndUpdate(objectId, updateAbleObject, { new: true })
+
+                    return res.status(200).json("Cheque amount saved")
+                }
+            }
+
+        } else {
+
+            if (req.body.amounts.Cheque) {
+
+                const newTAmount = new TAmount({
+                    Cheque: req.body.amounts.Cheque
+                })
+
+                await newTAmount.save();
+
+                return res.status(200).json("Cheque amount saved")
+
+            } else if (req.body.amounts.ATM) {
+
+                const newTAmount = new TAmount({
+                    ATM: req.body.amounts.ATM
+                })
+
+                await newTAmount.save();
+
+                return res.status(200).json("ATM amount saved")
+            }
+        }
+
+    } catch (error) {
+
+        return res.status(500).json("Something went wrong")
+    }
 })
+
+
+// get all transaction amounts
+
+Router.get('/transactionAmount', Authguard, async (req, res) => {
+
+    try {
+
+        const transactionAmount = await TAmount.find();
+
+        return res.status(200).json(transactionAmount[0])
+
+    } catch (error) {
+
+        return res.status(500).json("Something went wrong")
+    }
+})
+
+
 
 
 
