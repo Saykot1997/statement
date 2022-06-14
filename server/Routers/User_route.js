@@ -103,9 +103,11 @@ Router.post('/banks', Authguard, async (req, res) => {
 
         const newBank = new Bank({
             bankName
-        }).save();
+        })
 
-        return res.status(200).json("Bank created")
+        const savedBank = await newBank.save();
+
+        return res.status(200).json(savedBank)
 
     } catch (error) {
 
@@ -127,7 +129,69 @@ Router.get('/banks', Authguard, async (req, res) => {
 
         return res.status(500).json("Something went wrong")
     }
+});
+
+
+// update bank name
+
+Router.put('/banks/:id', Authguard, async (req, res) => {
+
+    const { id } = req.params;
+
+    const { bankName } = req.body;
+
+    if (!bankName) {
+
+        return res.status(400).json("Please fill all fields")
+    }
+
+    try {
+
+        const bank = await Bank.findById(id);
+
+        const isExist = await Bank.findOne({ bankName });
+
+        if (!bank) {
+
+            return res.status(400).json("Bank not found")
+        }
+
+        if (isExist && isExist._id.toString() !== id) {
+
+            return res.status(400).json("Bank name already exists")
+        }
+
+        const updatedBank = await Bank.findByIdAndUpdate(id, {
+            bankName
+        }, { new: true });
+
+        return res.status(200).json(updatedBank)
+
+    } catch (error) {
+
+        return res.status(500).json("Something went wrong")
+    }
+
 })
+
+
+// delete Bank
+
+Router.delete('/banks/:id', Authguard, async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+
+        await Transiction.deleteMany({ bankId: id });
+        await Bank.findByIdAndDelete(id);
+        return res.status(200).json("Bank deleted")
+
+    } catch (error) {
+
+        return res.status(500).json("Something went wrong")
+    }
+});
 
 
 
@@ -165,11 +229,73 @@ Router.post('/transaction', Authguard, async (req, res) => {
 
         const saveTransiction = await newTransaction.save();
 
-        return res.status(200).json("Transaction created")
+        return res.status(200).json(saveTransiction)
 
     } catch (error) {
 
         console.log(error);
+        return res.status(500).json("Something went wrong")
+    }
+})
+
+// update transaction
+
+Router.put('/transaction/:id', Authguard, async (req, res) => {
+
+    const { id } = req.params;
+
+    const { transactionName, bankId, transactionType, transactionMethod, branch } = req.body;
+
+    if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch) {
+
+        return res.status(400).json("Please fill all fields")
+    }
+
+    try {
+
+        const isExist = await Transiction.findOne({
+            $and: [
+                { transactionName },
+                { bankId },
+            ]
+        });
+
+        if (isExist && isExist._id.toString() !== id) {
+
+            return res.status(400).json("Transaction name already exists")
+        }
+
+        const updatedTransaction = await Transiction.findByIdAndUpdate(id, {
+            transactionName,
+            bankId,
+            transactionType,
+            transactionMethod,
+            branch
+        }, { new: true });
+
+        return res.status(200).json(updatedTransaction)
+
+    } catch (error) {
+
+        return res.status(500).json("Something went wrong")
+    }
+});
+
+
+// delete transaction
+
+Router.delete('/transaction/:id', Authguard, async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+
+        await Transiction.findByIdAndDelete(id);
+
+        return res.status(200).json("Transaction deleted")
+
+    } catch (error) {
+
         return res.status(500).json("Something went wrong")
     }
 })

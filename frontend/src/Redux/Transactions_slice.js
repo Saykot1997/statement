@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     Transactions: [],
-    isLoading: false,
-    error: "",
 }
 
 export const TransactionSlice = createSlice({
@@ -11,14 +9,24 @@ export const TransactionSlice = createSlice({
     initialState,
     reducers: {
         transactionsFatchSuccess: (state, action) => {
-            state.isLoading = false;
             state.Transactions = action.payload;
-            state.error = "";
         },
+        transactionsAddSuccess: (state, action) => {
+            state.Transactions.push(action.payload);
+        },
+        transactionUpdateSuccess: (state, action) => {
+
+            let getInex = state.Transactions.findIndex(transaction => transaction._id === action.payload._id);
+            state.Transactions[getInex] = action.payload;
+        },
+        transactionDeleteSuccess: (state, action) => {
+
+            state.Transactions = state.Transactions.filter(transaction => { return transaction._id !== action.payload })
+        }
 
     },
 })
 
-export const { transactionsFatchSuccess } = TransactionSlice.actions
+export const { transactionsFatchSuccess, transactionsAddSuccess, transactionUpdateSuccess, transactionDeleteSuccess } = TransactionSlice.actions
 
 export default TransactionSlice.reducer

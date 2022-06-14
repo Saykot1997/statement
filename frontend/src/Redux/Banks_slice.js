@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    Banks: [],
-    isLoading: false,
-    error: "",
+    Banks: []
 }
 
 export const BanksSlice = createSlice({
@@ -11,13 +9,26 @@ export const BanksSlice = createSlice({
     initialState,
     reducers: {
         fatchSuccess: (state, action) => {
-            state.isLoading = false;
             state.Banks = action.payload;
-            state.error = "";
         },
+        addBank: (state, action) => {
+            state.Banks.push(action.payload);
+        },
+        updateBank: (state, action) => {
+            state.Banks.map(bank => {
+                if (bank._id === action.payload._id) {
+                    bank.bankName = action.payload.bankName;
+                } else {
+                    return bank;
+                }
+            })
+        },
+        deleteBank: (state, action) => {
+            state.Banks = state.Banks.filter(bank => bank._id !== action.payload);
+        }
     },
 })
 
-export const { fatchSuccess } = BanksSlice.actions
+export const { fatchSuccess, addBank, deleteBank, updateBank } = BanksSlice.actions
 
 export default BanksSlice.reducer
