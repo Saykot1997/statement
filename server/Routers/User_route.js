@@ -171,7 +171,6 @@ Router.put('/banks/:id', Authguard, async (req, res) => {
 
         return res.status(500).json("Something went wrong")
     }
-
 })
 
 
@@ -198,7 +197,9 @@ Router.delete('/banks/:id', Authguard, async (req, res) => {
 // create transaction
 Router.post('/transaction', Authguard, async (req, res) => {
 
-    const { transactionName, bankId, transactionType, transactionMethod, branch } = req.body
+    console.log(req.body);
+
+    const { transactionName, bankId, transactionType, transactionMethod, branch, remarks } = req.body
 
     if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch) {
 
@@ -219,17 +220,17 @@ Router.post('/transaction', Authguard, async (req, res) => {
             return res.status(400).json("Transaction already exists")
         }
 
-        const newTransaction = new Transiction({
+        const newTransaction = {
             transactionName,
             bankId,
             transactionType,
             transactionMethod,
-            branch
-        })
+            branch,
+            remarks: req.body.remarks
+        }
 
-        const saveTransiction = await newTransaction.save();
-
-        return res.status(200).json(saveTransiction)
+        const savedTransaction = await Transiction.create(newTransaction);
+        return res.status(200).json(savedTransaction)
 
     } catch (error) {
 
@@ -244,9 +245,9 @@ Router.put('/transaction/:id', Authguard, async (req, res) => {
 
     const { id } = req.params;
 
-    const { transactionName, bankId, transactionType, transactionMethod, branch } = req.body;
+    const { transactionName, bankId, transactionType, transactionMethod, branch, remarks } = req.body;
 
-    if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch) {
+    if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch || !remarks) {
 
         return res.status(400).json("Please fill all fields")
     }
@@ -270,7 +271,8 @@ Router.put('/transaction/:id', Authguard, async (req, res) => {
             bankId,
             transactionType,
             transactionMethod,
-            branch
+            branch,
+            remarks
         }, { new: true });
 
         return res.status(200).json(updatedTransaction)

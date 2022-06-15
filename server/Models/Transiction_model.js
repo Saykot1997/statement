@@ -22,6 +22,10 @@ const BankTransictionSchema = new mongoose.Schema({
     branch: {
         type: String,
         required: true
+    },
+    remarks: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 

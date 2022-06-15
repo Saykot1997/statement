@@ -154,9 +154,9 @@ function JamunaBankOne() {
         <div className="p-5">
             {
                 editMode ?
-                    <div className='absolute top-5 right-5 print:hidden'>
+                    <div className='absolute top-5 right-0 print:hidden'>
                         <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
+                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                     </div>
                     :
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -332,29 +332,30 @@ function JamunaBankOne() {
             <div className=" w-full mt-10 print:mt-5">
                 <div className=' w-full flex justify-end print:hidden'>
                 </div>
-                <table className=" w-full">
+                <table className=' w-full mt-10 print:mt-5'>
                     <thead className=''>
                         <tr className=" border border-dashed">
                             <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left">Date</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left">Value Date</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left w-[27%]">Particular</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-center">Withdrawal(Dr)</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-center">Deposit(Cr)</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Withdrawal(Dr)</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Deposit(Cr)</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Balance</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1  text-right">Branch</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Branch</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Time</th>
                         </tr>
                     </thead>
                     <tbody>
+
                         <tr className="">
-                            <td className=" text-sm print:text-[9px] print:mr-[2px]">{startStatementDate}</td>
-                            <td className="text-sm print:text-[9px] print:mr-[2px]">{startStatementDate}</td>
-                            <td className="text-sm print:text-[9px] print:mr-[2px] w-[27%] uppercase">Opening Balance</td>
-                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right"></td>
-                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right"></td>
-                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right">{commaNumber(initialBalance)} CR</td>
-                            <td className="text-sm print:text-[9px] print:mr-[2px] text-right">{initialBranchCode}</td>
-                            <td className=" text-right text-sm print:text-[9px] print:ml-[2px]">12:00</td>
+                            <td className=" text-sm print:text-[10px] print:mr-[2px]">{startStatementDate}</td>
+                            <td className="text-sm print:text-[10px] print:mr-[2px]">{startStatementDate}</td>
+                            <td className="text-sm print:text-[10px] print:mr-[2px] w-[27%] uppercase">Opening Balance</td>
+                            <td className="text-sm print:text-[10px] print:mr-[2px] text-right"></td>
+                            <td className="text-sm print:text-[10px] print:mr-[2px] text-right"></td>
+                            <td className="text-sm print:text-[10px] print:mr-[2px] text-right">{commaNumber(initialBalance)} CR</td>
+                            <td className="text-sm print:text-[10px] print:mr-[2px] text-right">{initialBranchCode}</td>
+                            <td className="text-right text-sm print:text-[9px] print:ml-[2px]">12:00</td>
                         </tr>
 
                         {
@@ -370,10 +371,10 @@ function JamunaBankOne() {
                                         <td className="text-sm print:text-[10px] print:leading-[13px] w-[27%] pr-2">
                                             <p>{item.particular}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right pr-5">
+                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
                                             <p>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right pr-5">
+                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
                                             <p>{item.deposit > 0 && commaNumber(item.deposit)}</p>
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
@@ -391,26 +392,16 @@ function JamunaBankOne() {
                         }
 
                         <tr>
-                            <td className=" pt-2"></td>
-                            <td></td>
-                            <td > <hr /> </td>
-                            <td > <hr /> </td>
-                            <td > <hr /> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
                             <td className=" text-sm print:text-[10px] p-2"></td>
                             <td className=" text-center text-sm print:text-[10px] p-2"></td>
-                            <td className=" text-right text-sm print:text-[10px] p-2">Total</td>
-                            <td className=" text-right text-sm print:text-[10px] p-2 pr-5">{commaNumber(totalWithdrawal)}</td>
-                            <td className=" text-right text-sm print:text-[10px] p-2 pr-5">{commaNumber(totalDeposit)}</td>
+                            <td className=" text-centert text-sm print:text-[10px] p-2 border-t border-dashed">Total</td>
+                            <td className=" text-right text-sm print:text-[10px] p-2 border-t border-dashed">{commaNumber(totalWithdrawal)}</td>
+                            <td className=" text-right text-sm print:text-[10px] p-2 border-t border-dashed">{commaNumber(totalDeposit)}</td>
                             <td className=" text-center text-sm print:text-[10px] p-2"></td>
                             <td className=" text-center text-sm print:text-[10px] p-2"></td>
                             <td className=" text-right text-sm print:text-[10px] p-2"></td>
                         </tr>
+
                     </tbody>
                 </table>
                 <p className=' font-medium text-center print:text-[9px] mt-2'>This is a computer generated statement and does not require any signature</p>

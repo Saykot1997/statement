@@ -46,13 +46,29 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         let randomTransictionsMunite = Math.floor(Math.random() * 60);
         let randomWithdrawal = "";
         let randomDeposit = "";
+        let randomRemarks = transactions[findRandomParticular].remarks;
 
+
+        // set transection time
         if (transactions[findRandomParticular].transactionMethod === "cheque" || transactions[findRandomParticular].transactionMethod === "cash") {
+
             randomTransictionsTime = chequeWithdrawalOrDepositTime[Math.floor(Math.random() * chequeWithdrawalOrDepositTime.length)];
+
         } else {
+
             randomTransictionsTime = Math.floor(Math.random() * 24);
         }
 
+
+        if (randomTransictionsTime.toString().length === 1) {
+            randomTransictionsTime = "0" + randomTransictionsTime;
+        }
+
+        if (randomTransictionsMunite.toString().length === 1) {
+            randomTransictionsMunite = "0" + randomTransictionsMunite;
+        }
+
+        // set withdrawal and deposit
         if (transactions[findRandomParticular].transactionMethod === "atm") {
 
             randomWithdrawal = atmWithdrawalAmount[Math.floor(Math.random() * atmWithdrawalAmount.length)];
@@ -77,12 +93,30 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             particular: randomParticular,
             branchCode: randomBranchCode,
-            date: `${randomTransictionsDate.getDate()}/${randomTransictionsDate.getMonth() + 1}/${randomTransictionsDate.getFullYear()}`,
+            date: "",
             time: randomTransictionsTime + ":" + randomTransictionsMunite,
             withdrawal: randomWithdrawal,
             deposit: randomDeposit,
+            remarks: randomRemarks
         }
 
+
+        // set randomTransictions date
+        if (randomTransictionsDate.getDate().toString().length === 1) {
+            randomTransictionsObject.date = "0" + randomTransictionsDate.getDate();
+        } else {
+            randomTransictionsObject.date = randomTransictionsDate.getDate();
+        }
+
+        if ((randomTransictionsDate.getMonth() + 1).toString().length === 1) {
+            randomTransictionsObject.date += "/0" + (randomTransictionsDate.getMonth() + 1);
+        } else {
+            randomTransictionsObject.date += "/" + (randomTransictionsDate.getMonth() + 1);
+        }
+        randomTransictionsObject.date += "/" + randomTransictionsDate.getFullYear();
+
+
+        //  set interTotalWithdrawal and interTotalDeposit
         if (transactions[findRandomParticular].transactionType === "credit") {
 
             interTotalDeposit += randomDeposit;

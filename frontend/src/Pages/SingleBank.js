@@ -27,6 +27,7 @@ function SingleBank() {
     const [currentTransactionType, setCurrentTransactionType] = useState('');
     const [currentTransactionBranch, setCurrentTransactionBranch] = useState('');
     const [currentTransectionName, setCurrentTransectionName] = useState('');
+    const [currentTransactionRemarks, setCurrentTransactionRemarks] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
 
@@ -41,6 +42,7 @@ function SingleBank() {
         setCurrentTransactionMethod(transaction.transactionMethod)
         setCurrentTransactionType(transaction.transactionType)
         setCurrentTransactionBranch(transaction.branch)
+        setCurrentTransactionRemarks(transaction.remarks)
     }
 
     const getTransaction = async () => {
@@ -69,8 +71,11 @@ function SingleBank() {
             transactionType: currentTransactionType,
             transactionMethod: currentTransactionMethod,
             branch: currentTransactionBranch,
-            bankId: path
+            bankId: path,
+            remarks: currentTransactionRemarks,
         }
+
+        // console.log(data)
 
         try {
 
@@ -133,30 +138,28 @@ function SingleBank() {
 
     }, [path])
 
-    console.log(Transaction)
-
 
     return (
         <div className='w-full h-[calc(100vh-64px)] bg-gray-100 overflow-y-scroll p-5'>
+            <button onClick={toggleAddTransactionMode} className=' absolute top-20 right-5 shadow shadow-blue-300 p-1 rounded text-blue-600 hover:scale-105 transition-all ease-in'>Add Transactions</button>
             {
                 Transaction.length > 0 ?
                     <p className=' text-center font-medium'>{Transaction[0].bankId.bankName} Transaction Details</p>
                     :
                     <div>
                         <p className=' text-center font-medium'>No Transactions Added</p>
-                        <button onClick={toggleAddTransactionMode} className=' absolute top-20 right-5 shadow shadow-blue-300 p-1 rounded text-blue-600 hover:scale-105 transition-all ease-in'>Add Transactions</button>
                     </div>
             }
             <div className=' w-full grid grid-cols-3 gap-5 mt-5' >
                 {
                     Transaction.length > 0 && Transaction.map(transaction => {
                         return (
-                            <div className=' bg-white px-5 py-3 rounded shadow relative' key={transaction._id}>
+                            <div className=' bg-white px-5 py-3 rounded shadow flex justify-between' key={transaction._id}>
                                 {
-                                    updateModeOpen ?
+                                    updateModeOpen && currentTransactionId === transaction._id ?
                                         <div>
                                             <input type="text" placeholder='Transection Name' value={currentTransectionName} onChange={(e) => setCurrentTransectionName(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
-                                            <select name="" id="" value={currentTransactionType} onChange={(e) => setCurrentTransactionType(e.target.value)} className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
+                                            <select name="" id="" value={currentTransactionMethod} onChange={(e) => setCurrentTransactionMethod(e.target.value)} className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
                                                 <option value="">Select Transaction Method</option>
                                                 {
                                                     transectionMethod.map(method => {
@@ -164,13 +167,13 @@ function SingleBank() {
                                                     })
                                                 }
                                             </select>
-                                            <select value={currentTransactionMethod} onChange={(e) => setCurrentTransactionMethod(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
+                                            <select value={currentTransactionType} onChange={(e) => setCurrentTransactionType(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
                                                 <option value="">Select Transection Type</option>
                                                 <option value="credit">Credit</option>
                                                 <option value="debit">Debit</option>
                                             </select>
                                             <input type="text" placeholder='Branch Code' value={currentTransactionBranch} onChange={(e) => setCurrentTransactionBranch(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
-
+                                            <input type="text" placeholder='Branch Code' value={currentTransactionRemarks} onChange={(e) => setCurrentTransactionRemarks(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                                         </div>
                                         :
                                         <div>
@@ -178,20 +181,21 @@ function SingleBank() {
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Method :</span> {transaction.transactionMethod}</p>
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Type :</span> {transaction.transactionType}</p>
                                             <p className=' mt-2 text-sm'> <span className=' font-medium'>Branch :</span> {transaction.branch}</p>
+                                            <p className=' mt-2 text-sm'> <span className=' font-medium'>Branch :</span> {transaction.remarks && transaction.remarks}</p>
                                         </div>
                                 }
                                 {
                                     updateModeOpen && currentTransactionId === transaction._id ?
 
 
-                                        <div className=' flex items-center absolute top-0 right-0 p-3'>
+                                        <div className=' flex'>
                                             <FaSave onClick={updateTransaction} className=' text-blue-500 cursor-pointer mr-2' />
                                             <AiFillCloseSquare onClick={() => { toggleUpdateMode(transaction) }} className=' text-red-500 text-lg cursor-pointer' />
                                         </div>
 
                                         :
 
-                                        <div className=' flex items-center  absolute top-0 right-0 p-3'>
+                                        <div className=' flex'>
                                             <BiEdit onClick={() => { toggleUpdateMode(transaction) }} className=' text-green-500 cursor-pointer mr-2' />
                                             <MdDelete onClick={() => { confirmDelete(transaction._id) }} className=' text-red-500 text-lg cursor-pointer' />
                                         </div>
