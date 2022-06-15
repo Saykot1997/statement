@@ -391,7 +391,7 @@ function BankAsiaOne() {
                             <td className=' border border-gray-400 p-2 print:px-1 py-0 print:leading-4 print:text-[10px] w-[20%]'></td>
                             <td className=' border border-gray-400 p-2 print:px-1 py-0 print:leading-4 print:text-[10px] text-right'></td>
                             <td className=' border border-gray-400 p-2 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>Opening Balance :</td>
-                            <td className=' border border-gray-400 p-2 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>{initialBalance}</td>
+                            <td className=' border border-gray-400 p-2 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>{commaNumber(initialBalance)}</td>
                             <td className=' border border-gray-400 p-2 print:px-1 py-0 print:leading-4 print:text-[10px] text-left w-[27%]'></td>
                         </tr>
                         {
@@ -413,8 +413,8 @@ function BankAsiaOne() {
                             <td className=' border border-r-0 border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0'></td>
                             <td className=' border border-x-0 border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0'></td>
                             <td className=' border border-l-0 border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0'>Total Debit/Credit : --> </td>
-                            <td className=' border border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0 uppercase'>2,93,487</td>
-                            <td className=' border border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0 text-right'>456794.00</td>
+                            <td className=' border border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0 uppercase'>{commaNumber(totalWithdrawal)}</td>
+                            <td className=' border border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
                             <td className=' border border-r-0 border-gray-400 p-2 print:px-1 print:text-[10px] print:py-0 text-right'></td>
                             <td className=' border border-gray-400 border-l-0 p-2 print:px-1 print:text-[10px] print:py-0 text-right '></td>
                         </tr>

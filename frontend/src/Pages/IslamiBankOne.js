@@ -1,26 +1,218 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import commaNumber from 'comma-number';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Host } from '../Data';
+import { fatchSuccess } from '../Redux/Banks_slice';
+import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice';
+import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
+import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
 
 function IslamiBankOne() {
 
     const [randomArray, setRandomArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
 
+    const [randomTransictions, setRandomTransictions] = useState([])
+    const [initialBranchCode, setInitialBranchCode] = useState(32)
+    const [transactionQuantity, setTransactionQuantity] = useState(40);
+    const [initialBalance, setInitialBalance] = useState(400000);
+    const [editMode, setEditMode] = useState(false);
+    const [printDate, setPrintDate] = useState("01/01/2020");
+    const [branchName, setBranchName] = useState("Shantinagar Branch");
+    const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
+    const [branchPhone, setBranchPhone] = useState("8355179");
+    const [openingDate, setOpeningDate] = useState("01/01/2020");
+    const [lastTRDate, setLastTRDate] = useState("01/01/2020");
+    const [reportGenerateUser, setReportGenerateUser] = useState("");
+    const [branchFax, setBranchFax] = useState("8355649");
+    const [accountType, setAccountType] = useState("Saving");
+    const [accountNumber, setAccountNumber] = useState("0009-03100007098");
+    const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
+    const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
+    const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
+    const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
+    const [accountCurrency, setAccountCurrency] = useState("TK");
+    const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
+    const [accountInterestRate, setAccountInterestRate] = useState("2");
+    const [accountStatus, setAccountStatus] = useState("OPERATIVE");
+    const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
+    const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
+    const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
+    const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
+    const [totalWithdrawal, setTotalWithdrawal] = useState(0);
+    const [totalDeposit, setTotalDeposit] = useState(0);
+    const Transactions = useSelector(state => state.Transactions.Transactions);
+    const Banks = useSelector(state => state.Banks.Banks);
+    const User = useSelector(state => state.User.User);
+    const dispatch = useDispatch();
+    const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
+
+    const getBankTransactions = async (value) => {
+
+        try {
+
+            const res = await axios.get(`${Host}/api/user/transaction/${value}`, {
+                headers: {
+                    "Authorization": `Bearer ${User}`
+                }
+            });
+
+            dispatch(transactionsFatchSuccess(res.data))
+
+        } catch (error) {
+
+            console.log(error)
+        }
+    }
+
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
+    }
+
+    const statementDateChange = (option, value) => {
+
+        if (option === "startStatementDate") {
+
+            let startStatementDate = value.split("-");
+            let startStatementDateYear = startStatementDate[0];
+            let startStatementDateMonth = startStatementDate[1];
+            let startStatementDateDay = startStatementDate[2];
+
+            setStartStatementDate(`${startStatementDateDay}/${startStatementDateMonth}/${startStatementDateYear}`);
+            setHideStartStatementDate(`${startStatementDateYear}-${startStatementDateMonth}-${startStatementDateDay}`);
+
+        } else if (option === "endStatementDate") {
+
+            let endStatementDate = value.split("-");
+            let endStatementDateYear = endStatementDate[0];
+            let endStatementDateMonth = endStatementDate[1];
+            let endStatementDateDay = endStatementDate[2];
+
+            setEndStatementDate(`${endStatementDateDay}/${endStatementDateMonth}/${endStatementDateYear}`);
+            setHideEndStatementDate(`${endStatementDateYear}-${endStatementDateMonth}-${endStatementDateDay}`);
+        }
+    }
+
+    const GenerateTranjections = () => {
+
+        if (!Transactions.length > 0) {
+            return alert("No Transactions Found. Please select Bank Transaction First.")
+        }
+
+        if (!TransactionAmount.ATM.length > 0 || !TransactionAmount.Cheque.length > 0) {
+            return alert("No Transaction Amount Found. Please insert Transaction Amount First.")
+        }
+
+        const allData = GenerateRandomTranjections(hideStartStatementDate, hideEndStatementDate, Transactions, transactionQuantity, initialBalance, TransactionAmount.ATM, TransactionAmount.Cheque);
+        setTotalWithdrawal(allData.TotalWithdrawal);
+        setTotalDeposit(allData.TotalDeposit);
+        setRandomTransictions(allData.RandomTransictions);
+        toggleEditMode();
+    }
+
+    const printWebPage = () => {
+        window.print();
+    }
+
+    const getBanks = async () => {
+
+        try {
+
+            const response = await axios.get(`${Host}/api/user/banks`, {
+                headers: {
+                    Authorization: `Bearer ${User}`
+                }
+            });
+            dispatch(fatchSuccess(response.data));
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getTransectionsAmounts = async () => {
+
+        try {
+
+            const response = await axios.get(`${Host}/api/user/transactionAmount`, {
+                headers: {
+                    Authorization: `Bearer ${User}`
+                }
+            })
+
+            dispatch(TransactionAmountFatchSuccess(response.data))
+
+        } catch (error) {
+
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+
+        getBanks()
+        getTransectionsAmounts()
+
+    }, [])
 
 
     return (
-        <div className=' w-full min-h-screen bg-gray-100 p-5 print:p-0'>
+        <div className=' w-full min-h-screen bg-gray-100 p-5 print:p-0 relative'>
+
+            {
+                editMode ?
+                    <div className='absolute top-20 right-0 print:hidden'>
+                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
+                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
+                    </div>
+                    :
+                    <div className='absolute top-20 right-0 print:hidden'>
+                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
+                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
+                    </div>
+            }
 
             {/* header section stert */}
             <div className='w-full flex justify-center'>
                 <div className='text-center'>
                     <p className=' text-2xl print:text-xl font-semibold'>Social Islami Bank Ltd.</p>
-                    <p className=' font-medium print:sm:'>Garib-E-Newaz Avenue Branch</p>
-                    <p className=' font-medium print:text-sm'>50,Garib-E-newaz Avenue,Sector-13,Uttara</p>
+                    {
+                        editMode ?
+                            <div className=' flex items-center'>
+                                <span className=' font-medium'>Branch Name :</span>
+                                <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                            </div>
+                            :
+
+                            <p className=' font-medium print:text-base'>{branchName}</p>
+                    }
+                    {
+                        editMode ?
+                            <div className=' flex items-center'>
+                                <span className=' font-medium'>Branch Address :</span>
+                                <input type="text" placeholder='Branch Address' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+
+                            <p className=' font-medium print:text-sm'>{branchAddress}</p>
+                    }
                 </div>
                 <div className=' absolute top-0 right-0 w-1/2 flex justify-end pl-10'>
-                    <div className=''>
-                        <p className=' text-sm font-medium print:font-normal print:text-right'>Print Date : 29/05/2022</p>
-                        <p className=' text-sm font-medium print:font-normal mr-14'>Report Generated User:</p>
-                    </div>
+                    {
+                        editMode ?
+                            <div className=''>
+                                <p className=' text-sm font-medium print:font-normal print:text-right'>Print Date :
+                                    <input type="text" placeholder='Print date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </p>
+                                <p className=' text-sm font-medium print:font-normal mr-14'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
+                            </div>
+                            :
+
+                            <div className=''>
+                                <p className=' text-sm print:text-[11px] font-medium print:font-normal print:text-right'>Print Date : {printDate}</p>
+                                <p className=' text-sm print:text-[11px] font-medium print:font-normal mr-14'>Report Generated User: {reportGenerateUser}</p>
+                            </div>
+                    }
                 </div>
             </div>
             <div className=' flex justify-center py-5 print:pt-2 print:pb-4'>
@@ -30,54 +222,178 @@ function IslamiBankOne() {
             {/* header section end */}
 
             <div className=' w-full flex'>
-                <div className=' w-1/2 print:text-sm'>
-                    <div className=' my-1'>
-                        <span className=' inline-block w-24 font-semibold print:font-medium'>A/C No</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>09328587234928</span>
-                    </div>
-                    <div className=' my-1'>
-                        <span className=' inline-block w-24 font-semibold print:font-medium'>A/C Name</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>A.K.M RAJIB HASAN</span>
-                    </div>
-                    <div>
-                        <span className=' inline-block w-24 font-semibold print:font-medium'>Address</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>house-27, road-6,block-b banasree,rampura,dhaka</span>
-                    </div>
+                <div className=' w-1/2 print:text-[12px]'>
+                    {
+                        editMode ?
+                            <div className=' my-1'>
+                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C No</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' flex'>
+                                <div className=' flex justify-between w-24'>
+                                    <span className='font-semibold print:font-medium'>A/C No</span>
+                                </div>
+                                <div>
+                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                    <span className=''>{accountNumber}</span>
+                                </div>
+                            </div>
+                    }
+                    {
+                        editMode ?
+                            <div className=' my-1'>
+                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C Name</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' flex'>
+                                <div className=' flex justify-between w-24'>
+                                    <span className='font-semibold print:font-medium'>A/C Name</span>
+                                </div>
+                                <div>
+                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                    <span className=''>{accountHoldersName}</span>
+                                </div>
+                            </div>
+                    }
+                    {
+                        editMode ?
+                            <div>
+                                <span className=' inline-block w-24 font-semibold print:font-medium'>Address</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' flex'>
+                                <div className=' flex justify-between w-24'>
+                                    <span className='font-semibold print:font-medium'>Address</span>
+                                </div>
+                                <div>
+                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                    <span className=''>{accountHoldersAddress}</span>
+                                </div>
+                            </div>
+                    }
                 </div>
-                <div className=' w-1/2 print:text-sm'>
-                    <div className=' my-1 flex'>
+                <div className=' w-1/2 print:text-[12px]'>
+                    <div className=' my-[2px] flex'>
                         <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Date From</span>
                         <span className=' mx-2 font-semibold print:font-medium'>:</span>
                         <p className=' font-semibold print:font-medium'> <span>01/11/2021</span> To <span>29/05/2022</span></p>
                     </div>
-                    <div className=' my-1 flex'>
-                        <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <p className=''>Mudaraba Saving Deposit-Client</p>
-                    </div>
-                    <div className=' my-1'>
-                        <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>05/06/2017</span>
-                    </div>
-                    <div className=' my-1'>
-                        <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>05/06/2022</span>
-                    </div>
-                    <div className=' my-1'>
-                        <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>01965789909876</span>
-                    </div>
-                    <div className=' my-1'>
-                        <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <span className=' uppercase'>Active</span>
-                    </div>
+                    {
+                        editMode ?
+
+                            <div className=' my-[2px] flex'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' my-[2px] flex'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <p className=''>{accountType}</p>
+                            </div>
+                    }
+                    {
+                        editMode ?
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Opening Date' value={openingDate} onChange={(e) => setOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <span className=' uppercase'>{openingDate}</span>
+                            </div>
+                    }
+                    {
+                        editMode ?
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Last Tr.Date' value={lastTRDate} onChange={(e) => setLastTRDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <span className=' uppercase'>{lastTRDate}</span>
+                            </div>
+                    }
+                    {
+                        editMode ?
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+
+                                <input type="text" placeholder='Phone' value={accountHoldersPhone} onChange={(e) => setAccountHoldersPhone(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+
+                            </div>
+                            :
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <span className=''>{accountHoldersPhone}</span>
+                            </div>
+                    }
+                    {
+                        editMode ?
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <div className=' my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <span className=' uppercase'>{accountStatus}</span>
+                            </div>
+                    }
+
+                    {
+                        editMode &&
+                        <div>
+                            <div className=' flex my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>initialBalance</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                            </div>
+                            <div className=' flex my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Initial Branch Code</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                            </div>
+
+                            <div className=' flex my-[2px]'>
+                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Number of Rows</span>
+                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                            </div>
+                            <div className=' flex items-center'>
+                                <div className='flex justify-between mr-2'>
+                                    <p className='uppercase font-semibold print:text-[10px]'>Transactions</p>
+                                    <span>:</span>
+                                </div>
+                                <select onChange={(e) => { getBankTransactions(e.target.value) }} name="" id="" className=' border border-blue-500 px-2 py-[6px] rounded mt-2 focus:outline-none'>
+                                    <option value="">Select Bank Transaction</option>
+                                    {
+                                        Banks.map((bank, index) => {
+                                            return <option key={index} value={bank._id}>{bank.bankName}</option>
+                                        })
+                                    }
+                                </select>
+                            </div>
+
+                        </div>
+                    }
                 </div>
             </div>
 
@@ -98,17 +414,17 @@ function IslamiBankOne() {
                 <tbody>
 
                     {
-                        randomArray.map((item, index) => {
+                        randomTransictions.length > 0 && randomTransictions.map((item, index) => {
 
                             return (
                                 <tr>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>01/11/2021</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>204</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>{item.date}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>{item.branchCode}</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>V-</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 uppercase'>atm transaction from terminal code atm017601 <span className=' capitalize'>on Date 01-Nov-21</span></td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>494.00</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>5244.08</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>982347</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })
@@ -121,12 +437,12 @@ function IslamiBankOne() {
                         <td className=" text-right p-2 font-semibold print:font-medium print:text-[12px]">Total : </td>
                         <td className=" text-right p-2 font-semibold print:font-medium print:text-[12px]">
                             <div className=' w-full p-1'>
-                                <p className=' border-y border-gray-700'>567878900</p>
+                                <p className=' border-y border-gray-700'>{commaNumber(totalWithdrawal)}</p>
                             </div>
                         </td>
                         <td className=" text-right font-semibold print:font-medium print:text-[12px] p-2">
                             <div className=' w-full p-1'>
-                                <p className=' border-y border-gray-700'>567878900</p>
+                                <p className=' border-y border-gray-700'>{commaNumber(totalDeposit)}</p>
                             </div>
                         </td>
                         <td className=" text-center text-sm p-2"></td>
