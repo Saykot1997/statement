@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../Photos/jamunabank.jpg"
 
 function JamunaBankThree() {
+
+    const [branchName, setBranchName] = useState("Shantinagar Branch")
+    const [branchAddress, setBranchAddress] = useState("Shantinagar, Green City Edge, Bangladesh")
+    const [branchPhone, setBranchPhone] = useState("+8801777777777")
+    const [branchEmail, setBranchEmail] = useState("example@gamil.com")
+    const [swift, setSwift] = useState("JAMUNABANK")
+    const [printDate, setPrintDate] = useState("MAY 22,2020")
+    const [jbl, setJbl] = useState("JBL/SNB/GB/2020/522")
+    const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("31/1 SARAT GUPTA ROAD, SHANTINAGAR, GREEN CITY EDGE, BANGLADESH")
+    const [todaysDate, setTodaysDate] = useState("22.05.2022")
+    const [accountNumber, setAccountNumber] = useState("0123456789")
+    const [accountType, setAccountType] = useState("Savings")
+    const [accountBalance, setAccountBalance] = useState("$1,000.00")
+    const [presentBalanceUSD, setPresentBalanceUSD] = useState("$1,000.00")
+    const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
+
+
     return (
         <div className=' w-full min-h-screen px-20 print:px-5'>
             <div className=' flex justify-between items-center'>
