@@ -47,7 +47,7 @@ function BankAsiaOne() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/${value}`, {
+            const res = await axios.get(`${Host}/api/user/transaction/bank_asia`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -145,12 +145,12 @@ function BankAsiaOne() {
     }
 
     useEffect(() => {
-        getBanks()
         getTransectionsAmounts()
-
+        getBankTransactions()
     }, [])
 
-    // console.log(randomTransictions)
+    console.log(Transactions)
+
 
     return (
         <div className=' w-full min-h-screen p-5'>
@@ -288,7 +288,7 @@ function BankAsiaOne() {
                                                         </div>
                                                         :
 
-                                                        <p className='text-[10px] print:text-[9px] print:leading-[14px]'>Phone :{branchPhone} Fax : {branchFax}</p>
+                                                        <p className='text-[12px] print:text-[9px] print:leading-[14px]'>Phone : {branchPhone} Fax : {branchFax}</p>
                                                 }
                                             </div>
                                         </div>
@@ -461,14 +461,7 @@ function BankAsiaOne() {
                                                     <span className=' mr-2'>Number of row</span>
                                                     <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                                 </div>
-                                                <select onChange={(e) => { getBankTransactions(e.target.value) }} name="" id="" className=' border border-blue-500 px-2 py-[6px] rounded mt-2 focus:outline-none'>
-                                                    <option value="">Select Bank Transaction</option>
-                                                    {
-                                                        Banks.map((bank, index) => {
-                                                            return <option key={index} value={bank._id}>{bank.bankName}</option>
-                                                        })
-                                                    }
-                                                </select>
+
                                             </div>
                                         }
                                     </div>
@@ -515,13 +508,10 @@ function BankAsiaOne() {
                         })
                     }
                     <tr className=''>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0'></td>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0'></td>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0'>Total Debit/Credit : {"-->"} </td>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0 uppercase'>{commaNumber(totalWithdrawal)}</td>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0 text-right'></td>
-                        <td className='p-2 print:px-1 print:text-[10px] print:py-0 text-right '></td>
+                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right pr-5' colSpan="3">Total Debit/Credit : {"-->"} </td>
+                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0 uppercase text-right'>{commaNumber(totalWithdrawal)}</td>
+                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
+                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0' colspan="2 border-t-0"></td>
                     </tr>
                 </tbody>
 
@@ -529,7 +519,7 @@ function BankAsiaOne() {
                     <tr>
                         <td class=" " colspan="7">
                             <div className=' w-full'>
-                                <p className=' text-center font-medium mt-10 print:text-[10px]'>Thanks for banking with us.</p>
+                                <p className=' text-center font-medium pt-5 print:text-[10px]'>Thanks for banking with us.</p>
                                 <hr className=' h-[2px] bg-gray-400 w-full' />
                                 <p className=' print:text-[9px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
                             </div>

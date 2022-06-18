@@ -55,7 +55,7 @@ function JamunaBankTwo() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/${value}`, {
+            const res = await axios.get(`${Host}/api/user/transaction/jamuna_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -118,22 +118,6 @@ function JamunaBankTwo() {
         window.print();
     }
 
-    const getBanks = async () => {
-
-        try {
-
-            const response = await axios.get(`${Host}/api/user/banks`, {
-                headers: {
-                    Authorization: `Bearer ${User}`
-                }
-            });
-            dispatch(fatchSuccess(response.data));
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const getTransectionsAmounts = async () => {
 
         try {
@@ -153,11 +137,11 @@ function JamunaBankTwo() {
     }
 
     useEffect(() => {
-
-        getBanks()
         getTransectionsAmounts()
-
+        getBankTransactions()
     }, [])
+
+    console.log(Transactions)
 
 
 
@@ -186,7 +170,7 @@ function JamunaBankTwo() {
                 <div className='w-[49.5%]'>
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:font-medium print:text-[10px]'>Branch name</p>
                                     <span>:</span>
@@ -194,7 +178,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:font-medium print:text-[10px]'>Branch name</p>
                                     <span>:</span>
@@ -204,7 +188,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:font-medium print:text-[10px]'>Branch Address</p>
                                     <span>:</span>
@@ -212,7 +196,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Branch Address' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:font-medium print:text-[10px]'>Branch Address</p>
                                     <span>:</span>
@@ -223,7 +207,7 @@ function JamunaBankTwo() {
                     <div className=' py-2'>
                         {
                             editMode ?
-                                <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium '>Account no</p>
                                         <span>:</span>
@@ -231,7 +215,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium '>Account no</p>
                                         <span>:</span>
@@ -241,7 +225,7 @@ function JamunaBankTwo() {
                         }
                         {
                             editMode ?
-                                <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium'>Ucic id</p>
                                         <span>:</span>
@@ -249,7 +233,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Ucic Id' value={ucicId} onChange={(e) => setUcicId(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium'>Ucic id</p>
                                         <span>:</span>
@@ -259,7 +243,7 @@ function JamunaBankTwo() {
                         }
                         {
                             editMode ?
-                                <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium'>Account type</p>
                                         <span>:</span>
@@ -267,7 +251,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium'>Account type</p>
                                         <span>:</span>
@@ -277,7 +261,7 @@ function JamunaBankTwo() {
                         }
                         {
                             editMode ?
-                                <div className=' w-full flex  py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex  py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium'>name</p>
                                         <span>:</span>
@@ -285,7 +269,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none block' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold print:font-medium'>name</p>
                                         <span>:</span>
@@ -295,7 +279,7 @@ function JamunaBankTwo() {
                         }
                         {
                             editMode ?
-                                <div className=' w-full flex  py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex  py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold'>address</p>
                                         <span>:</span>
@@ -303,7 +287,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Account Holders Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                     <div className=' w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase print:text-[10px] font-semibold'>address</p>
                                         <span>:</span>
@@ -314,7 +298,7 @@ function JamunaBankTwo() {
                     </div>
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>post code</p>
                                     <span>:</span>
@@ -322,7 +306,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Post Code' value={accountHolderPostCode} onChange={(e) => setAccountHolderPostCode(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>Post Code</p>
                                     <span>:</span>
@@ -332,7 +316,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex  py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex  py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>city</p>
                                     <span>:</span>
@@ -340,7 +324,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Holder City' value={accountHolderCity} onChange={(e) => setAccountHolderCity(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>city</p>
                                     <span>:</span>
@@ -350,7 +334,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>state</p>
                                     <span>:</span>
@@ -358,7 +342,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Holders State' value={accountHolderState} onChange={(e) => setAccountHolderState(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>state</p>
                                     <span>:</span>
@@ -368,7 +352,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>email id</p>
                                     <span>:</span>
@@ -376,7 +360,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Holders email' value={accountHolderEmail} onChange={(e) => setAccountHolderEmail(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>email id</p>
                                     <span>:</span>
@@ -386,7 +370,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>phone number</p>
                                     <span>:</span>
@@ -394,7 +378,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Holders email' value={accountHolderPhone} onChange={(e) => setAccountHolderPhone(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px] print:text-[10px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px] print:text-[10px]'>
                                 <div className=' w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase print:text-[10px] font-semibold'>phone number</p>
                                     <span>:</span>
@@ -406,7 +390,7 @@ function JamunaBankTwo() {
                 <div className='w-[49.5%]'>
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>routing number/micr</p>
                                     <span>:</span>
@@ -414,7 +398,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Rounting Number' value={routingNumber} onChange={(e) => setRoutingNumber(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>routing number/micr</p>
                                     <span>:</span>
@@ -426,7 +410,7 @@ function JamunaBankTwo() {
                     {
                         editMode ?
 
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between'>
                                     <p className='uppercase font-semibold print:text-[10px]'>statement from</p>
                                     <span>:</span>
@@ -438,7 +422,7 @@ function JamunaBankTwo() {
                                 </div>
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>statement from</p>
                                     <span>:</span>
@@ -449,7 +433,7 @@ function JamunaBankTwo() {
                     {
                         editMode ?
 
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>maturity date</p>
                                     <span>:</span>
@@ -458,7 +442,7 @@ function JamunaBankTwo() {
                             </div>
                             :
 
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>maturity date</p>
                                     <span>:</span>
@@ -468,7 +452,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>account status</p>
                                     <span>:</span>
@@ -476,7 +460,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Status' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>account status</p>
                                     <span>:</span>
@@ -486,7 +470,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>Limit amount</p>
                                     <span>:</span>
@@ -494,7 +478,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Limit' value={accountLimit} onChange={(e) => setAccountLimit(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>Limit amount</p>
                                     <span>:</span>
@@ -504,7 +488,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>currancy</p>
                                     <span>:</span>
@@ -512,7 +496,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Account Currancy' value={accountCurrency} onChange={(e) => setAccountCurrency(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>currancy</p>
                                     <span>:</span>
@@ -522,7 +506,7 @@ function JamunaBankTwo() {
                     }
                     {
                         editMode ?
-                            <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>statement of generation</p>
                                     <span>:</span>
@@ -530,7 +514,7 @@ function JamunaBankTwo() {
                                 <input type="text" placeholder='Statement Genaration Date' value={statementGenarationDate} onChange={(e) => setStatementGenarationDate(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                             </div>
                             :
-                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                            <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                 <div className='w-1/2 flex justify-between mr-2'>
                                     <p className='uppercase font-semibold print:text-[10px]'>statement of generation</p>
                                     <span>:</span>
@@ -541,7 +525,7 @@ function JamunaBankTwo() {
                     <div className=' py-1'>
                         {
                             editMode ?
-                                <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                                <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                     <div className='w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase font-semibold print:text-[10px]'>interest/profit rate %</p>
                                         <span>:</span>
@@ -549,7 +533,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Interest Rate' value={accountInterestRate} onChange={(e) => setAccountInterestRate(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                     <div className='w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase font-semibold print:text-[10px]'>interest/profit rate %</p>
                                         <span>:</span>
@@ -559,7 +543,7 @@ function JamunaBankTwo() {
                         }
                         {
                             editMode ?
-                                <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                                <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                     <div className='w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase font-semibold print:text-[10px]'>recept no.</p>
                                         <span>:</span>
@@ -567,7 +551,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Recept No' value={receptNo} onChange={(e) => setReceptNo(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                     <div className='w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase font-semibold print:text-[10px]'>recept no.</p>
                                         <span>:</span>
@@ -577,7 +561,7 @@ function JamunaBankTwo() {
                         }
                         {
                             editMode ?
-                                <div className=' w-full flex py-1 print:py-0 print:leading-[18px]'>
+                                <div className=' w-full flex py-1 print:py-0 print:leading-[14px]'>
                                     <div className='w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase font-semibold print:text-[10px]'>expary date</p>
                                         <span>:</span>
@@ -585,7 +569,7 @@ function JamunaBankTwo() {
                                     <input type="text" placeholder='Expery Date' value={statementExportDate} onChange={(e) => setStatementExportDate(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none ' />
                                 </div>
                                 :
-                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[18px]'>
+                                <div className=' w-full flex justify-between py-1 print:py-0 print:leading-[14px]'>
                                     <div className='w-1/2 flex justify-between mr-2'>
                                         <p className='uppercase font-semibold print:text-[10px]'>expary date</p>
                                         <span>:</span>
@@ -624,16 +608,7 @@ function JamunaBankTwo() {
                                         <p className='uppercase font-semibold print:text-[10px]'>Transactions</p>
                                         <span>:</span>
                                     </div>
-                                    <select onChange={(e) => { getBankTransactions(e.target.value) }} name="" id="" className=' border border-blue-500 px-2 py-[6px] rounded mt-2 focus:outline-none'>
-                                        <option value="">Select Bank Transaction</option>
-                                        {
-                                            Banks.map((bank, index) => {
-                                                return <option key={index} value={bank._id}>{bank.bankName}</option>
-                                            })
-                                        }
-                                    </select>
                                 </div>
-
                             </div>
                         }
                     </div>
@@ -713,12 +688,21 @@ function JamunaBankTwo() {
                             })
                         }
 
+                        <tr className=' print:text-[10px]'>
+                            <td className=' border p-2 print:p-1 text-center'>Total</td>
+                            <td className=' '></td>
+                            <td className=' w-[27%]'></td>
+                            <td></td>
+                            <td className=' border p-2 print:p-1 text-center'>{commaNumber(totalWithdrawal)}</td>
+                            <td className=' border p-2 print:p-1 text-center'>{commaNumber(totalDeposit)}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
                     </tbody>
                 </table>
-                <p className=' font-medium text-center print:text-[8px] mt-2'>This is a computer generated statement and does not require any signature</p>
-
+                {/* <p className=' font-medium text-center print:text-[8px] mt-2'>This is a computer generated statement and does not require any signature</p> */}
                 {/* table section end */}
-
             </div>
         </div>
     )

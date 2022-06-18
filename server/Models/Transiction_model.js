@@ -6,9 +6,9 @@ const BankTransictionSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    bankId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bank',
+    bankName: {
+        type: String,
+        required: true,
     },
     transactionType: {
         type: String,
@@ -22,11 +22,7 @@ const BankTransictionSchema = new mongoose.Schema({
     branch: {
         type: String,
         required: true
-    },
-    remarks: {
-        type: String,
-        required: true
     }
-}, { timestamps: true });
+}, { strict: false }, { timestamps: true });
 
 module.exports = mongoose.model('BankTransiction', BankTransictionSchema);

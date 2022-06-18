@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
 import { transactionsAddSuccess } from "../Redux/Transactions_slice";
 
-function AddTransaction({ toggleAddTransactionMode }) {
+function J1({ toggleAddTransactionMode }) {
 
     const User = useSelector(state => state.User.User);
     const location = useLocation();
@@ -17,8 +17,7 @@ function AddTransaction({ toggleAddTransactionMode }) {
     const [transactionType, setTransactionType] = useState('');
     const [transactionMethod, setTransactionMethod] = useState('');
     const [branch, setBranch] = useState('');
-    const [bankId, setBankId] = useState('');
-    const [remarks, setRemarks] = useState('');
+    const [bankName, setBankName] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
 
@@ -27,13 +26,12 @@ function AddTransaction({ toggleAddTransactionMode }) {
         setTransactionType('');
         setTransactionMethod('');
         setBranch('');
-        setBankId('');
-        setRemarks('');
+        setBankName('')
     }
 
     const CreateTransaction = async () => {
 
-        if (transactionName === '' || transactionType === '' || transactionMethod === '' || branch === '' || bankId === '' || remarks === '') {
+        if (transactionName === '' || transactionType === '' || transactionMethod === '' || branch === '' || bankName === '') {
 
             return toast.error('Please fill all the fields')
         }
@@ -43,9 +41,8 @@ function AddTransaction({ toggleAddTransactionMode }) {
             transactionType,
             transactionMethod,
             branch,
-            bankId,
-            remarks,
-        }
+            bankName,
+        };
 
         try {
 
@@ -74,7 +71,7 @@ function AddTransaction({ toggleAddTransactionMode }) {
 
 
     useEffect(() => {
-        setBankId(path)
+        setBankName(path)
     }, [path])
 
 
@@ -90,7 +87,6 @@ function AddTransaction({ toggleAddTransactionMode }) {
                     <p className=' text-center font-medium'>Create Transactions</p>
                     <input type="text" value={transactionName} onChange={(e) => setTransactionName(e.target.value)} placeholder='Transection Name' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                     <input type="text" value={branch} onChange={(e) => setBranch(e.target.value)} placeholder='Transaction Branch Code' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
-                    <input type="text" value={remarks} onChange={(e) => setRemarks(e.target.value)} placeholder='Remarks' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                     <select value={transactionType} onChange={(e) => setTransactionType(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
                         <option value="">Select Transection Type</option>
                         <option value="credit">Credit</option>
@@ -121,4 +117,4 @@ function AddTransaction({ toggleAddTransactionMode }) {
     )
 }
 
-export default AddTransaction
+export default J1

@@ -4,7 +4,6 @@ import logo from "../Photos/jamunabank.jpg"
 import axios from 'axios';
 import { Host } from "../Data"
 import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
-import { fatchSuccess } from '../Redux/Banks_slice';
 import commaNumber from 'comma-number'
 import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
 import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice';
@@ -36,7 +35,6 @@ function JamunaBankOne() {
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
     const [totalDeposit, setTotalDeposit] = useState(0);
     const Transactions = useSelector(state => state.Transactions.Transactions);
-    const Banks = useSelector(state => state.Banks.Banks);
     const User = useSelector(state => state.User.User);
     const dispatch = useDispatch();
     const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
@@ -45,7 +43,7 @@ function JamunaBankOne() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/${value}`, {
+            const res = await axios.get(`${Host}/api/user/transaction/jamuna_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -108,21 +106,6 @@ function JamunaBankOne() {
         window.print();
     }
 
-    const getBanks = async () => {
-
-        try {
-
-            const response = await axios.get(`${Host}/api/user/banks`, {
-                headers: {
-                    Authorization: `Bearer ${User}`
-                }
-            });
-            dispatch(fatchSuccess(response.data));
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const getTransectionsAmounts = async () => {
 
@@ -144,10 +127,12 @@ function JamunaBankOne() {
 
     useEffect(() => {
 
-        getBanks()
         getTransectionsAmounts()
+        getBankTransactions()
 
     }, [])
+
+    console.log(Transactions)
 
 
     return (
@@ -292,14 +277,6 @@ function JamunaBankOne() {
                                         <span className=' font-semibold mr-2'>Number of row</span>
                                         <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                     </div>
-                                    <select onChange={(e) => { getBankTransactions(e.target.value) }} name="" id="" className=' border border-blue-500 px-2 py-[6px] rounded mt-2 focus:outline-none'>
-                                        <option value="">Select Bank Transaction</option>
-                                        {
-                                            Banks.map((bank, index) => {
-                                                return <option key={index} value={bank._id}>{bank.bankName}</option>
-                                            })
-                                        }
-                                    </select>
                                 </div>
                             </div>
                             :

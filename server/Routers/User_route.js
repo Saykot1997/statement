@@ -82,126 +82,13 @@ Router.post('/register', async (req, res) => {
 });
 
 
-// create Bank
-Router.post('/banks', Authguard, async (req, res) => {
-
-    const { bankName } = req.body;
-
-    if (!bankName) {
-
-        return res.status(400).json("Please fill all fields")
-    }
-
-    try {
-
-        const bank = await Bank.findOne({ bankName });
-
-        if (bank) {
-
-            return res.status(400).json("Bank already exists")
-        }
-
-        const newBank = new Bank({
-            bankName
-        })
-
-        const savedBank = await newBank.save();
-
-        return res.status(200).json(savedBank)
-
-    } catch (error) {
-
-        return res.status(500).json("Something went wrong")
-    }
-});
-
-
-// get all Banks
-Router.get('/banks', Authguard, async (req, res) => {
-
-    try {
-
-        const banks = await Bank.find();
-
-        return res.status(200).json(banks)
-
-    } catch (error) {
-
-        return res.status(500).json("Something went wrong")
-    }
-});
-
-
-// update bank name
-
-Router.put('/banks/:id', Authguard, async (req, res) => {
-
-    const { id } = req.params;
-
-    const { bankName } = req.body;
-
-    if (!bankName) {
-
-        return res.status(400).json("Please fill all fields")
-    }
-
-    try {
-
-        const bank = await Bank.findById(id);
-
-        const isExist = await Bank.findOne({ bankName });
-
-        if (!bank) {
-
-            return res.status(400).json("Bank not found")
-        }
-
-        if (isExist && isExist._id.toString() !== id) {
-
-            return res.status(400).json("Bank name already exists")
-        }
-
-        const updatedBank = await Bank.findByIdAndUpdate(id, {
-            bankName
-        }, { new: true });
-
-        return res.status(200).json(updatedBank)
-
-    } catch (error) {
-
-        return res.status(500).json("Something went wrong")
-    }
-})
-
-
-// delete Bank
-
-Router.delete('/banks/:id', Authguard, async (req, res) => {
-
-    const { id } = req.params;
-
-    try {
-
-        await Transiction.deleteMany({ bankId: id });
-        await Bank.findByIdAndDelete(id);
-        return res.status(200).json("Bank deleted")
-
-    } catch (error) {
-
-        return res.status(500).json("Something went wrong")
-    }
-});
-
-
 
 // create transaction
 Router.post('/transaction', Authguard, async (req, res) => {
 
-    console.log(req.body);
+    const { transactionName, bankName, transactionType, transactionMethod } = req.body
 
-    const { transactionName, bankId, transactionType, transactionMethod, branch, remarks } = req.body
-
-    if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch) {
+    if (!transactionName || !bankName || !transactionType || !transactionMethod) {
 
         return res.status(400).json("Please fill all fields")
     }
@@ -211,7 +98,7 @@ Router.post('/transaction', Authguard, async (req, res) => {
         const isExist = await Transiction.findOne({
             $and: [
                 { transactionName },
-                { bankId },
+                { bankName },
             ]
         });
 
@@ -220,16 +107,12 @@ Router.post('/transaction', Authguard, async (req, res) => {
             return res.status(400).json("Transaction already exists")
         }
 
-        const newTransaction = {
-            transactionName,
-            bankId,
-            transactionType,
-            transactionMethod,
-            branch,
-            remarks: req.body.remarks
-        }
+        const savedTransaction = await new Transiction({
+            ...req.body,
+        }).save();
 
-        const savedTransaction = await Transiction.create(newTransaction);
+        console.log(savedTransaction)
+
         return res.status(200).json(savedTransaction)
 
     } catch (error) {
@@ -245,9 +128,9 @@ Router.put('/transaction/:id', Authguard, async (req, res) => {
 
     const { id } = req.params;
 
-    const { transactionName, bankId, transactionType, transactionMethod, branch, remarks } = req.body;
+    const { transactionName, bankName, transactionType, transactionMethod } = req.body;
 
-    if (!transactionName || !bankId || !transactionType || !transactionMethod || !branch || !remarks) {
+    if (!transactionName || !bankName || !transactionType || !transactionMethod) {
 
         return res.status(400).json("Please fill all fields")
     }
@@ -257,7 +140,7 @@ Router.put('/transaction/:id', Authguard, async (req, res) => {
         const isExist = await Transiction.findOne({
             $and: [
                 { transactionName },
-                { bankId },
+                { bankName },
             ]
         });
 
@@ -267,12 +150,7 @@ Router.put('/transaction/:id', Authguard, async (req, res) => {
         }
 
         const updatedTransaction = await Transiction.findByIdAndUpdate(id, {
-            transactionName,
-            bankId,
-            transactionType,
-            transactionMethod,
-            branch,
-            remarks
+            ...req.body,
         }, { new: true });
 
         return res.status(200).json(updatedTransaction)
@@ -305,13 +183,11 @@ Router.delete('/transaction/:id', Authguard, async (req, res) => {
 
 // get all transactions of a company
 
-Router.get('/transaction/:bankId', Authguard, async (req, res) => {
-
-    const { bankId } = req.params;
+Router.get('/transaction/:bankName', Authguard, async (req, res) => {
 
     try {
 
-        const transactions = await Transiction.find({ bankId: bankId }).populate('bankId');
+        const transactions = await Transiction.find({ bankName: req.params.bankName });
 
         return res.status(200).json(transactions)
 

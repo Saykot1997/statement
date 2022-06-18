@@ -27,8 +27,6 @@ function NCCBankOne() {
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
     const [accountOpeningDate, setAccountOpeningDate] = useState("27 Feb 2013");
     const [entryDate, setEntryDate] = useState("27 Feb 2013");
-    // const [accountCurrency, setAccountCurrency] = useState("TK");
-    // const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
     const [accountInterestRate, setAccountInterestRate] = useState("2");
     const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
@@ -47,7 +45,7 @@ function NCCBankOne() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/${value}`, {
+            const res = await axios.get(`${Host}/api/user/transaction/ncc_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -110,22 +108,6 @@ function NCCBankOne() {
         window.print();
     }
 
-    const getBanks = async () => {
-
-        try {
-
-            const response = await axios.get(`${Host}/api/user/banks`, {
-                headers: {
-                    Authorization: `Bearer ${User}`
-                }
-            });
-            dispatch(fatchSuccess(response.data));
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const getTransectionsAmounts = async () => {
 
         try {
@@ -145,11 +127,11 @@ function NCCBankOne() {
     }
 
     useEffect(() => {
-
-        getBanks()
+        getBankTransactions();
         getTransectionsAmounts()
 
     }, [])
+
 
 
 
@@ -310,14 +292,6 @@ function NCCBankOne() {
                                         <span className=' font-semibold mr-2'>Number of row</span>
                                         <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                     </div>
-                                    <select onChange={(e) => { getBankTransactions(e.target.value) }} name="" id="" className=' border border-blue-500 px-2 py-[6px] rounded mt-2 focus:outline-none'>
-                                        <option value="">Select Bank Transaction</option>
-                                        {
-                                            Banks.map((bank, index) => {
-                                                return <option key={index} value={bank._id}>{bank.bankName}</option>
-                                            })
-                                        }
-                                    </select>
                                 </div>
 
                             </div>

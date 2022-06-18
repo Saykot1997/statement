@@ -3,14 +3,11 @@ import commaNumber from 'comma-number';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Host } from '../Data';
-import { fatchSuccess } from '../Redux/Banks_slice';
 import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
 
 function IslamiBankOne() {
-
-    const [randomArray, setRandomArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
 
     const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
@@ -20,20 +17,20 @@ function IslamiBankOne() {
     const [printDate, setPrintDate] = useState("01/01/2020");
     const [branchName, setBranchName] = useState("Shantinagar Branch");
     const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
-    const [branchPhone, setBranchPhone] = useState("8355179");
+    // const [branchPhone, setBranchPhone] = useState("8355179");
     const [openingDate, setOpeningDate] = useState("01/01/2020");
     const [lastTRDate, setLastTRDate] = useState("01/01/2020");
     const [reportGenerateUser, setReportGenerateUser] = useState("");
-    const [branchFax, setBranchFax] = useState("8355649");
+    // const [branchFax, setBranchFax] = useState("8355649");
     const [accountType, setAccountType] = useState("Saving");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
     const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
     const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
-    const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
-    const [accountCurrency, setAccountCurrency] = useState("TK");
-    const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
-    const [accountInterestRate, setAccountInterestRate] = useState("2");
+    // const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
+    // const [accountCurrency, setAccountCurrency] = useState("TK");
+    // const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
+    // const [accountInterestRate, setAccountInterestRate] = useState("2");
     const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
@@ -51,7 +48,7 @@ function IslamiBankOne() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/${value}`, {
+            const res = await axios.get(`${Host}/api/user/transaction/islamic_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -114,22 +111,6 @@ function IslamiBankOne() {
         window.print();
     }
 
-    const getBanks = async () => {
-
-        try {
-
-            const response = await axios.get(`${Host}/api/user/banks`, {
-                headers: {
-                    Authorization: `Bearer ${User}`
-                }
-            });
-            dispatch(fatchSuccess(response.data));
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const getTransectionsAmounts = async () => {
 
         try {
@@ -150,256 +131,271 @@ function IslamiBankOne() {
 
     useEffect(() => {
 
-        getBanks()
         getTransectionsAmounts()
+        getBankTransactions()
 
     }, [])
 
+    console.log(Transactions)
+
 
     return (
-        <div className=' w-full min-h-screen bg-gray-100 p-5 print:p-0 relative'>
+        <div className=' w-full min-h-screen p-5'>
 
             {
                 editMode ?
-                    <div className='absolute top-20 right-0 print:hidden'>
+                    <div className='absolute top-5 right-0 print:hidden'>
                         <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
                         <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                     </div>
                     :
-                    <div className='absolute top-20 right-0 print:hidden'>
+                    <div className='absolute top-5 right-0 print:hidden'>
                         <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
                         <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                     </div>
             }
 
-            {/* header section stert */}
-            <div className='w-full flex justify-center'>
-                <div className='text-center'>
-                    <p className=' text-2xl print:text-xl font-semibold'>Social Islami Bank Ltd.</p>
-                    {
-                        editMode ?
-                            <div className=' flex items-center'>
-                                <span className=' font-medium'>Branch Name :</span>
-                                <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                            </div>
-                            :
+            <table className='w-full'>
+                <thead class=" table-header-group w-full">
+                    <tr className=' w-full'>
+                        <th class="report-header-cell w-full" colspan="7">
+                            <div className=' w-full'>
+                                <div className='w-full flex justify-between'>
+                                    <div className=' w-full'></div>
+                                    <div className=' w-full text-center'>
+                                        <p className='text-2xl print:text-xl font-semibold'>Social Islami Bank Ltd.</p>
+                                        {
+                                            editMode ?
+                                                <div className=' flex items-center'>
+                                                    <span className=' font-medium'>Branch Name :</span>
+                                                    <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                </div>
+                                                :
 
-                            <p className=' font-medium print:text-base'>{branchName}</p>
-                    }
-                    {
-                        editMode ?
-                            <div className=' flex items-center'>
-                                <span className=' font-medium'>Branch Address :</span>
-                                <input type="text" placeholder='Branch Address' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
+                                                <p className=' font-medium print:text-base'>{branchName}</p>
+                                        }
+                                        {
+                                            editMode ?
+                                                <div className=' flex items-center'>
+                                                    <span className=' font-medium'>Branch Address :</span>
+                                                    <input type="text" placeholder='Branch Address' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                </div>
+                                                :
 
-                            <p className=' font-medium print:text-sm'>{branchAddress}</p>
-                    }
-                </div>
-                <div className=' absolute top-0 right-0 w-1/2 flex justify-end pl-10'>
-                    {
-                        editMode ?
-                            <div className=''>
-                                <p className=' text-sm font-medium print:font-normal print:text-right'>Print Date :
-                                    <input type="text" placeholder='Print date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                </p>
-                                <p className=' text-sm font-medium print:font-normal mr-14'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
-                            </div>
-                            :
+                                                <p className=' font-medium print:text-sm'>{branchAddress}</p>
+                                        }
+                                    </div>
+                                    <div className=' w-full flex justify-end'>
+                                        {
+                                            editMode ?
+                                                <div className=''>
+                                                    <p className=' text-sm font-medium print:font-normal print:text-right'>Print Date :
+                                                        <input type="text" placeholder='Print date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                    </p>
+                                                    <p className=' text-sm font-medium print:font-normal mr-14'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
+                                                </div>
+                                                :
 
-                            <div className=''>
-                                <p className=' text-sm print:text-[11px] font-medium print:font-normal print:text-right'>Print Date : {printDate}</p>
-                                <p className=' text-sm print:text-[11px] font-medium print:font-normal mr-14'>Report Generated User: {reportGenerateUser}</p>
-                            </div>
-                    }
-                </div>
-            </div>
-            <div className=' flex justify-center py-5 print:pt-2 print:pb-4'>
-                <span className=' underline font-semibold text-lg print:text-base'>A/C Statement</span>
-            </div>
-
-            {/* header section end */}
-
-            <div className=' w-full flex'>
-                <div className=' w-1/2 print:text-[12px]'>
-                    {
-                        editMode ?
-                            <div className=' my-1'>
-                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C No</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' flex'>
-                                <div className=' flex justify-between w-24'>
-                                    <span className='font-semibold print:font-medium'>A/C No</span>
+                                                <div className=''>
+                                                    <p className=' text-sm print:text-[11px] font-medium print:font-normal print:text-right'>Print Date : {printDate}</p>
+                                                    <p className=' text-sm print:text-[11px] font-medium print:font-normal mr-14'>Report Generated User: {reportGenerateUser}</p>
+                                                </div>
+                                        }
+                                    </div>
                                 </div>
-                                <div>
-                                    <span className='font-semibold print:font-medium mr-1'>:</span>
-                                    <span className=''>{accountNumber}</span>
+                                <div className=' flex justify-center py-5 print:pt-2 print:pb-4'>
+                                    <span className=' underline font-semibold text-lg print:text-base'>A/C Statement</span>
                                 </div>
                             </div>
-                    }
-                    {
-                        editMode ?
-                            <div className=' my-1'>
-                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C Name</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' flex'>
-                                <div className=' flex justify-between w-24'>
-                                    <span className='font-semibold print:font-medium'>A/C Name</span>
-                                </div>
-                                <div>
-                                    <span className='font-semibold print:font-medium mr-1'>:</span>
-                                    <span className=''>{accountHoldersName}</span>
-                                </div>
-                            </div>
-                    }
-                    {
-                        editMode ?
-                            <div>
-                                <span className=' inline-block w-24 font-semibold print:font-medium'>Address</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' flex'>
-                                <div className=' flex justify-between w-24'>
-                                    <span className='font-semibold print:font-medium'>Address</span>
-                                </div>
-                                <div>
-                                    <span className='font-semibold print:font-medium mr-1'>:</span>
-                                    <span className=''>{accountHoldersAddress}</span>
-                                </div>
-                            </div>
-                    }
-                </div>
-                <div className=' w-1/2 print:text-[12px]'>
-                    <div className=' my-[2px] flex'>
-                        <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Date From</span>
-                        <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                        <p className=' font-semibold print:font-medium'> <span>01/11/2021</span> To <span>29/05/2022</span></p>
-                    </div>
-                    {
-                        editMode ?
 
-                            <div className=' my-[2px] flex'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' my-[2px] flex'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <p className=''>{accountType}</p>
-                            </div>
-                    }
-                    {
-                        editMode ?
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Opening Date' value={openingDate} onChange={(e) => setOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <span className=' uppercase'>{openingDate}</span>
-                            </div>
-                    }
-                    {
-                        editMode ?
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Last Tr.Date' value={lastTRDate} onChange={(e) => setLastTRDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <span className=' uppercase'>{lastTRDate}</span>
-                            </div>
-                    }
-                    {
-                        editMode ?
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-
-                                <input type="text" placeholder='Phone' value={accountHoldersPhone} onChange={(e) => setAccountHoldersPhone(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-
-                            </div>
-                            :
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <span className=''>{accountHoldersPhone}</span>
-                            </div>
-                    }
-                    {
-                        editMode ?
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-                            :
-                            <div className=' my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <span className=' uppercase'>{accountStatus}</span>
-                            </div>
-                    }
-
-                    {
-                        editMode &&
-                        <div>
-                            <div className=' flex my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>initialBalance</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                            </div>
-                            <div className=' flex my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Initial Branch Code</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                            </div>
-
-                            <div className=' flex my-[2px]'>
-                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Number of Rows</span>
-                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                            </div>
-                            <div className=' flex items-center'>
-                                <div className='flex justify-between mr-2'>
-                                    <p className='uppercase font-semibold print:text-[10px]'>Transactions</p>
-                                    <span>:</span>
-                                </div>
-                                <select onChange={(e) => { getBankTransactions(e.target.value) }} name="" id="" className=' border border-blue-500 px-2 py-[6px] rounded mt-2 focus:outline-none'>
-                                    <option value="">Select Bank Transaction</option>
+                            <div className=' w-full flex font-normal'>
+                                <div className=' w-1/2 print:text-[12px]'>
                                     {
-                                        Banks.map((bank, index) => {
-                                            return <option key={index} value={bank._id}>{bank.bankName}</option>
-                                        })
+                                        editMode ?
+                                            <div className=' my-1'>
+                                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C No</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+                                            <div className=' flex'>
+                                                <div className=' flex justify-between w-24'>
+                                                    <span className='font-semibold print:font-medium'>A/C No</span>
+                                                </div>
+                                                <div>
+                                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                                    <span className=''>{accountNumber}</span>
+                                                </div>
+                                            </div>
                                     }
-                                </select>
+                                    {
+                                        editMode ?
+                                            <div className=' my-1'>
+                                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C Name</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+                                            <div className=' flex'>
+                                                <div className=' flex justify-between w-24'>
+                                                    <span className='font-semibold print:font-medium'>A/C Name</span>
+                                                </div>
+                                                <div>
+                                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                                    <span className=''>{accountHoldersName}</span>
+                                                </div>
+                                            </div>
+                                    }
+                                    {
+                                        editMode ?
+                                            <div>
+                                                <span className=' inline-block w-24 font-semibold print:font-medium'>Address</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+                                            <div className=' flex'>
+                                                <div className=' flex justify-between w-24'>
+                                                    <span className='font-semibold print:font-medium'>Address</span>
+                                                </div>
+                                                <div>
+                                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                                    <span className=''>{accountHoldersAddress}</span>
+                                                </div>
+                                            </div>
+                                    }
+                                </div>
+                                <div className=' w-1/2 print:text-[12px]'>
+                                    {
+                                        editMode ?
+
+                                            <div className=" leading-7 print:leading-[22px] flex">
+                                                <span className='inline-block w-32 text-right font-semibold print:font-medium'>Statement Date</span>
+
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="date" placeholder='Start stetment date' value={hideStartStatementDate} onChange={(e) => statementDateChange("startStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+
+                                                to
+
+                                                <input type="date" placeholder='Start stetment date' value={hideEndStatementDate} onChange={(e) => statementDateChange("endStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Date From</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <p className=' font-semibold print:font-medium'> <span> {startStatementDate}</span> To <span>{endStatementDate}</span></p>
+                                            </div>
+                                    }
+                                    {
+                                        editMode ?
+
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <p className=''>{accountType}</p>
+                                            </div>
+                                    }
+                                    {
+                                        editMode ?
+                                            <div>
+                                                <div className=' my-[2px] flex'>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                    <input type="text" placeholder='Opening Date' value={openingDate} onChange={(e) => setOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                </div>
+                                                <div className=' my-[2px] flex'>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                    <input type="text" placeholder='Last Tr.Date' value={lastTRDate} onChange={(e) => setLastTRDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                </div>
+                                            </div>
+                                            :
+                                            <div className=' flex'>
+                                                <div className=' my-[2px] flex'>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                    <span className=' uppercase'>{openingDate}</span>
+                                                </div>
+                                                <div className=' my-[2px] flex'>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                    <span className=' uppercase'>{lastTRDate}</span>
+                                                </div>
+                                            </div>
+                                    }
+                                    {
+                                        editMode ?
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+
+                                                <input type="text" placeholder='Phone' value={accountHoldersPhone} onChange={(e) => setAccountHoldersPhone(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+
+                                            </div>
+                                            :
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=''>{accountHoldersPhone}</span>
+                                            </div>
+                                    }
+                                    {
+                                        editMode ?
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+                                            <div className=' my-[2px] flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' uppercase'>{accountStatus}</span>
+                                            </div>
+                                    }
+
+                                    {
+                                        editMode &&
+                                        <div>
+                                            <div className=' flex my-[2px]'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>initialBalance</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                            </div>
+                                            <div className=' flex my-[2px]'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Initial Branch Code</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                            </div>
+
+                                            <div className=' flex my-[2px]'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Number of Rows</span>
+                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                            </div>
+                                            <div className=' flex items-center'>
+                                                <div className='flex justify-between mr-2'>
+                                                    <p className='uppercase font-semibold print:text-[10px]'>Transactions</p>
+                                                    <span>:</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+
                             </div>
+                        </th>
+                    </tr>
+                </thead>
 
-                        </div>
-                    }
-                </div>
-            </div>
-
-            {/* header section end */}
-
-            <table className=' w-full mt-10 print:mt-5'>
                 <thead>
                     <tr className=''>
                         <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2'>Date</td>
@@ -418,13 +414,13 @@ function IslamiBankOne() {
 
                             return (
                                 <tr>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>{item.date}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>{item.branchCode}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4'>V-</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] print:leading-4 text-right'>{commaNumber(item.balance)}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.date}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>V-</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })
@@ -448,8 +444,18 @@ function IslamiBankOne() {
                         <td className=" text-center text-sm p-2"></td>
                     </tr>
                 </tbody>
+                <tfoot class="table-footer-group">
+                    <tr>
+                        <td class=" " colspan="7">
+                            <div className=' w-full mt-5 text-sm text-center'>
+                                <p className=' font-medium'>101 : Cash Credit , 102 : Transfer Credit, 103 : Clearing Credit, 201 : Cash Debit, 203: Clearing Debit</p>
+                                <p className=' font-medium text-[12px]'>**We receive Dhaka WASA DESCO, BRTA, Student tution and e-GP/e-Tendering bills/frees at our branches through online.</p>
+                                <p className=' text-[12px]'>Prepared by ABABIL.Developed by : Millennium Information Solution Limited</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-
         </div>
     )
 }

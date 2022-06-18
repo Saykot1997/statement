@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Host } from "../Data"
 import { useDispatch, useSelector } from 'react-redux';
 import { transactionsFatchSuccess, transactionUpdateSuccess, transactionDeleteSuccess } from '../Redux/Transactions_slice';
-import AddTransaction from '../Components/AddTransaction';
+import AddTransactionJ1 from '../Components/AddTransactionJ1';
 import { FaSave } from 'react-icons/fa';
 import { AiFillCloseSquare } from 'react-icons/ai';
 import { BiEdit } from 'react-icons/bi';
@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function SingleBank() {
+function NCCBankTran() {
 
     const location = useLocation();
     const path = location.pathname.split('/')[2];
@@ -27,7 +27,6 @@ function SingleBank() {
     const [currentTransactionType, setCurrentTransactionType] = useState('');
     const [currentTransactionBranch, setCurrentTransactionBranch] = useState('');
     const [currentTransectionName, setCurrentTransectionName] = useState('');
-    const [currentTransactionRemarks, setCurrentTransactionRemarks] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
 
@@ -42,7 +41,6 @@ function SingleBank() {
         setCurrentTransactionMethod(transaction.transactionMethod)
         setCurrentTransactionType(transaction.transactionType)
         setCurrentTransactionBranch(transaction.branch)
-        setCurrentTransactionRemarks(transaction.remarks)
     }
 
     const getTransaction = async () => {
@@ -71,11 +69,8 @@ function SingleBank() {
             transactionType: currentTransactionType,
             transactionMethod: currentTransactionMethod,
             branch: currentTransactionBranch,
-            bankId: path,
-            remarks: currentTransactionRemarks,
+            bankName: path
         }
-
-        // console.log(data)
 
         try {
 
@@ -84,7 +79,7 @@ function SingleBank() {
                     Authorization: `Bearer ${User}`
                 }
             })
-
+            console.log(response.data)
             dispatch(transactionUpdateSuccess(response.data));
             toast.success('Transaction updated successfully')
             setUpdateModeOpen(false)
@@ -144,7 +139,7 @@ function SingleBank() {
             <button onClick={toggleAddTransactionMode} className=' absolute top-20 right-5 shadow shadow-blue-300 p-1 rounded text-blue-600 hover:scale-105 transition-all ease-in'>Add Transactions</button>
             {
                 Transaction.length > 0 ?
-                    <p className=' text-center font-medium'>{Transaction[0].bankId.bankName} Transaction Details</p>
+                    <p className='text-center font-medium'>{Transaction[0].bankName} Transaction Details</p>
                     :
                     <div>
                         <p className=' text-center font-medium'>No Transactions Added</p>
@@ -173,7 +168,6 @@ function SingleBank() {
                                                 <option value="debit">Debit</option>
                                             </select>
                                             <input type="text" placeholder='Branch Code' value={currentTransactionBranch} onChange={(e) => setCurrentTransactionBranch(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
-                                            <input type="text" placeholder='Branch Code' value={currentTransactionRemarks} onChange={(e) => setCurrentTransactionRemarks(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                                         </div>
                                         :
                                         <div>
@@ -181,7 +175,6 @@ function SingleBank() {
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Method :</span> {transaction.transactionMethod}</p>
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Type :</span> {transaction.transactionType}</p>
                                             <p className=' mt-2 text-sm'> <span className=' font-medium'>Branch :</span> {transaction.branch}</p>
-                                            <p className=' mt-2 text-sm'> <span className=' font-medium'>Branch :</span> {transaction.remarks && transaction.remarks}</p>
                                         </div>
                                 }
                                 {
@@ -207,7 +200,7 @@ function SingleBank() {
             </div>
             {
                 addTransactionMode &&
-                <AddTransaction toggleAddTransactionMode={toggleAddTransactionMode} />
+                <AddTransactionJ1 toggleAddTransactionMode={toggleAddTransactionMode} />
             }
 
 
@@ -224,4 +217,4 @@ function SingleBank() {
     )
 }
 
-export default SingleBank
+export default NCCBankTran
