@@ -100,7 +100,7 @@ function IslamiBankOne() {
             return alert("No Transaction Amount Found. Please insert Transaction Amount First.")
         }
 
-        const allData = GenerateRandomTranjections(hideStartStatementDate, hideEndStatementDate, Transactions, transactionQuantity, initialBalance, TransactionAmount.ATM, TransactionAmount.Cheque);
+        const allData = GenerateRandomTranjections(hideStartStatementDate, hideEndStatementDate, Transactions, transactionQuantity, initialBalance, TransactionAmount.ATM, TransactionAmount.Cheque, "islami_bank");
         setTotalWithdrawal(allData.TotalWithdrawal);
         setTotalDeposit(allData.TotalDeposit);
         setRandomTransictions(allData.RandomTransictions);
@@ -130,13 +130,11 @@ function IslamiBankOne() {
     }
 
     useEffect(() => {
-
         getTransectionsAmounts()
         getBankTransactions()
-
     }, [])
 
-    console.log(Transactions)
+    console.log(randomTransictions)
 
 
     return (
@@ -415,8 +413,32 @@ function IslamiBankOne() {
                             return (
                                 <tr>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.date}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{
+                                        item.type === 'credit' && item.method === "cheque" &&
+                                        <span>101</span>
+
+                                        || item.type === 'credit' && item.method === "cash" &&
+                                        <span>101</span>
+
+                                        || item.type === 'credit' && item.method === "online" &&
+                                        <span>102</span>
+
+                                        || item.type === 'debit' && item.method === "cheque" &&
+                                        <span>201</span>
+
+                                        || item.type === 'debit' && item.method === "cash" &&
+
+                                        <span>201</span>
+
+                                        || item.type === 'debit' && item.method === "online" &&
+                                        <span>202</span>
+
+                                        || item.type === 'debit' && item.method === "atm" &&
+                                        <span>202</span>
+
+
+                                    }</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>V-</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>

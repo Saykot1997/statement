@@ -111,8 +111,6 @@ Router.post('/transaction', Authguard, async (req, res) => {
             ...req.body,
         }).save();
 
-        console.log(savedTransaction)
-
         return res.status(200).json(savedTransaction)
 
     } catch (error) {

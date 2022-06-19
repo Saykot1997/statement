@@ -18,7 +18,7 @@ function IB({ toggleAddTransactionMode }) {
     const [transactionMethod, setTransactionMethod] = useState('');
     const [branch, setBranch] = useState('');
     const [bankName, setBankName] = useState('');
-    const transectionMethod = ['cash', 'cheque', 'online', "atm"];
+    const transectionMethods = ['cash', 'cheque', 'online', "atm"];
 
 
     const clearFields = () => {
@@ -26,7 +26,6 @@ function IB({ toggleAddTransactionMode }) {
         setTransactionType('');
         setTransactionMethod('');
         setBranch('');
-        setBankName('')
     }
 
     const CreateTransaction = async () => {
@@ -75,8 +74,6 @@ function IB({ toggleAddTransactionMode }) {
     }, [path])
 
 
-
-
     return (
         <div className=' w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-25 p-5 z-20'>
             <div className=' px-10 flex justify-end'>
@@ -95,7 +92,7 @@ function IB({ toggleAddTransactionMode }) {
 
                     <select value={transactionMethod} onChange={(e) => setTransactionMethod(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none my-2'>
                         <option value="">Select Transection Method</option>
-                        {transectionMethod.map((item, index) => {
+                        {transectionMethods.map((item, index) => {
                             return <option key={index} value={item}>{item}</option>
                         })}
                     </select>

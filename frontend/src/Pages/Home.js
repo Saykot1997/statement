@@ -46,7 +46,7 @@ function Home() {
                         <p className=' text-center font-medium'>NCC Bank Two</p>
                     </div>
                 </Link>
-                <Link to={`/ncc_bank_two`}>
+                <Link to={`/hsbc_bank_one`}>
                     <div className=' bg-white rounded px-5 py-3 shadow'>
                         <p className=' text-center font-medium'>HSBC Bank One</p>
                     </div>

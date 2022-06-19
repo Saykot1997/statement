@@ -26,7 +26,6 @@ function AB({ toggleAddTransactionMode }) {
         setTransactionType('');
         setTransactionMethod('');
         setBranch('');
-        setBankName('')
     }
 
     const CreateTransaction = async () => {

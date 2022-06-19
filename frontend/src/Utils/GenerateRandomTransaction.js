@@ -18,7 +18,6 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
     // sort randomTransictionsDate by date
     randomTransictionsDates.sort((a, b) => {
-
         let dateA = new Date(a);
         let dateB = new Date(b);
         return dateA - dateB;
@@ -46,7 +45,6 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         let randomTransictionsMunite = Math.floor(Math.random() * 60);
         let randomWithdrawal = "";
         let randomDeposit = "";
-        let randomRemarks = transactions[findRandomParticular].remarks;
 
 
         // set transection time
@@ -90,14 +88,14 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
         // create randomTransictions object
         let randomTransictionsObject = {
-
             particular: randomParticular,
             branchCode: randomBranchCode,
             date: "",
             time: randomTransictionsTime + ":" + randomTransictionsMunite,
             withdrawal: randomWithdrawal,
             deposit: randomDeposit,
-            remarks: randomRemarks
+            type: transactions[findRandomParticular].transactionType,
+            method: transactions[findRandomParticular].transactionMethod,
         }
 
 

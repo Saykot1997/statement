@@ -149,7 +149,7 @@ function BankAsiaOne() {
         getBankTransactions()
     }, [])
 
-    console.log(Transactions)
+    console.log(randomTransictions)
 
 
     return (
@@ -498,11 +498,11 @@ function BankAsiaOne() {
                                 <tr>
                                     <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-center'>{index + 1}</td>
                                     <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-center'>{item.date}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] w-[20%]'>{item.particular}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] w-[20%]'>{item.branchCode}</td>
                                     <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
                                     <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-right'>{commaNumber(item.balance)}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-left w-[27%]'>{item.remarks}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-left w-[27%]'>{item.particular}</td>
                                 </tr>
                             )
                         })

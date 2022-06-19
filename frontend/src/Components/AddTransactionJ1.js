@@ -26,7 +26,6 @@ function J1({ toggleAddTransactionMode }) {
         setTransactionType('');
         setTransactionMethod('');
         setBranch('');
-        setBankName('')
     }
 
     const CreateTransaction = async () => {
