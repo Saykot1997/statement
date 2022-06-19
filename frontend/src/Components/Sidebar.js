@@ -10,7 +10,7 @@ function Sidebar() {
         <div className='w-[200px] h-[calc(100vh-64px)] shadow px-2'>
             <ul>
                 <Link to="/" className={`py-2 px-5 block hover:bg-gray-100 my-2 rounded font-medium ${path === "/" ? "bg-gray-100" : ""}`}>
-                    <li>Formate</li>
+                    <li>Format</li>
                 </Link>
                 <Link to="/banks" className={`py-2 px-5 block my-2 rounded font-medium hover:bg-gray-100 ${path === "/banks" ? "bg-gray-100" : ""}`}>
                     <li>Banks</li>

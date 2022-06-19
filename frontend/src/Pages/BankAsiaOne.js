@@ -8,6 +8,7 @@ import { fatchSuccess } from '../Redux/Banks_slice';
 import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
+import anybranchLogo from "../Photos/BankAsiaAnyBranchLogo.png"
 
 function BankAsiaOne() {
 
@@ -182,7 +183,7 @@ function BankAsiaOne() {
                                                 </div>
                                             </div>
                                             <div className=''>
-                                                <p>Any Branch</p>
+                                                <img src={anybranchLogo} alt="" className=' w-32 -mt-5 rotate-2' />
                                             </div>
                                         </div>
                                         <div className={` w-1/2 flex ${editMode ? "justify-end" : " justify-center"} mt-2`}>
