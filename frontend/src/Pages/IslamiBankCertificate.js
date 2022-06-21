@@ -4,6 +4,7 @@ import signature2 from "../Photos/islami_bank_signature_2.png"
 import signature1 from "../Photos/islami_bank_signature.png"
 import footer from "../Photos/islami_bank_footer.png";
 import commaNumber from 'comma-number';
+import bankSil from "../Photos/islami_bank_sil.png";
 
 function IslamiBankCertificate() {
 
@@ -124,7 +125,7 @@ function IslamiBankCertificate() {
                 </div>
 
                 <div className=' text-center mb-5 mt-10'>
-                    <span className=' border-b border-gray-800 font-semibold'>TO WHOME IT MAY CONCERN</span>
+                    <span className=' border-b border-gray-800 font-semibold'>TO WHOM IT MAY CONCERN</span>
                 </div>
                 <div>
                     <p>This is to certify that
@@ -261,6 +262,9 @@ function IslamiBankCertificate() {
                             <img src={signature2} alt="" className=' w-32 absolute -top-12' />
                             <span>Authorized Signature</span>
                         </div>
+                    </div>
+                    <div>
+                        <img src={bankSil} alt="" className="w-32" />
                     </div>
                     <div className=' w-1/2 flex justify-center relative'>
                         <div>
