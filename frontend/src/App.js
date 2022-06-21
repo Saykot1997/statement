@@ -19,6 +19,8 @@ import BankAsiaTran from "./Pages/BankAsiaTran";
 import IslamicBankTran from "./Pages/IslamicBankTran";
 import IslamiBankCertificate from "./Pages/IslamiBankCertificate";
 import EBLBankSolvency from "./Pages/EBLBankSolvency";
+import UCBbankCertificate from "./Pages/UCBbankCertificate";
+import EBLStatement from "./Pages/EBLStatement";
 
 function App() {
 
@@ -75,6 +77,11 @@ function App() {
             <JamunaBankOne />
           </PrivateRoute>} />
 
+        <Route path="/ebl_bank"
+          element={<PrivateRoute>
+            <EBLStatement />
+          </PrivateRoute>} />
+
         <Route path="/jamuna_bank_two"
           element={<PrivateRoute>
             <JamunaBankTwo />
@@ -98,6 +105,11 @@ function App() {
         <Route path="/ebl_bank_solvency"
           element={<PrivateRoute>
             <EBLBankSolvency />
+          </PrivateRoute>} />
+
+        <Route path="/ucb_bank_solvency"
+          element={<PrivateRoute>
+            < UCBbankCertificate />
           </PrivateRoute>} />
 
         <Route path="/bank_asia_one"

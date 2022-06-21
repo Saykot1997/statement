@@ -11,6 +11,11 @@ function Home() {
                         <p className=' text-center font-medium'>Jamuna Bank One</p>
                     </div>
                 </Link>
+                <Link to={`/ebl_bank`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>EBL Bank</p>
+                    </div>
+                </Link>
                 <Link to={`/jamuna_bank_two`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Jamuna Bank Two</p>
@@ -38,6 +43,11 @@ function Home() {
                 <Link to={`/ebl_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>EBL Bank Solvency</p>
+                    </div>
+                </Link>
+                <Link to={`/ucb_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>UCB Bank Solvency</p>
                     </div>
                 </Link>
                 <Link to={`/jamuna_bank_three`}>

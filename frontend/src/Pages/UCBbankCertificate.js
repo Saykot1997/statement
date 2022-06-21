@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import logo from "../Photos/islami_bank_logo.png";
-import signature2 from "../Photos/islami_bank_signature_2.png"
-import signature1 from "../Photos/islami_bank_signature.png"
+import signature2 from "../Photos/ucb_bank/sig 2.png";
+import signature1 from "../Photos/ucb_bank/sif 1.png";
 import footer from "../Photos/islami_bank_footer.png";
 import commaNumber from 'comma-number';
 
-function IslamiBankCertificate() {
+function UCBbankCertificate() {
 
 
     const [branchName, setBranchName] = useState("Lohagora");
@@ -14,12 +14,6 @@ function IslamiBankCertificate() {
     const [printDate, setPrintDate] = useState("18.05.2022");
     const [ref, setRef] = useState("SIBL/Loha/Ctg/2022/604");
     const [editMode, setEditMode] = useState(false);
-    // const [branchAddress, setBranchAddress] = useState("Shantinagar, Green City Edge, Bangladesh")
-    // const [branchEmail, setBranchEmail] = useState("example@gamil.com")
-    // const [pabx, setPabx] = useState("972438,9347539,9348753")
-    // const [swift, setSwift] = useState("JAMUNABANK")
-    // const [branchWord, setBranchWord] = useState("19")
-    // const [branchState, setBranchState] = useState("Dhaka")
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
     const [accountHolderMotherName, setAccountHolderMotherName] = useState("Masudda Begum")
@@ -28,14 +22,11 @@ function IslamiBankCertificate() {
     const [accountHolderWard, setAccountHolderWard] = useState("04")
     const [accountHolderPost, setAccountHolderPost] = useState("West Kalauzan")
     const [accountHolderThana, setAccountHolderThana] = useState("Kalauzan-4396")
-    // const [accountHolderAddress, setAccountHolderAddress] = useState("31/1 SARAT GUPTA ROAD, SHANTINAGAR, GREEN CITY EDGE, BANGLADESH")
-    // const [todaysDate, setTodaysDate] = useState("May 22,2020")
     const [accountNumber, setAccountNumber] = useState("0123456789")
     const [accountType, setAccountType] = useState("Sanchita Special deposit Scheme")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
-    // const [oldAccountNumber, setOldAccountNumber] = useState("0123456789")
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -252,20 +243,22 @@ function IslamiBankCertificate() {
 
                 <p className=' my-3'>To the best of our knowledge the client is financially sound and solvent.</p>
                 <p className=' mb-4'>We wish him for success.</p>
-                <p>This certificate is being issued at the specific request of the client without any prejudice and obligation on the part of bank or any of its officals.</p>
-                <p className=' font-semibold mt-8 my-5 italic'>For Social Islami Bank Limited</p>
+                <p>To the best of our knowledge, the client is financially sound and solvent.</p>
+                <p className=' font-semibold mt-8 my-5'>FOR UNITED COMMERCIAL BANK PLC</p>
 
                 <div className=' flex my-16'>
                     <div className=' w-1/2 relative'>
                         <div>
                             <img src={signature2} alt="" className=' w-32 absolute -top-12' />
-                            <span>Authorized Signature</span>
+                            <p>Mohammad Mahabub Alam</p>
+                            <p>FAVP & Operation Manager</p>
                         </div>
                     </div>
                     <div className=' w-1/2 flex justify-center relative'>
                         <div>
                             <img src={signature1} alt="" className=' w-36 absolute -top-16' />
-                            <span>Authorized Signature</span>
+                            <p>Kazi Muzibul Islam</p>
+                            <p>EVP & Head of Branch</p>
                         </div>
                     </div>
                 </div>
@@ -279,4 +272,4 @@ function IslamiBankCertificate() {
     )
 }
 
-export default IslamiBankCertificate
+export default UCBbankCertificate
