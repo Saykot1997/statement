@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import logo from "../Photos/jamunabank.jpg"
 import axios from 'axios';
 import { Host } from "../Data"
 import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
 import commaNumber from 'comma-number'
 import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
 import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice';
+import logo from "../Photos/ebl_bank/logo.png"
 
 function EBLStatement() {
 
-    const [randomTransictions, setRandomTransictions] = useState([])
+    const [randomTransictions, setRandomTransictions] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
     const [initialBalance, setInitialBalance] = useState(400000);
@@ -43,7 +43,7 @@ function EBLStatement() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/jamuna_bank`, {
+            const res = await axios.get(`${Host}/api/user/transaction/ebl_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -137,7 +137,7 @@ function EBLStatement() {
 
     return (
         <div className="p-5">
-            {
+            {/* {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
                         <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
@@ -148,16 +148,25 @@ function EBLStatement() {
                         <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
                         <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                     </div>
-            }
+            } */}
 
             {/* info start */}
 
-            <table className=' w-full mt-10 print:mt-5'>
-
+            <table className=' w-full'>
                 <thead className=' table-header-group'>
-                    <div className=' w-full flex justify-between'>
 
+                    <div className=' w-full flex justify-between'>
+                        <div className=' text-[11px] leading-[14px]'>
+                            <p>IKPAM RASHID</p>
+                            <p>MOHONOB 5/1 C JOYNOB RESIDENCY</p>
+                            <p>PATHAN TULA</p>
+                            <p>SYLET</p>
+                        </div>
+                        <div>
+                            <img src={logo} alt="" className=' w-28 -mt-5' />
+                        </div>
                     </div>
+
                     {
                         editMode &&
                         <div className=' flex flex-col items-end pr-24'>
@@ -176,8 +185,10 @@ function EBLStatement() {
 
                         </div>
                     }
+
+
                 </thead>
-                <thead className=''>
+                {/* <thead className=''>
                     <tr className="">
                         <th className="font-normal print:text-[10px] pb-1 text-left">TRN. DATE</th>
                         <th className="font-normal print:text-[10px] pb-1 text-left">DESCRIPTIONS</th>
@@ -195,9 +206,9 @@ function EBLStatement() {
                         <td className="text-sm print:text-[10px] print:mr-[2px] text-right"></td>
                         <td className="text-sm print:text-[10px] print:mr-[2px] text-right">{commaNumber(initialBalance)}</td>
                         <td className="text-sm print:text-[10px] print:mr-[2px] text-right">{commaNumber(initialBalance)}</td>
-                    </tr>
+                    </tr> */}
 
-                    {
+                {/* {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                             return (
                                 <tr className="" key={index}>
@@ -228,9 +239,9 @@ function EBLStatement() {
                                 </tr>
                             )
                         })
-                    }
+                    } */}
 
-                    <tr className=" border-t border-dashed border-gray-400">
+                {/* <tr className=" border-t border-dashed border-gray-400">
                         <td ></td>
                         <td>OPENING BALANCE</td>
                         <td>{commaNumber(initialBalance)}</td>
@@ -277,7 +288,7 @@ function EBLStatement() {
                             </div>
                         </td>
                     </tr>
-                </tfoot>
+                </tfoot> */}
             </table>
         </div>
     )

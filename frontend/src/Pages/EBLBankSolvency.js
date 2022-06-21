@@ -7,7 +7,6 @@ import midlogo from "../Photos/ebl_bank/mid_logo.png"
 
 function EBLBankSolvency() {
 
-
     const [branchName, setBranchName] = useState("Lohagora");
     const [branchHouseNumber, setBranchHouseNumber] = useState("Plot 01,Tea Board building");
     const [branchRoad, setBranchRoad] = useState("Zindabazar Road");
@@ -138,7 +137,7 @@ function EBLBankSolvency() {
                 </div>
 
                 <div className=' text-center mb-5 mt-16'>
-                    <span className=' border-b border-gray-800 font-semibold font-nuosu'>TO WHOME IT MAY CONCERN</span>
+                    <span className=' border-b border-gray-800 font-semibold font-nuosu'>TO WHOM IT MAY CONCERN</span>
                 </div>
                 <div className=' my-10'>
                     <p className=' font-nuosu'>This is to certify that
