@@ -156,7 +156,7 @@ function IslamiBankOne() {
                                         <img src={logo} alt="" className=' w-32' />
                                     </div>
                                     <div className=' w-[60%] text-center'>
-                                        <p className='text-2xl print:text-xl font-semibold'>Social Islami Bank Ltd.</p>
+                                        <p className='text-2xl print:text-xl font-semibold text-gray-800'>Social Islami Bank Ltd.</p>
                                         {
                                             editMode ?
                                                 <div className=' flex items-center'>
@@ -165,7 +165,7 @@ function IslamiBankOne() {
                                                 </div>
                                                 :
 
-                                                <p className=' font-semibold print:text-base'>{branchName}</p>
+                                                <p className=' font-semibold print:text-base text-gray-800'>{branchName}</p>
                                         }
                                         {
                                             editMode ?
@@ -175,7 +175,7 @@ function IslamiBankOne() {
                                                 </div>
                                                 :
 
-                                                <p className=' font-semibold print:text-sm'>{branchAddress}</p>
+                                                <p className=' font-semibold print:text-sm text-gray-800'>{branchAddress}</p>
                                         }
                                     </div>
                                     <div className=' w-[40%] flex justify-end'>
@@ -399,16 +399,26 @@ function IslamiBankOne() {
 
                 <thead>
                     <tr className=''>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Date</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Code</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Cheque/Instr.</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Particulars</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>Debit</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>Credit</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>Balance</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Date</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Code</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Cheque/Instr.</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Particulars</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800 text-right'>Debit</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800 text-right'>Credit</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800 text-right'>Balance</td>
                     </tr>
                 </thead>
                 <tbody>
+
+                    <tr className=''>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Balance B/F</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right text-gray-800'>{commaNumber(initialBalance)}</td>
+                    </tr>
 
                     {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
