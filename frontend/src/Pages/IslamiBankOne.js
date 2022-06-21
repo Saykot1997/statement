@@ -6,7 +6,8 @@ import { Host } from '../Data';
 import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
-
+import logo from "../Photos/islami_bank_logo.png";
+import bankSil from "../Photos/islami_bank_sil.png";
 function IslamiBankOne() {
 
     const [randomTransictions, setRandomTransictions] = useState([])
@@ -17,20 +18,14 @@ function IslamiBankOne() {
     const [printDate, setPrintDate] = useState("01/01/2020");
     const [branchName, setBranchName] = useState("Shantinagar Branch");
     const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
-    // const [branchPhone, setBranchPhone] = useState("8355179");
     const [openingDate, setOpeningDate] = useState("01/01/2020");
     const [lastTRDate, setLastTRDate] = useState("01/01/2020");
     const [reportGenerateUser, setReportGenerateUser] = useState("");
-    // const [branchFax, setBranchFax] = useState("8355649");
     const [accountType, setAccountType] = useState("Saving");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
     const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
     const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
-    // const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
-    // const [accountCurrency, setAccountCurrency] = useState("TK");
-    // const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
-    // const [accountInterestRate, setAccountInterestRate] = useState("2");
     const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
@@ -39,7 +34,6 @@ function IslamiBankOne() {
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
     const [totalDeposit, setTotalDeposit] = useState(0);
     const Transactions = useSelector(state => state.Transactions.Transactions);
-    const Banks = useSelector(state => state.Banks.Banks);
     const User = useSelector(state => state.User.User);
     const dispatch = useDispatch();
     const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
@@ -134,11 +128,10 @@ function IslamiBankOne() {
         getBankTransactions()
     }, [])
 
-    console.log(randomTransictions)
 
 
     return (
-        <div className=' w-full min-h-screen p-5'>
+        <div className=' w-full min-h-screen p-10 print:p-0 font-nuosu'>
 
             {
                 editMode ?
@@ -159,44 +152,54 @@ function IslamiBankOne() {
                         <th class="report-header-cell w-full" colspan="7">
                             <div className=' w-full'>
                                 <div className='w-full flex justify-between'>
-                                    <div className=' w-full'></div>
-                                    <div className=' w-full text-center'>
+                                    <div className=' w-[40%]'>
+                                        <img src={logo} alt="" className=' w-32' />
+                                    </div>
+                                    <div className=' w-[60%] text-center'>
                                         <p className='text-2xl print:text-xl font-semibold'>Social Islami Bank Ltd.</p>
                                         {
                                             editMode ?
                                                 <div className=' flex items-center'>
-                                                    <span className=' font-medium'>Branch Name :</span>
+                                                    <span className=' font-semibold'>Branch Name :</span>
                                                     <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                                 </div>
                                                 :
 
-                                                <p className=' font-medium print:text-base'>{branchName}</p>
+                                                <p className=' font-semibold print:text-base'>{branchName}</p>
                                         }
                                         {
                                             editMode ?
                                                 <div className=' flex items-center'>
-                                                    <span className=' font-medium'>Branch Address :</span>
+                                                    <span className=' font-semibold'>Branch Address :</span>
                                                     <input type="text" placeholder='Branch Address' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
                                                 :
 
-                                                <p className=' font-medium print:text-sm'>{branchAddress}</p>
+                                                <p className=' font-semibold print:text-sm'>{branchAddress}</p>
                                         }
                                     </div>
-                                    <div className=' w-full flex justify-end'>
+                                    <div className=' w-[40%] flex justify-end'>
                                         {
                                             editMode ?
                                                 <div className=''>
-                                                    <p className=' text-sm font-medium print:font-normal print:text-right'>Print Date :
+                                                    <p className=' text-sm font-semibold print:font-normal print:text-right'>Print Date :
                                                         <input type="text" placeholder='Print date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                     </p>
-                                                    <p className=' text-sm font-medium print:font-normal mr-14'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
+                                                    <p className=' text-sm font-semibold print:font-normal mr-14'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
                                                 </div>
                                                 :
 
-                                                <div className=''>
-                                                    <p className=' text-sm print:text-[11px] font-medium print:font-normal print:text-right'>Print Date : {printDate}</p>
-                                                    <p className=' text-sm print:text-[11px] font-medium print:font-normal mr-14'>Report Generated User: {reportGenerateUser}</p>
+                                                <div className=' w-full font-normal mt-3'>
+                                                    <div className=' text-right leading-[14px]'>
+                                                        <span className=' text-sm print:text-[11px]'>Print Date</span>
+                                                        <span className=' mx-1 '>:</span>
+                                                        <span className=' text-sm print:text-[11px]'>{printDate}</span>
+                                                    </div>
+                                                    <div className=' text-right leading-[14px]'>
+                                                        <span className=' text-sm print:text-[11px]'>Report Generated User</span>
+                                                        <span className=' mx-1 '>:</span>
+                                                        <span className=' text-sm print:text-[11px]'>{reportGenerateUser}</span>
+                                                    </div>
                                                 </div>
                                         }
                                     </div>
@@ -211,17 +214,17 @@ function IslamiBankOne() {
                                     {
                                         editMode ?
                                             <div className=' my-1'>
-                                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C No</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-24 font-semibold print:font-semibold'>A/C No</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24'>
-                                                    <span className='font-semibold print:font-medium'>A/C No</span>
+                                                <div className=' flex justify-between w-24 print:w-28'>
+                                                    <span className='font-semibold print:font-semibold'>A/C No</span>
                                                 </div>
                                                 <div>
-                                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                                    <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{accountNumber}</span>
                                                 </div>
                                             </div>
@@ -229,17 +232,17 @@ function IslamiBankOne() {
                                     {
                                         editMode ?
                                             <div className=' my-1'>
-                                                <span className=' inline-block w-24 font-semibold print:font-medium'>A/C Name</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-24 font-semibold print:font-semibold'>A/C Name</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24'>
-                                                    <span className='font-semibold print:font-medium'>A/C Name</span>
+                                                <div className=' flex justify-between w-24 print:w-28'>
+                                                    <span className='font-semibold print:font-semibold'>A/C Name</span>
                                                 </div>
                                                 <div>
-                                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                                    <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{accountHoldersName}</span>
                                                 </div>
                                             </div>
@@ -247,17 +250,17 @@ function IslamiBankOne() {
                                     {
                                         editMode ?
                                             <div>
-                                                <span className=' inline-block w-24 font-semibold print:font-medium'>Address</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-24 font-semibold print:font-semibold'>Address</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24'>
-                                                    <span className='font-semibold print:font-medium'>Address</span>
+                                                <div className=' flex justify-between w-24 print:w-[114px]'>
+                                                    <span className='font-semibold print:font-semibold'>Address</span>
                                                 </div>
                                                 <div>
-                                                    <span className='font-semibold print:font-medium mr-1'>:</span>
+                                                    <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{accountHoldersAddress}</span>
                                                 </div>
                                             </div>
@@ -268,9 +271,9 @@ function IslamiBankOne() {
                                         editMode ?
 
                                             <div className=" leading-7 print:leading-[22px] flex">
-                                                <span className='inline-block w-32 text-right font-semibold print:font-medium'>Statement Date</span>
+                                                <span className='inline-block w-32 text-right font-semibold print:font-semibold'>Statement Date</span>
 
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="date" placeholder='Start stetment date' value={hideStartStatementDate} onChange={(e) => statementDateChange("startStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
 
                                                 to
@@ -279,24 +282,24 @@ function IslamiBankOne() {
                                             </div>
                                             :
 
-                                            <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Date From</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
-                                                <p className=' font-semibold print:font-medium'> <span> {startStatementDate}</span> To <span>{endStatementDate}</span></p>
+                                            <div className='flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Date From</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <p className=' font-semibold print:font-semibold'> <span> {startStatementDate}</span> To <span>{endStatementDate}</span></p>
                                             </div>
                                     }
                                     {
                                         editMode ?
 
                                             <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Type of Account</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Type of Account</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                            <div className='flex'>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Type of Account</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <p className=''>{accountType}</p>
                                             </div>
                                     }
@@ -304,26 +307,26 @@ function IslamiBankOne() {
                                         editMode ?
                                             <div>
                                                 <div className=' my-[2px] flex'>
-                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
-                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Opening Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                     <input type="text" placeholder='Opening Date' value={openingDate} onChange={(e) => setOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
                                                 <div className=' my-[2px] flex'>
-                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
-                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Last Tr.Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                     <input type="text" placeholder='Last Tr.Date' value={lastTRDate} onChange={(e) => setLastTRDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
                                             </div>
                                             :
-                                            <div className=' flex'>
-                                                <div className=' my-[2px] flex'>
-                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Opening Date</span>
-                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                            <div className=''>
+                                                <div className='flex'>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Opening Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                     <span className=' uppercase'>{openingDate}</span>
                                                 </div>
-                                                <div className=' my-[2px] flex'>
-                                                    <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Last Tr.Date</span>
-                                                    <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <div className='flex'>
+                                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Last Tr.Date</span>
+                                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                     <span className=' uppercase'>{lastTRDate}</span>
                                                 </div>
                                             </div>
@@ -331,30 +334,30 @@ function IslamiBankOne() {
                                     {
                                         editMode ?
                                             <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Phone</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
 
                                                 <input type="text" placeholder='Phone' value={accountHoldersPhone} onChange={(e) => setAccountHoldersPhone(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
 
                                             </div>
                                             :
                                             <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Phone</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Phone</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <span className=''>{accountHoldersPhone}</span>
                                             </div>
                                     }
                                     {
                                         editMode ?
                                             <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Status</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
                                             <div className=' my-[2px] flex'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Account Status</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Status</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <span className=' uppercase'>{accountStatus}</span>
                                             </div>
                                     }
@@ -363,19 +366,19 @@ function IslamiBankOne() {
                                         editMode &&
                                         <div>
                                             <div className=' flex my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>initialBalance</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>initialBalance</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             <div className=' flex my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Initial Branch Code</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Initial Branch Code</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
 
                                             <div className=' flex my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-medium'>Number of Rows</span>
-                                                <span className=' mx-2 font-semibold print:font-medium'>:</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Number of Rows</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             <div className=' flex items-center'>
@@ -396,13 +399,13 @@ function IslamiBankOne() {
 
                 <thead>
                     <tr className=''>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2'>Date</td>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2'>Code</td>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2'>Cheque/Instr.</td>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2'>Particulars</td>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2 text-right'>Debit</td>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2 text-right'>Credit</td>
-                        <td className=' font-medium print:px-1 py-0 print:text-[12px] border p-2 text-right'>Balance</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Date</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Code</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Cheque/Instr.</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Particulars</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>Debit</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>Credit</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>Balance</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -452,13 +455,13 @@ function IslamiBankOne() {
                         <td className=" text-sm p-2"></td>
                         <td className=" text-center text-sm p-2"></td>
                         <td className=" text-center text-sm p-2"></td>
-                        <td className=" text-right p-2 font-semibold print:font-medium print:text-[12px]">Total : </td>
-                        <td className=" text-right p-2 font-semibold print:font-medium print:text-[12px]">
+                        <td className=" text-right p-2 font-semibold print:font-semibold print:text-[12px]">Total : </td>
+                        <td className=" text-right p-2 font-semibold print:font-semibold print:text-[12px]">
                             <div className=' w-full p-1'>
                                 <p className=' border-y border-gray-700'>{commaNumber(totalWithdrawal)}</p>
                             </div>
                         </td>
-                        <td className=" text-right font-semibold print:font-medium print:text-[12px] p-2">
+                        <td className=" text-right font-semibold print:font-semibold print:text-[12px] p-2">
                             <div className=' w-full p-1'>
                                 <p className=' border-y border-gray-700'>{commaNumber(totalDeposit)}</p>
                             </div>
@@ -469,10 +472,13 @@ function IslamiBankOne() {
                 <tfoot class="table-footer-group">
                     <tr>
                         <td class=" " colspan="7">
-                            <div className=' w-full mt-5 text-sm text-center'>
-                                <p className=' font-medium'>101 : Cash Credit , 102 : Transfer Credit, 103 : Clearing Credit, 201 : Cash Debit, 203: Clearing Debit</p>
-                                <p className=' font-medium text-[12px]'>**We receive Dhaka WASA DESCO, BRTA, Student tution and e-GP/e-Tendering bills/frees at our branches through online.</p>
+                            <div className=' w-full text-sm text-center mt-5'>
+                                <p className=' font-semibold'>101 : Cash Credit , 102 : Transfer Credit, 103 : Clearing Credit, 201 : Cash Debit, 203: Clearing Debit</p>
+                                <p className=' font-semibold text-[12px]'>**We receive Dhaka WASA DESCO, BRTA, Student tution and e-GP/e-Tendering bills/frees at our branches through online.</p>
                                 <p className=' text-[12px]'>Prepared by ABABIL.Developed by : Millennium Information Solution Limited</p>
+                                <div className=' flex justify-end'>
+                                    <img src={bankSil} alt="" className=' w-32 -translate-y-20' />
+                                </div>
                             </div>
                         </td>
                     </tr>

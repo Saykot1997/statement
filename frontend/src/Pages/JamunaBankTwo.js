@@ -46,7 +46,6 @@ function JamunaBankTwo() {
     const [accountHolderState, setAccountHolderState] = useState("Dhaka");
     const [accountHolderEmail, setAccountHolderEmail] = useState("example@gmail.com");
     const [accountHolderPhone, setAccountHolderPhone] = useState("0123456789");
-    const Banks = useSelector(state => state.Banks.Banks);
     const User = useSelector(state => state.User.User);
     const dispatch = useDispatch();
     const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
@@ -140,9 +139,6 @@ function JamunaBankTwo() {
         getTransectionsAmounts()
         getBankTransactions()
     }, [])
-
-    console.log(Transactions)
-
 
 
     return (
@@ -700,6 +696,17 @@ function JamunaBankTwo() {
                         </tr>
 
                     </tbody>
+                    <tfoot class="table-footer-group" id="pageFooter">
+                        <tr>
+                            <td class=" " colspan="8">
+                                <div className=' w-full'>
+                                    <p className=' text-center font-medium pt-5 print:text-[10px]'>Thanks for banking with us.</p>
+                                    <hr className=' h-[2px] bg-gray-400 w-full' />
+                                    <p className=' print:text-[9px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
                 {/* <p className=' font-medium text-center print:text-[8px] mt-2'>This is a computer generated statement and does not require any signature</p> */}
                 {/* table section end */}
