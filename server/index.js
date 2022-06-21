@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const userRouter = require('./Routers/User_route');
+const path = require('path');
 
 app.use(cors());
 dotenv.config();
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'build')));
 
 
 // Connect to MongoDB
@@ -18,6 +20,12 @@ app.get("/", (req, res) => {
 })
 
 app.use('/api/user', userRouter);
+
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
+
 
 // listen to a port
 app.listen(process.env.PORT, () => { console.log('Server is running on port ' + process.env.PORT) });

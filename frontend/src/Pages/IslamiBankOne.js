@@ -210,7 +210,7 @@ function IslamiBankOne() {
                             </div>
 
                             <div className=' w-full flex font-normal'>
-                                <div className=' w-1/2 print:text-[12px]'>
+                                <div className=' w-1/2 pr-16 print:text-[12px]'>
                                     {
                                         editMode ?
                                             <div className=' my-1'>
@@ -220,9 +220,9 @@ function IslamiBankOne() {
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24 print:w-28'>
-                                                    <span className='font-semibold print:font-semibold'>A/C No</span>
-                                                </div>
+
+                                                <span className='font-semibold inline-block w-20 text-left print:font-semibold'>A/C No</span>
+
                                                 <div>
                                                     <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{accountNumber}</span>
@@ -238,9 +238,9 @@ function IslamiBankOne() {
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24 print:w-28'>
-                                                    <span className='font-semibold print:font-semibold'>A/C Name</span>
-                                                </div>
+
+                                                <span className='font-semibold text-left inline-block w-20 print:font-semibold'>A/C Name</span>
+
                                                 <div>
                                                     <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{accountHoldersName}</span>
@@ -255,11 +255,11 @@ function IslamiBankOne() {
                                                 <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <div className=' flex'>
-                                                <div className=' flex justify-between w-24 print:w-[114px]'>
-                                                    <span className='font-semibold print:font-semibold'>Address</span>
-                                                </div>
-                                                <div>
+                                            <div className=' flex w-full'>
+
+                                                <span className=' text-left font-semibold inline-block w-20 print:w-[98px] print:font-semibold'>Address</span>
+
+                                                <div className=' text-left'>
                                                     <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{accountHoldersAddress}</span>
                                                 </div>
