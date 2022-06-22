@@ -17,14 +17,15 @@ function EBLStatement() {
     const [initialBalance, setInitialBalance] = useState(400000);
     const [editMode, setEditMode] = useState(false);
     const [todayDate, setTodayDate] = useState("14-DEC-21");
-
+    const [creditCount, setCreditCount] = useState(0)
+    const [debitCount, setDebitCount] = useState(0)
     const [branchName, setBranchName] = useState("Chouhatta");
     const [branchAddress, setBranchAddress] = useState("Plot-1 Tea Board Building");
     const [branchRoad, setBranchRoad] = useState("Zindabaza");
     const [branchPoint, setBranchPoint] = useState("Chouhatta Point");
     const [branchCity, setBranchCity] = useState("Sylet")
-    const [branchPhone, setBranchPhone] = useState("8355179");
-    const [branchFax, setBranchFax] = useState("8355649");
+    // const [branchPhone, setBranchPhone] = useState("8355179");
+    // const [branchFax, setBranchFax] = useState("8355649");
     const [customerId, setCustomerId] = useState("871641872328")
     const [accountType, setAccountType] = useState("EBL Platinum Plus Savings");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
@@ -32,11 +33,11 @@ function EBLStatement() {
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("MOHONOB 5/1 C JOYNOB RESIDENCY");
     const [accountHolderState, setAccountHolderState] = useState("PATHAN TULA")
     const [accountHolderCity, setAccountHolderCity] = useState("SYLET")
-    const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
+    // const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
     const [accountCurrency, setAccountCurrency] = useState("Bangladeshi TAka");
-    const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
-    const [accountInterestRate, setAccountInterestRate] = useState("2");
-    const [accountStatus, setAccountStatus] = useState("OPERATIVE");
+    // const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
+    // const [accountInterestRate, setAccountInterestRate] = useState("2");
+    // const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
@@ -71,8 +72,6 @@ function EBLStatement() {
     }
 
     const statementDateChange = (option, value) => {
-
-        console.log(value)
 
         if (option === "startStatementDate") {
 
@@ -113,18 +112,11 @@ function EBLStatement() {
 
             let sprateYear = [...startStatementDateYear]
 
-            // let yearShortForm = `${sprateYear[2]}${sprateYear[3]}`
-
             setStartStatementDate(`${startStatementDateDay}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`);
 
             setHideStartStatementDate(`${startStatementDateYear}-${startStatementDateMonth}-${startStatementDateDay}`);
 
-
-            // console.log(`${startStatementDateDay}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`)
-            // console.log(`${startStatementDateYear}-${startStatementDateMonth}-${startStatementDateDay}`)
-
         } else if (option === "endStatementDate") {
-
 
             let endStatementDate = value.split("-");
             let endStatementDateYear = endStatementDate[0];
@@ -163,13 +155,8 @@ function EBLStatement() {
 
             let sprateYear = [...endStatementDateYear]
 
-            // let yearShortForm =
-
             setEndStatementDate(`${endStatementDateDay}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`);
             setHideEndStatementDate(`${endStatementDateYear}-${endStatementDateMonth}-${endStatementDateDay}`);
-
-            // console.log(`${endStatementDateDay}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`)
-            // console.log(`${endStatementDateYear}-${endStatementDateMonth}-${endStatementDateDay}`)
         }
     }
 
@@ -187,6 +174,21 @@ function EBLStatement() {
         setTotalWithdrawal(allData.TotalWithdrawal);
         setTotalDeposit(allData.TotalDeposit);
         setRandomTransictions(allData.RandomTransictions);
+
+        let inerdebitCount = 0
+        let inercreditCount = 0
+
+        allData.RandomTransictions.forEach((item, index) => {
+
+            if (item.withdrawal > 0) {
+                inerdebitCount = inerdebitCount + 1
+            } else {
+                inercreditCount = inercreditCount + 1
+            }
+        })
+
+        setDebitCount(inerdebitCount)
+        setCreditCount(inercreditCount)
         toggleEditMode();
     }
 
@@ -258,11 +260,7 @@ function EBLStatement() {
 
         let sprateYear = [...splitDate[2]]
 
-        console.log(`${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`)
-
         return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
-
-        // return 23
     }
 
 
@@ -570,12 +568,12 @@ function EBLStatement() {
                                         <div>
                                             <span className=' w-60 print:w-48 inline-block'>DEBITS</span>
                                             <span className=' w-44 print:w-36 inline-block'>{commaNumber(totalWithdrawal)}</span>
-                                            <span>DRCOUNT 25</span>
+                                            <span>DRCOUNT {debitCount}</span>
                                         </div>
                                         <div>
                                             <span className=' w-60 print:w-48 inline-block'>CREDITS</span>
                                             <span className=' w-44 print:w-36 inline-block'>{commaNumber(totalDeposit)}</span>
-                                            <span>CRCOUNT 5</span>
+                                            <span>CRCOUNT {creditCount}</span>
                                         </div>
                                         <div>
                                             <span className=' w-60 print:w-48 inline-block'>UNCOLLECTED FUNDS</span>
@@ -605,7 +603,6 @@ function EBLStatement() {
                     </tr>
                 </tfoot>
             </table>
-
         </div>
     )
 }
