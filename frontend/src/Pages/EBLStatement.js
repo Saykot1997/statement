@@ -336,7 +336,7 @@ function EBLStatement() {
                                     <img src={logo} alt="" className=' w-28' />
                                 </div>
                             </div>
-                            <div className=' flex justify-between mt-5 text-left pb-2'>
+                            <div className=' flex justify-between mt-5 text-left'>
                                 <div className=' text-sm print:text-[11px] print:leading-[14px]  self-end'>
 
                                     <p>ESTERN BANK LIMITED</p>
@@ -516,12 +516,12 @@ function EBLStatement() {
 
                 <thead className=''>
                     <tr className=' text-sm print:text-[11px]'>
-                        <td className=''>TRN. DATE</td>
-                        <td className=' w-[25%] text-left'>DESCRIPTION</td>
-                        <td className=' text-left pl-3'>REFERENCE</td>
-                        <td className=' text-right'>DEBIT</td>
-                        <td className=' text-right'>CREDITS</td>
-                        <td className=' text-right'>BALANCE</td>
+                        <td className=' pt-[6px]'>TRN. DATE</td>
+                        <td className=' pt-[6px] w-[25%] text-left'>DESCRIPTION</td>
+                        <td className=' pt-[6px] text-left pl-3'>REFERENCE</td>
+                        <td className=' pt-[6px] text-right'>DEBIT</td>
+                        <td className=' pt-[6px] text-right'>CREDITS</td>
+                        <td className=' pt-[6px] text-right'>BALANCE</td>
                     </tr>
                 </thead>
 
