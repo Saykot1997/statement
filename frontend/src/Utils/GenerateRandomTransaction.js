@@ -40,6 +40,7 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         let randomParticular = transactions[Math.floor(Math.random() * transactions.length)].transactionName;
         let randomBranchCode = transactions[transactions.findIndex((item) => item.transactionName === randomParticular)].branch;
         let randomTransictionsDate = randomTransictionsDates[i];
+
         let randomTransictionsTime = ""
         let findRandomParticular = transactions.findIndex((item) => item.transactionName === randomParticular);
         let randomTransictionsMunite = Math.floor(Math.random() * 60);

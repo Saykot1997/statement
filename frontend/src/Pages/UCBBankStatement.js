@@ -139,7 +139,7 @@ function UCBBankStatement() {
 
 
     return (
-        <div className='w-full'>
+        <div className='w-full p-10 print:p-0'>
 
             {
                 editMode ?

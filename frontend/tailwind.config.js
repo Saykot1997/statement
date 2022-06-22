@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'nuosu': ['Nuosu SIL', 'serif']
+        'nuosu': ['Nuosu SIL', 'serif'],
+        'lora': ['Lora', 'serif'],
       },
 
       backgroundImage: {

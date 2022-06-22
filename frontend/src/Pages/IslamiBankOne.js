@@ -409,7 +409,7 @@ function IslamiBankOne() {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {/* className='bg-water-mark bg-right-top bg-75% bg-no-repeat' */}
                     <tr className=''>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>

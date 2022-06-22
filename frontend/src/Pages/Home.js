@@ -26,11 +26,11 @@ function Home() {
                         <p className=' text-center font-medium'>Islami Bank</p>
                     </div>
                 </Link>
-                <Link to={`/ucb_bank`}>
+                {/* <Link to={`/ucb_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>UCB Bank</p>
                     </div>
-                </Link>
+                </Link> */}
                 {/* 
                 <Link to={`/bank_asia_one`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
