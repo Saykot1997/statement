@@ -516,12 +516,12 @@ function EBLStatement() {
 
                 <thead className=''>
                     <tr className=' text-sm print:text-[11px]'>
-                        <td className=' pt-[6px]'>TRN. DATE</td>
-                        <td className=' pt-[6px] w-[25%] text-left'>DESCRIPTION</td>
-                        <td className=' pt-[6px] text-left pl-3'>REFERENCE</td>
-                        <td className=' pt-[6px] text-right'>DEBIT</td>
-                        <td className=' pt-[6px] text-right'>CREDITS</td>
-                        <td className=' pt-[6px] text-right'>BALANCE</td>
+                        <td className=' pt-[4px]'>TRN. DATE</td>
+                        <td className=' pt-[4px] w-[25%] text-left'>DESCRIPTION</td>
+                        <td className=' pt-[4px] text-left pl-3'>REFERENCE</td>
+                        <td className=' pt-[4px] text-right'>DEBIT</td>
+                        <td className=' pt-[4px] text-right'>CREDITS</td>
+                        <td className=' pt-[4px] text-right'>BALANCE</td>
                     </tr>
                 </thead>
 
