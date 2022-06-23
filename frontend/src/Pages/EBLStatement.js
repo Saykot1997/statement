@@ -284,7 +284,7 @@ function EBLStatement() {
             <table className=' w-full text-gray-800 font-semibold'>
                 <thead className=' table-header-group'>
                     <tr className=' w-full '>
-                        <th class=" w-full" colspan="6" className=''>
+                        <th class=" w-full report-header-cell" colspan="6" className=''>
                             <div className=' w-full flex justify-between'>
                                 <div className=' text-sm print:text-[11px] print:leading-[14px]  self-end flex flex-col items-start'>
                                     {
@@ -336,7 +336,7 @@ function EBLStatement() {
                                     <img src={logo} alt="" className=' w-28' />
                                 </div>
                             </div>
-                            <div className=' flex justify-between mt-4 text-left'>
+                            <div className=' flex justify-between pb-1 text-left'>
                                 <div className=' text-sm print:text-[11px] print:leading-[14px]  self-end'>
                                     <p>ESTERN BANK LIMITED</p>
                                     {
