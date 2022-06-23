@@ -18,10 +18,6 @@ const BankTransictionSchema = new mongoose.Schema({
     transactionMethod: {
         type: String,
         enum: ['cash', 'cheque', 'online', "atm"],
-    },
-    branch: {
-        type: String,
-        required: true
     }
 }, { strict: false }, { timestamps: true });
 

@@ -24,8 +24,6 @@ function EBLStatement() {
     const [branchRoad, setBranchRoad] = useState("Zindabaza");
     const [branchPoint, setBranchPoint] = useState("Chouhatta Point");
     const [branchCity, setBranchCity] = useState("Sylet")
-    // const [branchPhone, setBranchPhone] = useState("8355179");
-    // const [branchFax, setBranchFax] = useState("8355649");
     const [customerId, setCustomerId] = useState("871641872328")
     const [accountType, setAccountType] = useState("EBL Platinum Plus Savings");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
@@ -33,11 +31,7 @@ function EBLStatement() {
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("MOHONOB 5/1 C JOYNOB RESIDENCY");
     const [accountHolderState, setAccountHolderState] = useState("PATHAN TULA")
     const [accountHolderCity, setAccountHolderCity] = useState("SYLET")
-    // const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
     const [accountCurrency, setAccountCurrency] = useState("Bangladeshi TAka");
-    // const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
-    // const [accountInterestRate, setAccountInterestRate] = useState("2");
-    // const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");

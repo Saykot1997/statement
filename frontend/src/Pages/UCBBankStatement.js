@@ -7,7 +7,7 @@ import { TransactionAmountFatchSuccess } from '../Redux/TransactionAmount_slice'
 import { transactionsFatchSuccess } from '../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../Utils/GenerateRandomTransaction';
 import logo from "../Photos/ucb_bank/logo.png";
-import bankSil from "../Photos/islami_bank_sil.png";
+import bankSil from "../Photos/ucb_bank/sil.png";
 
 
 function UCBBankStatement() {
@@ -35,8 +35,8 @@ function UCBBankStatement() {
     const [accountHolderCity, setAccountHolderCity] = useState("Dhaka")
     const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
     const [accountStatus, setAccountStatus] = useState("OPERATIVE");
-    const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
-    const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
+    const [startStatementDate, setStartStatementDate] = useState("01-10-2021");
+    const [endStatementDate, setEndStatementDate] = useState("31-03-2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
@@ -50,7 +50,7 @@ function UCBBankStatement() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/islamic_bank`, {
+            const res = await axios.get(`${Host}/api/user/transaction/ucb_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -77,7 +77,7 @@ function UCBBankStatement() {
             let startStatementDateMonth = startStatementDate[1];
             let startStatementDateDay = startStatementDate[2];
 
-            setStartStatementDate(`${startStatementDateDay}/${startStatementDateMonth}/${startStatementDateYear}`);
+            setStartStatementDate(`${startStatementDateDay}-${startStatementDateMonth}-${startStatementDateYear}`);
             setHideStartStatementDate(`${startStatementDateYear}-${startStatementDateMonth}-${startStatementDateDay}`);
 
         } else if (option === "endStatementDate") {
@@ -87,10 +87,12 @@ function UCBBankStatement() {
             let endStatementDateMonth = endStatementDate[1];
             let endStatementDateDay = endStatementDate[2];
 
-            setEndStatementDate(`${endStatementDateDay}/${endStatementDateMonth}/${endStatementDateYear}`);
+            setEndStatementDate(`${endStatementDateDay}-${endStatementDateMonth}-${endStatementDateYear}`);
             setHideEndStatementDate(`${endStatementDateYear}-${endStatementDateMonth}-${endStatementDateDay}`);
         }
     }
+
+
 
     const GenerateTranjections = () => {
 
@@ -131,11 +133,22 @@ function UCBBankStatement() {
         }
     }
 
+    const GetFormateDate = (date) => {
+
+        let splitDate = date.split("/")
+
+        if (date === undefined) {
+            return null
+        }
+
+        return `${splitDate[0]}-${splitDate[1]}-${splitDate[2]}`
+    }
+
+
     useEffect(() => {
         getTransectionsAmounts()
         getBankTransactions()
     }, [])
-
 
 
     return (
@@ -157,12 +170,12 @@ function UCBBankStatement() {
             <table className='w-full'>
                 <thead class=" table-header-group w-full">
                     <tr className=' w-full'>
-                        <th class="report-header-cell w-full" colspan="8">
+                        <th class="report-header-cell w-full" colSpan={8}>
                             <div className=' w-full grid grid-cols-4'>
                                 <div className=' flex justify-end'>
-                                    <img src={logo} alt="" className=' w-28 h-20' />
+                                    <img src={logo} alt="" className=' w-28 h-20 -translate-y-1' />
                                 </div>
-                                <div className=' col-span-2'>
+                                <div className=' col-span-2 leading-5 font-medium'>
                                     <p className=''>United Commercial Bank Limited.</p>
                                     {
                                         editMode ?
@@ -181,7 +194,7 @@ function UCBBankStatement() {
                                 </div>
                             </div>
                             <div className=' w-full flex font-medium print:text-[12px] print:leading-[16px] pb-5'>
-                                <div className=' w-[60%]'>
+                                <div className=' w-[50%]'>
                                     {
                                         editMode ?
                                             <div className=' my-1'>
@@ -222,9 +235,9 @@ function UCBBankStatement() {
                                                 <input type="text" placeholder='fhp' value={fhp} onChange={(e) => setFhp(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <div className=' flex'>
+                                            <div className=' flex text-left'>
                                                 <span className='font-semibold text-left inline-block w-20 print:font-semibold'>F/H/P</span>
-                                                <div>
+                                                <div className=''>
                                                     <span className='font-semibold print:font-semibold mr-1'>:</span>
                                                     <span className=''>{fhp}</span>
                                                 </div>
@@ -240,12 +253,12 @@ function UCBBankStatement() {
                                                 <input type="text" placeholder='Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <div className=' flex'>
-                                                <span className='font-semibold text-left inline-block w-20 print:font-semibold'>Address</span>
-                                                <div>
+                                            <div className=' flex w-full text-left'>
+                                                <div className=' flex justify-between w-[86px] '>
+                                                    <span className='font-semibold text-left inline-block w-20 print:font-semibold'>Address</span>
                                                     <span className='font-semibold print:font-semibold mr-1'>:</span>
-                                                    <span className=''>{accountHoldersAddress}</span>
                                                 </div>
+                                                <span className=''>{accountHoldersAddress}</span>
                                             </div>
                                     }
                                     {
@@ -282,7 +295,7 @@ function UCBBankStatement() {
                                     }
 
                                 </div>
-                                <div className=' w-[40%] print:text-[12px]'>
+                                <div className=' w-[50%] print:text-[12px]'>
 
                                     {
                                         editMode ?
@@ -430,20 +443,20 @@ function UCBBankStatement() {
 
                 <thead className=''>
                     <tr className=''>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Trans. Date</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Cheque#</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Ref.</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Naration</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Trans. Details</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Debit</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Credit</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Balance</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Trans. Date</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Cheque#</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Ref.</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Naration</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-center'>Trans. Details</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Debit</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Credit</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Balance</td>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr className=''>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2'>Balance Forward</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Balance Forward</td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2'></td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2'></td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'></td>
@@ -458,11 +471,11 @@ function UCBBankStatement() {
 
                             return (
                                 <tr>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.date}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'></td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
+                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormateDate(item.date)}</td>
+                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.cheque}</td>
+                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.ref}</td>
+                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.particular} </td>
+                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.transactionDetails}</td>
                                     <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
                                     <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>
@@ -477,10 +490,10 @@ function UCBBankStatement() {
                         <td className='p-2 border-t-0 border border-gray-800 print:px-1 print:text-[10px] print:py-0'></td>
                     </tr>
                 </tbody>
-                <tfoot class="table-footer-group">
+                <tfoot className="table-footer-group">
                     <tr>
-                        <td class=" " colspan="8">
-                            <div className=' w-full text-sm text-center mt-5'>
+                        <td colSpan={8}>
+                            <div className=' w-full text-sm text-center'>
                                 <div className=' flex justify-center'>
                                     <img src={bankSil} alt="" className=' w-32' />
                                 </div>

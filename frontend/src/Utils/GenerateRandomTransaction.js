@@ -97,6 +97,19 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
             deposit: randomDeposit,
             type: transactions[findRandomParticular].transactionType,
             method: transactions[findRandomParticular].transactionMethod,
+
+        }
+
+        if (transactions[findRandomParticular].ref) {
+            randomTransictionsObject.ref = transactions[findRandomParticular].ref
+        }
+
+        if (transactions[findRandomParticular].cheque) {
+            randomTransictionsObject.cheque = transactions[findRandomParticular].cheque
+        }
+
+        if (transactions[findRandomParticular].transactionDetails) {
+            randomTransictionsObject.transactionDetails = transactions[findRandomParticular].transactionDetails
         }
 
 

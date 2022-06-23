@@ -8,19 +8,12 @@ import bankSil from "../Photos/islami_bank_sil.png";
 
 function IslamiBankCertificate() {
 
-
     const [branchName, setBranchName] = useState("Lohagora");
     const [branchCity, setBranchCity] = useState("Chattogram");
     const [branchPhone, setBranchPhone] = useState("01713-139033");
     const [printDate, setPrintDate] = useState("18.05.2022");
     const [ref, setRef] = useState("SIBL/Loha/Ctg/2022/604");
     const [editMode, setEditMode] = useState(false);
-    // const [branchAddress, setBranchAddress] = useState("Shantinagar, Green City Edge, Bangladesh")
-    // const [branchEmail, setBranchEmail] = useState("example@gamil.com")
-    // const [pabx, setPabx] = useState("972438,9347539,9348753")
-    // const [swift, setSwift] = useState("JAMUNABANK")
-    // const [branchWord, setBranchWord] = useState("19")
-    // const [branchState, setBranchState] = useState("Dhaka")
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
     const [accountHolderMotherName, setAccountHolderMotherName] = useState("Masudda Begum")
@@ -29,14 +22,11 @@ function IslamiBankCertificate() {
     const [accountHolderWard, setAccountHolderWard] = useState("04")
     const [accountHolderPost, setAccountHolderPost] = useState("West Kalauzan")
     const [accountHolderThana, setAccountHolderThana] = useState("Kalauzan-4396")
-    // const [accountHolderAddress, setAccountHolderAddress] = useState("31/1 SARAT GUPTA ROAD, SHANTINAGAR, GREEN CITY EDGE, BANGLADESH")
-    // const [todaysDate, setTodaysDate] = useState("May 22,2020")
     const [accountNumber, setAccountNumber] = useState("0123456789")
     const [accountType, setAccountType] = useState("Sanchita Special deposit Scheme")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
-    // const [oldAccountNumber, setOldAccountNumber] = useState("0123456789")
 
     const toggleEditMode = () => {
         setEditMode(!editMode);

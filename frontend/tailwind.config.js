@@ -10,7 +10,8 @@ module.exports = {
       },
 
       backgroundImage: {
-        'water-mark': "url('./Photos/islami_bank_water_mark.png')"
+        'water-mark': "url('./Photos/islami_bank_water_mark.png')",
+        'ucb-water-mark': "url('./Photos/ucb_bank/water_mark.png')"
       },
       backgroundSize: {
         'auto': 'auto',

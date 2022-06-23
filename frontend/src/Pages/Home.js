@@ -26,11 +26,11 @@ function Home() {
                         <p className=' text-center font-medium'>Islami Bank</p>
                     </div>
                 </Link>
-                {/* <Link to={`/ucb_bank`}>
+                <Link to={`/ucb_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>UCB Bank</p>
                     </div>
-                </Link> */}
+                </Link>
                 {/* 
                 <Link to={`/bank_asia_one`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
@@ -50,11 +50,7 @@ function Home() {
                         <p className=' text-center font-medium'>EBL Bank Solvency</p>
                     </div>
                 </Link>
-                {/* <Link to={`/ucb_bank_solvency`}>
-                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
-                        <p className=' text-center font-medium'>UCB Bank Solvency</p>
-                    </div>
-                </Link> */}
+
                 {/* <Link to={`/jamuna_bank_three`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Jamuna Bank Certificate</p>
@@ -63,6 +59,11 @@ function Home() {
                 <Link to={`/islami_bank_certificate`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Islami Bank Certificate</p>
+                    </div>
+                </Link>
+                <Link to={`/ucb_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>UCB Bank Solvency</p>
                     </div>
                 </Link>
                 {/* <Link to={`/bank_asia_two`}>

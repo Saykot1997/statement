@@ -1,32 +1,28 @@
 import React, { useState } from 'react'
-import logo from "../Photos/islami_bank_logo.png";
+import logo from "../Photos/ucb_bank/logo.png";
 import signature2 from "../Photos/ucb_bank/sig 2.png";
 import signature1 from "../Photos/ucb_bank/sif 1.png";
-import footer from "../Photos/islami_bank_footer.png";
+import sile from "../Photos/ucb_bank/sil.png"
 import commaNumber from 'comma-number';
 
 function UCBbankCertificate() {
 
-
-    const [branchName, setBranchName] = useState("Lohagora");
-    const [branchCity, setBranchCity] = useState("Chattogram");
-    const [branchPhone, setBranchPhone] = useState("01713-139033");
     const [printDate, setPrintDate] = useState("18.05.2022");
-    const [ref, setRef] = useState("SIBL/Loha/Ctg/2022/604");
+    const [ref, setRef] = useState("UCBL/GB/NEB/2022");
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
-    const [accountHolderMotherName, setAccountHolderMotherName] = useState("Masudda Begum")
-    const [accountHolderHouse, setAccountHolderHouse] = useState("Kabir Mistrir Bari")
-    const [accountHoldervillage, setAccountHoldervillage] = useState("JamidurPara")
-    const [accountHolderWard, setAccountHolderWard] = useState("04")
-    const [accountHolderPost, setAccountHolderPost] = useState("West Kalauzan")
-    const [accountHolderThana, setAccountHolderThana] = useState("Kalauzan-4396")
-    const [accountNumber, setAccountNumber] = useState("0123456789")
-    const [accountType, setAccountType] = useState("Sanchita Special deposit Scheme")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A,Holding No-20,Cantonment-4, Mohakhali OOHS, Dhaka Cantonment, Bangladesh")
+    const [branchHouse, setBranchHouse] = useState('"Waqf Bhaban" (1st Floor)')
+    const [branchRoad, setBranchRoad] = useState("4,New Eskaton Road, Dhaka-1000.")
+    const [branchRoutingNumber, setBranchRoutingNumber] = useState("245261396")
+    const [accountNumber, setAccountNumber] = useState("0943211000001452")
+    const [accountType, setAccountType] = useState("Saving Accounts")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
-    const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
+    const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
+    const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
+
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -39,7 +35,7 @@ function UCBbankCertificate() {
 
 
     return (
-        <div className=" w-full font-nuosu relative bg-water-mark bg-right-top bg-75% bg-no-repeat">
+        <div className=" w-full p-10 timesroman print:p-10 bg-ucb-water-mark bg-100% bg-left-bottom h-full bg-no-repeat">
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -52,130 +48,95 @@ function UCBbankCertificate() {
                         <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                     </div>
             }
-            <div className=' w-full flex justify-center '>
-                <div className=' absolute top-0 left-5'>
-                    <img src={logo} alt="" className=' w-40' />
-                </div>
-                <div className=' flex flex-col items-center w-full pt-10'>
-                    <p className=' font-semibold text-xl'>Social Islami Bank Limited</p>
-                    {
-                        editMode ?
-                            <div>
-                                <div className=' flex items-center'>
-                                    <span>Branch Name</span>
-                                    <span className=' mx-2 '>:</span>
-                                    <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                </div>
-                                <div className=' flex items-center'>
-                                    <span>Branch City</span>
-                                    <span className=' mx-2'>:</span>
-                                    <input type="text" placeholder='Branch City' value={branchCity} onChange={(e) => setBranchCity(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                </div>
-                            </div>
-                            :
 
-                            <p className=' font-semibold text-lg'>{branchName}, {branchCity}.</p>
-                    }
+            <div className=' w-full flex justify-between'>
+                <div>
+                    <img src={logo} alt="" className=' w-40 mt-5' />
+                </div>
+                <div className=' text-right print:text-[12px]'>
+                    <p className=' font-semibold text-gray-800'>New Eskaton Branch</p>
                     {
                         editMode ?
                             <div className=' flex items-center'>
-                                <span>Branch Phone</span>
-                                <span className=' mx-2'>:</span>
-                                <input type="text" placeholder='Branch Phone' value={branchPhone} onChange={(e) => setBranchPhone(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                <span>Branch House</span>
+                                <span>:</span>
+                                <input type="text" placeholder='House' value={branchHouse} onChange={(e) => setBranchHouse(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                             </div>
                             :
-
-                            <p className='font-semibold'>Phone No. {branchPhone}</p>
+                            <p>{branchHouse}</p>
                     }
+                    {
+                        editMode ?
+
+                            <div className=' flex items-center'>
+                                <span>Branch Road</span>
+                                <span>:</span>
+                                <input type="text" placeholder='Road Number' value={branchRoad} onChange={(e) => setBranchRoad(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <p>{branchRoad}</p>
+                    }
+                    <p>Phone:028333321,8333326,833360</p>
+                    <p>Swift Code:UCBLBDDH</p>
+                    {
+                        editMode ?
+
+                            <div className=' flex items-center'>
+                                <span>Branch Routing Number</span>
+                                <span>:</span>
+                                <input type="text" placeholder='Routing Number' value={branchRoutingNumber} onChange={(e) => setBranchRoutingNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <p>Routing Number :{branchRoutingNumber}</p>
+                    }
+                    <p>Web:<span className=' border-b border-gray-300'>www.ucb.com.bd</span></p>
+                    <span className=' border-b border-gray-400'>E-mail:neb@ucb.com.bd</span>
                 </div>
             </div>
-            <div className=' px-16 pt-10'>
-                <div>
+
+            <div className=' w-full px-12'>
+
+                <div className=' my-5'>
                     {
                         editMode ?
                             <div className=' flex items-center'>
                                 <span>Ref</span>
-                                <span className=' mx-2'>:</span>
-                                <input type="text" placeholder='Branch Ref' value={ref} onChange={(e) => setRef(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                <span>:</span>
+                                <input type="text" placeholder='Ref' value={ref} onChange={(e) => setRef(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                             </div>
                             :
 
-                            <p>Ref:{ref}</p>
-                    }
-                    {
-                        editMode ?
-                            <div className=' flex items-center'>
-                                <span>Ref</span>
-                                <span className=' mx-2'>:</span>
-                                <input type="text" placeholder='Print Date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                            </div>
-                            :
-                            <p>Date: {printDate}</p>
+                            <p className=' font-semibold text-gray-800'>{ref}</p>
+
                     }
                 </div>
 
-                <div className=' text-center mb-5 mt-10'>
-                    <span className=' border-b border-gray-800 font-semibold'>TO WHOME IT MAY CONCERN</span>
+                <div className=' text-center my-10'>
+                    <span className=' border-b border-gray-800 font-semibold text-gray-800'>TO WHOME IT MAY CONCERN</span>
                 </div>
                 <div>
-                    <p>This is to certify that
+                    <p className=' leading-7'>This is to inform that
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderName}</span>
-                        }
-                        S/o
+                                <span className=' mx-1'>{accountHolderName},</span>
+                        } Son of
                         {
                             editMode ?
                                 <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderFotherName}</span>
+                                <span className=' mx-1'>{accountHolderFotherName},</span>
                         }
 
-                        &
-
+                        at
                         {
                             editMode ?
-                                <input type="text" placeholder='Mother Name' value={accountHolderMotherName} onChange={(e) => setAccountHolderMotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='Address ' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderMotherName}</span>
+                                <span className=' mx-1'>{accountHolderAddress},</span>
                         }
-                        , Address:-
-                        {
-                            editMode ?
-                                <input type="text" placeholder='house' value={accountHolderHouse} onChange={(e) => setAccountHolderHouse(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{accountHolderHouse}</span>
-                        }
-                        ,
-                        {
-                            editMode ?
-                                <input type="text" placeholder='village' value={accountHoldervillage} onChange={(e) => setAccountHoldervillage(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{accountHoldervillage}</span>
-                        }
-                        Word No-
-                        {
-                            editMode ?
-                                <input type="text" placeholder='Word No' value={accountHolderWard} onChange={(e) => setAccountHolderWard(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{accountHolderWard}</span>
-                        }
-                        {
-                            editMode ?
-                                <input type="text" placeholder='Post Office' value={accountHolderPost} onChange={(e) => setAccountHolderPost(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{accountHolderPost}</span>
-                        }
-                        ,
-                        {
-                            editMode ?
-                                <input type="text" placeholder='District' value={accountHolderThana} onChange={(e) => setAccountHolderThana(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{accountHolderThana}</span>
-                        }
-                        ,{branchName},{branchCity} have been maintaing a
+                        have been maintaing the following
 
                         {
                             editMode ?
@@ -183,21 +144,15 @@ function UCBbankCertificate() {
                                 :
                                 <span className=' mx-1'>{accountType}</span>
                         }
-                        Account brearing No.
+                        account bearing No.
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
                                 <span className=' mx-1'>{accountNumber}</span>
                         }
-                        since
-                        {
-                            editMode ?
-                                <input type="text" placeholder='Account Number' value={accountOpeningDate} onChange={(e) => setAccountOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{accountOpeningDate}</span>
-                        }
-                        with our branch. The details of the aforementioned account is given below:</p>
+                        with us. Details as follows:
+                    </p>
                 </div>
                 {
                     editMode &&
@@ -208,65 +163,107 @@ function UCBbankCertificate() {
                         <input type="text" placeholder='Print Date' value={usdCurrancyConversionRate} onChange={(e) => setUsdCurrancyConversionRate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                     </div>
                 }
-                <table className=' w-full my-5'>
+                <table className=' w-full mt-3'>
                     <thead>
                         <tr>
-                            <th className=' border border-gray-800 pb-2 px-1'>S/N</th>
-                            <th className=' border border-gray-800 pb-2 px-1'>Account No</th>
-                            <th className=' border border-gray-800 pb-2 px-1'>Account Name</th>
-                            <th className=' border border-gray-800 pb-2 px-1 w-[20%]'>Present Balance as on {printDate} (BDT)</th>
-                            <th className=' border border-gray-800 pb-2 px-1 w-[20%]'>Equivalent to USD @{usdCurrancyConversionRate} (Approx.) as on {printDate}</th>
+                            <th className=' border border-gray-600 pb-2 px-1 w-[10%]'>SL no</th>
+                            <th className=' border border-gray-600 pb-2 px-1 w-[23%]'>Account Number</th>
+                            <th className=' border border-gray-600 pb-2 px-1 w-[23%]'>Account Type</th>
+                            <th className=' border border-gray-600 pb-2 px-1'>
+                                {
+                                    editMode ?
+                                        <div>
+                                            <span>Balance</span>
+                                            <input type="text" placeholder='Print Date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                        </div>
+                                        :
+                                        <div>
+                                            <p>Balance on</p>
+                                            <span className=' text-gray-800'>{printDate}</span>
+                                        </div>
+                                }
+                            </th>
+                            <th className=' border border-gray-600 pb-2 w-[25%]'>
+                                <p>Equivalent to USD</p>
+                                <p className=' text-sm'>(USD.1.00 = BDT.{parseFloat(usdCurrancyConversionRate).toFixed(2)})</p>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr >
-                            <td className=' border border-gray-800 px-2'>01</td>
-                            <td className=' border border-gray-800 px-2'>{accountNumber}</td>
-                            <td className=' border border-gray-800 px-2'>{accountHolderName}</td>
-                            <td className=' border border-gray-800 px-2 w-[20%]'>
+                            <td className=' border border-gray-500 px-2 text-center w-[10%]'>01</td>
+                            <td className=' border border-gray-500 px-2 text-center w-[23%] '>{accountNumber}</td>
+                            <td className=' border border-gray-500 px-2 text-center w-[23%]'>{accountType}</td>
+                            <td className=' border border-gray-500 px-2 text-center '>
                                 {
                                     editMode ?
                                         <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                         :
-                                        <span className=' mx-1'>BDT:{accountBalance}</span>
+                                        <span className=''>{accountBalance}</span>
                                 }
                             </td>
-                            <td className=' border border-gray-800 px-2 w-[20%]'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                            <td className=' border border-gray-500 px-2 text-center w-[23%]'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                         </tr>
                         <tr >
-                            <td colSpan="3" className=' border border-gray-800 text-center font-semibold'>Total</td>
-                            <td className=' border border-gray-800 font-semibold text-right px-2 w-[20%]'>BDT:{commaNumber(accountBalance)}</td>
-                            <td className=' border border-gray-800 font-semibold text-right px-2 w-[20%]'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                            <td className=' border border-gray-500 text-center font-semibold text-gray-800 w-[10%]'></td>
+                            <td className=' border border-gray-500 px-2 text-left w-[23%]'>Total</td>
+                            <td className=' border border-gray-500 px-2 w-[23%]'></td>
+                            <td className=' border border-gray-500 text-center px-2'>{commaNumber(accountBalance)}</td>
+                            <td className=' border border-gray-500 text-center px-2 w-[23%]'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                         </tr>
                     </tbody>
                 </table>
+                <div className=' text-center'>
+                    <p className=' leading-4'>In word: <span className=' font-semibold text-gray-800'>BDT</span>. {
 
-                <p className=' my-3'>To the best of our knowledge the client is financially sound and solvent.</p>
-                <p className=' mb-4'>We wish him for success.</p>
-                <p>To the best of our knowledge, the client is financially sound and solvent.</p>
-                <p className=' font-semibold mt-8 my-5'>FOR UNITED COMMERCIAL BANK PLC</p>
+                        editMode ?
+                            <input type="text" placeholder='balance in word' value={inWordBdTaka} onChange={(e) => setInWordBdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            :
+                            <span className=' mx-1'>{inWordBdTaka}</span>
+                    }
+                        or <span className=' font-semibold text-gray-800'>USD</span> . {
+                            editMode ?
+                                <input type="text" placeholder='balance in word usd' value={inWordUsdTaka} onChange={(e) => setInWordUsdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                :
+                                <span>{inWordUsdTaka}</span>
+                        }.</p>
+                </div>
+                <div className=' my-5'>
+                    <p>To the best of our knowledge, the client is financially sound and solvent.</p>
+                </div>
+                <div className=' text-center'>
+                    <p className=' font-semibold text-gray-800 text-lg'>FOR UNITED COMMERCIAL BANK PLC.</p>
+                </div>
 
-                <div className=' flex my-16'>
-                    <div className=' w-1/2 relative'>
-                        <div>
-                            <img src={signature2} alt="" className=' w-32 absolute -top-12' />
+                <div className=' grid grid-cols-3 mt-14'>
+
+                    <div className=' w-full relative'>
+                        <div className=''>
+                            <img src={signature1} alt="" className=' w-52 translate-y-3' />
                             <p>Mohammad Mahabub Alam</p>
                             <p>FAVP & Operation Manager</p>
                         </div>
                     </div>
-                    <div className=' w-1/2 flex justify-center relative'>
-                        <div>
-                            <img src={signature1} alt="" className=' w-36 absolute -top-16' />
+
+                    <div className=' w-full'>
+                        <img src={sile} alt="" className=' w-32' />
+                    </div>
+
+                    <div className=' w-full relative'>
+                        <div className=' absolute -top-10'>
+                            <img src={signature2} alt="" className=' w-40 translate-y-3' />
                             <p>Kazi Muzibul Islam</p>
                             <p>EVP & Head of Branch</p>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <div className=' w-full print:fixed bottom-0 font-sans' >
-                <p className=' text-center'><span className=' font-semibold'>Social Islami Bank Limited,</span>Corporate Office: City Center,90/1,Motijheel C/A,Dhaka-1000</p>
-                <p className=' text-center leading-[14px] mb-1'>Phone:88 02 09612001122, Fax:88 02 9568098, E-mail:info@sibl-bd.com</p>
-                <img src={footer} alt="" />
+            <div className=' text-gray-500 leading-5 text-sm  mt-32 font-sans'>
+                <p className=' text-orange-600 text-lg'>United Commercial Bank Limited</p>
+                <p>Corporate Office:Plot-CWS(A)-1 Road No-34</p>
+                <p>Gulshan Avenue, Dhaka-1212, Bangladesh.</p>
+                <p>Phone: +880-2 55668070, +889610999999, E-mail: info@ucb.com.bd</p>
             </div>
         </div>
     )

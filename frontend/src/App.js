@@ -23,6 +23,7 @@ import UCBbankCertificate from "./Pages/UCBbankCertificate";
 import EBLStatement from "./Pages/EBLStatement";
 import EBLBankTran from "./Pages/EBLBankTran";
 import UCBBankStatement from "./Pages/UCBBankStatement";
+import UCBBankTran from "./Pages/UCBBankTran";
 
 
 function App() {
@@ -78,6 +79,13 @@ function App() {
           element={<PrivateRoute>
             <Laout>
               <EBLBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
+        <Route path="/banks/ucb_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <UCBBankTran />
             </Laout>
           </PrivateRoute>} />
 
