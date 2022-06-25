@@ -35,7 +35,7 @@ function UCBbankCertificate() {
 
 
     return (
-        <div className=" w-full p-10 timesroman print:p-10 bg-ucb-water-mark bg-100% bg-left-bottom h-full bg-no-repeat">
+        <div className=" w-full p-10  font-lora print:p-10 print:pb-2 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom h-full bg-no-repeat">
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -54,7 +54,7 @@ function UCBbankCertificate() {
                     <img src={logo} alt="" className=' w-40 mt-5' />
                 </div>
                 <div className=' text-right print:text-[12px]'>
-                    <p className=' font-semibold text-gray-800'>New Eskaton Branch</p>
+                    <p className=' font-semibold'>New Eskaton Branch</p>
                     {
                         editMode ?
                             <div className=' flex items-center'>
@@ -94,9 +94,9 @@ function UCBbankCertificate() {
                 </div>
             </div>
 
-            <div className=' w-full px-12'>
+            <div className=' w-full px-10 print:pb-48'>
 
-                <div className=' my-5'>
+                <div className=' my-8'>
                     {
                         editMode ?
                             <div className=' flex items-center'>
@@ -112,7 +112,7 @@ function UCBbankCertificate() {
                 </div>
 
                 <div className=' text-center my-10'>
-                    <span className=' border-b border-gray-800 font-semibold text-gray-800'>TO WHOME IT MAY CONCERN</span>
+                    <span className=' border-b border-gray-800 font-semibold capitalize text-gray-900'>To Whom It May Concern</span>
                 </div>
                 <div>
                     <p className=' leading-7'>This is to inform that
@@ -121,7 +121,7 @@ function UCBbankCertificate() {
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
                                 <span className=' mx-1'>{accountHolderName},</span>
-                        } Son of
+                        }Son of
                         {
                             editMode ?
                                 <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -166,10 +166,10 @@ function UCBbankCertificate() {
                 <table className=' w-full mt-3'>
                     <thead>
                         <tr>
-                            <th className=' border border-gray-600 pb-2 px-1 w-[10%]'>SL no</th>
-                            <th className=' border border-gray-600 pb-2 px-1 w-[23%]'>Account Number</th>
-                            <th className=' border border-gray-600 pb-2 px-1 w-[23%]'>Account Type</th>
-                            <th className=' border border-gray-600 pb-2 px-1'>
+                            <th className=' border border-gray-600 pb-2 px-1 w-[10%] text-gray-900'>SL no</th>
+                            <th className=' border border-gray-600 pb-2 px-1 w-[23%] text-gray-900'>Account Number</th>
+                            <th className=' border border-gray-600 pb-2 px-1 w-[23%] text-gray-900'>Account Type</th>
+                            <th className=' border border-gray-600 pb-2 px-1 text-gray-900'>
                                 {
                                     editMode ?
                                         <div>
@@ -179,13 +179,13 @@ function UCBbankCertificate() {
                                         :
                                         <div>
                                             <p>Balance on</p>
-                                            <span className=' text-gray-800'>{printDate}</span>
+                                            <span className=' text-gray-800 font-normal'>{printDate}</span>
                                         </div>
                                 }
                             </th>
-                            <th className=' border border-gray-600 pb-2 w-[25%]'>
+                            <th className=' border border-gray-600 pb-2 w-[25%] text-gray-900'>
                                 <p>Equivalent to USD</p>
-                                <p className=' text-sm'>(USD.1.00 = BDT.{parseFloat(usdCurrancyConversionRate).toFixed(2)})</p>
+                                <p className=' text-sm font-normal'>(USD.1.00 = BDT.{parseFloat(usdCurrancyConversionRate).toFixed(2)})</p>
                             </th>
                         </tr>
                     </thead>
@@ -214,7 +214,7 @@ function UCBbankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p className=' leading-4'>In word: <span className=' font-semibold text-gray-800'>BDT</span>. {
+                    <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>BDT</span>. {
 
                         editMode ?
                             <input type="text" placeholder='balance in word' value={inWordBdTaka} onChange={(e) => setInWordBdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -231,11 +231,11 @@ function UCBbankCertificate() {
                 <div className=' my-5'>
                     <p>To the best of our knowledge, the client is financially sound and solvent.</p>
                 </div>
-                <div className=' text-center'>
-                    <p className=' font-semibold text-gray-800 text-lg'>FOR UNITED COMMERCIAL BANK PLC.</p>
+                <div className=' text-center mt-5'>
+                    <p className=' font-semibold text-lg text-gray-900'>FOR UNITED COMMERCIAL BANK PLC.</p>
                 </div>
 
-                <div className=' grid grid-cols-3 mt-14'>
+                <div className=' grid grid-cols-3 mt-14 items-center'>
 
                     <div className=' w-full relative'>
                         <div className=''>
@@ -245,12 +245,14 @@ function UCBbankCertificate() {
                         </div>
                     </div>
 
-                    <div className=' w-full'>
-                        <img src={sile} alt="" className=' w-32' />
+                    <div className=' w-full flex justify-center'>
+                        <div>
+                            <img src={sile} alt="" className=' w-32' />
+                        </div>
                     </div>
 
-                    <div className=' w-full relative'>
-                        <div className=' absolute -top-10'>
+                    <div className=' w-full relative flex justify-end '>
+                        <div className=' -translate-y-3'>
                             <img src={signature2} alt="" className=' w-40 translate-y-3' />
                             <p>Kazi Muzibul Islam</p>
                             <p>EVP & Head of Branch</p>
@@ -259,8 +261,8 @@ function UCBbankCertificate() {
 
                 </div>
             </div>
-            <div className=' text-gray-500 leading-5 text-sm  mt-32 font-sans'>
-                <p className=' text-orange-600 text-lg'>United Commercial Bank Limited</p>
+            <div className=' text-gray-500 leading-5 text-sm mt-[120px] print:fixed bottom-0 font-sans'>
+                <p className=' text-red-800 text-lg font-semibold'>United Commercial Bank Limited</p>
                 <p>Corporate Office:Plot-CWS(A)-1 Road No-34</p>
                 <p>Gulshan Avenue, Dhaka-1212, Bangladesh.</p>
                 <p>Phone: +880-2 55668070, +889610999999, E-mail: info@ucb.com.bd</p>

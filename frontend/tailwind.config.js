@@ -19,6 +19,9 @@ module.exports = {
         'contain': 'contain',
         '50%': '50%',
         '75%': '75%',
+      },
+      backgroundPosition: {
+        'left-custom': '70% 120%',
       }
     },
   },
