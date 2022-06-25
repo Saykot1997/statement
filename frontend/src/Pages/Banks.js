@@ -39,6 +39,11 @@ function Banks() {
                         <span className=' font-medium '>UCB Bank</span>
                     </div>
                 </Link>
+                <Link to={`/banks/uco_bank`}>
+                    <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
+                        <span className=' font-medium '>UCo Bank</span>
+                    </div>
+                </Link>
 
             </div>
         </div>

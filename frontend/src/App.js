@@ -23,7 +23,9 @@ import UCBbankCertificate from "./Pages/UCBbankCertificate";
 import EBLStatement from "./Pages/EBLStatement";
 import EBLBankTran from "./Pages/EBLBankTran";
 import UCBBankStatement from "./Pages/UCBBankStatement";
+import UCOBankStatement from "./Pages/UCOBankStatement";
 import UCBBankTran from "./Pages/UCBBankTran";
+import UCOBankTran from "./Pages/UCOBankTran";
 
 
 function App() {
@@ -89,7 +91,14 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
-        {/* formate routes */}
+        <Route path="/banks/uco_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <UCOBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
+        {/* Transactions formate routes */}
         <Route path="/jamuna_bank_one"
           element={<PrivateRoute>
             <JamunaBankOne />
@@ -120,6 +129,11 @@ function App() {
             <UCBBankStatement />
           </PrivateRoute>} />
 
+        <Route path="/uco_bank"
+          element={<PrivateRoute>
+            <UCOBankStatement />
+          </PrivateRoute>} />
+        {/* cirtificate formate routes */}
         <Route path="/islami_bank_certificate"
           element={<PrivateRoute>
             <IslamiBankCertificate />

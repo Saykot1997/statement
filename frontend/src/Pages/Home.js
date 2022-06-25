@@ -31,6 +31,11 @@ function Home() {
                         <p className=' text-center font-medium'>UCB Bank</p>
                     </div>
                 </Link>
+                <Link to={`/uco_bank`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>UCO Bank</p>
+                    </div>
+                </Link>
                 {/* 
                 <Link to={`/bank_asia_one`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>

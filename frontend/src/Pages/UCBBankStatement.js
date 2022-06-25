@@ -135,11 +135,11 @@ function UCBBankStatement() {
 
     const GetFormateDate = (date) => {
 
-        let splitDate = date.split("/")
-
         if (date === undefined) {
             return null
         }
+
+        let splitDate = date.split("/")
 
         return `${splitDate[0]}-${splitDate[1]}-${splitDate[2]}`
     }
