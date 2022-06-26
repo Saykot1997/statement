@@ -11,6 +11,7 @@ import sil from "../Photos/uco_bank/sil.png"
 
 function UCOBankTransaction() {
 
+    const [currancySuffix, setCurrancySuffix] = useState("Cr")
     const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
@@ -27,7 +28,6 @@ function UCOBankTransaction() {
     const [branchPhone, setBranchPhone] = useState("04912553329");
     const [freeHelpLine, setFreeHelpLine] = useState("1800 103 0123")
     const [todayDate, setTodayDate] = useState("20-06-2022")
-    // const [branchFax, setBranchFax] = useState("8355649");
     const [accountType, setAccountType] = useState("SAVINGS-GENERAL-TUTAL");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
     const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
@@ -36,16 +36,13 @@ function UCOBankTransaction() {
     const [accountHolderThana, setAccountHolderThana] = useState("PALGHAT")
     const [accountHolderCity, setAccountHolderCity] = useState("KERALA-678594")
     const [accountHolderCuntry, setAccountHolderCuntry] = useState("INDIA")
-    // const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004");
     const [accountCurrency, setAccountCurrency] = useState("INR");
-    // const [accountMatureDate, setAccountMatureDate] = useState("04/08/2024");
-    // const [accountInterestRate, setAccountInterestRate] = useState("2");
-    // const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01-10-2021");
     const [endStatementDate, setEndStatementDate] = useState("31-03-2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
+    const [currentFFDBalance, setCurrentFFDBalance] = useState("0")
     const [totalDeposit, setTotalDeposit] = useState(0);
     const Transactions = useSelector(state => state.Transactions.Transactions);
     const User = useSelector(state => state.User.User);
@@ -158,9 +155,8 @@ function UCOBankTransaction() {
         return `${splitDate[0]}-${splitDate[1]}-${splitDate[2]}`
     }
 
-
     return (
-        <div className=" p-10 ">
+        <div className="p-10 font-mono">
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -175,9 +171,9 @@ function UCOBankTransaction() {
             }
 
 
-            <div className=' grid grid-cols-3 print:text-[11px] print:leading-[14px]'>
+            <div className=' grid grid-cols-3 print:text-[11px] print:leading-[14px] font-Poppins pt-5'>
                 <div>
-                    <img src={logo} alt="" className=' w-48 ' />
+                    <img src={logo} alt="" className=' w-48 -translate-y-5' />
                 </div>
                 <div className=''>
                     {
@@ -235,9 +231,9 @@ function UCOBankTransaction() {
                                 <input type="text" placeholder='IFSC Code' value={IFSCCode} onChange={(e) => setIFSCCode(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                             </div>
                             :
-                            <div>
+                            <div >
                                 <span>IFSC Code</span>
-                                <span>:</span>
+                                <span className=' mx-1'>:</span>
                                 <span>{IFSCCode}</span>
                             </div>
                     }
@@ -251,7 +247,7 @@ function UCOBankTransaction() {
                             :
                             <div>
                                 <span>MICR Code</span>
-                                <span>:</span>
+                                <span className=' mx-1'>:</span>
                                 <span>{MICRCode}</span>
                             </div>
                     }
@@ -264,9 +260,8 @@ function UCOBankTransaction() {
                             </div>
                             :
                             <div>
-                                <span>Branch Phone</span>
-                                <span>:</span>
-                                <span>{branchPhone}</span>
+                                <span>Branch Phone .</span>
+                                <span className=' ml-1'>{branchPhone}</span>
                             </div>
                     }
                     {
@@ -278,8 +273,8 @@ function UCOBankTransaction() {
                             </div>
                             :
                             <div>
-                                <span>Branch Phone</span>
-                                <span>:</span>
+                                <span>Branch Phone :</span>
+                                {/* <span>:</span> */}
                                 <span>{freeHelpLine}</span>
                             </div>
                     }
@@ -302,7 +297,7 @@ function UCOBankTransaction() {
                         editMode ?
                             <div className=' flex items-center'>
                                 <span className=' font-semibold'>CKYC NO :</span>
-                                <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                <input type="text" placeholder='Account Type' value={CKYCNumber} onChange={(e) => setCKYCNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                             </div>
                             :
 
@@ -345,7 +340,7 @@ function UCOBankTransaction() {
 
                         <p className=' mr-10'>{accountCurrency}</p>
                 }
-                <p>PAGE : 1</p>
+                {/* <p>PAGE : 1</p> */}
             </div>
 
             <div className=' flex print:text-[12px] my-3'>
@@ -425,7 +420,7 @@ function UCOBankTransaction() {
             </div>
             <div className=' mt-5 flex justify-between  print:text-[11px]'>
                 <div className=' flex'>
-                    <p>STATEMENT OF ACCOUNT FOR THE PERIOD OF </p>
+                    <p className=' mb-2'>STATEMENT OF ACCOUNT FOR THE PERIOD OF </p>
                     {
                         editMode ?
 
@@ -443,9 +438,17 @@ function UCOBankTransaction() {
                             <p className=' ml-20'>{startStatementDate} to {endStatementDate} - Curr FFD Balance:</p>
                     }
                 </div>
-                <p>0</p>
+                {
+                    editMode ?
+                        <div>
+                            <span>Current FFD Ballance : </span>
+                            <input type="text" placeholder='Current FFD Balance' value={currentFFDBalance} onChange={(e) => setCurrentFFDBalance(e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+                        </div>
+                        :
+                        <p>{currentFFDBalance}</p>
+                }
             </div>
-            <div>
+            <div className=' flex justify-end'>
                 {
                     editMode &&
                     <div>
@@ -465,6 +468,11 @@ function UCOBankTransaction() {
                             <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                             <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                         </div>
+                        <div className=' flex my-[2px]'>
+                            <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Currancy Suffix</span>
+                            <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                            <input type="text" value={currancySuffix} onChange={(e) => setCurrancySuffix(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                        </div>
                     </div>
                 }
             </div>
@@ -483,25 +491,25 @@ function UCOBankTransaction() {
                         {
                             randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                                 return (
-                                    <tr className="" key={index}>
-                                        <td className=" text-sm print:text-[10px] print:leading-[13px] uppercase">
+                                    <tr className="align-text-top" key={index}>
+                                        <td className=" text-sm print:text-[10px] print:leading-[11px]">
                                             <p>{GetFormateDate(item.date)}</p>
                                         </td>
 
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] w-[27%] pr-2">
+                                        <td className="text-sm print:text-[10px] print:leading-[11px] w-[27%] pr-2">
                                             <p>{item.particular}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
+                                        <td className="text-sm print:text-[10px] print:leading-[11px] text-right">
                                             <p>{item.cheque}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
+                                        <td className="text-sm print:text-[10px] print:leading-[11px]  text-right">
                                             <p>{item.withdrawal > 0 && commaNumber(item.withdrawal.toFixed(2))}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
+                                        <td className="text-sm print:text-[10px] print:leading-[11px] text-right">
                                             <p>{item.deposit > 0 && commaNumber(item.deposit.toFixed(2))}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
-                                            <p>{commaNumber(item.balance.toFixed(2))}</p>
+                                        <td className="text-sm print:text-[10px] print:leading-[11px] text-right">
+                                            <p>{commaNumber(item.balance.toFixed(2))}{currancySuffix}</p>
                                         </td>
                                     </tr>
                                 )
@@ -509,8 +517,8 @@ function UCOBankTransaction() {
                         }
 
                         <tr>
-                            <td className=" text-centert print:text-[10px] border-y border-dashed" colSpan={3}>Total</td>
-                            <td className=" text-right text-sm print:text-[10px] border-y border-dashed" colSpan={3}>
+                            <td className=" text-centert print:text-[10px] border-y border-dashed border-gray-400" colSpan={3}>Total</td>
+                            <td className=" text-right text-sm print:text-[10px] border-y border-dashed border-gray-400" colSpan={3}>
                                 <div className='flex justify-start'>
                                     <span className=' mr-5' >{commaNumber(totalWithdrawal.toFixed(2))}</span>
                                     <span className=' mr-8'>{commaNumber(totalDeposit.toFixed(2))}</span>

@@ -20,13 +20,13 @@ function UCBBankStatement() {
     const [customerId, setCustomerId] = useState("1234567899")
     const [fhp, setFhp] = useState("MD. ALAMGIR MIAH")
     const [editMode, setEditMode] = useState(false);
-    const [printDate, setPrintDate] = useState("01/01/2020");
+    // const [printDate, setPrintDate] = useState("01/01/2020");
     const [accountCurrancy, setAccountCurrancy] = useState("BDT")
     const [branchName, setBranchName] = useState("New Eskaton Branch");
-    const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
-    const [openingDate, setOpeningDate] = useState("01/01/2020");
-    const [lastTRDate, setLastTRDate] = useState("01/01/2020");
-    const [reportGenerateUser, setReportGenerateUser] = useState("");
+    // const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
+    // const [openingDate, setOpeningDate] = useState("01/01/2020");
+    // const [lastTRDate, setLastTRDate] = useState("01/01/2020");
+    // const [reportGenerateUser, setReportGenerateUser] = useState("");
     const [accountType, setAccountType] = useState("Saving");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
     const [preAccountNumber, setPreAccountNumber] = useState("12345678999976")
@@ -443,51 +443,51 @@ function UCBBankStatement() {
 
                 <thead className=''>
                     <tr className=''>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Trans. Date</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Cheque#</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Ref.</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Naration</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-center'>Trans. Details</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Debit</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Credit</td>
-                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border border-gray-800 p-2 text-gray-800 text-right'>Balance</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800'>Trans. Date</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800'>Cheque#</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800'>Ref.</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800'>Naration</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800 text-center'>Trans. Details</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800 text-right'>Debit</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800 text-right'>Credit</td>
+                        <td className=' font-semibold print:px-1 pb-1 print:text-[12px] border-x border-t border-gray-800 p-2 text-gray-800 text-right'>Balance</td>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr className=''>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'>Balance Forward</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-gray-800'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-right'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-right'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-right'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border border-gray-800 p-2 text-right text-gray-800'>{commaNumber(initialBalance)}</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800'>Balance Forward</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2 text-gray-800'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2 text-right'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2 text-right'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-l border-t border-gray-800 p-2 text-right'></td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border-x border-t border-gray-800 p-2 text-right text-gray-800'>{commaNumber(initialBalance)}</td>
                     </tr>
 
                     {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
 
                             return (
-                                <tr>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormateDate(item.date)}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.cheque}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.ref}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.particular} </td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.transactionDetails}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
-                                    <td className=' border border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>
+                                <tr className=' align-text-top'>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormateDate(item.date)}</td>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.cheque}</td>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.ref}</td>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.particular} </td>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.transactionDetails}</td>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
+                                    <td className=' border-l border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
+                                    <td className=' border-x border-t border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })
                     }
                     <tr className=''>
-                        <td className='p-2 border-t-0 border border-gray-800 print:px-1 print:text-[10px] print:py-0 text-right pr-5' colSpan="5">Total </td>
-                        <td className='p-2 border-t-0 border border-gray-800 print:px-1 print:text-[10px] print:py-0 uppercase text-right'>{commaNumber(totalWithdrawal)}</td>
-                        <td className='p-2 border-t-0 border border-gray-800 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
-                        <td className='p-2 border-t-0 border border-gray-800 print:px-1 print:text-[10px] print:py-0'></td>
+                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0 text-right pr-5' colSpan="5">Total </td>
+                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0 uppercase text-right'>{commaNumber(totalWithdrawal)}</td>
+                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0'></td>
                     </tr>
                 </tbody>
                 <tfoot className="table-footer-group">

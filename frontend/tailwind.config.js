@@ -7,11 +7,13 @@ module.exports = {
       fontFamily: {
         'nuosu': ['Nuosu SIL', 'serif'],
         'lora': ['Lora', 'serif'],
+        'Poppins': ['sans-serif']
       },
 
       backgroundImage: {
         'water-mark': "url('./Photos/islami_bank_water_mark.png')",
-        'ucb-water-mark': "url('./Photos/ucb_bank/water_mark.png')"
+        'ucb-water-mark': "url('./Photos/ucb_bank/water_mark.png')",
+        'uco-background': "url('./Photos/uco_bank/bg2.png')"
       },
       backgroundSize: {
         'auto': 'auto',
@@ -19,6 +21,7 @@ module.exports = {
         'contain': 'contain',
         '50%': '50%',
         '75%': '75%',
+        '85%': "85%"
       },
       backgroundPosition: {
         'left-custom': '70% 120%',

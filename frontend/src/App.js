@@ -26,6 +26,7 @@ import UCBBankStatement from "./Pages/UCBBankStatement";
 import UCOBankStatement from "./Pages/UCOBankStatement";
 import UCBBankTran from "./Pages/UCBBankTran";
 import UCOBankTran from "./Pages/UCOBankTran";
+import UCObankCertificate from "./Pages/UCOBankCertificate";
 
 
 function App() {
@@ -147,6 +148,11 @@ function App() {
         <Route path="/ucb_bank_solvency"
           element={<PrivateRoute>
             < UCBbankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/uco_bank_solvency"
+          element={<PrivateRoute>
+            < UCObankCertificate />
           </PrivateRoute>} />
 
         <Route path="/bank_asia_one"

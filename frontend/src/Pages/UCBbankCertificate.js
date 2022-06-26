@@ -261,7 +261,7 @@ function UCBbankCertificate() {
 
                 </div>
             </div>
-            <div className=' text-gray-500 leading-5 text-sm mt-[120px] print:fixed bottom-0 font-sans'>
+            <div className=' text-gray-500 leading-5 text-sm mt-[120px] print:fixed bottom-3 font-sans'>
                 <p className=' text-red-800 text-lg font-semibold'>United Commercial Bank Limited</p>
                 <p>Corporate Office:Plot-CWS(A)-1 Road No-34</p>
                 <p>Gulshan Avenue, Dhaka-1212, Bangladesh.</p>

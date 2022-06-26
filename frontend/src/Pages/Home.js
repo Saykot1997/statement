@@ -71,6 +71,11 @@ function Home() {
                         <p className=' text-center font-medium'>UCB Bank Solvency</p>
                     </div>
                 </Link>
+                <Link to={`/uco_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>UOB Bank Solvency</p>
+                    </div>
+                </Link>
                 {/* <Link to={`/bank_asia_two`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Bank Asia Certificate</p>
