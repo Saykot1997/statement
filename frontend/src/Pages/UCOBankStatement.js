@@ -354,7 +354,7 @@ function UCOBankTransaction() {
 
                         <div className=' flex items-center'>
                             <span className=' font-semibold'>Account Holder Name :</span>
-                            <input type="text" placeholder='Currancy' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                            <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                         </div>
                         :
                         <p className=' w-[40%]'>{accountHoldersName}</p>
