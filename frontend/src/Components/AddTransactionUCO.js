@@ -30,7 +30,7 @@ function UCO({ toggleAddTransactionMode }) {
 
     const CreateTransaction = async () => {
 
-        if (transactionName === '' || transactionType === '' || transactionMethod === '' || cheque === '' || bankName === '') {
+        if (transactionName === '' || transactionType === '' || transactionMethod === '' || bankName === '') {
 
             return toast.error('Please fill all the fields')
         }
