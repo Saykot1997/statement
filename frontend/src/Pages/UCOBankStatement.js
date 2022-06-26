@@ -155,6 +155,11 @@ function UCOBankTransaction() {
         return `${splitDate[0]}-${splitDate[1]}-${splitDate[2]}`
     }
 
+
+    // console.log(randomTransictions)
+    // console.log(hideStartStatementDate)
+    // console.log(hideEndStatementDate)
+
     return (
         <div className="p-10 font-mono">
             {
@@ -481,7 +486,7 @@ function UCOBankTransaction() {
                     <tbody>
                         <tr className="">
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-left">DATE</th>
-                            <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-left w-[27%]">PARTICULARS</th>
+                            <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-left w-[30%]">PARTICULARS</th>
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-right">CHQ.NO</th>
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-right">WITHDRAWAL</th>
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1  text-right">DEPOSITS</th>
@@ -496,7 +501,7 @@ function UCOBankTransaction() {
                                             <p>{GetFormateDate(item.date)}</p>
                                         </td>
 
-                                        <td className="text-sm print:text-[10px] print:leading-[11px] w-[27%] pr-2">
+                                        <td className="text-sm print:text-[10px] print:leading-[11px] w-[30%] pr-2">
                                             <p>{item.particular}</p>
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[11px] text-right">

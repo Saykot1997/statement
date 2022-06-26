@@ -1,8 +1,12 @@
 const GenerateRandomTranjections = (startStatementDate, endStatementDate, transactions, transactionQuantity, initialBalance, ATMAmounts, ChequeAmounts) => {
 
+    // console.log(endStatementDate)
     let totalDays = (new Date(endStatementDate).getTime() - new Date(startStatementDate).getTime()) / (1000 * 3600 * 24);
+    // console.log(totalDays)
     let totalYears = totalDays / 365;
-    let totalMonths = totalDays / 25;
+    let totalMonths = Math.floor(totalDays / 24)
+
+    console.log(totalMonths)
 
     // randomTransictionsDate between startStatementDate and endStatementDate with trantions quantity
 
@@ -12,7 +16,7 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         let randomDate = new Date(startStatementDate);
         randomDate.setDate(randomDate.getDate() + Math.floor(Math.random() * totalDays));
         randomDate.setFullYear(randomDate.getFullYear() + Math.floor(Math.random() * totalYears));
-        randomDate.setMonth(randomDate.getMonth() + Math.floor(Math.random() * totalMonths));
+        randomDate.setMonth(Math.floor(Math.random() * totalMonths));
         randomTransictionsDates.push(randomDate);
     }
 
@@ -22,6 +26,8 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         let dateB = new Date(b);
         return dateA - dateB;
     })
+
+    // console.log(randomTransictionsDates)
 
     // randomTransictions
 
