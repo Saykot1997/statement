@@ -67,7 +67,7 @@ function UCObankCertificate() {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=''>{accountHolderName},</span>
+                                <span className='mx-1'>{accountHolderName},</span>
 
                         } Son of
                         {
@@ -171,7 +171,7 @@ function UCObankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>OMR</span>. {
+                    <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>IMR</span>. {
 
                         editMode ?
                             <input type="text" placeholder='balance in word' value={inWordBdTaka} onChange={(e) => setInWordBdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
