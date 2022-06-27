@@ -56,7 +56,7 @@ function UCObankCertificate() {
 
             <div className=' w-full pt-5 py-16 px-10'>
                 <div className=' w-full flex justify-center'>
-                    <img src={logo} alt="" className=' w-60' />
+                    <img src={logo} alt="" className=' w-64' />
                 </div>
                 <div className=' text-center my-[50px]'>
                     <span className=' border-b border-gray-800 font-semibold capitalize text-gray-800'>To Whom It May Concern</span>
@@ -171,7 +171,7 @@ function UCObankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>IMR</span>. {
+                    <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>INR</span>. {
 
                         editMode ?
                             <input type="text" placeholder='balance in word' value={inWordBdTaka} onChange={(e) => setInWordBdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -188,9 +188,9 @@ function UCObankCertificate() {
                 <div className=' my-5'>
                     <p>To the best of our knowledge, the client is financially sound and solvent.</p>
                 </div>
-                <div className=' text-center mt-10'>
+                {/* <div className=' text-center mt-10'>
                     <p className=' font-semibold text-gray-800'>FOR UNITED COMMERCIAL BANK PLC.</p>
-                </div>
+                </div> */}
                 <div className=' grid grid-cols-3 mt-8 items-center'>
                     <div className=' w-full relative'>
                         <div className=''>
