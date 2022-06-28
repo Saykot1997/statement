@@ -1,13 +1,11 @@
 const GenerateRandomTranjections = (startStatementDate, endStatementDate, transactions, transactionQuantity, initialBalance, ATMAmounts, ChequeAmounts) => {
 
-
     function getDatesInRange(startDate, endDate) {
         const date = new Date(startDate.getTime());
 
         date.setDate(date.getDate() + 1);
 
         const dates = [];
-
 
         while (date < endDate) {
             dates.push(new Date(date));
@@ -20,27 +18,13 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
     const d1 = new Date(startStatementDate);
     const d2 = new Date(endStatementDate);
 
-
-    // let totalDays = (new Date(endStatementDate).getTime() - new Date(startStatementDate).getTime()) / (1000 * 3600 * 24);
     let allDates = getDatesInRange(d1, d2)
-
-    // let totalYears = totalDays / 365;
-    // let totalMonths = Math.floor(totalDays / 24)
-
-    // randomTransictionsDate between startStatementDate and endStatementDate with trantions quantity
 
     let randomTransictionsDates = [];
 
     for (let i = 0; i < transactionQuantity; i++) {
-
-        // let randomDate = new Date(startStatementDate);
-        // randomDate.setFullYear(randomDate.getFullYear() + Math.floor(Math.random() * totalYears));
-        // randomDate.setMonth(Math.floor(Math.random() * totalMonths));
-        // randomDate.setDate(allDates[Math.floor(Math.random() * allDates.length)]);
         randomTransictionsDates.push(allDates[Math.floor(Math.random() * allDates.length)]);
     }
-
-    console.log(randomTransictionsDates)
 
     // sort randomTransictionsDate by date
     randomTransictionsDates.sort((a, b) => {
@@ -48,8 +32,6 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         let dateB = new Date(b);
         return dateA - dateB;
     })
-
-    // console.log(randomTransictionsDates)
 
     // randomTransictions
 
