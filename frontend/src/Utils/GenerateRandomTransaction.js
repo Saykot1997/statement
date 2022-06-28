@@ -103,8 +103,8 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
             branchCode: randomBranchCode,
             date: "",
             time: randomTransictionsTime + ":" + randomTransictionsMunite,
-            withdrawal: randomWithdrawal,
-            deposit: randomDeposit,
+            withdrawal: `${randomWithdrawal}.00`,
+            deposit: `${randomDeposit}.00`,
             type: transactions[findRandomParticular].transactionType,
             method: transactions[findRandomParticular].transactionMethod,
 
@@ -145,11 +145,11 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             if (i === 0) {
 
-                randomTransictionsObject.balance = parseInt(initialBalance) + parseInt(randomDeposit);
+                randomTransictionsObject.balance = parseFloat(initialBalance) + parseFloat(randomDeposit);
 
             } else {
 
-                randomTransictionsObject.balance = randomTransictions[i - 1].balance + parseInt(randomDeposit);
+                randomTransictionsObject.balance = randomTransictions[i - 1].balance + parseFloat(randomDeposit);
             }
         } else {
 
@@ -157,11 +157,11 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             if (i === 0) {
 
-                randomTransictionsObject.balance = parseInt(initialBalance) - parseInt(randomWithdrawal);
+                randomTransictionsObject.balance = parseFloat(initialBalance) - parseFloat(randomWithdrawal);
 
             } else {
 
-                randomTransictionsObject.balance = randomTransictions[i - 1].balance - parseInt(randomWithdrawal);
+                randomTransictionsObject.balance = randomTransictions[i - 1].balance - parseFloat(randomWithdrawal);
             }
         }
 

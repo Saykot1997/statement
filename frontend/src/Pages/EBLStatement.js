@@ -257,6 +257,8 @@ function EBLStatement() {
         return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
     }
 
+    console.log(randomTransictions)
+
 
     return (
         <div className=" typeWriter p-5 print:p-0">
