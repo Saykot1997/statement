@@ -103,8 +103,8 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
             branchCode: randomBranchCode,
             date: "",
             time: randomTransictionsTime + ":" + randomTransictionsMunite,
-            withdrawal: `${randomWithdrawal}.00`,
-            deposit: `${randomDeposit}.00`,
+            withdrawal: randomWithdrawal,
+            deposit: randomDeposit,
             type: transactions[findRandomParticular].transactionType,
             method: transactions[findRandomParticular].transactionMethod,
 
@@ -145,11 +145,11 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             if (i === 0) {
 
-                randomTransictionsObject.balance = parseFloat(initialBalance) + parseFloat(randomDeposit);
+                randomTransictionsObject.balance = parseInt(initialBalance) + parseInt(randomDeposit);
 
             } else {
 
-                randomTransictionsObject.balance = parseFloat(randomTransictions[i - 1].balance) + parseFloat(randomDeposit);
+                randomTransictionsObject.balance = parseInt(randomTransictions[i - 1].balance) + parseInt(randomDeposit);
             }
         } else {
 
@@ -157,11 +157,11 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             if (i === 0) {
 
-                randomTransictionsObject.balance = parseFloat(initialBalance) - parseFloat(randomWithdrawal);
+                randomTransictionsObject.balance = parseInt(initialBalance) - parseInt(randomWithdrawal);
 
             } else {
 
-                randomTransictionsObject.balance = parseFloat(randomTransictions[i - 1].balance) - parseFloat(randomWithdrawal);
+                randomTransictionsObject.balance = parseInt(randomTransictions[i - 1].balance) - parseInt(randomWithdrawal);
             }
         }
 
@@ -170,8 +170,8 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
     return {
         RandomTransictions: randomTransictions,
-        TotalWithdrawal: `${interTotalWithdrawal}.00`,
-        TotalDeposit: `${interTotalDeposit}.00`,
+        TotalWithdrawal: interTotalWithdrawal,
+        TotalDeposit: interTotalDeposit,
     }
 }
 
