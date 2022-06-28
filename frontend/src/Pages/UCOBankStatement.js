@@ -503,13 +503,13 @@ function UCOBankTransaction() {
                                             <p>{item.cheque}</p>
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[11px]  text-right">
-                                            <p>{item.withdrawal > 0 && commaNumber(item.withdrawal.toFixed(2))}</p>
+                                            <p>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</p>
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[11px] text-right">
-                                            <p>{item.deposit > 0 && commaNumber(item.deposit.toFixed(2))}</p>
+                                            <p>{item.deposit > 0 && commaNumber(item.deposit)}</p>
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[11px] text-right">
-                                            <p>{commaNumber(item.balance.toFixed(2))}{currancySuffix}</p>
+                                            <p>{commaNumber(item.balance)}{currancySuffix}</p>
                                         </td>
                                     </tr>
                                 )
@@ -520,9 +520,9 @@ function UCOBankTransaction() {
                             <td className=" text-centert print:text-[10px] border-y border-dashed border-gray-400" colSpan={3}>Total</td>
                             <td className=" text-right text-sm print:text-[10px] border-y border-dashed border-gray-400" colSpan={3}>
                                 <div className='flex justify-start'>
-                                    <span className=' mr-5' >{commaNumber(totalWithdrawal.toFixed(2))}</span>
-                                    <span className=' mr-8'>{commaNumber(totalDeposit.toFixed(2))}</span>
-                                    <span>{randomTransictions.length > 0 && commaNumber(randomTransictions[randomTransictions.length - 1].balance.toFixed(2))}</span>
+                                    <span className=' mr-5' >{commaNumber(totalWithdrawal)}</span>
+                                    <span className=' mr-8'>{commaNumber(totalDeposit)}</span>
+                                    <span>{randomTransictions.length > 0 && commaNumber(randomTransictions[randomTransictions.length - 1].balance)}</span>
                                 </div>
                             </td>
                         </tr>
