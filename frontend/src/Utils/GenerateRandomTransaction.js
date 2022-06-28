@@ -149,7 +149,7 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             } else {
 
-                randomTransictionsObject.balance = randomTransictions[i - 1].balance + parseFloat(randomDeposit);
+                randomTransictionsObject.balance = parseFloat(randomTransictions[i - 1].balance) + parseFloat(randomDeposit);
             }
         } else {
 
@@ -161,7 +161,7 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             } else {
 
-                randomTransictionsObject.balance = randomTransictions[i - 1].balance - parseFloat(randomWithdrawal);
+                randomTransictionsObject.balance = parseFloat(randomTransictions[i - 1].balance) - parseFloat(randomWithdrawal);
             }
         }
 
@@ -170,8 +170,8 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
     return {
         RandomTransictions: randomTransictions,
-        TotalWithdrawal: interTotalWithdrawal,
-        TotalDeposit: interTotalDeposit,
+        TotalWithdrawal: `${interTotalWithdrawal}.00`,
+        TotalDeposit: `${interTotalDeposit}.00`,
     }
 }
 
