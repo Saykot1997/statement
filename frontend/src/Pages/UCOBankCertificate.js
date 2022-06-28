@@ -67,46 +67,46 @@ function UCObankCertificate() {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className='mx-1'>{accountHolderName},</span>
+                                <span className=''> {accountHolderName}, </span>
 
                         } Son of
                         {
                             editMode ?
                                 <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=''>{accountHolderFotherName},</span>
+                                <span className=''> {accountHolderFotherName}, </span>
 
                         } at P.O.BOX {
                             editMode ?
 
                                 <input type="text" placeholder='Post Box Code' value={postBoxCode} onChange={(e) => setPostBoxCode(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=''>{postBoxCode},</span>
+                                <span className=''>{postBoxCode}, </span>
 
                         } P.O.Code {
                             editMode ?
                                 <input type="text" placeholder='Post office Code' value={postOfficeCode} onChange={(e) => setPostOfficeCode(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span>{postOfficeCode}</span>
+                                <span>{postOfficeCode} </span>
 
                         } {
                             editMode ?
 
                                 <input type="text" placeholder='Address' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderAddress}</span>
+                                <span className=''>{accountHolderAddress} </span>
 
                         } has been maintaining the following {
                             editMode ?
                                 <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountType}</span>
+                                <span className=''>{accountType} </span>
                         } account bearing No.
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountNumber}</span>
+                                <span className=''>{accountNumber} </span>
                         }
                         with us.</p>
                 </div>

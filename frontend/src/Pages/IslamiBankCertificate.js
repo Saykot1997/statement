@@ -123,14 +123,14 @@ function IslamiBankCertificate() {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderName}</span>
+                                <span className=''> {accountHolderName} </span>
                         }
                         S/o
                         {
                             editMode ?
                                 <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderFotherName}</span>
+                                <span className=''>{accountHolderFotherName} </span>
                         }
 
                         &
@@ -139,63 +139,62 @@ function IslamiBankCertificate() {
                             editMode ?
                                 <input type="text" placeholder='Mother Name' value={accountHolderMotherName} onChange={(e) => setAccountHolderMotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderMotherName}</span>
+                                <span className=' mx-1'>{accountHolderMotherName}, </span>
                         }
-                        , Address:-
+                        Address:-
                         {
                             editMode ?
                                 <input type="text" placeholder='house' value={accountHolderHouse} onChange={(e) => setAccountHolderHouse(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderHouse}</span>
+                                <span className=''>{accountHolderHouse}, </span>
                         }
-                        ,
+
                         {
                             editMode ?
                                 <input type="text" placeholder='village' value={accountHoldervillage} onChange={(e) => setAccountHoldervillage(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHoldervillage}</span>
+                                <span className=''>{accountHoldervillage}, </span>
                         }
                         Word No-
                         {
                             editMode ?
                                 <input type="text" placeholder='Word No' value={accountHolderWard} onChange={(e) => setAccountHolderWard(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderWard}</span>
+                                <span className=''>{accountHolderWard}, </span>
                         }
                         {
                             editMode ?
                                 <input type="text" placeholder='Post Office' value={accountHolderPost} onChange={(e) => setAccountHolderPost(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderPost}</span>
+                                <span className=''>{accountHolderPost}, </span>
                         }
-                        ,
                         {
                             editMode ?
                                 <input type="text" placeholder='District' value={accountHolderThana} onChange={(e) => setAccountHolderThana(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderThana}</span>
+                                <span className=''>{accountHolderThana}, </span>
                         }
-                        ,{branchName},{branchCity} have been maintaing a
+                        {branchName}, {branchCity} have been maintaing a
 
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountType}</span>
+                                <span className=''> {accountType} </span>
                         }
                         Account brearing No.
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountNumber}</span>
+                                <span className=''>{accountNumber} </span>
                         }
                         since
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountOpeningDate} onChange={(e) => setAccountOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountOpeningDate}</span>
+                                <span className=''> {accountOpeningDate} </span>
                         }
                         with our branch. The details of the aforementioned account is given below:</p>
                 </div>

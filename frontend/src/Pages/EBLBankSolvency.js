@@ -155,7 +155,7 @@ function EBLBankSolvency() {
                                 :
                                 <span className=' mx-1'>{accountHolderAddress}</span>
                         }
-                        has been,maintaining followning account with us since
+                        has been maintaining followning account with us since
                         {
                             editMode ?
                                 <input type="text" placeholder='Date' value={accountOpeningDate} onChange={(e) => setAccountOpeningDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />

@@ -10,14 +10,16 @@ function UCBbankCertificate() {
     const [printDate, setPrintDate] = useState("18.05.2022");
     const [ref, setRef] = useState("UCBL/GB/NEB/2022");
     const [editMode, setEditMode] = useState(false);
-    const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
-    const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
-    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A,Holding No-20,Cantonment-4, Mohakhali OOHS, Dhaka Cantonment, Bangladesh")
+    const [accountHolderName, setAccountHolderName] = useState("Mahedi Hasan Munna")
+    const [accountHolderFotherName, setAccountHolderFotherName] = useState("Md Alamgir Miah")
+    // const [accountHolderHouseNumber, setAccountHolderHouseNumber] = useState("40/A")
+    // const [accountHolderHouseHoldingNumber, setAccountHolderHolding] = useState("20")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A, Holding No-20, Cantonment-4, Mohakhali OOHS, Dhaka Cantonment, Bangladesh")
     const [branchHouse, setBranchHouse] = useState('"Waqf Bhaban" (1st Floor)')
     const [branchRoad, setBranchRoad] = useState("4,New Eskaton Road, Dhaka-1000.")
     const [branchRoutingNumber, setBranchRoutingNumber] = useState("245261396")
     const [accountNumber, setAccountNumber] = useState("0943211000001452")
-    const [accountType, setAccountType] = useState("Saving Accounts")
+    const [accountType, setAccountType] = useState("Saving Deposit")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
@@ -115,26 +117,25 @@ function UCBbankCertificate() {
                     <span className=' border-b border-gray-800 font-semibold capitalize text-gray-900'>To Whom It May Concern</span>
                 </div>
                 <div>
-                    <p className=' leading-7'>This is to inform that
+                    <p className='leading-7'>This is to inform that
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderName},</span>
+                                <span className=''> {accountHolderName}, </span>
                         }Son of
                         {
                             editMode ?
                                 <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderFotherName},</span>
+                                <span className=''> {accountHolderFotherName}, </span>
                         }
-
                         at
                         {
                             editMode ?
                                 <input type="text" placeholder='Address ' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountHolderAddress},</span>
+                                <span className=''> {accountHolderAddress} </span>
                         }
                         have been maintaing the following
 
@@ -142,14 +143,14 @@ function UCBbankCertificate() {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountType}</span>
+                                <span className=''> {accountType} </span>
                         }
                         account bearing No.
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=' mx-1'>{accountNumber}</span>
+                                <span className=''>{accountNumber} </span>
                         }
                         with us. Details as follows:
                     </p>
