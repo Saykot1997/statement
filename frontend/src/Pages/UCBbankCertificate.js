@@ -12,8 +12,10 @@ function UCBbankCertificate() {
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState("Mahedi Hasan Munna")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Md Alamgir Miah")
-    // const [accountHolderHouseNumber, setAccountHolderHouseNumber] = useState("40/A")
-    // const [accountHolderHouseHoldingNumber, setAccountHolderHolding] = useState("20")
+    const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
+    const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
+    const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
+    const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
     const [accountHolderAddress, setAccountHolderAddress] = useState("40/A, Holding No-20, Cantonment-4, Mohakhali OOHS, Dhaka Cantonment, Bangladesh")
     const [branchHouse, setBranchHouse] = useState('"Waqf Bhaban" (1st Floor)')
     const [branchRoad, setBranchRoad] = useState("4,New Eskaton Road, Dhaka-1000.")
@@ -241,8 +243,19 @@ function UCBbankCertificate() {
                     <div className=' w-full relative'>
                         <div className=''>
                             <img src={signature1} alt="" className=' w-52 translate-y-3' />
-                            <p>Mohammad Mahabub Alam</p>
-                            <p>FAVP & Operation Manager</p>
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={leftManagerName} onChange={(e) => setLeftManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={leftManagerPost} onChange={(e) => setLeftManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerPost}</p>
+
+                            }
                         </div>
                     </div>
 
@@ -255,11 +268,21 @@ function UCBbankCertificate() {
                     <div className=' w-full relative flex justify-end '>
                         <div className=' -translate-y-3'>
                             <img src={signature2} alt="" className=' w-40 translate-y-3' />
-                            <p>Kazi Muzibul Islam</p>
-                            <p>EVP & Head of Branch</p>
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={rightManagerName} onChange={(e) => setRightManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={rightManagerPost} onChange={(e) => setRightManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerPost}</p>
+
+                            }
                         </div>
                     </div>
-
                 </div>
             </div>
             <div className=' text-gray-500 leading-5 text-sm mt-[120px] print:fixed bottom-3 font-sans'>

@@ -187,7 +187,7 @@ function EBLBankSolvency() {
                                                 <input type="text" placeholder='Date' value={balanceDate} onChange={(e) => setBalanceDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <span className=' mx-1'>Balance as of {balanceDate}</span>
+                                            <p className=' mx-1'>Balance as of <span>{balanceDate}</span></p>
                                     }
 
                                 </th>
