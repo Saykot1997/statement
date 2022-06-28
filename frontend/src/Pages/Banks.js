@@ -41,9 +41,14 @@ function Banks() {
                 </Link>
                 <Link to={`/banks/uco_bank`}>
                     <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
-                        <span className=' font-medium '>UCo Bank</span>
+                        <span className=' font-medium '>UCO Bank</span>
                     </div>
                 </Link>
+                {/* <Link to={`/banks/canara_bank`}>
+                    <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
+                        <span className=' font-medium '>Canara Bank</span>
+                    </div>
+                </Link> */}
 
             </div>
         </div>

@@ -543,7 +543,7 @@ function EBLStatement() {
                                     <td className='text-left pl-3 print:leading-[14px] py-[4px]'>{item.branchCode}</td>
                                     <td className='text-right print:leading-[14px] py-[4px]'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className='print:leading-[14px] print:text-[10px] text-right py-[4px]'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
-                                    <td className='print:leading-[14px] print:text-[10px] text-right py-[4px]'>{item.balance}</td>
+                                    <td className='print:leading-[14px] print:text-[10px] text-right py-[4px]'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })

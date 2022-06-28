@@ -155,11 +155,6 @@ function UCOBankTransaction() {
         return `${splitDate[0]}-${splitDate[1]}-${splitDate[2]}`
     }
 
-
-    // console.log(randomTransictions)
-    // console.log(hideStartStatementDate)
-    // console.log(hideEndStatementDate)
-
     return (
         <div className="p-10 font-mono">
             {
