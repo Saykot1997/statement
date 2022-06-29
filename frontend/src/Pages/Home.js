@@ -36,11 +36,11 @@ function Home() {
                         <p className=' text-center font-medium'>UCO Bank</p>
                     </div>
                 </Link>
-                {/* <Link to={`/canara_bank`}>
+                <Link to={`/canara_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Canara Bank</p>
                     </div>
-                </Link> */}
+                </Link>
                 {/* 
                 <Link to={`/bank_asia_one`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
@@ -78,7 +78,7 @@ function Home() {
                 </Link>
                 <Link to={`/uco_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
-                        <p className=' text-center font-medium'>UOB Bank Solvency</p>
+                        <p className=' text-center font-medium'>UCO Bank Solvency</p>
                     </div>
                 </Link>
                 {/* <Link to={`/bank_asia_two`}>
