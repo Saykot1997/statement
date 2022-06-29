@@ -29,6 +29,7 @@ import UCOBankTran from "./Pages/UCOBankTran";
 import UCObankCertificate from "./Pages/UCOBankCertificate";
 import CanaraTransaction from "./Pages/CanaraBankTran";
 import CanaraBankStatement from "./Pages/CanaraBankStatement";
+import CanarabankCertificate from "./Pages/CanaraBankCertificate";
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
           </PrivateRoute>} />
 
         {/* transactions route */}
-        <Route path="/banks/jamuna_bank"
+        {/* <Route path="/banks/jamuna_bank"
           element={<PrivateRoute>
             <Laout>
               <JamunaBankOneTran />
@@ -71,7 +72,7 @@ function App() {
             <Laout>
               <BankAsiaTran />
             </Laout>
-          </PrivateRoute>} />
+          </PrivateRoute>} /> */}
 
         <Route path="/banks/islamic_bank"
           element={<PrivateRoute>
@@ -108,6 +109,33 @@ function App() {
           </PrivateRoute>} />
 
         {/* statement formate routes */}
+
+
+        {/* <Route path="/bank_asia_one"
+          element={<PrivateRoute>
+            <BankAsiaOne />
+          </PrivateRoute>} />
+
+        <Route path="/bank_asia_two"
+          element={<PrivateRoute>
+            <BankAsiaTwo />
+          </PrivateRoute>} />
+
+        <Route path="/ncc_bank_one"
+          element={<PrivateRoute>
+            <NCCBankOne />
+          </PrivateRoute>} />
+
+        <Route path="/ncc_bank_two"
+          element={<PrivateRoute>
+            <NCCBankTwo />
+          </PrivateRoute>} />
+
+        <Route path="/hsbc_bank_one"
+          element={<PrivateRoute>
+            <HSBCBankOne />
+          </PrivateRoute>} /> */}
+
         <Route path="/jamuna_bank_one"
           element={<PrivateRoute>
             <JamunaBankOne />
@@ -169,29 +197,9 @@ function App() {
             < UCObankCertificate />
           </PrivateRoute>} />
 
-        <Route path="/bank_asia_one"
+        <Route path="/canara_bank_solvency"
           element={<PrivateRoute>
-            <BankAsiaOne />
-          </PrivateRoute>} />
-
-        <Route path="/bank_asia_two"
-          element={<PrivateRoute>
-            <BankAsiaTwo />
-          </PrivateRoute>} />
-
-        <Route path="/ncc_bank_one"
-          element={<PrivateRoute>
-            <NCCBankOne />
-          </PrivateRoute>} />
-
-        <Route path="/ncc_bank_two"
-          element={<PrivateRoute>
-            <NCCBankTwo />
-          </PrivateRoute>} />
-
-        <Route path="/hsbc_bank_one"
-          element={<PrivateRoute>
-            <HSBCBankOne />
+            <CanarabankCertificate />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />

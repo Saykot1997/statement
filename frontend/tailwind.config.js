@@ -13,7 +13,8 @@ module.exports = {
       backgroundImage: {
         'water-mark': "url('./Photos/islami_bank_water_mark.png')",
         'ucb-water-mark': "url('./Photos/ucb_bank/water_mark.png')",
-        'uco-background': "url('./Photos/uco_bank/bg2.png')"
+        'uco-background': "url('./Photos/uco_bank/bg2.png')",
+        'canara-background': "url('./Photos/canara_bank/water_mark.png')"
       },
       backgroundSize: {
         'auto': 'auto',

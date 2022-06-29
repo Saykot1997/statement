@@ -68,7 +68,7 @@ function Home() {
                 </Link> */}
                 <Link to={`/islami_bank_certificate`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
-                        <p className=' text-center font-medium'>Islami Bank Certificate</p>
+                        <p className=' text-center font-medium'>Islami Bank Solvency</p>
                     </div>
                 </Link>
                 <Link to={`/ucb_bank_solvency`}>
@@ -79,6 +79,11 @@ function Home() {
                 <Link to={`/uco_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>UCO Bank Solvency</p>
+                    </div>
+                </Link>
+                <Link to={`/canara_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>Canara Bank Solvency</p>
                     </div>
                 </Link>
                 {/* <Link to={`/bank_asia_two`}>
