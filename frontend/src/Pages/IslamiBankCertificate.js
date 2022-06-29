@@ -227,7 +227,7 @@ function IslamiBankCertificate() {
                                     editMode ?
                                         <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                         :
-                                        <span className=' mx-1'>BDT:{accountBalance}</span>
+                                        <span className=' mx-1'>BDT:{commaNumber(accountBalance)}</span>
                                 }
                             </td>
                             <td className=' border border-gray-800 px-2 w-[20%]'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>

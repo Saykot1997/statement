@@ -144,7 +144,7 @@ function CanarabankCertificate() {
                                     editMode ?
                                         <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                         :
-                                        <span className=''>{accountBalance}</span>
+                                        <span className=''>{commaNumber(accountBalance)}</span>
                                 }
                             </td>
                             <td className=' border border-gray-500 px-2 text-center'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>

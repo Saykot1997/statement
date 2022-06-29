@@ -31,7 +31,7 @@ function EBLStatement() {
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("MOHONOB 5/1 C JOYNOB RESIDENCY");
     const [accountHolderState, setAccountHolderState] = useState("PATHAN TULA")
     const [accountHolderCity, setAccountHolderCity] = useState("SYLET")
-    const [accountCurrency, setAccountCurrency] = useState("Bangladeshi TAka");
+    const [accountCurrency, setAccountCurrency] = useState("Bangladeshi Taka");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
@@ -245,7 +245,7 @@ function EBLStatement() {
         } else if (splitDate[1].toString() === "10") {
             month = "OCT"
         } else if (splitDate[1].toString() === "11") {
-            month = "NOB"
+            month = "NOV"
         } else if (splitDate[1].toString() === "12") {
             month = "DEC"
         } else {
@@ -334,7 +334,7 @@ function EBLStatement() {
                             </div>
                             <div className=' flex justify-between pb-1 text-left'>
                                 <div className=' text-sm print:text-[11px] print:leading-[14px]  self-end'>
-                                    <p>ESTERN BANK LIMITED</p>
+                                    <p>EASTERN BANK LIMITED</p>
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
@@ -389,7 +389,7 @@ function EBLStatement() {
                                     }
                                 </div>
                                 <div className=' self-end'>
-                                    <p className=' text-sm print:text-[11px]'>ONLLINE STATEMENT</p>
+                                    <p className=' text-sm print:text-[11px]'>ONLINE STATEMENT</p>
                                 </div>
                                 <div className=' text-sm print:text-[12px] print:leading-[15px] text-left'>
                                     {

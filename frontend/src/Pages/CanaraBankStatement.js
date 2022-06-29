@@ -190,7 +190,7 @@ function CanaraBankStatement() {
         } else if (splitDate[1].toString() === "10") {
             month = "OCT"
         } else if (splitDate[1].toString() === "11") {
-            month = "NOB"
+            month = "NOV"
         } else if (splitDate[1].toString() === "12") {
             month = "DEC"
         } else {
