@@ -7,7 +7,7 @@ function Topbar() {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const dispatch = useDispatch();
-    const user = useSelector(state => state.User.User);
+    // const user = useSelector(state => state.User.User);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen)
@@ -32,7 +32,7 @@ function Topbar() {
     return (
         <div className=' w-full bg-white shadow h-16 z-10 flex justify-between items-center px-10 relative'>
             <div>
-                <Link to="/">Logo</Link>
+                <Link to="/">logo</Link>
             </div>
             <div>
                 <span onClick={toggleDropdown} className=" cursor-pointer">Menu</span>
