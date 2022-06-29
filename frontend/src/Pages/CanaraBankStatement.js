@@ -648,8 +648,8 @@ function CanaraBankStatement() {
                         <td colSpan={8}>
                             <div className=' w-full text-sm text-center'>
                                 <div className=' flex justify-center'>
-                                    <img src={bankSil} alt="" className='w-24' />
-                                    <img src={signe} alt="" className=' w-36' />
+                                    <img src={bankSil} alt="" className='w-28' />
+                                    {/* <img src={signe} alt="" className=' w-36' /> */}
                                 </div>
                             </div>
                         </td>

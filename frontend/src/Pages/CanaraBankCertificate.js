@@ -200,11 +200,11 @@ function CanarabankCertificate() {
                         </div>
                     </div>
                     <div className=' w-full'>
-                        <div>
+                        {/* <div>
                             <img src={signe} alt="" className=" w-60 translate-y-5" />
-                        </div>
+                        </div> */}
                         <div>
-                            <img src={sile} alt="" className=' w-32 ml-10' />
+                            <img src={sile} alt="" className=' w-28 ml-10' />
                         </div>
                     </div>
                     <div className=' w-full relative flex justify-end '>
