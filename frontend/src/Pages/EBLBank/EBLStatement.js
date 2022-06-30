@@ -257,11 +257,9 @@ function EBLStatement() {
         return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
     }
 
-    console.log(randomTransictions)
-
 
     return (
-        <div className=" typeWriter p-5 print:p-0">
+        <div className=" typeWriter p-5 print:p-0 print:text-[8px] print:leading-3">
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -282,7 +280,7 @@ function EBLStatement() {
                     <tr className=' w-full '>
                         <th class=" w-full report-header-cell" colspan="6" className=''>
                             <div className=' w-full flex justify-between'>
-                                <div className=' text-sm print:text-[11px] print:leading-[14px]  self-end flex flex-col items-start'>
+                                <div className='self-end flex flex-col items-start'>
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
@@ -333,7 +331,7 @@ function EBLStatement() {
                                 </div>
                             </div>
                             <div className=' flex justify-between pb-1 text-left'>
-                                <div className=' text-sm print:text-[11px] print:leading-[14px]  self-end'>
+                                <div className='self-end'>
                                     <p>EASTERN BANK LIMITED</p>
                                     {
                                         editMode ?
@@ -389,9 +387,9 @@ function EBLStatement() {
                                     }
                                 </div>
                                 <div className=' self-end'>
-                                    <p className=' text-sm print:text-[11px]'>ONLINE STATEMENT</p>
+                                    <p className=''>ONLINE STATEMENT</p>
                                 </div>
-                                <div className=' text-sm print:text-[12px] print:leading-[15px] text-left'>
+                                <div className='text-left'>
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
@@ -510,42 +508,42 @@ function EBLStatement() {
                 </thead>
 
                 <thead className=''>
-                    <tr className=' text-sm print:text-[11px]'>
+                    <tr className=''>
                         <td className=' pt-1'>TRN. DATE</td>
-                        <td className=' pt-1 w-[25%] text-left'>DESCRIPTION</td>
-                        <td className=' pt-1 text-left pl-3'>REFERENCE</td>
-                        <td className=' pt-1 text-right'>DEBIT</td>
+                        <td className=' pt-1 w-[25%] text-left'>DESCRIPTIONS</td>
+                        <td className=' pt-1 text-left pl-3'>REFERENCES</td>
+                        <td className=' pt-1 text-right'>DEBITS</td>
                         <td className=' pt-1 text-right'>CREDITS</td>
                         <td className=' pt-1 text-right'>BALANCE</td>
                     </tr>
                 </thead>
 
-                <tbody className=' text-sm print:text-[11px]'>
+                <tbody className=''>
                     <tr>
-                        <td className='print:leading-4 print:text-[11px] text-left py-[4px]'>{
+                        <td className='text-left py-[4px]'>{
                             editMode ?
                                 <input type="text" value={todayDate} onChange={(e) => setTodayDate(e.target.value)} placeholder='Todays Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                 :
                                 <span>{todayDate}</span>
                         }</td>
-                        <td className='print:leading-4 print:text-[10px] py-[4px]'>Opening Balance</td>
+                        <td className='py-[4px]'>Opening Balance</td>
                         <td className=' w-[25%] pl-3'></td>
                         <td></td>
-                        <td className='print:leading-4 print:text-[10px] text-right py-[4px]'>{commaNumber(initialBalance)}</td>
-                        <td className='print:leading-4 print:text-[10px] text-right py-[4px]'>{commaNumber(initialBalance)}</td>
+                        <td className='text-right py-[4px]'>{commaNumber(initialBalance)}</td>
+                        <td className='text-right py-[4px]'>{commaNumber(initialBalance)}</td>
                     </tr>
                     {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                             return (
-                                <tr>
-                                    <td className='print:leading-[14px] print:text-[10px] text-left align-text-top py-[4px]'>
+                                <tr className='align-text-top'>
+                                    <td className='text-left py-[4px]'>
                                         {item.date && GetFormateDate(item.date)}
                                     </td>
-                                    <td className='print:leading-[14px] print:text-[10px] w-[25%] text-left py-[4px]'>{item.particular}</td>
-                                    <td className='text-left pl-3 print:leading-[14px] py-[4px]'>{item.branchCode}</td>
-                                    <td className='text-right print:leading-[14px] py-[4px]'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
-                                    <td className='print:leading-[14px] print:text-[10px] text-right py-[4px]'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
-                                    <td className='print:leading-[14px] print:text-[10px] text-right py-[4px]'>{commaNumber(item.balance)}</td>
+                                    <td className='w-[25%] text-left py-[4px]'>{item.particular}</td>
+                                    <td className='text-left pl-3 py-[4px]'>{item.branchCode}</td>
+                                    <td className='text-right py-[4px]'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
+                                    <td className='text-right py-[4px]'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
+                                    <td className='text-right py-[4px]'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })
