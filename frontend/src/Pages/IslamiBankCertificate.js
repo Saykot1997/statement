@@ -105,7 +105,7 @@ function IslamiBankCertificate() {
                     {
                         editMode ?
                             <div className=' flex items-center'>
-                                <span>Ref</span>
+                                <span>Date</span>
                                 <span className=' mx-2'>:</span>
                                 <input type="text" placeholder='Print Date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                             </div>
