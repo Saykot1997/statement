@@ -401,7 +401,7 @@ function EBLStatement() {
                                             </div>
                                             :
                                             <div>
-                                                <span className=' w-24 inline-block'>Account Number</span>
+                                                <span className=' w-28 inline-block'>Account Number</span>
                                                 <span className=' mx-1'>:</span>
                                                 <span>{accountNumber}</span>
                                             </div>
@@ -409,13 +409,13 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Number</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Product Name</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={accountType} onChange={(e) => setAccountType(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
                                             <div>
-                                                <span className=' w-24 inline-block'>Product Name</span>
+                                                <span className=' w-28 inline-block'>Product Name</span>
                                                 <span className=' mx-1'>:</span>
                                                 <span>{accountType}</span>
                                             </div>
@@ -434,7 +434,7 @@ function EBLStatement() {
                                             </div>
                                             :
                                             <div>
-                                                <span className=' w-24 inline-block'>Period From</span>
+                                                <span className=' w-28 inline-block'>Period From</span>
                                                 <span className=' mx-1'>:</span>
                                                 <span>{startStatementDate} - {endStatementDate}</span>
                                             </div>
@@ -444,13 +444,13 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Number</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Currancy Name</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={accountCurrency} onChange={(e) => setAccountCurrency(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
                                             <div>
-                                                <span className=' w-24 inline-block'>Currancy Name</span>
+                                                <span className=' w-28 inline-block'>Currancy Name</span>
                                                 <span className=' mx-1'>:</span>
                                                 <span>{accountCurrency}</span>
                                             </div>
@@ -458,13 +458,13 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Number</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch Code</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
                                             <div>
-                                                <span className=' w-24 inline-block'>Branch Code</span>
+                                                <span className=' w-28 inline-block'>Branch Code</span>
                                                 <span className=' mx-1'>:</span>
                                                 <span>{initialBranchCode}</span>
                                             </div>
@@ -472,13 +472,13 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Number</span>
+                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Customer Id</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" value={customerId} onChange={(e) => setCustomerId(e.target.value)} placeholder='Customer Id' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
                                             <div>
-                                                <span className=' w-24 inline-block'>Customer Id</span>
+                                                <span className=' w-28 inline-block'>Customer Id</span>
                                                 <span className=' mx-1'>:</span>
                                                 <span>{customerId}</span>
                                             </div>
@@ -489,7 +489,7 @@ function EBLStatement() {
 
                             {
                                 editMode &&
-                                <div className=' flex flex-col items-end pr-24'>
+                                <div className=' flex flex-col items-end pr-28'>
                                     <div className=' flex items-center my-1'>
                                         <span className=' mr-2'>Initial Blance</span>
                                         <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
