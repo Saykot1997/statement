@@ -31,17 +31,17 @@ function CanaraBankStatement() {
     const [printDate, setPrintDate] = useState("27-06-22 13:12:46 PM");
     const [accountCurrancy, setAccountCurrancy] = useState("INDIAN RUPEES")
     const [branchName, setBranchName] = useState("837-QUILANOY 673305");
-    const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
-    const [lastTRDate, setLastTRDate] = useState("01/01/2020");
-    const [reportGenerateUser, setReportGenerateUser] = useState("");
+    // const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
+    // const [lastTRDate, setLastTRDate] = useState("01/01/2020");
+    // const [reportGenerateUser, setReportGenerateUser] = useState("");
     const [accountType, setAccountType] = useState("CANARA SB GENERAL");
     const [accountNumber, setAccountNumber] = useState("0837101033765");
-    const [preAccountNumber, setPreAccountNumber] = useState("12345678999976")
+    // const [preAccountNumber, setPreAccountNumber] = useState("12345678999976")
     const [accountHoldersName, setAccountHoldersName] = useState("Luke Johan Jose");
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
-    const [accountHolderCity, setAccountHolderCity] = useState("Dhaka")
-    const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
-    const [accountStatus, setAccountStatus] = useState("OPERATIVE");
+    // const [accountHolderCity, setAccountHolderCity] = useState("Dhaka")
+    // const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
+    // const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01-10-2021");
     const [endStatementDate, setEndStatementDate] = useState("31-03-2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
@@ -367,7 +367,7 @@ function CanaraBankStatement() {
                                                     <p className='pl-3'>{accountHoldersName}</p>
                                                 </div>
                                         }
-                                        {
+                                        {/* {
                                             editMode ?
                                                 <div className=' flex items-center'>
                                                     <span className=' font-semibold mr-2'>Address :</span>
@@ -381,7 +381,7 @@ function CanaraBankStatement() {
                                                     </div>
                                                     <span className='pl-3 inline-block print:w-3/5'>{accountHoldersAddress}</span>
                                                 </div>
-                                        }
+                                        } */}
                                     </div>
                                     <div className=' w-1/2 flex justify-center'>
                                         {
@@ -397,7 +397,7 @@ function CanaraBankStatement() {
                                     </div>
                                 </div>
 
-                                <div className=' mb-3 flex'>
+                                <div className=' mt-5 mb-3 flex'>
                                     <div className=' w-1/2'>
                                         {
                                             editMode ?
