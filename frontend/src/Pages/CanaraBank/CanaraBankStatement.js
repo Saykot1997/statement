@@ -567,14 +567,14 @@ function CanaraBankStatement() {
 
                             return (
                                 <tr className=' align-text-top'>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormateDate(item.date)}</td>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormateDate(item.date)}</td>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[13%] text-right'>{item.ref} </td>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[16%]'>{item.particular}</td>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.withdrawal)}</td>
-                                    <td className=' border-l border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.deposit)}</td>
-                                    <td className=' border-x border-y border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right w-[16%]'>{commaNumber(item.balance)}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormateDate(item.date)}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormateDate(item.date)}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[13%] text-right'>{item.ref} </td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[16%]'>{item.particular}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.withdrawal)}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.deposit)}</td>
+                                    <td className=' border-x border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right w-[16%]'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })
