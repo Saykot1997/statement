@@ -276,7 +276,7 @@ function EBLStatement() {
 
             {/* info start */}
 
-            <table className=' w-full text-gray-800'>
+            <table className=' w-full'>
                 <thead className=' table-header-group'>
                     <tr className=' w-full '>
                         <th className=" w-full report-header-cell font-normal" colspan="6">
