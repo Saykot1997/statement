@@ -27,10 +27,10 @@ function UCOBankTransaction() {
     const [CKYCNumber, setCKYCNumber] = useState("10026316932351");
     const [branchPhone, setBranchPhone] = useState("04912553329");
     const [freeHelpLine, setFreeHelpLine] = useState("1800 103 0123")
-    const [todayDate, setTodayDate] = useState("20-06-2022")
-    const [accountType, setAccountType] = useState("SAVINGS-GENERAL-TUTAL");
-    const [accountNumber, setAccountNumber] = useState("0009-03100007098");
-    const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
+    const [todayDate, setTodayDate] = useState("27-06-2022")
+    const [accountType, setAccountType] = useState("SAVINGS-GENERAL-RURAL");
+    const [accountNumber, setAccountNumber] = useState("33290110017913");
+    const [accountHoldersName, setAccountHoldersName] = useState("SANKARAN P S");
     const [accountHolderVilage, setAccountHolderVilage] = useState("VALIYAKATTIUPARAMBU")
     const [accountHolderState, setAccountHolderState] = useState("VALLIKKODE PALAKKAD")
     const [accountHolderThana, setAccountHolderThana] = useState("PALGHAT")
@@ -486,6 +486,13 @@ function UCOBankTransaction() {
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-right">WITHDRAWAL</th>
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1  text-right">DEPOSITS</th>
                             <th className="font-normal border-y pt-3 border-dashed  border-gray-400 print:text-[10px] pb-1 text-right">BALANCE</th>
+                        </tr>
+
+                        {/* spacing row */}
+                        <tr colSpan="6">
+                            <div className=' w-full py-3'>
+
+                            </div>
                         </tr>
 
                         {

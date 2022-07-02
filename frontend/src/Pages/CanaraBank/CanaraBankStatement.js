@@ -198,7 +198,7 @@ function CanaraBankStatement() {
                 <tbody>
                     <tr>
                         <td colSpan={8}>
-                            <div className=' print:text-[12px]'>
+                            <div className=' print:text-[12px] print:leading-[16px]'>
                                 <p className=' text-center text-base'>STATEMENT OF ACCOUNT</p>
                                 <div className=' w-full flex mt-5'>
                                     <div className=' w-1/2 '>
@@ -466,32 +466,32 @@ function CanaraBankStatement() {
                     </tr>
 
                     <tr className='align-text-top'>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0 w-[10%]'>TRANS DATE</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0 w-[10%]'>VALUE DATE</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0'>BRANCH</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0 w-[13%]'>REF/CHQ,NO</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0 text-center w-[16%]'>DESCRIPTION</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0 text-right'>WITHDRAWS</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-l border-t border-gray-800 p-2 print:py-0 text-right'>DEPOSIT</td>
-                        <td className='print:px-1 pb-1 print:text-[12px] font-medium border-x border-t border-gray-800 p-2 print:py-0 w-[16%]'>BALANCE</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 w-[10%] leading-[14px]'>TRANS DATE</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 w-[10%] leading-[14px]'>VALUE DATE</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 w-[9%]'>BRANCH</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 w-[14%]'>REF/CHQ,NO</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 text-center w-[20%]'>DESCRIPTION</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 text-right'>WITHDRAWS</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-l-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 text-right'>DEPOSIT</td>
+                        <td className='print:px-1 pb-1 print:text-[12px] border-x-[0.01em] border-t-[0.01em] border-gray-600 p-2 print:py-0 w-[15%]'>BALANCE</td>
                     </tr>
 
                     <tr className=' align-text-top'>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2 text-gray-800 w-[10%]'>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2'>
                             {
                                 editMode ?
-                                    <input type="text" value={openingDate} onChange={(e) => setOpeningDate(e.target.value)} placeholder='Opening Date' className=' rounded p-1 my-[2px] border-2 border-blue-500 focus:outline-none' />
+                                    <input type="text" value={openingDate} onChange={(e) => setOpeningDate(e.target.value)} placeholder='Opening Date' className=' rounded p-1 my-[2px] border-2 border-blue-600 focus:outline-none' />
                                     :
-                                    <span className=' print:text-[11px]'>{openingDate}</span>
+                                    <span className=''>{openingDate}</span>
                             }
                         </td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2 w-[10%]'>{openingDate}</td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2'>0</td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2 text-gray-80 w-[13%]'></td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2 w-[16%]'>B/F</td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2 text-right'>0</td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-l border-y border-gray-800 p-2 text-right'>0</td>
-                        <td className='print:px-1 py-0 print:text-[11px] border-x border-y border-gray-800 p-2 text-right text-gray-800 w-[16%]'>{commaNumber(initialBalance)}</td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2'>{openingDate}</td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2'>0</td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2 text-gray-80'></td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2'>B/F</td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2 text-right'>0</td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-l-[0.01em] border-y-[0.01em] border-gray-600 p-2 text-right'>0</td>
+                        <td className='print:px-1 py-0 print:text-[11px] border-x-[0.01em] border-y-[0.01em] border-gray-600 p-2 text-right text-gray-800'>{commaNumber(initialBalance)}</td>
                     </tr>
 
                     {
@@ -499,14 +499,14 @@ function CanaraBankStatement() {
 
                             return (
                                 <tr className=' align-text-top'>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormatedDate(item.date)}</td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormatedDate(item.date)}</td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[13%] text-right'>{item.ref} </td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[16%]'>{item.particular}</td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.withdrawal)}</td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.deposit)}</td>
-                                    <td className=' border-x border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] text-right w-[16%]'>{commaNumber(item.balance)}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormatedDate(item.date)}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormatedDate(item.date)}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.ref} </td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.particular}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.withdrawal)}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.deposit)}</td>
+                                    <td className=' border-x-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>
                                 </tr>
                             )
                         })
@@ -523,39 +523,41 @@ function CanaraBankStatement() {
                         <td className='py-4'></td>
                     </tr>
                     <tr className=''>
-                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium w-[20%]'>Opening Balance</td>
-                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium w-[20%]'>Total Debit Amount</td>
-                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium w-[20%]'>Total Credit Amount</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Debit Count</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Credit Count</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Closing Balance</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium w-[18%]'>Unclear Balance</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium w-[18%]'>Sweep-In Balance</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Opening Balance</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Total Debit Amount</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Total Credit Amount</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Debit Count</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Credit Count</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Closing Balance</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Unclear Balance</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0 print:leading-[12px] font-medium'>Sweep-In Balance</td>
                     </tr>
                     <tr className=''>
-                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0'>{commaNumber(initialBalance)}</td>
-                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0'>{commaNumber(totalWithdrawal)}</td>
-                        <td className='p-2  border-t border-l border-b border-gray-800 print:px-1 print:text-[10px] print:py-0'>{commaNumber(totalDeposit)}</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0'>{debitCount}</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0'>{creditCount}</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0'>{commaNumber(getLastBalance())}</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0'>0</td>
-                        <td className='p-2  border-t border-l border-b border-r border-gray-800 print:px-1 print:text-[10px] print:py-0'>0</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0'>{commaNumber(initialBalance)}</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0'>{commaNumber(totalWithdrawal)}</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0'>{commaNumber(totalDeposit)}</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0'>{debitCount}</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0'>{creditCount}</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0'>{commaNumber(getLastBalance())}</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0'>0</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0'>0</td>
                     </tr>
                     <tr>
                         <td colSpan={8}>
-                            <div className=' mx-10 print:text-[12px]'>
-                                <div className=' '>
-                                    <p>UNLESS THE CONSTITUENT BRINGS TO THE NOTICE OF THE BANK ANY DISCREPANCIES / OMMISSION / ERRORS / UNAUTHORISED
-                                        DEBITS IMMEDIATELY.</p>
-                                    <p>THE ENTRIES IN SUCH PASS SHEET SHALL BE DEEMED AS CORRECT AND SHALL BIND THE CONSTITUENT FOR ALL PURPOSE AND INTENTS.</p>
-                                    <p>BEWARE OF PHISHING ATTACKS THROUGH EMAILS AND FAKE WEBSITES.</p>
-                                </div>
-                                <div className=' mt-3'>
-                                    <p>IMB FACILITY USERS ARE REQUESTED TO NOTE THAT CNARA BANK DOES NOT SEEK ANY INFORMATION THROUGH EMAIL DO NOT CLICK ON ANY LINK</p>
-                                    <p>WHICH HAS COME THROUGH EMAIL FROM UNEXPECTED SOURCES. IT MAY CONTAIN MALICIOUS CODE OR COULD BE AN ATTEMPT TO "PHISH'</p>
-                                    <p>ALWAYS LOGIN THROUGH <span className=' border-b border-gray-800'>WWW.CANARABANK.IN</span> . PLEASE BEWARE OF PHISHLNG.</p>
-                                    <p>CHANGE IN THE ADDRESS OF ACCOUNT HOLDER/PA HOLDER. IF ANY, MAY PLEASE BE INFORMED TO THE BRANCH ALONG WITH ADDRESS PROOF.</p>
+                            <div className=' mx-5 pt-3 print:text-[12px] print:leading-4'>
+                                <div className=' mx-5'>
+                                    <div className=' '>
+                                        <p>UNLESS THE CONSTITUENT BRINGS TO THE NOTICE OF THE BANK ANY DISCREPANCIES / OMMISSION / ERRORS / UNAUTHORISED
+                                            DEBITS IMMEDIATELY.</p>
+                                        <p>THE ENTRIES IN SUCH PASS SHEET SHALL BE DEEMED AS CORRECT AND SHALL BIND THE CONSTITUENT FOR ALL PURPOSE AND INTENTS.</p>
+                                        <p>BEWARE OF PHISHING ATTACKS THROUGH EMAILS AND FAKE WEBSITES.</p>
+                                    </div>
+                                    <div className=' mt-3'>
+                                        <p>IMB FACILITY USERS ARE REQUESTED TO NOTE THAT CNARA BANK DOES NOT SEEK ANY INFORMATION THROUGH EMAIL DO NOT CLICK ON ANY LINK</p>
+                                        <p>WHICH HAS COME THROUGH EMAIL FROM UNEXPECTED SOURCES. IT MAY CONTAIN MALICIOUS CODE OR COULD BE AN ATTEMPT TO "PHISH'</p>
+                                        <p>ALWAYS LOGIN THROUGH <span className=' border-b border-gray-800'>WWW.CANARABANK.IN</span> . PLEASE BEWARE OF PHISHLNG.</p>
+                                        <p>CHANGE IN THE ADDRESS OF ACCOUNT HOLDER/PA HOLDER. IF ANY, MAY PLEASE BE INFORMED TO THE BRANCH ALONG WITH ADDRESS PROOF.</p>
+                                    </div>
                                 </div>
                                 <p className=' text-center my-4 font-medium'>"DO NOT SHARE ATM PIN NUMBER, ACCOUNT DETAILS, OTP TO OUTSIDERS, EMAILS ETC"</p>
                                 <div className=' mt-5'>
