@@ -8,6 +8,7 @@ import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/islami_bank/islami_bank_logo.png";
 import bankSil from "../../Photos/islami_bank/islami_bank_sil.png";
+import GetFormatedDate from '../../Utils/GetFormatedDate';
 
 function IslamiBankStatement() {
 
@@ -17,17 +18,17 @@ function IslamiBankStatement() {
     const [initialBalance, setInitialBalance] = useState(400000);
     const [editMode, setEditMode] = useState(false);
     const [printDate, setPrintDate] = useState("01/01/2020");
-    const [branchName, setBranchName] = useState("Shantinagar Branch");
-    const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
+    const [branchName, setBranchName] = useState("Garib-E-Newaz Avenue Branch");
+    const [branchAddress, setBranchAddress] = useState("50,Garib-E-New Avenue,Sector-13,Uttra");
     const [openingDate, setOpeningDate] = useState("01/01/2020");
     const [lastTRDate, setLastTRDate] = useState("01/01/2020");
     const [reportGenerateUser, setReportGenerateUser] = useState("");
-    const [accountType, setAccountType] = useState("Saving");
+    const [accountType, setAccountType] = useState("Mudaraba Savings Deposit-Client");
     const [accountNumber, setAccountNumber] = useState("0009-03100007098");
     const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
     const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
-    const [accountStatus, setAccountStatus] = useState("OPERATIVE");
+    const [accountStatus, setAccountStatus] = useState("ACTIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
@@ -130,7 +131,6 @@ function IslamiBankStatement() {
     }, [])
 
 
-
     return (
         <div className=' w-full min-h-screen p-10 print:p-0 font-nuosu'>
 
@@ -157,7 +157,7 @@ function IslamiBankStatement() {
                                         <img src={logo} alt="" className=' w-32' />
                                     </div>
                                     <div className=' w-[60%] text-center'>
-                                        <p className='text-2xl print:text-xl font-semibold text-gray-800'>Social Islami Bank Ltd.</p>
+                                        <p className='text-2xl print:text-xl font-semibold text-gray-900'>Social Islami Bank Ltd.</p>
                                         {
                                             editMode ?
                                                 <div className=' flex items-center'>
@@ -166,7 +166,7 @@ function IslamiBankStatement() {
                                                 </div>
                                                 :
 
-                                                <p className=' font-semibold print:text-base text-gray-800'>{branchName}</p>
+                                                <p className=' print:text-base text-gray-900'>{branchName}</p>
                                         }
                                         {
                                             editMode ?
@@ -176,7 +176,7 @@ function IslamiBankStatement() {
                                                 </div>
                                                 :
 
-                                                <p className=' font-semibold print:text-sm text-gray-800'>{branchAddress}</p>
+                                                <p className=' font-semibold print:text-sm text-gray-900'>{branchAddress}</p>
                                         }
                                     </div>
                                     <div className=' w-[40%] flex justify-end'>
@@ -206,7 +206,7 @@ function IslamiBankStatement() {
                                     </div>
                                 </div>
                                 <div className=' flex justify-center py-5 print:pt-2 print:pb-4'>
-                                    <span className=' underline font-semibold text-lg print:text-base'>A/C Statement</span>
+                                    <span className=' border-b border-gray-900 font-semibold text-lg print:text-base text-gray-900'>A/C Statement</span>
                                 </div>
                             </div>
 
@@ -221,11 +221,11 @@ function IslamiBankStatement() {
                                             </div>
                                             :
                                             <div className=' flex'>
-
-                                                <span className='font-semibold inline-block w-20 text-left print:font-semibold'>A/C No</span>
-
-                                                <div>
-                                                    <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                                <div className=' flex justify-between w-24'>
+                                                    <span className='font-semibold'>A/C No</span>
+                                                    <span>:</span>
+                                                </div>
+                                                <div className=' text-left ml-1 w-[calc(100%-theme(space.20))]'>
                                                     <span className=''>{accountNumber}</span>
                                                 </div>
                                             </div>
@@ -239,11 +239,11 @@ function IslamiBankStatement() {
                                             </div>
                                             :
                                             <div className=' flex'>
-
-                                                <span className='font-semibold text-left inline-block w-20 print:font-semibold'>A/C Name</span>
-
-                                                <div>
-                                                    <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                                <div className=' flex justify-between w-24'>
+                                                    <span className='font-semibold'>A/C Name</span>
+                                                    <span className=''>:</span>
+                                                </div>
+                                                <div className='  text-left ml-1 w-[calc(100%-theme(space.20))]'>
                                                     <span className=''>{accountHoldersName}</span>
                                                 </div>
                                             </div>
@@ -257,11 +257,11 @@ function IslamiBankStatement() {
                                             </div>
                                             :
                                             <div className=' flex w-full'>
-
-                                                <span className=' text-left font-semibold inline-block w-20 print:w-[98px] print:font-semibold'>Address</span>
-
-                                                <div className=' text-left'>
-                                                    <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                                <div className=' flex justify-between w-24'>
+                                                    <span className='font-semibold'>Address</span>
+                                                    <span>:</span>
+                                                </div>
+                                                <div className=' text-left ml-1 w-[calc(100%-theme(space.20))]'>
                                                     <span className=''>{accountHoldersAddress}</span>
                                                 </div>
                                             </div>
@@ -399,35 +399,35 @@ function IslamiBankStatement() {
                 </thead>
 
                 <thead>
-                    <tr className=''>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Date</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Code</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Cheque/Instr.</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Particulars</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800 text-right'>Debit</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800 text-right'>Credit</td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800 text-right'>Balance</td>
+                    <tr className=' text-gray-900'>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Date</td>
+                        <td className=' font-semibold print:px-3 py-0 print:text-[12px] border p-2'>Code</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Cheque/Instr.</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 w-[40%]'>Particulars</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right w-[15%]'>Debit</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right w-[15%]'>Credit</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right w-[15%]'>Balance</td>
                     </tr>
                 </thead>
                 <tbody>
                     {/* className='bg-water-mark bg-right-top bg-75% bg-no-repeat' */}
-                    <tr className=''>
+                    <tr className=' text-gray-900'>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
+                        <td className=' font-semibold print:px-3 py-0 print:text-[12px] border p-2'></td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-gray-800'>Balance B/F</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2'>Balance B/F</td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'></td>
                         <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'></td>
-                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right text-gray-800'>{commaNumber(initialBalance)}</td>
+                        <td className=' font-semibold print:px-1 py-0 print:text-[12px] border p-2 text-right'>{commaNumber(initialBalance)}</td>
                     </tr>
 
                     {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
 
                             return (
-                                <tr>
+                                <tr className=' print:leading-[14px] align-text-top'>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.date}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{
+                                    <td className=' border p-2 print:py-0 print:px-3 print:text-[11px]'>{
                                         item.type === 'credit' && item.method === "cheque" &&
                                         <span>101</span>
 
@@ -452,8 +452,8 @@ function IslamiBankStatement() {
 
 
                                     }</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {item.date}</span></td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.cheque}</td>
+                                    <td className=' border p-2 print:py-0 print:px-[6px] print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {GetFormatedDate(item.date)}</span></td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>

@@ -8,7 +8,7 @@ import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/canara_bank/logo.png";
 import bankSil from "../../Photos/canara_bank/sil.png";
-// import signe from "../../Photos/canara_bank/sil1.png";
+import GetFormatedDate from '../../Utils/GetFormatedDate';
 
 
 function CanaraBankStatement() {
@@ -31,17 +31,9 @@ function CanaraBankStatement() {
     const [printDate, setPrintDate] = useState("27-06-22 13:12:46 PM");
     const [accountCurrancy, setAccountCurrancy] = useState("INDIAN RUPEES")
     const [branchName, setBranchName] = useState("837-QUILANOY 673305");
-    // const [branchAddress, setBranchAddress] = useState("Green City Edge, 89, Kakrail ,Dhaka-1000");
-    // const [lastTRDate, setLastTRDate] = useState("01/01/2020");
-    // const [reportGenerateUser, setReportGenerateUser] = useState("");
     const [accountType, setAccountType] = useState("CANARA SB GENERAL");
     const [accountNumber, setAccountNumber] = useState("0837101033765");
-    // const [preAccountNumber, setPreAccountNumber] = useState("12345678999976")
     const [accountHoldersName, setAccountHoldersName] = useState("Luke Johan Jose");
-    const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
-    // const [accountHolderCity, setAccountHolderCity] = useState("Dhaka")
-    // const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
-    // const [accountStatus, setAccountStatus] = useState("OPERATIVE");
     const [startStatementDate, setStartStatementDate] = useState("01-10-2021");
     const [endStatementDate, setEndStatementDate] = useState("31-03-2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
@@ -71,8 +63,6 @@ function CanaraBankStatement() {
         }
     }
 
-    // console.log(TransactionAmount)
-    // console.log(Transactions)
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -159,49 +149,6 @@ function CanaraBankStatement() {
             console.log(error)
         }
     }
-
-    const GetFormateDate = (date) => {
-
-        if (date === undefined) {
-            return null
-        }
-
-        let splitDate = date.split("/")
-
-        let month = ""
-        if (splitDate[1].toString() === "01") {
-            month = "JAN"
-        } else if (splitDate[1].toString() === "02") {
-            month = "FEB"
-        } else if (splitDate[1].toString() === "03") {
-            month = "MAR"
-        } else if (splitDate[1].toString() === "04") {
-            month = "APR"
-        } else if (splitDate[1].toString() === "05") {
-            month = "MAY"
-        } else if (splitDate[1].toString() === "06") {
-            month = "JUN"
-        } else if (splitDate[1].toString() === "07") {
-            month = "JUL"
-        } else if (splitDate[1].toString() === "08") {
-            month = "AUG"
-        } else if (splitDate[1].toString() === "09") {
-            month = "SEP"
-        } else if (splitDate[1].toString() === "10") {
-            month = "OCT"
-        } else if (splitDate[1].toString() === "11") {
-            month = "NOV"
-        } else if (splitDate[1].toString() === "12") {
-            month = "DEC"
-        } else {
-            month = ""
-        }
-
-        let sprateYear = [...splitDate[2]]
-
-        return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
-    }
-
 
     useEffect(() => {
         getTransectionsAmounts()
@@ -367,21 +314,6 @@ function CanaraBankStatement() {
                                                     <p className='pl-3'>{accountHoldersName}</p>
                                                 </div>
                                         }
-                                        {/* {
-                                            editMode ?
-                                                <div className=' flex items-center'>
-                                                    <span className=' font-semibold mr-2'>Address :</span>
-                                                    <input type="text" placeholder='Customer name' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-                                                <div className=' flex  w-full'>
-                                                    <div className=' w-[168px] print:w-2/5 flex justify-between'>
-                                                        <span>Address</span>
-                                                        <span>:</span>
-                                                    </div>
-                                                    <span className='pl-3 inline-block print:w-3/5'>{accountHoldersAddress}</span>
-                                                </div>
-                                        } */}
                                     </div>
                                     <div className=' w-1/2 flex justify-center'>
                                         {
@@ -567,8 +499,8 @@ function CanaraBankStatement() {
 
                             return (
                                 <tr className=' align-text-top'>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormateDate(item.date)}</td>
-                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormateDate(item.date)}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormatedDate(item.date)}</td>
+                                    <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[10%]'>{GetFormatedDate(item.date)}</td>
                                     <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
                                     <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[13%] text-right'>{item.ref} </td>
                                     <td className=' border-l border-y print:leading-[12px] py-[2px] border-gray-800 p-2 print:py-0 print:px-1 print:text-[11px] w-[16%]'>{item.particular}</td>

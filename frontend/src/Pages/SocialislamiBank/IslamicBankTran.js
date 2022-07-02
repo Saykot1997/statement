@@ -24,7 +24,7 @@ function IB() {
     const [currentTransactionId, setCurrentTransactionId] = useState('');
     const [currentTransactionMethod, setCurrentTransactionMethod] = useState('');
     const [currentTransactionType, setCurrentTransactionType] = useState('');
-    const [currentTransactionBranch, setCurrentTransactionBranch] = useState('');
+    const [currentTransactionCheque, setCurrentTransactionCheque] = useState('');
     const [currentTransectionName, setCurrentTransectionName] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
@@ -39,7 +39,7 @@ function IB() {
         setCurrentTransactionId(transaction._id)
         setCurrentTransactionMethod(transaction.transactionMethod)
         setCurrentTransactionType(transaction.transactionType)
-        setCurrentTransactionBranch(transaction.branch)
+        setCurrentTransactionCheque(transaction.cheque)
     }
 
     const getTransaction = async () => {
@@ -67,7 +67,7 @@ function IB() {
             transactionName: currentTransectionName,
             transactionType: currentTransactionType,
             transactionMethod: currentTransactionMethod,
-            branch: currentTransactionBranch,
+            cheque: currentTransactionCheque,
             bankName: path
         }
 
@@ -152,7 +152,7 @@ function IB() {
                                 {
                                     updateModeOpen && currentTransactionId === transaction._id ?
                                         <div>
-                                            <input type="text" placeholder='Remarks' value={currentTransectionName} onChange={(e) => setCurrentTransectionName(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                                            <input type="text" placeholder='Particulars' value={currentTransectionName} onChange={(e) => setCurrentTransectionName(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                                             <select name="" id="" value={currentTransactionMethod} onChange={(e) => setCurrentTransactionMethod(e.target.value)} className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
                                                 <option value="">Select Transaction Method</option>
                                                 {
@@ -166,14 +166,14 @@ function IB() {
                                                 <option value="credit">Credit</option>
                                                 <option value="debit">Debit</option>
                                             </select>
-                                            <input type="text" placeholder='Cheque No' value={currentTransactionBranch} onChange={(e) => setCurrentTransactionBranch(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                                            <input type="text" placeholder='Cheque No' value={currentTransactionCheque} onChange={(e) => setCurrentTransactionCheque(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                                         </div>
                                         :
                                         <div>
-                                            <p className=' mb-2 text-sm'> <span className=' font-medium'>Transaction Name : </span>{transaction.transactionName}</p>
+                                            <p className=' mb-2 text-sm'> <span className=' font-medium'>Particulars : </span>{transaction.transactionName}</p>
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Method :</span> {transaction.transactionMethod}</p>
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Type :</span> {transaction.transactionType}</p>
-                                            <p className=' mt-2 text-sm'> <span className=' font-medium'>Branch :</span> {transaction.branch}</p>
+                                            <p className=' mt-2 text-sm'> <span className=' font-medium'>Cheque / Instr. :</span> {transaction.cheque}</p>
                                         </div>
                                 }
                                 {
@@ -184,9 +184,7 @@ function IB() {
                                             <FaSave onClick={updateTransaction} className=' text-blue-500 cursor-pointer mr-2' />
                                             <AiFillCloseSquare onClick={() => { toggleUpdateMode(transaction) }} className=' text-red-500 text-lg cursor-pointer' />
                                         </div>
-
                                         :
-
                                         <div className=' flex'>
                                             <BiEdit onClick={() => { toggleUpdateMode(transaction) }} className=' text-green-500 cursor-pointer mr-2' />
                                             <MdDelete onClick={() => { confirmDelete(transaction._id) }} className=' text-red-500 text-lg cursor-pointer' />

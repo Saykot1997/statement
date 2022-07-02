@@ -32,8 +32,8 @@ function EBLStatement() {
     const [accountHolderState, setAccountHolderState] = useState("PATHAN TULA")
     const [accountHolderCity, setAccountHolderCity] = useState("SYLET")
     const [accountCurrency, setAccountCurrency] = useState("Bangladeshi Taka");
-    const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
-    const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
+    const [startStatementDate, setStartStatementDate] = useState("01-DEC-21");
+    const [endStatementDate, setEndStatementDate] = useState("13-JUN-22");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
@@ -257,9 +257,10 @@ function EBLStatement() {
         return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
     }
 
+    // typeWriter
 
     return (
-        <div className=" typeWriter p-5 print:p-0 print:text-[8px] print:leading-3">
+        <div className=" font-lora p-5 print:p-0 print:text-[8px] print:leading-3">
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -275,17 +276,17 @@ function EBLStatement() {
 
             {/* info start */}
 
-            <table className=' w-full text-gray-800 font-semibold'>
+            <table className=' w-full text-gray-800'>
                 <thead className=' table-header-group'>
                     <tr className=' w-full '>
-                        <th class=" w-full report-header-cell" colspan="6" className=''>
+                        <th className=" w-full report-header-cell font-normal" colspan="6">
                             <div className=' w-full flex justify-between'>
                                 <div className='self-end flex flex-col items-start'>
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Name</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Name</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} placeholder='Name' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -295,8 +296,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Address</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Address</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} placeholder='address' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -306,8 +307,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>State</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>State</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountHolderState} onChange={(e) => setAccountHolderState(e.target.value)} placeholder='state' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -317,8 +318,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>State</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>State</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountHolderCity} onChange={(e) => setAccountHolderCity(e.target.value)} placeholder='state' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -336,8 +337,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={branchName} onChange={(e) => setBranchName(e.target.value)} placeholder='state' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -348,8 +349,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch Address</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Address</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} placeholder='Address' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -359,8 +360,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch Road</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Road</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={branchRoad} onChange={(e) => setBranchRoad(e.target.value)} placeholder='Road' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -371,13 +372,13 @@ function EBLStatement() {
                                         editMode ?
                                             <div>
                                                 <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch Point</span>
-                                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Point</span>
+                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                     <input type="text" value={branchPoint} onChange={(e) => setBranchPoint(e.target.value)} placeholder='Point' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                                 </div>
                                                 <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch City</span>
-                                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch City</span>
+                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                     <input type="text" value={branchCity} onChange={(e) => setBranchCity(e.target.value)} placeholder='Point' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                                 </div>
                                             </div>
@@ -393,8 +394,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Number</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Account Number</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} placeholder='Account Number' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -407,8 +408,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Product Name</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Product Name</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountType} onChange={(e) => setAccountType(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -421,9 +422,9 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=" leading-7 print:leading-[22px] flex">
-                                                <span className='inline-block w-32 text-right font-semibold print:font-semibold'>Statement Date</span>
+                                                <span className='inline-block w-32 text-right font-medium print:font-medium'>Statement Date</span>
 
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="date" placeholder='Start stetment date' value={hideStartStatementDate} onChange={(e) => statementDateChange("startStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
 
                                                 to
@@ -442,8 +443,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Currancy Name</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Currancy Name</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={accountCurrency} onChange={(e) => setAccountCurrency(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -456,8 +457,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Branch Code</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Code</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -470,8 +471,8 @@ function EBLStatement() {
                                     {
                                         editMode ?
                                             <div className=' flex items-center my-[2px]'>
-                                                <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Customer Id</span>
-                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <span className=' inline-block w-32 text-right font-medium print:font-medium'>Customer Id</span>
+                                                <span className=' mx-2 font-medium print:font-medium'>:</span>
                                                 <input type="text" value={customerId} onChange={(e) => setCustomerId(e.target.value)} placeholder='Customer Id' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
@@ -509,9 +510,9 @@ function EBLStatement() {
 
                 <thead className=''>
                     <tr className=''>
-                        <td className=' pt-1'>TRN. DATE</td>
+                        <td className=' pt-1 w-[10%]'>TRN. DATE</td>
                         <td className=' pt-1 w-[25%] text-left'>DESCRIPTIONS</td>
-                        <td className=' pt-1 text-left pl-3'>REFERENCES</td>
+                        <td className=' pt-1 w-[10%] text-left pl-3'>REFERENCES</td>
                         <td className=' pt-1 text-right'>DEBITS</td>
                         <td className=' pt-1 text-right'>CREDITS</td>
                         <td className=' pt-1 text-right'>BALANCE</td>
@@ -527,7 +528,7 @@ function EBLStatement() {
                                 <span>{todayDate}</span>
                         }</td>
                         <td className='py-[4px]'>Opening Balance</td>
-                        <td className=' w-[25%] pl-3'></td>
+                        <td className='pl-3'></td>
                         <td></td>
                         <td className='text-right py-[4px]'>{commaNumber(initialBalance)}</td>
                         <td className='text-right py-[4px]'>{commaNumber(initialBalance)}</td>
@@ -539,7 +540,7 @@ function EBLStatement() {
                                     <td className='text-left py-[4px]'>
                                         {item.date && GetFormateDate(item.date)}
                                     </td>
-                                    <td className='w-[25%] text-left py-[4px]'>{item.particular}</td>
+                                    <td className='text-left py-[4px]'>{item.particular}</td>
                                     <td className='text-left pl-3 py-[4px]'>{item.branchCode}</td>
                                     <td className='text-right py-[4px]'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className='text-right py-[4px]'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
@@ -552,26 +553,26 @@ function EBLStatement() {
                         <td colSpan={6}>
                             <div className=' w-full pt-5'>
                                 <div className=' w-full border-t border-dashed border-gray-600'>
-                                    <div className=' pl-32 pt-3'>
+                                    <div className=' pl-28 pt-3'>
                                         <div>
-                                            <span className=' w-60 print:w-48 inline-block'>OPENING BALANCE</span>
-                                            <span className=' w-44 print:w-36 inline-block'>{commaNumber(initialBalance)}</span>
-                                            <span ></span>
+                                            <span className=' w-60 print:w-40 inline-block'>OPENING BALANCE</span>
+                                            <span className=' w-44 print:w-20 inline-block'>{commaNumber(initialBalance)}</span>
+                                            <span></span>
                                         </div>
                                         <div>
-                                            <span className=' w-60 print:w-48 inline-block'>DEBITS</span>
-                                            <span className=' w-44 print:w-36 inline-block'>{commaNumber(totalWithdrawal)}</span>
-                                            <span>DRCOUNT {debitCount}</span>
+                                            <span className=' w-60 print:w-40 inline-block'>DEBITS</span>
+                                            <span className=' w-44 print:w-20 inline-block'>{commaNumber(totalWithdrawal)}</span>
+                                            <span className=''>DRCOUNT {debitCount}</span>
                                         </div>
                                         <div>
-                                            <span className=' w-60 print:w-48 inline-block'>CREDITS</span>
-                                            <span className=' w-44 print:w-36 inline-block'>{commaNumber(totalDeposit)}</span>
-                                            <span>CRCOUNT {creditCount}</span>
+                                            <span className=' w-60 print:w-40 inline-block'>CREDITS</span>
+                                            <span className=' w-44 print:w-20 inline-block'>{commaNumber(totalDeposit)}</span>
+                                            <span className=''>CRCOUNT {creditCount}</span>
                                         </div>
-                                        <div>
-                                            <span className=' w-60 print:w-48 inline-block'>UNCOLLECTED FUNDS</span>
-                                            <span className=' w-44 print:w-[110px] inline-block'></span>
-                                            <span>SWITCH AMOUNT0</span>
+                                        <div className=' '>
+                                            <span className=' w-60 print:w-40 inline-block'>UNCOLLECTED FUNDS</span>
+                                            <span className=' w-44 print:w-[53px] inline-block'></span>
+                                            <span className=''>SWITCH AMOUNT 0</span>
                                         </div>
                                         <div>
                                             <span className=' w-60 print:w-48 inline-block'>* = UNAUTH ENTRY / R = REVERSAL</span>
@@ -584,12 +585,12 @@ function EBLStatement() {
                         </td>
                     </tr>
                 </tbody>
-                <tfoot class="table-footer-group">
+                <tfoot class="table-footer-group" id='pageFooter'>
                     <tr>
                         <td class=" " colspan="6">
                             <div className=' w-full'>
                                 <div className=' flex justify-center'>
-                                    <img src={sile} alt="" className=' w-28' />
+                                    <img src={sile} alt="" className=' w-32' />
                                 </div>
                             </div>
                         </td>
