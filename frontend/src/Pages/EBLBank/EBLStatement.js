@@ -8,10 +8,11 @@ import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import logo from "../../Photos/ebl_bank/logo.png"
 import sile from "../../Photos/ebl_bank/mid_logo.png"
+import GetFormatedDate from "../../Utils/GetFormatedDate"
 
 function EBLStatement() {
 
-    const [randomTransictions, setRandomTransictions] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+    const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
     const [initialBalance, setInitialBalance] = useState(400000);
@@ -32,8 +33,8 @@ function EBLStatement() {
     const [accountHolderState, setAccountHolderState] = useState("PATHAN TULA")
     const [accountHolderCity, setAccountHolderCity] = useState("SYLET")
     const [accountCurrency, setAccountCurrency] = useState("Bangladeshi Taka");
-    const [startStatementDate, setStartStatementDate] = useState("01-DEC-21");
-    const [endStatementDate, setEndStatementDate] = useState("13-JUN-22");
+    const [startStatementDate, setStartStatementDate] = useState("01-OCT-21");
+    const [endStatementDate, setEndStatementDate] = useState("13-MAR-22");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
@@ -74,31 +75,33 @@ function EBLStatement() {
             let startStatementDateMonth = startStatementDate[1];
             let startStatementDateDay = startStatementDate[2];
 
+            console.log(startStatementDateMonth)
+
             let month = ""
 
-            if (startStatementDateMonth == 1) {
+            if (startStatementDateMonth.toString() === "01") {
                 month = "JAN"
-            } else if (startStatementDateMonth == 2) {
+            } else if (startStatementDateMonth.toString() === "02") {
                 month = "FEB"
-            } else if (startStatementDateMonth == 3) {
+            } else if (startStatementDateMonth.toString() === "03") {
                 month = "MAR"
-            } else if (startStatementDateMonth == 4) {
+            } else if (startStatementDateMonth.toString() === "04") {
                 month = "APR"
-            } else if (startStatementDateMonth == 5) {
+            } else if (startStatementDateMonth.toString() === "05") {
                 month = "MAY"
-            } else if (startStatementDateMonth == 6) {
+            } else if (startStatementDateMonth.toString() === "06") {
                 month = "JUN"
-            } else if (startStatementDateMonth == 7) {
+            } else if (startStatementDateMonth.toString() === "07") {
                 month = "JUL"
-            } else if (startStatementDateMonth == 8) {
+            } else if (startStatementDateMonth.toString() === "08") {
                 month = "AUG"
-            } else if (startStatementDateMonth == 9) {
+            } else if (startStatementDateMonth.toString() === "09") {
                 month = "SEP"
-            } else if (startStatementDateMonth == 10) {
+            } else if (startStatementDateMonth.toString() === "10") {
                 month = "OCT"
-            } else if (startStatementDateMonth == 11) {
-                month = "NOB"
-            } else if (startStatementDateMonth == 12) {
+            } else if (startStatementDateMonth.toString() === "11") {
+                month = "NOV"
+            } else if (startStatementDateMonth.toString() === "12") {
                 month = "DEC"
             } else {
                 month = ""
@@ -119,29 +122,29 @@ function EBLStatement() {
 
             let month = ""
 
-            if (endStatementDateMonth == 1) {
+            if (endStatementDateMonth.toString() === "01") {
                 month = "JAN"
-            } else if (endStatementDateMonth == 2) {
+            } else if (endStatementDateMonth.toString() === "02") {
                 month = "FEB"
-            } else if (endStatementDateMonth == 3) {
+            } else if (endStatementDateMonth.toString() === "03") {
                 month = "MAR"
-            } else if (endStatementDateMonth == 4) {
+            } else if (endStatementDateMonth.toString() === "04") {
                 month = "APR"
-            } else if (endStatementDateMonth == 5) {
+            } else if (endStatementDateMonth.toString() === "05") {
                 month = "MAY"
-            } else if (endStatementDateMonth == 6) {
+            } else if (endStatementDateMonth.toString() === "06") {
                 month = "JUN"
-            } else if (endStatementDateMonth == 7) {
+            } else if (endStatementDateMonth.toString() === "07") {
                 month = "JUL"
-            } else if (endStatementDateMonth == 8) {
+            } else if (endStatementDateMonth.toString() === "08") {
                 month = "AUG"
-            } else if (endStatementDateMonth == 9) {
+            } else if (endStatementDateMonth.toString() === "09") {
                 month = "SEP"
-            } else if (endStatementDateMonth == 10) {
+            } else if (endStatementDateMonth.toString() === "10") {
                 month = "OCT"
-            } else if (endStatementDateMonth == 11) {
-                month = "NOB"
-            } else if (endStatementDateMonth == 12) {
+            } else if (endStatementDateMonth.toString() === "12") {
+                month = "NOV"
+            } else if (endStatementDateMonth.toString() === "12") {
                 month = "DEC"
             } else {
                 month = ""
@@ -155,6 +158,9 @@ function EBLStatement() {
     }
 
     const GenerateTranjections = () => {
+
+        console.log(hideStartStatementDate)
+        console.log(hideEndStatementDate)
 
         if (!Transactions.length > 0) {
             return alert("No Transactions Found. Please select Bank Transaction First.")
@@ -214,48 +220,6 @@ function EBLStatement() {
         getBankTransactions()
 
     }, [])
-
-    const GetFormateDate = (date) => {
-
-        if (date === undefined) {
-            return null
-        }
-
-        let splitDate = date.split("/")
-
-        let month = ""
-        if (splitDate[1].toString() === "01") {
-            month = "JAN"
-        } else if (splitDate[1].toString() === "02") {
-            month = "FEB"
-        } else if (splitDate[1].toString() === "03") {
-            month = "MAR"
-        } else if (splitDate[1].toString() === "04") {
-            month = "APR"
-        } else if (splitDate[1].toString() === "05") {
-            month = "MAY"
-        } else if (splitDate[1].toString() === "06") {
-            month = "JUN"
-        } else if (splitDate[1].toString() === "07") {
-            month = "JUL"
-        } else if (splitDate[1].toString() === "08") {
-            month = "AUG"
-        } else if (splitDate[1].toString() === "09") {
-            month = "SEP"
-        } else if (splitDate[1].toString() === "10") {
-            month = "OCT"
-        } else if (splitDate[1].toString() === "11") {
-            month = "NOV"
-        } else if (splitDate[1].toString() === "12") {
-            month = "DEC"
-        } else {
-            month = ""
-        }
-
-        let sprateYear = [...splitDate[2]]
-
-        return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
-    }
 
     // typeWriter
 
@@ -538,7 +502,7 @@ function EBLStatement() {
                             return (
                                 <tr className='align-text-top'>
                                     <td className='text-left py-[4px]'>
-                                        {item.date && GetFormateDate(item.date)}
+                                        {item.date && GetFormatedDate(item.date)}
                                     </td>
                                     <td className='text-left py-[4px]'>{item.particular}</td>
                                     <td className='text-left pl-3 py-[4px]'>{item.branchCode}</td>
@@ -590,7 +554,7 @@ function EBLStatement() {
                         <td class=" " colspan="6">
                             <div className=' w-full'>
                                 <div className=' flex justify-center'>
-                                    <img src={sile} alt="" className=' w-32' />
+                                    <img src={sile} alt="" className={`w-32`} />
                                 </div>
                             </div>
                         </td>

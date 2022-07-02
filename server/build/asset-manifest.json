@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ddc43192.css",
-    "main.js": "/static/js/main.839c56f4.js",
+    "main.js": "/static/js/main.66b3021f.js",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
     "static/media/signature1.png": "/static/media/signature1.e403737b9a0440f77367.png",
     "static/media/signature2.png": "/static/media/signature2.ec04561144c9416b1ae3.png",
@@ -19,10 +19,10 @@
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
     "main.ddc43192.css.map": "/static/css/main.ddc43192.css.map",
-    "main.839c56f4.js.map": "/static/js/main.839c56f4.js.map"
+    "main.66b3021f.js.map": "/static/js/main.66b3021f.js.map"
   },
   "entrypoints": [
     "static/css/main.ddc43192.css",
-    "static/js/main.839c56f4.js"
+    "static/js/main.66b3021f.js"
   ]
 }
