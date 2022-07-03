@@ -502,9 +502,9 @@ function EBLStatement() {
                                     <td className='text-left pl-3 py-[4px]'>
                                         {
                                             editMode ?
-                                                <input type="text" value={item.branchCode} onChange={(e) => changeFields(e.target.value, index, "branchCode", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                <input type="text" value={item.ref} onChange={(e) => changeFields(e.target.value, index, "ref", randomTransictions, setRandomTransictions)} placeholder='References' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                                 :
-                                                <span>{item.branchCode}</span>
+                                                <span>{item.ref}</span>
                                         }
                                     </td>
                                     <td className='text-right py-[4px]'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
