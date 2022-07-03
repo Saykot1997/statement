@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Logout } from "../Redux/User_slice"
+import logo from "../Photos/gic-logo.jpg"
 
 function Topbar() {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const dispatch = useDispatch();
-    // const user = useSelector(state => state.User.User);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen)
@@ -32,7 +32,9 @@ function Topbar() {
     return (
         <div className=' w-full bg-white shadow h-16 z-10 flex justify-between items-center px-10 relative'>
             <div>
-                <Link to="/">logo</Link>
+                <Link to="/">
+                    <img src={logo} alt="" className=' w-16' />
+                </Link>
             </div>
             <div>
                 <span onClick={toggleDropdown} className=" cursor-pointer">Menu</span>

@@ -145,7 +145,7 @@ function CanaraTransaction() {
             <button onClick={toggleAddTransactionMode} className=' absolute top-20 right-5 shadow shadow-blue-300 p-1 rounded text-blue-600 hover:scale-105 transition-all ease-in'>Add Transactions</button>
             {
                 Transaction.length > 0 ?
-                    <p className='text-center font-medium'>{Transaction[0].bankName} Transaction Details</p>
+                    <p className='text-center font-medium'>{Transaction[0].bankName} Transaction Details {Transaction.length}</p>
                     :
                     <div>
                         <p className=' text-center font-medium'>No Transactions Added</p>
