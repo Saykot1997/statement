@@ -83,6 +83,19 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
             randomWithdrawal = atmWithdrawalAmount[Math.floor(Math.random() * atmWithdrawalAmount.length)];
             randomDeposit = 0;
 
+        } else if (transactions[findRandomParticular].transactionMethod === "online") {
+
+            if (transactions[findRandomParticular].transactionType === "credit") {
+
+                randomWithdrawal = 0;
+                randomDeposit = Math.floor(Math.random() * 20000)
+
+            } else {
+
+                randomWithdrawal = Math.floor(Math.random() * 20000)
+                randomDeposit = 0;
+            }
+
         } else {
 
             if (transactions[findRandomParticular].transactionType === "credit") {
