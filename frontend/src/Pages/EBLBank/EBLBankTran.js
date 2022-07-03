@@ -25,7 +25,7 @@ function EBLBankTran() {
     const [currentTransactionId, setCurrentTransactionId] = useState('');
     const [currentTransactionMethod, setCurrentTransactionMethod] = useState('');
     const [currentTransactionType, setCurrentTransactionType] = useState('');
-    const [currentTransactionBranch, setCurrentTransactionBranch] = useState('');
+    const [currentTransactionRef, setCurrentTransactionRef] = useState('');
     const [currentTransectionName, setCurrentTransectionName] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
@@ -40,7 +40,7 @@ function EBLBankTran() {
         setCurrentTransactionId(transaction._id)
         setCurrentTransactionMethod(transaction.transactionMethod)
         setCurrentTransactionType(transaction.transactionType)
-        setCurrentTransactionBranch(transaction.branch)
+        setCurrentTransactionRef(transaction.ref)
     }
 
     const getTransaction = async () => {
@@ -68,7 +68,7 @@ function EBLBankTran() {
             transactionName: currentTransectionName,
             transactionType: currentTransactionType,
             transactionMethod: currentTransactionMethod,
-            branch: currentTransactionBranch,
+            ref: currentTransactionRef,
             bankName: path
         }
 
@@ -79,7 +79,7 @@ function EBLBankTran() {
                     Authorization: `Bearer ${User}`
                 }
             })
-            console.log(response.data)
+            // console.log(response.data)
             dispatch(transactionUpdateSuccess(response.data));
             toast.success('Transaction updated successfully')
             setUpdateModeOpen(false)
@@ -167,14 +167,14 @@ function EBLBankTran() {
                                                 <option value="credit">Credit</option>
                                                 <option value="debit">Debit</option>
                                             </select>
-                                            <input type="text" placeholder='Trans. Code / Chq No' value={currentTransactionBranch} onChange={(e) => setCurrentTransactionBranch(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                                            <input type="text" placeholder='Reference' value={currentTransactionRef} onChange={(e) => setCurrentTransactionRef(e.target.value)} className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                                         </div>
                                         :
                                         <div>
-                                            <p className=' mb-2 text-sm'> <span className=' font-medium'>Transaction Name : </span>{transaction.transactionName}</p>
+                                            <p className=' mb-2 text-sm'> <span className=' font-medium'>Descriptions : </span>{transaction.transactionName}</p>
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Method :</span> {transaction.transactionMethod}</p>
                                             <p className=' my-2 text-sm'> <span className=' font-medium'>Transaction Type :</span> {transaction.transactionType}</p>
-                                            <p className=' mt-2 text-sm'> <span className=' font-medium'>Branch :</span> {transaction.branch}</p>
+                                            <p className=' mt-2 text-sm'> <span className=' font-medium'>Reference :</span> {transaction.ref}</p>
                                         </div>
                                 }
                                 {

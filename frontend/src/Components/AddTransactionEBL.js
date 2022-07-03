@@ -16,7 +16,7 @@ function EBL({ toggleAddTransactionMode }) {
     const [transactionName, setTransactionName] = useState('');
     const [transactionType, setTransactionType] = useState('');
     const [transactionMethod, setTransactionMethod] = useState('');
-    const [branch, setBranch] = useState('');
+    const [ref, setRef] = useState('');
     const [bankName, setBankName] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
@@ -25,12 +25,12 @@ function EBL({ toggleAddTransactionMode }) {
         setTransactionName('');
         setTransactionType('');
         setTransactionMethod('');
-        setBranch('');
+        setRef('');
     }
 
     const CreateTransaction = async () => {
 
-        if (transactionName === '' || transactionType === '' || transactionMethod === '' || branch === '' || bankName === '') {
+        if (transactionName === '' || transactionType === '' || transactionMethod === '' || bankName === '') {
 
             return toast.error('Please fill all the fields')
         }
@@ -39,7 +39,7 @@ function EBL({ toggleAddTransactionMode }) {
             transactionName,
             transactionType,
             transactionMethod,
-            branch,
+            ref,
             bankName,
         };
 
@@ -84,8 +84,8 @@ function EBL({ toggleAddTransactionMode }) {
             <div className=' flex justify-center w-full'>
                 <div className=' bg-white shadow rounded w-[350px] px-7 py-5 mt-10'>
                     <p className=' text-center font-medium'>Create Transactions</p>
-                    <input type="text" value={transactionName} onChange={(e) => setTransactionName(e.target.value)} placeholder='Transaction Name' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
-                    <input type="text" value={branch} onChange={(e) => setBranch(e.target.value)} placeholder='Reference' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                    <input type="text" value={transactionName} onChange={(e) => setTransactionName(e.target.value)} placeholder='Descriptions' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                    <input type="text" value={ref} onChange={(e) => setRef(e.target.value)} placeholder='Reference' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                     <select value={transactionType} onChange={(e) => setTransactionType(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
                         <option value="">Select Transection Type</option>
                         <option value="credit">Credit</option>
