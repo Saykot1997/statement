@@ -147,11 +147,11 @@ function EBLBankSolvency() {
                                 :
                                 <span className=' mx-1'>{accountHolderName}</span>
                         }
-                        Jounobs Residence,
+                        Residence,
 
                         {
                             editMode ?
-                                <input type="text" placeholder='Address' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='Address' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                 :
                                 <span className=' mx-1'>{accountHolderAddress}</span>
                         }
@@ -199,7 +199,7 @@ function EBLBankSolvency() {
                                 <td className=' border border-gray-800 px-2'>
                                     {
                                         editMode ?
-                                            <input type="text" placeholder='Account No' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            <input type="text" placeholder='Account No' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                             :
                                             <span className=' mx-1'>{accountNumber}</span>
                                     }
@@ -207,7 +207,7 @@ function EBLBankSolvency() {
                                 <td className=' border border-gray-800 px-2 w-[35%]'>
                                     {
                                         editMode ?
-                                            <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                             :
                                             <span className=' mx-1'>{accountType}</span>
                                     }
@@ -216,7 +216,7 @@ function EBLBankSolvency() {
                                 <td className=' border border-gray-800 px-2'>
                                     {
                                         editMode ?
-                                            <input type="text" placeholder='Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            <input type="text" placeholder='Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                             :
                                             <span className=' mx-1'>{commaNumber(accountBalance)}</span>
                                     }
@@ -227,7 +227,7 @@ function EBLBankSolvency() {
                     </table>
                 </div>
 
-                <p className=' font-nuosu'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>
+                <p className=' font-nuosu mt-16'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>
                 <div className=' w-full flex justify-between mt-28 print:absolute bottom-24 left-0 print:px-20'>
                     <div>
                         <img src={signature1} alt="" className=' w-[66%] -mt-6' />
@@ -241,7 +241,7 @@ function EBLBankSolvency() {
                 </div>
             </div>
             <div className=' w-full print:fixed bottom-0 font-sans' >
-                <p className=' text-center leading-[14px] text-sm print:text-[12px] text-gray-700 mb-3'>Phone:0821 -723242, E-mail:info@ebl-bd.com, Contact Center:16230,+88-02-8332232 Web:www.ebl.com.bd, Swift:EBLDBDDH</p>
+                <p className=' text-center leading-[14px] text-sm print:text-[12px] text-gray-700 mb-3'>Phone (IP):02-09666777325, E-mail:info@ebl-bd.com, Contact Center:16230,+88-02-8332232 Web:www.ebl.com.bd, Swift:EBLDBDDH</p>
                 <div className=' w-full bg-yellow-500 h-8'></div>
             </div>
         </div>

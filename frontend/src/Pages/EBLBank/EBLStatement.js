@@ -9,13 +9,15 @@ import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_sli
 import logo from "../../Photos/ebl_bank/logo.png"
 import sile from "../../Photos/ebl_bank/mid_logo.png"
 import GetFormatedDate from "../../Utils/GetFormatedDate"
+import changeFields from '../../Utils/ChangeFields';
+import EditButtonComponent from '../../Components/EditButtonComponent';
 
 function EBLStatement() {
 
     const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
-    const [initialBalance, setInitialBalance] = useState(400000);
+    const [initialBalance, setInitialBalance] = useState(700000);
     const [editMode, setEditMode] = useState(false);
     const [todayDate, setTodayDate] = useState("14-DEC-21");
     const [creditCount, setCreditCount] = useState(0)
@@ -74,8 +76,6 @@ function EBLStatement() {
             let startStatementDateYear = startStatementDate[0];
             let startStatementDateMonth = startStatementDate[1];
             let startStatementDateDay = startStatementDate[2];
-
-            console.log(startStatementDateMonth)
 
             let month = ""
 
@@ -159,9 +159,6 @@ function EBLStatement() {
 
     const GenerateTranjections = () => {
 
-        console.log(hideStartStatementDate)
-        console.log(hideEndStatementDate)
-
         if (!Transactions.length > 0) {
             return alert("No Transactions Found. Please select Bank Transaction First.")
         }
@@ -192,10 +189,6 @@ function EBLStatement() {
         toggleEditMode();
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-
 
     const getTransectionsAmounts = async () => {
 
@@ -215,30 +208,18 @@ function EBLStatement() {
         }
     }
 
+
     useEffect(() => {
         getTransectionsAmounts()
         getBankTransactions()
-
     }, [])
 
     // typeWriter
 
     return (
         <div className=" font-lora p-5 print:p-0 print:text-[8px] print:leading-3">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
 
-            {/* info start */}
+            <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
 
             <table className=' w-full'>
                 <thead className=' table-header-group'>
@@ -502,10 +483,30 @@ function EBLStatement() {
                             return (
                                 <tr className='align-text-top'>
                                     <td className='text-left py-[4px]'>
-                                        {item.date && GetFormatedDate(item.date)}
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span> {item.date && GetFormatedDate(item.date)}</span>
+                                        }
+
                                     </td>
-                                    <td className='text-left py-[4px]'>{item.particular}</td>
-                                    <td className='text-left pl-3 py-[4px]'>{item.branchCode}</td>
+                                    <td className='text-left py-[4px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <span>{item.particular}</span>
+                                        }
+                                    </td>
+                                    <td className='text-left pl-3 py-[4px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.branchCode} onChange={(e) => changeFields(e.target.value, index, "branchCode", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{item.branchCode}</span>
+                                        }
+                                    </td>
                                     <td className='text-right py-[4px]'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className='text-right py-[4px]'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
                                     <td className='text-right py-[4px]'>{commaNumber(item.balance)}</td>

@@ -8,6 +8,8 @@ import bankSil from "../../Photos/islami_bank/islami_bank_sil.png";
 
 function IslamiBankCertificate() {
 
+    const [footerContractInfo, setFooterContractInfo] = useState("Phone:88 02 09612001122, Fax:88 02 9568098, E-mail:info@sibl-bd.com")
+    const [footerAddress, setFooterAddress] = useState("City Center,90/1,Motijheel C/A,Dhaka-1000")
     const [branchName, setBranchName] = useState("Lohagora");
     const [branchCity, setBranchCity] = useState("Chattogram");
     const [branchPhone, setBranchPhone] = useState("01713-139033");
@@ -17,11 +19,7 @@ function IslamiBankCertificate() {
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
     const [accountHolderMotherName, setAccountHolderMotherName] = useState("Masudda Begum")
-    const [accountHolderHouse, setAccountHolderHouse] = useState("Kabir Mistrir Bari")
-    const [accountHoldervillage, setAccountHoldervillage] = useState("JamidurPara")
-    const [accountHolderWard, setAccountHolderWard] = useState("04")
-    const [accountHolderPost, setAccountHolderPost] = useState("West Kalauzan")
-    const [accountHolderThana, setAccountHolderThana] = useState("Kalauzan-4396")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("Kabir Mistrir Bari, JamidurPara, Word No-04, West Kalauzan, Kalauzan-4396, Lohagora, Chattogram")
     const [accountNumber, setAccountNumber] = useState("0123456789")
     const [accountType, setAccountType] = useState("Sanchita Special deposit Scheme")
     const [accountBalance, setAccountBalance] = useState("1000")
@@ -144,37 +142,11 @@ function IslamiBankCertificate() {
                         Address:-
                         {
                             editMode ?
-                                <input type="text" placeholder='house' value={accountHolderHouse} onChange={(e) => setAccountHolderHouse(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='Account Holder Address' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                 :
-                                <span className=''>{accountHolderHouse}, </span>
+                                <span className=' mx-1'>{accountHolderAddress} </span>
                         }
-
-                        {
-                            editMode ?
-                                <input type="text" placeholder='village' value={accountHoldervillage} onChange={(e) => setAccountHoldervillage(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=''>{accountHoldervillage}, </span>
-                        }
-                        Word No-
-                        {
-                            editMode ?
-                                <input type="text" placeholder='Word No' value={accountHolderWard} onChange={(e) => setAccountHolderWard(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=''>{accountHolderWard}, </span>
-                        }
-                        {
-                            editMode ?
-                                <input type="text" placeholder='Post Office' value={accountHolderPost} onChange={(e) => setAccountHolderPost(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=''>{accountHolderPost}, </span>
-                        }
-                        {
-                            editMode ?
-                                <input type="text" placeholder='District' value={accountHolderThana} onChange={(e) => setAccountHolderThana(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=''>{accountHolderThana}, </span>
-                        }
-                        {branchName}, {branchCity} have been maintaing a
+                        have been maintaing a
 
                         {
                             editMode ?
@@ -264,8 +236,19 @@ function IslamiBankCertificate() {
                 </div>
             </div>
             <div className=' w-full print:fixed bottom-0 font-sans' >
-                <p className=' text-center'><span className=' font-semibold'>Social Islami Bank Limited,</span>Corporate Office: City Center,90/1,Motijheel C/A,Dhaka-1000</p>
-                <p className=' text-center leading-[14px] mb-1'>Phone:88 02 09612001122, Fax:88 02 9568098, E-mail:info@sibl-bd.com</p>
+                <p className=' text-center'><span className=' font-semibold'>Social Islami Bank Limited,</span>Corporate Office:
+                    {
+                        editMode ?
+                            <input type="text" placeholder='footer address' value={footerAddress} onChange={(e) => setFooterAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                            :
+                            <span>{footerAddress}</span>
+                    }
+                </p>
+                {
+                    editMode ? <input type="text" placeholder='footer address' value={footerContractInfo} onChange={(e) => setFooterContractInfo(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                        :
+                        <p className=' text-center leading-[14px] mb-1'>{footerContractInfo}</p>
+                }
                 <img src={footer} alt="" />
             </div>
         </div>

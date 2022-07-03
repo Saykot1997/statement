@@ -8,6 +8,8 @@ import commaNumber from 'comma-number'
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import sil from "../../Photos/uco_bank/sil.png"
+import EditButtonComponent from '../../Components/EditButtonComponent';
+import changeFields from '../../Utils/ChangeFields';
 
 function UCOBankTransaction() {
 
@@ -15,7 +17,7 @@ function UCOBankTransaction() {
     const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
-    const [initialBalance, setInitialBalance] = useState(400000);
+    const [initialBalance, setInitialBalance] = useState(700000);
     const [editMode, setEditMode] = useState(false);
     const [branchName, setBranchName] = useState("PUTHUPPARIYARAM (3329)");
     const [branchAddress, setBranchAddress] = useState("6/657,ARAVIND ARCADE, GROUND FLOOR, PURHUPPARIYARAM P.O., PALAKKAD");
@@ -112,11 +114,6 @@ function UCOBankTransaction() {
         toggleEditMode();
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-
-
     const getTransectionsAmounts = async () => {
 
         try {
@@ -157,19 +154,8 @@ function UCOBankTransaction() {
 
     return (
         <div className="p-10 font-mono">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
 
+            <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
 
             <div className=' grid grid-cols-3 print:text-[11px] print:leading-[14px] font-Poppins pt-5'>
                 <div>
@@ -500,14 +486,28 @@ function UCOBankTransaction() {
                                 return (
                                     <tr className="align-text-top" key={index}>
                                         <td className=" text-sm print:text-[10px] print:leading-[11px]">
-                                            <p>{GetFormateDate(item.date)}</p>
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                    :
+                                                    <span>{GetFormateDate(item.date)}</span>
+                                            }
                                         </td>
-
                                         <td className="text-sm print:text-[10px] print:leading-[11px] w-[30%] pr-2">
-                                            <p>{item.particular}</p>
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                    :
+                                                    <span>{item.particular}</span>
+                                            }
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[11px] text-right">
-                                            <p>{item.cheque}</p>
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.cheque} onChange={(e) => changeFields(e.target.value, index, "cheque", randomTransictions, setRandomTransictions)} placeholder='Cheque' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                    :
+                                                    <span>{item.cheque}</span>
+                                            }
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[11px]  text-right">
                                             <p>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</p>

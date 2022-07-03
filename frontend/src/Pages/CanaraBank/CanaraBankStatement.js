@@ -9,6 +9,8 @@ import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/canara_bank/logo.png";
 import bankSil from "../../Photos/canara_bank/sil.png";
 import GetFormatedDate from '../../Utils/GetFormatedDate';
+import EditButtonComponent from '../../Components/EditButtonComponent';
+import changeFields from '../../Utils/ChangeFields';
 
 
 function CanaraBankStatement() {
@@ -16,7 +18,7 @@ function CanaraBankStatement() {
     const [randomTransictions, setRandomTransictions] = useState([])
     const [openingDate, setOpeningDate] = useState("28-DEC-21")
     const [transactionQuantity, setTransactionQuantity] = useState(30);
-    const [initialBalance, setInitialBalance] = useState(400000);
+    const [initialBalance, setInitialBalance] = useState(700000);
     const [jointHolderName, setJointHolderName] = useState("John Jose Mathew");
     const [swiltCode, setSwiltCode] = useState("CNRBINBBBFD");
     const [customerId, setCustomerId] = useState("42-416032")
@@ -128,9 +130,9 @@ function CanaraBankStatement() {
         toggleEditMode();
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
+    // const printWebPage = () => {
+    //     window.print();
+    // }
 
     const getTransectionsAmounts = async () => {
 
@@ -173,18 +175,8 @@ function CanaraBankStatement() {
     return (
         <div className='w-full p-10 print:p-0'>
 
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
+
             <table className='w-full'>
                 <thead class=" table-header-group w-full">
                     <tr className=' w-full'>
@@ -499,11 +491,39 @@ function CanaraBankStatement() {
 
                             return (
                                 <tr className=' align-text-top'>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{GetFormatedDate(item.date)}</span>
+                                        }
+                                    </td>
                                     <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormatedDate(item.date)}</td>
-                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{GetFormatedDate(item.date)}</td>
-                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.branchCode}</td>
-                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.ref} </td>
-                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>{item.particular}</td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.branchCode} onChange={(e) => changeFields(e.target.value, index, "branchCode", randomTransictions, setRandomTransictions)} placeholder='Branch code' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{item.branchCode}</span>
+                                        }
+                                    </td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.ref} onChange={(e) => changeFields(e.target.value, index, "ref", randomTransictions, setRandomTransictions)} placeholder='Ref' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{item.ref}</span>
+                                        }
+                                    </td>
+                                    <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <span>{item.particular}</span>
+                                        }
+                                    </td>
                                     <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.withdrawal)}</td>
                                     <td className='border-l-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.deposit)}</td>
                                     <td className=' border-x-[0.01em] border-y-[0.01em] print:leading-[12px] py-[2px] border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>

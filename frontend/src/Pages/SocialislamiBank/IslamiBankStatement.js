@@ -9,13 +9,15 @@ import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/islami_bank/islami_bank_logo.png";
 import bankSil from "../../Photos/islami_bank/islami_bank_sil.png";
 import GetFormatedDate from '../../Utils/GetFormatedDate';
+import EditButtonComponent from '../../Components/EditButtonComponent';
+import changeFields from '../../Utils/ChangeFields';
 
 function IslamiBankStatement() {
 
     const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
-    const [initialBalance, setInitialBalance] = useState(400000);
+    const [initialBalance, setInitialBalance] = useState(700000);
     const [editMode, setEditMode] = useState(false);
     const [printDate, setPrintDate] = useState("01/01/2020");
     const [branchName, setBranchName] = useState("Garib-E-Newaz Avenue Branch");
@@ -134,18 +136,7 @@ function IslamiBankStatement() {
     return (
         <div className=' w-full min-h-screen p-10 print:p-0 font-nuosu'>
 
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
 
             <table className='w-full'>
                 <thead class=" table-header-group w-full">
@@ -392,7 +383,6 @@ function IslamiBankStatement() {
                                         </div>
                                     }
                                 </div>
-
                             </div>
                         </th>
                     </tr>
@@ -426,7 +416,14 @@ function IslamiBankStatement() {
 
                             return (
                                 <tr className=' print:leading-[14px] align-text-top'>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.date}</td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{item.date}</span>
+                                        }
+                                    </td>
                                     <td className=' border p-2 print:py-0 print:px-3 print:text-[11px]'>{
                                         item.type === 'credit' && item.method === "cheque" &&
                                         <span>101</span>
@@ -452,8 +449,23 @@ function IslamiBankStatement() {
 
 
                                     }</td>
-                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>{item.cheque}</td>
-                                    <td className=' border p-2 print:py-0 print:px-[6px] print:text-[11px] uppercase'>{item.particular} <span className=' capitalize'>on Date {GetFormatedDate(item.date)}</span></td>
+                                    <td className=' border p-2 print:py-0 print:px-1 print:text-[11px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.cheque} onChange={(e) => changeFields(e.target.value, index, "cheque", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{item.cheque}</span>
+                                        }
+                                    </td>
+                                    <td className=' border p-2 print:py-0 print:px-[6px] print:text-[11px]'>
+
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <p>{item.particular} <span className=' capitalize'>on Date {GetFormatedDate(item.date)}</span></p>
+                                        }
+                                    </td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
                                     <td className=' border p-2 print:py-0 print:px-1 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>

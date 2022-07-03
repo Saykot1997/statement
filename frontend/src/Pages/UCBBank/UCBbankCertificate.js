@@ -7,6 +7,9 @@ import commaNumber from 'comma-number';
 
 function UCBbankCertificate() {
 
+    const [footerContractInfo, setFooterContractInfo] = useState("Phone: +880-2 55668070, +889610999999, E-mail: info@ucb.com.bd")
+    const [footerAddress, setFooterAddress] = useState("Plot-CWS(A)-1 Road No-34 Gulshan Avenue, Dhaka - 1212, Bangladesh")
+    const [branchAddress, setBranchAddress] = useState('"Waqf Bhaban" (1st Floor) 4, New Eskaton Road, Dhaka - 1000')
     const [printDate, setPrintDate] = useState("18.05.2022");
     const [ref, setRef] = useState("UCBL/GB/NEB/2022");
     const [editMode, setEditMode] = useState(false);
@@ -16,9 +19,8 @@ function UCBbankCertificate() {
     const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
     const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
-    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A, Holding No-20, Cantonment-4, Mohakhali OOHS, Dhaka Cantonment, Bangladesh")
-    const [branchHouse, setBranchHouse] = useState('"Waqf Bhaban" (1st Floor)')
-    const [branchRoad, setBranchRoad] = useState("4,New Eskaton Road, Dhaka-1000.")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A, Holding No-20, Cantonment-4, Mohakhali, Dhaka Cantonment, Bangladesh")
+    const [branchPhoneNumber, setBranchPhoneNumber] = useState('028333321,8333326,833360')
     const [branchRoutingNumber, setBranchRoutingNumber] = useState("245261396")
     const [accountNumber, setAccountNumber] = useState("0943211000001452")
     const [accountType, setAccountType] = useState("Saving Deposit")
@@ -62,25 +64,24 @@ function UCBbankCertificate() {
                     {
                         editMode ?
                             <div className=' flex items-center'>
-                                <span>Branch House</span>
+                                <span>Address</span>
                                 <span>:</span>
-                                <input type="text" placeholder='House' value={branchHouse} onChange={(e) => setBranchHouse(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='House' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                             </div>
                             :
-                            <p>{branchHouse}</p>
+                            <p className='w-[260px]'>{branchAddress}</p>
                     }
+
                     {
                         editMode ?
-
                             <div className=' flex items-center'>
-                                <span>Branch Road</span>
+                                <span>Phone</span>
                                 <span>:</span>
-                                <input type="text" placeholder='Road Number' value={branchRoad} onChange={(e) => setBranchRoad(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='Branch Phone' value={branchPhoneNumber} onChange={(e) => setBranchPhoneNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                             </div>
                             :
-                            <p>{branchRoad}</p>
+                            <p>Phone:{branchPhoneNumber}</p>
                     }
-                    <p>Phone:028333321,8333326,833360</p>
                     <p>Swift Code:UCBLBDDH</p>
                     {
                         editMode ?
@@ -135,7 +136,7 @@ function UCBbankCertificate() {
                         at
                         {
                             editMode ?
-                                <input type="text" placeholder='Address ' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='Address ' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                 :
                                 <span className=''> {accountHolderAddress} </span>
                         }
@@ -287,9 +288,26 @@ function UCBbankCertificate() {
             </div>
             <div className=' text-gray-500 leading-5 text-sm mt-[120px] print:fixed bottom-3 font-sans'>
                 <p className=' text-red-800 text-lg font-semibold'>United Commercial Bank Limited</p>
-                <p>Corporate Office:Plot-CWS(A)-1 Road No-34</p>
-                <p>Gulshan Avenue, Dhaka-1212, Bangladesh.</p>
-                <p>Phone: +880-2 55668070, +889610999999, E-mail: info@ucb.com.bd</p>
+                {
+                    editMode ?
+                        <div>
+                            <span>Corporate Office:</span>
+                            <input type="text" placeholder='Footer Address' value={footerAddress} onChange={(e) => setFooterAddress(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                        </div>
+                        :
+                        <p className=' w-[300px]'>Corporate Office:{footerAddress}.</p>
+
+                }
+                {
+                    editMode ?
+                        <div>
+                            <span>Footer Contract Info:</span>
+                            <input type="text" placeholder='Footer Address' value={footerContractInfo} onChange={(e) => setFooterContractInfo(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                        </div>
+                        :
+                        <p>{footerContractInfo}</p>
+                }
+
             </div>
         </div>
     )

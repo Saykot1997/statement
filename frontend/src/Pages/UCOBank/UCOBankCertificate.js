@@ -11,11 +11,9 @@ function UCObankCertificate() {
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
-    const [accountHolderAddress, setAccountHolderAddress] = useState("Falaj Al Qabail OMAN")
-    const [postBoxCode, setPostBoxCode] = useState("584")
-    const [postOfficeCode, setPostOfficeCode] = useState("322")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A, Holding No-20, Cantonment-4, Mohakhali, Dhaka Cantonment, Bangladesh")
     const [accountNumber, setAccountNumber] = useState("0943211000001452")
-    const [accountType, setAccountType] = useState("Saving Accounts")
+    const [accountType, setAccountType] = useState("Saving")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
@@ -24,8 +22,6 @@ function UCObankCertificate() {
     const [leftManagerposition, setLeftManagerPosition] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManagerName] = useState("Kazi Muzibul Islam");
     const [rightManagerposition, setRightManagerPosition] = useState("EVP & Head of Branch");
-
-
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -62,7 +58,7 @@ function UCObankCertificate() {
                     <span className=' border-b border-gray-800 font-semibold capitalize text-gray-800'>To Whom It May Concern</span>
                 </div>
                 <div>
-                    <p className=' text-center leading-7'>This is to inform that
+                    <p className='leading-7'>This is to inform that
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -76,23 +72,10 @@ function UCObankCertificate() {
                                 :
                                 <span className=''> {accountHolderFotherName}, </span>
 
-                        } at P.O.BOX {
+                        } at  {
                             editMode ?
 
-                                <input type="text" placeholder='Post Box Code' value={postBoxCode} onChange={(e) => setPostBoxCode(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=''>{postBoxCode}, </span>
-
-                        } P.O.Code {
-                            editMode ?
-                                <input type="text" placeholder='Post office Code' value={postOfficeCode} onChange={(e) => setPostOfficeCode(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span>{postOfficeCode} </span>
-
-                        } {
-                            editMode ?
-
-                                <input type="text" placeholder='Address' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                <input type="text" placeholder='Address' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                 :
                                 <span className=''>{accountHolderAddress} </span>
 
@@ -188,9 +171,7 @@ function UCObankCertificate() {
                 <div className=' my-5'>
                     <p>To the best of our knowledge, the client is financially sound and solvent.</p>
                 </div>
-                {/* <div className=' text-center mt-10'>
-                    <p className=' font-semibold text-gray-800'>FOR UNITED COMMERCIAL BANK PLC.</p>
-                </div> */}
+
                 <div className=' grid grid-cols-3 mt-8 items-center'>
                     <div className=' w-full relative'>
                         <div className=''>
