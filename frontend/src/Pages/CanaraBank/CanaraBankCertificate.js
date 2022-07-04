@@ -13,8 +13,6 @@ function CanarabankCertificate() {
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
     const [accountHolderAddress, setAccountHolderAddress] = useState("Jose House Marakulam Aduthala P O Chathannor, Kollam Pin:691579, Kerala, India")
-    const [postBoxCode, setPostBoxCode] = useState("584")
-    const [postOfficeCode, setPostOfficeCode] = useState("322")
     const [accountNumber, setAccountNumber] = useState("0837101033765")
     const [accountType, setAccountType] = useState("Saving Accounts")
     const [accountBalance, setAccountBalance] = useState("1000")

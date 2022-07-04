@@ -123,12 +123,12 @@ function IslamiBankCertificate() {
                                 :
                                 <span className=''> {accountHolderName} </span>
                         }
-                        S/o
+                        S/O
                         {
                             editMode ?
                                 <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
-                                <span className=''>{accountHolderFotherName} </span>
+                                <span className=''> {accountHolderFotherName} </span>
                         }
 
                         &
@@ -146,7 +146,7 @@ function IslamiBankCertificate() {
                                 :
                                 <span className=' mx-1'>{accountHolderAddress} </span>
                         }
-                        have been maintaing a
+                        has been maintaining a
 
                         {
                             editMode ?
@@ -154,7 +154,7 @@ function IslamiBankCertificate() {
                                 :
                                 <span className=''> {accountType} </span>
                         }
-                        Account brearing No.
+                        Account bearing No.
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />

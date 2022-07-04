@@ -140,7 +140,7 @@ function UCBbankCertificate() {
                                 :
                                 <span className=''> {accountHolderAddress} </span>
                         }
-                        have been maintaing the following
+                        has been maintainnig the following
 
                         {
                             editMode ?
