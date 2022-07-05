@@ -175,7 +175,7 @@ function UCBBankStatement() {
 
                                 </div>
                             </div>
-                            <div className=' w-full flex font-medium print:text-[12px] print:leading-[16px] pb-5'>
+                            <div className=' w-full flex font-medium print:text-[12px] print:leading-[16px] pb-1'>
                                 <div className=' w-[50%]'>
                                     {
                                         editMode ?
