@@ -37,8 +37,8 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
     let randomTransictions = [];
 
-    let interTotalWithdrawal = 0;
-    let interTotalDeposit = 0;
+    let interTotalWithdrawal = 0.00;
+    let interTotalDeposit = 0.00;
 
     for (let i = 0; i < transactionQuantity; i++) {
 
@@ -80,33 +80,33 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         // set withdrawal and deposit
         if (transactions[findRandomParticular].transactionMethod === "atm") {
 
-            randomWithdrawal = atmWithdrawalAmount[Math.floor(Math.random() * atmWithdrawalAmount.length)];
-            randomDeposit = 0;
+            randomWithdrawal = parseFloat(atmWithdrawalAmount[Math.floor(Math.random() * atmWithdrawalAmount.length)]).toFixed(2);
+            randomDeposit = 0.00;
 
         } else if (transactions[findRandomParticular].transactionMethod === "online") {
 
             if (transactions[findRandomParticular].transactionType === "credit") {
 
-                randomWithdrawal = 0;
-                randomDeposit = Math.floor(Math.random() * 20000)
+                randomWithdrawal = 0.00;
+                randomDeposit = (Math.random() * 20000).toFixed(2)
 
             } else {
 
-                randomWithdrawal = Math.floor(Math.random() * 20000)
-                randomDeposit = 0;
+                randomWithdrawal = (Math.random() * 20000).toFixed(2)
+                randomDeposit = 0.00;
             }
 
         } else {
 
             if (transactions[findRandomParticular].transactionType === "credit") {
 
-                randomWithdrawal = 0;
-                randomDeposit = chequeAmounts[Math.floor(Math.random() * chequeAmounts.length)];
+                randomWithdrawal = 0.00;
+                randomDeposit = parseFloat(chequeAmounts[Math.floor(Math.random() * chequeAmounts.length)]).toFixed(2);
 
             } else {
 
-                randomWithdrawal = chequeAmounts[Math.floor(Math.random() * chequeAmounts.length)];
-                randomDeposit = 0;
+                randomWithdrawal = parseFloat(chequeAmounts[Math.floor(Math.random() * chequeAmounts.length)]).toFixed(2);
+                randomDeposit = 0.00;
             }
         }
 
@@ -154,27 +154,24 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
         //  set interTotalWithdrawal and interTotalDeposit
         if (transactions[findRandomParticular].transactionType === "credit") {
 
-            interTotalDeposit += randomDeposit;
+            interTotalDeposit = (parseFloat(interTotalDeposit) + parseFloat(randomDeposit)).toFixed(2)
 
             if (i === 0) {
-
-                randomTransictionsObject.balance = parseInt(initialBalance) + parseInt(randomDeposit);
-
+                randomTransictionsObject.balance = (parseFloat(initialBalance) + parseFloat(randomDeposit)).toFixed(2)
             } else {
-
-                randomTransictionsObject.balance = parseInt(randomTransictions[i - 1].balance) + parseInt(randomDeposit);
+                randomTransictionsObject.balance = (parseFloat(randomTransictions[randomTransictions.length - 1].balance) + parseFloat(randomDeposit)).toFixed(2);
             }
         } else {
 
-            interTotalWithdrawal += randomWithdrawal;
+            interTotalWithdrawal = (parseFloat(interTotalWithdrawal) + parseFloat(randomWithdrawal)).toFixed(2)
 
             if (i === 0) {
 
-                randomTransictionsObject.balance = parseInt(initialBalance) - parseInt(randomWithdrawal);
+                randomTransictionsObject.balance = (parseFloat(initialBalance) - parseFloat(randomWithdrawal)).toFixed(2);
 
             } else {
 
-                randomTransictionsObject.balance = parseInt(randomTransictions[i - 1].balance) - parseInt(randomWithdrawal);
+                randomTransictionsObject.balance = (parseFloat(randomTransictions[randomTransictions.length - 1].balance) - parseFloat(randomWithdrawal)).toFixed(2);
             }
         }
 

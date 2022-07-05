@@ -10,7 +10,7 @@ function IslamiBankCertificate() {
 
     const [footerContractInfo, setFooterContractInfo] = useState("Phone:88 02 09612001122, Fax:88 02 9568098, E-mail:info@sibl-bd.com")
     const [footerAddress, setFooterAddress] = useState("City Center,90/1,Motijheel C/A,Dhaka-1000")
-    const [branchName, setBranchName] = useState("Lohagora");
+    const [branchName, setBranchName] = useState("Lohagora Branch");
     const [branchCity, setBranchCity] = useState("Chattogram");
     const [branchPhone, setBranchPhone] = useState("01713-139033");
     const [printDate, setPrintDate] = useState("18.05.2022");
@@ -50,12 +50,12 @@ function IslamiBankCertificate() {
                         <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                     </div>
             }
-            <div className=' w-full flex justify-center'>
-                <div className=' absolute top-5 left-5'>
+            <div className=' w-full flex justify-center pt-6 '>
+                <div className=' absolute top-10 left-10'>
                     <img src={logo} alt="" className=' w-40' />
                 </div>
                 <div className=' flex flex-col items-center w-full pt-10'>
-                    <p className=' font-semibold text-xl'>Social Islami Bank Limited</p>
+                    <p className=' font-semibold text-[22px]'>Social Islami Bank Limited</p>
                     {
                         editMode ?
                             <div>
@@ -116,7 +116,7 @@ function IslamiBankCertificate() {
                     <span className=' border-b border-gray-800 font-semibold'>TO WHOM IT MAY CONCERN</span>
                 </div>
                 <div>
-                    <p>This is to certify that Mr.
+                    <p className=' text-justify'>This is to certify that Mr.
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -181,7 +181,7 @@ function IslamiBankCertificate() {
                 }
                 <table className=' w-full my-5'>
                     <thead>
-                        <tr>
+                        <tr className=' align-text-top'>
                             <th className=' border border-gray-800 pb-2 px-1'>S/N</th>
                             <th className=' border border-gray-800 pb-2 px-1'>Account No</th>
                             <th className=' border border-gray-800 pb-2 px-1'>Account Name</th>
@@ -194,15 +194,15 @@ function IslamiBankCertificate() {
                             <td className=' border border-gray-800 px-2'>01</td>
                             <td className=' border border-gray-800 px-2'>{accountNumber}</td>
                             <td className=' border border-gray-800 px-2'>{accountHolderName}</td>
-                            <td className=' border border-gray-800 px-2 w-[20%]'>
+                            <td className=' border border-gray-800 px-2 w-[20%] text-right'>
                                 {
                                     editMode ?
                                         <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                         :
-                                        <span className=' mx-1'>BDT:{commaNumber(accountBalance)}</span>
+                                        <span className=''>BDT:{commaNumber(accountBalance)}</span>
                                 }
                             </td>
-                            <td className=' border border-gray-800 px-2 w-[20%]'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                            <td className=' border border-gray-800 px-2 w-[20%] text-right'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                         </tr>
                         <tr >
                             <td colSpan="3" className=' border border-gray-800 text-center font-semibold'>Total</td>

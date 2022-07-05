@@ -20,8 +20,8 @@ function IslamiBankStatement() {
     const [initialBalance, setInitialBalance] = useState(700000);
     const [editMode, setEditMode] = useState(false);
     const [printDate, setPrintDate] = useState("01/01/2020");
-    const [branchName, setBranchName] = useState("Garib-E-Newaz Avenue Branch");
-    const [branchAddress, setBranchAddress] = useState("50,Garib-E-New Avenue,Sector-13,Uttra");
+    const [branchName, setBranchName] = useState("Lohagara Branch");
+    const [branchAddress, setBranchAddress] = useState("Ice Park (1st Floor), Main Road, Lohagara, Chattogram");
     const [openingDate, setOpeningDate] = useState("01/01/2020");
     const [lastTRDate, setLastTRDate] = useState("01/01/2020");
     const [reportGenerateUser, setReportGenerateUser] = useState("");
@@ -94,7 +94,7 @@ function IslamiBankStatement() {
             return alert("No Transactions Found. Please select Bank Transaction First.")
         }
 
-        if (!TransactionAmount.ATM.length > 0 || !TransactionAmount.Cheque.length > 0) {
+        if (!TransactionAmount.ATM?.length > 0 || !TransactionAmount.Cheque?.length > 0) {
             return alert("No Transaction Amount Found. Please insert Transaction Amount First.")
         }
 
@@ -103,10 +103,6 @@ function IslamiBankStatement() {
         setTotalDeposit(allData.TotalDeposit);
         setRandomTransictions(allData.RandomTransictions);
         toggleEditMode();
-    }
-
-    const printWebPage = () => {
-        window.print();
     }
 
     const getTransectionsAmounts = async () => {
@@ -142,7 +138,7 @@ function IslamiBankStatement() {
                 <thead class=" table-header-group w-full">
                     <tr className=' w-full'>
                         <th class="report-header-cell w-full" colspan="7">
-                            <div className=' w-full'>
+                            <div className=' w-full pt-5'>
                                 <div className='w-full flex justify-between'>
                                     <div className=' w-[40%]'>
                                         <img src={logo} alt="" className=' w-32' />
@@ -157,7 +153,7 @@ function IslamiBankStatement() {
                                                 </div>
                                                 :
 
-                                                <p className=' print:text-base text-gray-900'>{branchName}</p>
+                                                <p className=' print:text-[12px] text-gray-900 print:leading-[16px] mt-[2px]'>{branchName}</p>
                                         }
                                         {
                                             editMode ?
@@ -167,42 +163,41 @@ function IslamiBankStatement() {
                                                 </div>
                                                 :
 
-                                                <p className=' font-semibold print:text-sm text-gray-900'>{branchAddress}</p>
+                                                <p className=' font-semibold print:text-[12px] text-gray-900 print:leading-[16px]'>{branchAddress}</p>
                                         }
                                     </div>
                                     <div className=' w-[40%] flex justify-end'>
                                         {
                                             editMode ?
                                                 <div className=''>
-                                                    <p className=' text-sm font-semibold print:font-normal print:text-right'>Print Date :
+                                                    <p className=' text-sm font-semibold print:font-normal print:text-right print:text-[12px]'>Print Date :
                                                         <input type="text" placeholder='Print date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                     </p>
-                                                    <p className=' text-sm font-semibold print:font-normal mr-14'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
+                                                    <p className=' text-sm font-semibold print:font-normal mr-14 print:text-[12px]'>Report Generated User:  <input type="text" placeholder='Report Generate User' value={reportGenerateUser} onChange={(e) => setReportGenerateUser(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' /></p>
                                                 </div>
                                                 :
 
                                                 <div className=' w-full font-normal mt-3'>
                                                     <div className=' text-right leading-[14px]'>
-                                                        <span className=' text-sm print:text-[11px]'>Print Date</span>
-                                                        <span className=' mx-1 '>:</span>
-                                                        <span className=' text-sm print:text-[11px]'>{printDate}</span>
+                                                        <span className=' text-sm print:text-[11px] font-semibold text-gray-800'>Print Date : </span>
+                                                        <span className=' text-sm print:text-[11px] font-semibold text-gray-800'>{printDate}</span>
                                                     </div>
                                                     <div className=' text-right leading-[14px]'>
-                                                        <span className=' text-sm print:text-[11px]'>Report Generated User</span>
-                                                        <span className=' mx-1 '>:</span>
-                                                        <span className=' text-sm print:text-[11px]'>{reportGenerateUser}</span>
+                                                        <span className=' text-sm print:text-[11px] font-semibold text-gray-800'>Report Generated User : </span>
+                                                        <span className=' text-sm print:text-[11px] font-semibold text-gray-800'>{reportGenerateUser}</span>
                                                     </div>
                                                 </div>
                                         }
                                     </div>
                                 </div>
-                                <div className=' flex justify-center py-5 print:pt-2 print:pb-4'>
-                                    <span className=' border-b border-gray-900 font-semibold text-lg print:text-base text-gray-900'>A/C Statement</span>
+                                <div className=' flex flex-col justify-center items-center py-5 print:pt-0 print:-mt-[6px] print:pb-4'>
+                                    <span className=' font-semibold text-lg print:text-base text-gray-900'>A/C Statement</span>
+                                    <span className=' bg-black h-[1px] w-[110px] print:w-[98px] print:-mt-1'></span>
                                 </div>
                             </div>
 
-                            <div className=' w-full flex font-normal'>
-                                <div className=' w-1/2 pr-16 print:text-[12px]'>
+                            <div className=' w-full flex font-normal pb-1'>
+                                <div className=' w-1/2 print:w-[42%] pr-16 print:pr-0 print:text-[11px]'>
                                     {
                                         editMode ?
                                             <div className=' my-1'>
@@ -212,12 +207,12 @@ function IslamiBankStatement() {
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24'>
+                                                <div className=' flex justify-between w-32 print:w-[62px]'>
                                                     <span className='font-semibold'>A/C No</span>
                                                     <span>:</span>
                                                 </div>
-                                                <div className=' text-left ml-1 w-[calc(100%-theme(space.20))]'>
-                                                    <span className=''>{accountNumber}</span>
+                                                <div className=' text-left ml-1 w-[calc(100%-theme(space.6))]'>
+                                                    <span className=' font-semibold text-gray-800'>{accountNumber}</span>
                                                 </div>
                                             </div>
                                     }
@@ -230,12 +225,12 @@ function IslamiBankStatement() {
                                             </div>
                                             :
                                             <div className=' flex'>
-                                                <div className=' flex justify-between w-24'>
+                                                <div className=' flex justify-between w-32 print:w-[62px]'>
                                                     <span className='font-semibold'>A/C Name</span>
                                                     <span className=''>:</span>
                                                 </div>
-                                                <div className='  text-left ml-1 w-[calc(100%-theme(space.20))]'>
-                                                    <span className=''>{accountHoldersName}</span>
+                                                <div className='  text-left ml-1 w-[calc(100%-theme(space.6))]'>
+                                                    <span className='font-semibold text-gray-800'>{accountHoldersName}</span>
                                                 </div>
                                             </div>
                                     }
@@ -248,17 +243,17 @@ function IslamiBankStatement() {
                                             </div>
                                             :
                                             <div className=' flex w-full'>
-                                                <div className=' flex justify-between w-24'>
+                                                <div className=' flex justify-between w-32 print:w-[62px]'>
                                                     <span className='font-semibold'>Address</span>
                                                     <span>:</span>
                                                 </div>
-                                                <div className=' text-left ml-1 w-[calc(100%-theme(space.20))]'>
-                                                    <span className=''>{accountHoldersAddress}</span>
+                                                <div className=' text-left ml-1 w-[calc(100%-theme(space.6))]'>
+                                                    <span className=' font-semibold text-gray-800'>{accountHoldersAddress}</span>
                                                 </div>
                                             </div>
                                     }
                                 </div>
-                                <div className=' w-1/2 print:text-[12px]'>
+                                <div className=' w-1/2 print:text-[11px]'>
                                     {
                                         editMode ?
 
@@ -292,7 +287,7 @@ function IslamiBankStatement() {
                                             <div className='flex'>
                                                 <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Type of Account</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
-                                                <p className=''>{accountType}</p>
+                                                <p className='font-semibold text-gray-800'>{accountType}</p>
                                             </div>
                                     }
                                     {
@@ -314,12 +309,12 @@ function IslamiBankStatement() {
                                                 <div className='flex'>
                                                     <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Opening Date</span>
                                                     <span className=' mx-2 font-semibold print:font-semibold'>:</span>
-                                                    <span className=' uppercase'>{openingDate}</span>
+                                                    <span className=' uppercase font-semibold text-gray-800'>{openingDate}</span>
                                                 </div>
                                                 <div className='flex'>
                                                     <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Last Tr.Date</span>
                                                     <span className=' mx-2 font-semibold print:font-semibold'>:</span>
-                                                    <span className=' uppercase'>{lastTRDate}</span>
+                                                    <span className=' uppercase font-semibold text-gray-800'>{lastTRDate}</span>
                                                 </div>
                                             </div>
                                     }
@@ -336,7 +331,7 @@ function IslamiBankStatement() {
                                             <div className=' my-[2px] flex'>
                                                 <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Phone</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
-                                                <span className=''>{accountHoldersPhone}</span>
+                                                <span className=' font-semibold text-gray-800'>{accountHoldersPhone}</span>
                                             </div>
                                     }
                                     {
@@ -350,7 +345,7 @@ function IslamiBankStatement() {
                                             <div className=' my-[2px] flex'>
                                                 <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Status</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
-                                                <span className=' uppercase'>{accountStatus}</span>
+                                                <span className=' uppercase font-semibold text-gray-800'>{accountStatus}</span>
                                             </div>
                                     }
 
@@ -496,9 +491,9 @@ function IslamiBankStatement() {
                     <tr>
                         <td class=" " colspan="7">
                             <div className=' w-full text-sm text-center mt-5'>
-                                <p className=' font-semibold'>101 : Cash Credit , 102 : Transfer Credit, 103 : Clearing Credit, 201 : Cash Debit, 202 : Cash Debit, 203: Clearing Debit</p>
-                                <p className=' font-semibold text-[12px]'>**We receive Dhaka WASA, DESCO, BRTA, Student tuition and e-GP/e-Tendering bills/fees at our branches through online.</p>
-                                <p className=' text-[12px]'>Prepared by ABABIL.Developed by : Millennium Information Solution Limited</p>
+                                <p className=' font-semibold print:text-[12px]'>101 : Cash Credit , 102 : Transfer Credit, 103 : Clearing Credit, 201 : Cash Debit, 202 : Transfer Debit, 203: Clearing Debit</p>
+                                <p className=' font-semibold text-[11px]'>**We receive Dhaka WASA, DESCO, BRTA, Student tuition and e-GP/e-Tendering bills/fees at our branches through online.</p>
+                                <p className=' text-[10px] mt-[2px]'>Prepared by ABABIL.Developed by : Millennium Information Solution Limited</p>
                                 <div className=' flex justify-end'>
                                     <img src={bankSil} alt="" className=' w-32 -translate-y-20' />
                                 </div>
