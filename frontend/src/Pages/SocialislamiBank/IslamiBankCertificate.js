@@ -182,19 +182,19 @@ function IslamiBankCertificate() {
                 <table className=' w-full my-5'>
                     <thead>
                         <tr className=' align-text-top'>
-                            <th className=' border border-gray-800 pb-2 px-1'>S/N</th>
-                            <th className=' border border-gray-800 pb-2 px-1'>Account No</th>
-                            <th className=' border border-gray-800 pb-2 px-1'>Account Name</th>
-                            <th className=' border border-gray-800 pb-2 px-1 w-[20%]'>Present Balance as on {printDate} (BDT)</th>
-                            <th className=' border border-gray-800 pb-2 px-1 w-[20%]'>Equivalent to USD @{usdCurrancyConversionRate} (Approx.) as on {printDate}</th>
+                            <th className=' border border-gray-800 pb-1 px-[2px]'>S/N</th>
+                            <th className=' border border-gray-800 pb-1 px-[2px]'>Account No</th>
+                            <th className=' border border-gray-800 pb-1 px-[2px]'>Account Name</th>
+                            <th className=' border border-gray-800 pb-1 px-[2px] w-[20%]'>Present Balance as on {printDate} (BDT)</th>
+                            <th className=' border border-gray-800 pb-1 px-[2px] w-[20%]'>Equivalent to USD @{usdCurrancyConversionRate} (Approx.) as on {printDate}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr >
-                            <td className=' border border-gray-800 px-2'>01</td>
-                            <td className=' border border-gray-800 px-2'>{accountNumber}</td>
-                            <td className=' border border-gray-800 px-2'>{accountHolderName}</td>
-                            <td className=' border border-gray-800 px-2 w-[20%] text-right'>
+                            <td className=' border border-gray-800 px-[2px]'>01</td>
+                            <td className=' border border-gray-800 px-[2px]'>{accountNumber}</td>
+                            <td className=' border border-gray-800 px-[2px]'>{accountHolderName}</td>
+                            <td className=' border border-gray-800 px-[2px] w-[20%] text-right'>
                                 {
                                     editMode ?
                                         <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -202,12 +202,12 @@ function IslamiBankCertificate() {
                                         <span className=''>BDT:{commaNumber(accountBalance)}</span>
                                 }
                             </td>
-                            <td className=' border border-gray-800 px-2 w-[20%] text-right'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                            <td className=' border border-gray-800 px-1 w-[20%] text-right'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                         </tr>
                         <tr >
                             <td colSpan="3" className=' border border-gray-800 text-center font-semibold'>Total</td>
-                            <td className=' border border-gray-800 font-semibold text-right px-2 w-[20%]'>BDT:{commaNumber(accountBalance)}</td>
-                            <td className=' border border-gray-800 font-semibold text-right px-2 w-[20%]'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                            <td className=' border border-gray-800 font-semibold text-right px-1 w-[20%]'>BDT:{commaNumber(accountBalance)}</td>
+                            <td className=' border border-gray-800 font-semibold text-right px-1 w-[20%]'>USD: {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -183,15 +183,15 @@ function UCBbankCertificate() {
                     <table className=' w-full mt-2'>
                         <thead>
                             <tr>
-                                <th className=' border border-gray-600 pb-2 px-1 w-[10%] text-gray-900'>SL no</th>
-                                <th className=' border border-gray-600 pb-2 px-1 w-[23%] text-gray-900'>Account Number</th>
-                                <th className=' border border-gray-600 pb-2 px-1 w-[23%] text-gray-900'>Account Type</th>
-                                <th className=' border border-gray-600 pb-2 px-1 text-gray-900'>
+                                <th className=' border border-gray-600 pb-2 px-[2px] w-[10%] text-gray-900'>SL no</th>
+                                <th className=' border border-gray-600 pb-2 px-[2px] w-[23%] text-gray-900'>Account Number</th>
+                                <th className=' border border-gray-600 pb-2 px-[2px] w-[23%] text-gray-900'>Account Type</th>
+                                <th className=' border border-gray-600 pb-2 px-[2px] text-gray-900'>
                                     {
                                         editMode ?
                                             <div>
                                                 <span>Balance</span>
-                                                <input type="text" placeholder='Print Date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                <input type="text" placeholder='Print Date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-[2px] my-[2px] border border-blue-500 focus:outline-none block' />
                                             </div>
                                             :
                                             <div>
@@ -208,10 +208,10 @@ function UCBbankCertificate() {
                         </thead>
                         <tbody>
                             <tr >
-                                <td className=' border border-gray-500 px-2 text-center w-[10%]'>01</td>
-                                <td className=' border border-gray-500 px-2 text-center w-[23%] '>{accountNumber}</td>
-                                <td className=' border border-gray-500 px-2 text-center w-[23%]'>{accountType}</td>
-                                <td className=' border border-gray-500 px-2 text-center '>
+                                <td className=' border border-gray-500 px-[2px] text-center w-[10%]'>01</td>
+                                <td className=' border border-gray-500 px-[2px] text-center w-[23%] '>{accountNumber}</td>
+                                <td className=' border border-gray-500 px-[2px] text-center w-[23%]'>{accountType}</td>
+                                <td className=' border border-gray-500 px-[2px] text-center '>
                                     {
                                         editMode ?
                                             <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -219,12 +219,12 @@ function UCBbankCertificate() {
                                             <span className=''>{commaNumber(accountBalance)}</span>
                                     }
                                 </td>
-                                <td className=' border border-gray-500 px-2 text-center w-[23%]'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                                <td className=' border border-gray-500 px-[2px] text-center w-[23%]'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                             </tr>
                             <tr >
                                 <td className=' border border-gray-500 text-center font-semibold text-gray-900 w-[10%]'></td>
-                                <td className=' border border-gray-500 px-2 text-left w-[23%] font-semibold text-gray-800'>Total</td>
-                                <td className=' border border-gray-500 px-2 w-[23%]'></td>
+                                <td className=' border border-gray-500 px-[2px] text-left w-[23%] font-semibold text-gray-800'>Total</td>
+                                <td className=' border border-gray-500 px-[2px] w-[23%]'></td>
                                 <td className=' border border-gray-500 text-center px-2 font-semibold text-gray-800'>{commaNumber(accountBalance)}</td>
                                 <td className=' border border-gray-500 text-center px-2 w-[23%] font-semibold text-gray-800'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                             </tr>
