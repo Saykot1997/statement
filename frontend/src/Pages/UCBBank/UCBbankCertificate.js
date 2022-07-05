@@ -39,11 +39,9 @@ function UCBbankCertificate() {
         window.print();
     }
 
-
-
     return (
-        <div className=" w-full p-10  font-lora print:p-0 print:pb-2 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom h-full bg-no-repeat">
-            <div className=' p-10 pb-0'>
+        <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom h-full bg-no-repeat">
+            <div className=' px-10 pb-0'>
                 {
                     editMode ?
                         <div className='absolute top-5 right-0 print:hidden'>
@@ -97,7 +95,10 @@ function UCBbankCertificate() {
                                 <p>Routing Number :{branchRoutingNumber}</p>
                         }
                         <p>Web: <span className=' border-b border-gray-300'>www.ucb.com.bd</span></p>
-                        <span className=' border-b border-gray-400'>E-mail:neb@ucb.com.bd</span>
+                        <div className=' flex flex-col items-end'>
+                            <span className=''>E-mail:neb@ucb.com.bd</span>
+                            <span className=' h-[.5px] w-[118px] bg-gray-300 inline-block -mt-[2px] mr-[16px]'></span>
+                        </div>
                     </div>
                 </div>
 
@@ -131,8 +132,8 @@ function UCBbankCertificate() {
                     <div className=' text-center my-9'>
                         <span className=' border-b border-gray-600 font-semibold capitalize text-gray-900'>To Whom It May Concern</span>
                     </div>
-                    <div>
-                        <p className='leading-7'>This is to inform that
+                    <div className=' px-2'>
+                        <p className='leading-7 text-justify'>This is to inform that
                             {
                                 editMode ?
                                     <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -179,7 +180,7 @@ function UCBbankCertificate() {
                             <input type="text" placeholder='Print Date' value={usdCurrancyConversionRate} onChange={(e) => setUsdCurrancyConversionRate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                         </div>
                     }
-                    <table className=' w-full mt-3'>
+                    <table className=' w-full mt-2'>
                         <thead>
                             <tr>
                                 <th className=' border border-gray-600 pb-2 px-1 w-[10%] text-gray-900'>SL no</th>
@@ -244,15 +245,14 @@ function UCBbankCertificate() {
                                     <span>{inWordUsdTaka}</span>
                             }.</p>
                     </div>
-                    <div className=' my-5'>
+                    <div className=' mt-10 mb-5'>
                         <p>To the best of our knowledge, the client is financially sound and solvent.</p>
                     </div>
-                    <div className=' text-center mt-5'>
+                    <div className=' text-center mt-10'>
                         <p className=' font-semibold text-lg text-gray-900'>FOR UNITED COMMERCIAL BANK PLC.</p>
                     </div>
 
-                    <div className=' grid grid-cols-3 mt-14 items-center'>
-
+                    <div className=' grid grid-cols-3 mt-6 items-center px-5 '>
                         <div className=' w-full relative'>
                             <div className=''>
                                 <img src={signature1} alt="" className=' w-52 translate-y-3' />
