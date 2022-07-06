@@ -515,13 +515,13 @@ function UCBBankStatement() {
                     <tr>
                         <td colSpan={8}>
                             <div className=' w-full flex justify-center'>
-                                <img src={bankSil} alt="" className=' w-32 mr-14' />
+                                <img src={bankSil} alt="" className='w-48' />
                             </div>
                         </td>
                     </tr>
                 </tfoot>
             </table>
-            <div className=' print:fixed bottom-5 w-full pl-5 pr-10 flex justify-between italic print:text-[10px] font-semibold font-Poppins print:text-gray-800'>
+            <div className=' print:fixed bottom-8 w-full pl-5 pr-10 flex justify-between italic print:text-[10px] font-medium font-Poppins print:text-gray-800'>
                 <div className=''>
                     {
                         editMode ?

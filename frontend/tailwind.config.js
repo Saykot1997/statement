@@ -22,10 +22,11 @@ module.exports = {
         'contain': 'contain',
         '50%': '50%',
         '75%': '75%',
-        '85%': "85%"
+        '85%': "85%",
+        "100": "100%"
       },
       backgroundPosition: {
-        'left-custom': '70% 120%',
+        'left-custom': '0% 100%',
       }
     },
   },

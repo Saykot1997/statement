@@ -17,7 +17,7 @@ function EBLBankSolvency() {
     const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman")
     const [accountHolderAddress, setAccountHolderAddress] = useState("Mohona 5/1 Block C Pathantula, Sylhet")
     const [todaysDate, setTodaysDate] = useState("June 14,2022")
-    const [accountNumber, setAccountNumber] = useState("0123456789")
+    const [accountNumber, setAccountNumber] = useState("0123456789123")
     const [balanceDate, setBalanceDate] = useState("13-June-2022")
     const [accountType, setAccountType] = useState("EBL Platinum Plus Savings")
     const [accountBalance, setAccountBalance] = useState("1000")
@@ -115,7 +115,7 @@ function EBLBankSolvency() {
 
                     </div>
                 </div>
-                <div className=' mt-10'>
+                <div className=' mt-10 font-nuosu'>
                     {
                         editMode ?
                             <div className=' flex items-center'>
@@ -123,7 +123,7 @@ function EBLBankSolvency() {
                                 <input type="text" placeholder='Date' value={todaysDate} onChange={(e) => setTodaysDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                             </div>
                             :
-                            <p>Date: {todaysDate}</p>
+                            <p className=' mb-2'>Date: <span className=' ml-2'>{todaysDate}</span></p>
                     }
                     {
                         editMode ?
@@ -136,11 +136,11 @@ function EBLBankSolvency() {
                     }
                 </div>
 
-                <div className=' text-center mb-5 mt-16'>
+                <div className=' text-center mb-5 mt-[80px]'>
                     <span className=' border-b border-gray-800 font-semibold font-nuosu'>TO WHOM IT MAY CONCERN</span>
                 </div>
                 <div className=' my-10'>
-                    <p className=' font-nuosu'>This is to certify that
+                    <p className=' font-nuosu text-justify'>This is to certify that
                         {
                             editMode ?
                                 <input type="text" placeholder='Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -173,13 +173,13 @@ function EBLBankSolvency() {
                             <input type="text" placeholder='USD Convert Rate' value={usdCurrancyConversionRate} onChange={(e) => setUsdCurrancyConversionRate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                         </div>
                     }
-                    <table className=' w-full my-5 font-nuosu'>
+                    <table className=' w-full mb-5 mt-3 font-nuosu'>
                         <thead>
                             <tr className=' bg-gray-300'>
-                                <th className=' border border-gray-800 font-normal'>Account No</th>
-                                <th className=' border border-gray-800 font-normal w-[35%]'>Account Type</th>
-                                <th className=' border border-gray-800 font-normal'>Account Currency</th>
-                                <th className=' border border-gray-800 font-normal'>
+                                <th className=' border border-gray-400 font-normal'>Account Number</th>
+                                <th className=' border border-gray-400 font-normal w-[35%]'>Account Type</th>
+                                <th className=' border border-gray-400 font-normal'>Account Currency</th>
+                                <th className=' border border-gray-400 font-normal'>
                                     {
                                         editMode ?
                                             <div>
@@ -191,12 +191,12 @@ function EBLBankSolvency() {
                                     }
 
                                 </th>
-                                <th className=' border border-gray-800 font-normal w-[16%]'>Equivalent in USD</th>
+                                <th className=' border border-gray-400 font-normal w-[16%]'>Equivalent in USD</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr >
-                                <td className=' border border-gray-800 px-2'>
+                                <td className=' border border-gray-400 px-2'>
                                     {
                                         editMode ?
                                             <input type="text" placeholder='Account No' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
@@ -204,7 +204,7 @@ function EBLBankSolvency() {
                                             <span className=' mx-1'>{accountNumber}</span>
                                     }
                                 </td>
-                                <td className=' border border-gray-800 px-2 w-[35%]'>
+                                <td className=' border border-gray-400 px-2 w-[35%]'>
                                     {
                                         editMode ?
                                             <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
@@ -212,8 +212,8 @@ function EBLBankSolvency() {
                                             <span className=' mx-1'>{accountType}</span>
                                     }
                                 </td>
-                                <td className=' border border-gray-800 px-2 text-center'>BDT</td>
-                                <td className=' border border-gray-800 px-2'>
+                                <td className=' border border-gray-400 px-2 text-center'>BDT</td>
+                                <td className=' border border-gray-400 px-2'>
                                     {
                                         editMode ?
                                             <input type="text" placeholder='Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
@@ -221,19 +221,19 @@ function EBLBankSolvency() {
                                             <span className=' mx-1'>{commaNumber(accountBalance)}</span>
                                     }
                                 </td>
-                                <td className=' border border-gray-800 px-2 w-[16%] text-center'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                                <td className=' border border-gray-400 px-2 w-[16%] text-center'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <p className=' font-nuosu mt-16'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>
-                <div className=' w-full flex justify-between mt-28 print:absolute bottom-24 left-0 print:px-20'>
+                <p className=' font-nuosu mt-8'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>
+                <div className=' w-full flex justify-between items-center mt-28'>
                     <div>
-                        <img src={signature1} alt="" className=' w-[66%] -mt-6' />
+                        <img src={signature1} alt="" className=' w-[66%]' />
                     </div>
                     <div>
-                        <img src={midlogo} alt="" className=' w-[85%]' />
+                        <img src={midlogo} alt="" className=' w-[100%]' />
                     </div>
                     <div className=' flex justify-end'>
                         <img src={signature2} alt="" className=' w-[66%]' />
@@ -241,7 +241,7 @@ function EBLBankSolvency() {
                 </div>
             </div>
             <div className=' w-full print:fixed bottom-0 font-sans' >
-                <p className=' text-center leading-[14px] text-sm print:text-[12px] text-gray-700 mb-3'>Phone (IP):02-09666777325, E-mail:info@ebl-bd.com, Contact Center:16230,+88-02-8332232 Web:www.ebl.com.bd, Swift:EBLDBDDH</p>
+                <p className=' text-center leading-[14px] text-sm print:text-[11px] text-gray-700 mb-3'>Phone (IP):02-09666777325, E-mail:info@ebl-bd.com, Contact Center:16230,+88-02-8332232 Web:www.ebl.com.bd, Swift:EBLDBDDH</p>
                 <div className=' w-full bg-yellow-500 h-8'></div>
             </div>
         </div>

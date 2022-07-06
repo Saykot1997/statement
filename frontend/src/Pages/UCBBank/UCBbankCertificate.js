@@ -4,6 +4,7 @@ import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
 import sile from "../../Photos/ucb_bank/sil.png"
 import commaNumber from 'comma-number';
+import { ToWords } from 'to-words';
 
 function UCBbankCertificate() {
 
@@ -25,11 +26,13 @@ function UCBbankCertificate() {
     const [accountNumber, setAccountNumber] = useState("0943211000001452")
     const [accountType, setAccountType] = useState("Saving Deposit")
     const [accountBalance, setAccountBalance] = useState("1000")
-    const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
+    const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState(87.60)
+    const [usdConvertMoney, setUsdConvertMoney] = useState(1000);
     const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
     const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
     const [todayDate, setTodayDate] = useState("Jan 12, 2022");
     const [branchName, setBranchName] = useState("New Eskaton Branch")
+    const toWords = new ToWords();
 
 
     const toggleEditMode = () => {
@@ -41,7 +44,7 @@ function UCBbankCertificate() {
     }
 
     return (
-        <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom h-full bg-no-repeat">
+        <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom bg-cover h-full bg-no-repeat">
             <div className=' px-10 pb-0'>
                 {
                     editMode ?
@@ -113,7 +116,7 @@ function UCBbankCertificate() {
                     </div>
                 </div>
 
-                <div className=' w-full print:pl-16 print:pb-48'>
+                <div className=' w-full print:pl-16 print:pb-[186px]'>
 
                     <div className=' my-8'>
                         {
@@ -225,7 +228,7 @@ function UCBbankCertificate() {
                                 <td className=' border border-gray-500 px-[2px] text-center '>
                                     {
                                         editMode ?
-                                            <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => setAccountBalance(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => { setAccountBalance(e.target.value); setUsdConvertMoney(parseFloat(parseFloat(e.target.value) / parseFloat(usdCurrancyConversionRate)).toFixed(2)) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             :
                                             <span className=''>{commaNumber(accountBalance)}</span>
                                     }
@@ -266,7 +269,7 @@ function UCBbankCertificate() {
                     <div className=' grid grid-cols-3 mt-6 items-center px-5 '>
                         <div className=' w-full relative'>
                             <div className=''>
-                                <img src={signature1} alt="" className=' w-52 translate-y-3' />
+                                <img src={signature1} alt="" className=' w-52 translate-y-10' />
                                 {
                                     editMode ?
                                         <input type="text" placeholder='Manager Name' value={leftManagerName} onChange={(e) => setLeftManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -285,12 +288,12 @@ function UCBbankCertificate() {
 
                         <div className=' w-full flex justify-center'>
                             <div>
-                                <img src={sile} alt="" className=' w-32' />
+                                <img src={sile} alt="" className=' w-48' />
                             </div>
                         </div>
 
-                        <div className=' w-full relative flex justify-end '>
-                            <div className=' -translate-y-3'>
+                        <div className=' w-full relative flex justify-end translate-y-3 '>
+                            <div className=''>
                                 <img src={signature2} alt="" className=' w-40 translate-y-3' />
                                 {
                                     editMode ?
