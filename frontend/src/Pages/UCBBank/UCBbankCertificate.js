@@ -29,6 +29,7 @@ function UCBbankCertificate() {
     const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
     const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
     const [todayDate, setTodayDate] = useState("Jan 12, 2022");
+    const [branchName, setBranchName] = useState("New Eskaton Branch")
 
 
     const toggleEditMode = () => {
@@ -60,7 +61,17 @@ function UCBbankCertificate() {
                         <img src={logo} alt="" className=' w-40 mt-5' />
                     </div>
                     <div className=' text-right print:text-[12px]'>
-                        <p className=' font-semibold'>New Eskaton Branch</p>
+
+                        {
+                            editMode ?
+                                <div className=' flex items-center'>
+                                    <span>Branchname</span>
+                                    <span>:</span>
+                                    <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                </div>
+                                :
+                                <p className=' font-semibold'>{branchName}</p>
+                        }
                         {
                             editMode ?
                                 <div className=' flex items-center'>

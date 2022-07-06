@@ -515,22 +515,7 @@ function UCBBankStatement() {
                     <tr>
                         <td colSpan={8}>
                             <div className=' w-full flex justify-center'>
-                                {/* <div className=' pt-1'>
-                                    {
-                                        editMode ?
-                                            <div className=' flex'>
-                                                <span>Generation Date :</span>
-                                                <input type="text" value={generationDate} onChange={(e) => setGenarationDate(e.target.value)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                            </div>
-                                            :
-                                            <p>Generation Date : {generationDate}</p>
-
-                                    }
-                                </div> */}
                                 <img src={bankSil} alt="" className=' w-32 mr-14' />
-                                {/* <div className=' pt-1'>
-                                    <p>Page 1 of 1</p>
-                                </div> */}
                             </div>
                         </td>
                     </tr>
