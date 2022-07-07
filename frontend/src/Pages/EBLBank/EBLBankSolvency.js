@@ -103,7 +103,7 @@ function EBLBankSolvency() {
                             editMode ?
 
                                 <div className=' flex items-center'>
-                                    <span>Branch Cuntry</span>
+                                    <span>Branch Country</span>
                                     <span className=' mx-1'>:</span>
                                     <input type="text" placeholder='Branch Country' value={branchCountry} onChange={(e) => setBranchCountry(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
 

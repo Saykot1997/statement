@@ -339,9 +339,9 @@ function EBLStatement() {
                                                 <p>{branchPoint} Point, {branchCity}</p>
                                         }
                                     </div>
-                                    <div className=' self-end pb-3'>
+                                    {/* <div className=' self-end pb-3'>
                                         <p className=''>ONLINE STATEMENT</p>
-                                    </div>
+                                    </div> */}
                                     <div className='text-left pt-8 pb-6 -translate-x-12'>
                                         {
                                             editMode ?
