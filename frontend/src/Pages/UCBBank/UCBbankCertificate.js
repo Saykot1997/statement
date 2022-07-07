@@ -29,8 +29,6 @@ function UCBbankCertificate() {
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState(87.60)
     const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
     const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
-    // const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
-    // const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
     const [todayDate, setTodayDate] = useState("Jan 12, 2022");
     const [branchName, setBranchName] = useState("New Eskaton Branch")
     const toWords = new ToWords();
@@ -62,7 +60,6 @@ function UCBbankCertificate() {
                         </div>
                         :
                         <div className='absolute top-5 right-0 print:hidden'>
-
                             <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
                             <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                         </div>
@@ -125,7 +122,7 @@ function UCBbankCertificate() {
                     </div>
                 </div>
 
-                <div className=' w-full print:pl-16 print:pb-[186px]'>
+                <div className=' w-full print:pl-16 print:pb-[180px]'>
 
                     <div className=' my-8'>
                         {
@@ -254,7 +251,7 @@ function UCBbankCertificate() {
                         </tbody>
                     </table>
                     <div className=' text-center'>
-                        <p>In word: <span className=' font-semibold text-gray-800'>BDT. </span> {toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD. </span> {toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
+                        <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
                     </div>
                     <div className=' mt-10 mb-5'>
                         <p>To the best of our knowledge, the client is financially sound and solvent.</p>
