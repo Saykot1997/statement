@@ -25,11 +25,12 @@ function UCBbankCertificate() {
     const [branchRoutingNumber, setBranchRoutingNumber] = useState("245261396")
     const [accountNumber, setAccountNumber] = useState("0943211000001452")
     const [accountType, setAccountType] = useState("Saving Deposit")
-    const [accountBalance, setAccountBalance] = useState("1000")
+    const [accountBalance, setAccountBalance] = useState(1000)
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState(87.60)
-    const [usdConvertMoney, setUsdConvertMoney] = useState(1000);
-    const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
-    const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
+    // const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
+    // const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
     const [todayDate, setTodayDate] = useState("Jan 12, 2022");
     const [branchName, setBranchName] = useState("New Eskaton Branch")
     const toWords = new ToWords();
@@ -43,17 +44,25 @@ function UCBbankCertificate() {
         window.print();
     }
 
+    const convertNumberToWord = () => {
+        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
+        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+    }
+
+
     return (
         <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom bg-cover h-full bg-no-repeat">
             <div className=' px-10 pb-0'>
                 {
                     editMode ?
                         <div className='absolute top-5 right-0 print:hidden'>
+                            <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
                             <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
                             <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                         </div>
                         :
                         <div className='absolute top-5 right-0 print:hidden'>
+
                             <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
                             <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                         </div>
@@ -228,7 +237,7 @@ function UCBbankCertificate() {
                                 <td className=' border border-gray-500 px-[2px] text-center '>
                                     {
                                         editMode ?
-                                            <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => { setAccountBalance(e.target.value); setUsdConvertMoney(parseFloat(parseFloat(e.target.value) / parseFloat(usdCurrancyConversionRate)).toFixed(2)) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => { setAccountBalance(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             :
                                             <span className=''>{commaNumber(accountBalance)}</span>
                                     }
@@ -245,19 +254,7 @@ function UCBbankCertificate() {
                         </tbody>
                     </table>
                     <div className=' text-center'>
-                        <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>BDT</span>. {
-
-                            editMode ?
-                                <input type="text" placeholder='balance in word' value={inWordBdTaka} onChange={(e) => setInWordBdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span className=' mx-1'>{inWordBdTaka}</span>
-                        }
-                            or <span className=' font-semibold text-gray-800'>USD</span> . {
-                                editMode ?
-                                    <input type="text" placeholder='balance in word usd' value={inWordUsdTaka} onChange={(e) => setInWordUsdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                    :
-                                    <span>{inWordUsdTaka}</span>
-                            }.</p>
+                        <p>In word: <span className=' font-semibold text-gray-800'>BDT. </span> {toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD. </span> {toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
                     </div>
                     <div className=' mt-10 mb-5'>
                         <p>To the best of our knowledge, the client is financially sound and solvent.</p>
