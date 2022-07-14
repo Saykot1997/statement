@@ -390,11 +390,11 @@ function EBLStatement() {
                                                     <span>{startStatementDate} - {endStatementDate}</span>
                                                 </div>
                                         }
-                                        <div>
+                                        {/* <div>
                                             <span className=' w-28 print:w-20 inline-block'>Page</span>
                                             <span className=' mx-[6px]'>:</span>
                                             <span>1</span>
-                                        </div>
+                                        </div> */}
 
                                         {
                                             editMode ?

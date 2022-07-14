@@ -15,6 +15,8 @@ function EBLBankSolvency() {
     const [ref, setRef] = useState("SIBL/Loha/Ctg/2022/604");
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman")
+    const [accountHolderFotherName, setAccountHolderFotherName] = useState("mohd.kabir rahman")
+
     const [accountHolderAddress, setAccountHolderAddress] = useState("Mohona 5/1 Block C Pathantula, Sylhet")
     const [todaysDate, setTodaysDate] = useState("June 14,2022")
     const [accountNumber, setAccountNumber] = useState("0123456789123")
@@ -146,6 +148,13 @@ function EBLBankSolvency() {
                                 <input type="text" placeholder='Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                 :
                                 <span className=' mx-1'>{accountHolderName}</span>
+                        }
+                        S/O
+                        {
+                            editMode ?
+                                <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                :
+                                <span className=''> {accountHolderFotherName} </span>
                         }
                         Residence,
 

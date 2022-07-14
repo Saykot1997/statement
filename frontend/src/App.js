@@ -19,6 +19,8 @@ import EBLBankSolvency from "./Pages/EBLBank/EBLBankSolvency"
 import UCBbankCertificate from "./Pages/UCBBank/UCBbankCertificate"
 import UCObankCertificate from "./Pages/UCOBank/UCOBankCertificate"
 import CanarabankCertificate from "./Pages/CanaraBank/CanaraBankCertificate"
+import CityBankTran from "./Pages/CityBank/CityBankTran";
+import CityBankStatement from "./Pages/CityBank/CityBankStatement";
 
 
 function App() {
@@ -75,6 +77,12 @@ function App() {
               <CanaraTransaction />
             </Laout>
           </PrivateRoute>} />
+        <Route path="/transactions/city_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <CityBankTran />
+            </Laout>
+          </PrivateRoute>} />
 
         {/* statement formate routes */}
 
@@ -102,6 +110,11 @@ function App() {
         <Route path="/canara_bank"
           element={<PrivateRoute>
             <CanaraBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/city_bank"
+          element={<PrivateRoute>
+            <CityBankStatement />
           </PrivateRoute>} />
 
         {/* cirtificate formate routes */}

@@ -116,7 +116,7 @@ function IslamiBankCertificate() {
                     <span className=' border-b border-gray-800 font-semibold'>TO WHOM IT MAY CONCERN</span>
                 </div>
                 <div>
-                    <p className=' text-justify'>This is to certify that Mr.
+                    <p className=' text-justify'>This is to certify that
                         {
                             editMode ?
                                 <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
