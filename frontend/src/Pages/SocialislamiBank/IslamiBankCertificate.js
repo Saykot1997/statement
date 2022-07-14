@@ -5,6 +5,7 @@ import signature1 from "../../Photos/islami_bank/islami_bank_signature.png"
 import footer from "../../Photos/islami_bank/islami_bank_footer.png";
 import commaNumber from 'comma-number';
 import bankSil from "../../Photos/islami_bank/islami_bank_sil.png";
+import { ToWords } from 'to-words';
 
 function IslamiBankCertificate() {
 
@@ -25,6 +26,9 @@ function IslamiBankCertificate() {
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
+    const toWords = new ToWords();
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -34,6 +38,11 @@ function IslamiBankCertificate() {
         window.print();
     }
 
+    const convertNumberToWord = () => {
+        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
+        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+    }
+
 
 
     return (
@@ -41,6 +50,7 @@ function IslamiBankCertificate() {
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
+                        <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
                         <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
                         <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                     </div>
@@ -179,7 +189,7 @@ function IslamiBankCertificate() {
                         <input type="text" placeholder='Print Date' value={usdCurrancyConversionRate} onChange={(e) => setUsdCurrancyConversionRate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                     </div>
                 }
-                <table className=' w-full my-5'>
+                <table className=' w-full my-5 mb-0'>
                     <thead>
                         <tr className=' align-text-top'>
                             <th className=' border border-gray-800 pb-1 px-[2px]'>S/N</th>
@@ -211,6 +221,9 @@ function IslamiBankCertificate() {
                         </tr>
                     </tbody>
                 </table>
+                <div className=' text-center'>
+                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
+                </div>
 
                 <p className=' my-3'>To the best of our knowledge the client is financially sound and solvent.</p>
                 <p className=' mb-4'>We wish him for success.</p>

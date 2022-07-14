@@ -4,6 +4,7 @@ import signature2 from "../../Photos/ebl_bank/signature2.png"
 import signature1 from "../../Photos/ebl_bank/signature1.png"
 import commaNumber from 'comma-number';
 import midlogo from "../../Photos/ebl_bank/mid_logo.png"
+import { ToWords } from 'to-words';
 
 function EBLBankSolvency() {
 
@@ -25,6 +26,9 @@ function EBLBankSolvency() {
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
+    const toWords = new ToWords();
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -34,11 +38,18 @@ function EBLBankSolvency() {
         window.print();
     }
 
+
+    const convertNumberToWord = () => {
+        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
+        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+    }
+
     return (
         <div className=" w-full">
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
+                        <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
                         <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
                         <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                     </div>
@@ -182,7 +193,7 @@ function EBLBankSolvency() {
                             <input type="text" placeholder='USD Convert Rate' value={usdCurrancyConversionRate} onChange={(e) => setUsdCurrancyConversionRate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                         </div>
                     }
-                    <table className=' w-full mb-5 mt-3 font-nuosu'>
+                    <table className=' w-full mt-3 font-nuosu'>
                         <thead>
                             <tr className=' bg-gray-300'>
                                 <th className=' border border-gray-400 font-normal'>Account Number</th>
@@ -234,6 +245,9 @@ function EBLBankSolvency() {
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div className=' text-center font-nuosu'>
+                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
                 </div>
 
                 <p className=' font-nuosu mt-8'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>

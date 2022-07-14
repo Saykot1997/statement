@@ -4,6 +4,7 @@ import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
 import sile from "../../Photos/uco_bank/sil.png"
 import commaNumber from 'comma-number';
+import { ToWords } from 'to-words';
 
 function UCObankCertificate() {
 
@@ -22,6 +23,9 @@ function UCObankCertificate() {
     const [leftManagerposition, setLeftManagerPosition] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManagerName] = useState("Kazi Muzibul Islam");
     const [rightManagerposition, setRightManagerPosition] = useState("EVP & Head of Branch");
+    const toWords = new ToWords();
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -29,6 +33,11 @@ function UCObankCertificate() {
 
     const printWebPage = () => {
         window.print();
+    }
+
+    const convertNumberToWord = () => {
+        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
+        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
     }
 
 
@@ -39,6 +48,7 @@ function UCObankCertificate() {
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
+                        <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
                         <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
                         <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
                     </div>
@@ -154,19 +164,7 @@ function UCObankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p className=' leading-4 mt-1 print:text-sm'>In word: <span className=' font-semibold text-gray-800'>INR</span>. {
-
-                        editMode ?
-                            <input type="text" placeholder='balance in word' value={inWordBdTaka} onChange={(e) => setInWordBdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            :
-                            <span className=' mx-1'>{inWordBdTaka}</span>
-                    }
-                        or <span className=' font-semibold text-gray-800'>USD</span> . {
-                            editMode ?
-                                <input type="text" placeholder='balance in word usd' value={inWordUsdTaka} onChange={(e) => setInWordUsdTaka(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                :
-                                <span>{inWordUsdTaka}</span>
-                        }.</p>
+                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
                 </div>
                 <div className=' my-5'>
                     <p>To the best of our knowledge, the client is financially sound and solvent.</p>
