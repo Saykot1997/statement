@@ -21,6 +21,10 @@ function IslamiBankCertificate() {
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
     const [accountHolderMotherName, setAccountHolderMotherName] = useState("Masudda Begum")
     const [accountHolderAddress, setAccountHolderAddress] = useState("Kabir Mistrir Bari, JamidurPara, Word No-04, West Kalauzan, Kalauzan-4396, Lohagora, Chattogram")
+    const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
+    const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
+    const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
+    const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
     const [accountNumber, setAccountNumber] = useState("0123456789")
     const [accountType, setAccountType] = useState("Sanchita Special Deposit Scheme")
     const [accountBalance, setAccountBalance] = useState("1000")
@@ -241,20 +245,44 @@ function IslamiBankCertificate() {
                 <p>This certificate is being issued at the specific request of the client without any prejudice and obligation on the part of bank or any of its officals.</p>
                 <p className=' font-semibold mt-8 my-5 italic'>For Social Islami Bank Limited</p>
 
-                <div className=' flex my-16'>
-                    <div className=' w-1/2 relative'>
+                <div className=' flex justify-between items-center mt-24'>
+                    <div className='relative'>
                         <div>
-                            <img src={signature2} alt="" className=' w-32 absolute -top-12' />
-                            <span>Authorized Signature</span>
+                            <img src={signature2} alt="" className=' w-44 absolute -top-[70px]' />
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={leftManagerName} onChange={(e) => setLeftManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={leftManagerPost} onChange={(e) => setLeftManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerPost}</p>
+
+                            }
                         </div>
                     </div>
                     <div>
                         <img src={bankSil} alt="" className="w-32" />
                     </div>
-                    <div className=' w-1/2 flex justify-center relative'>
+                    <div className='flex justify-center relative'>
                         <div>
-                            <img src={signature1} alt="" className=' w-36 absolute -top-16' />
-                            <span>Authorized Signature</span>
+                            <img src={signature1} alt="" className=' w-44 absolute -top-[70px]' />
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={rightManagerName} onChange={(e) => setRightManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={rightManagerPost} onChange={(e) => setRightManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerPost}</p>
+
+                            }
                         </div>
                     </div>
                 </div>

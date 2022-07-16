@@ -17,6 +17,10 @@ function CityBankCertificate() {
     const [accountHolderName, setAccountHolderName] = useState("Mohd.Momiur Rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("Mr. Kabir Ahamed")
     const [accountHolderAddress, setAccountHolderAddress] = useState("House:1324,Rd:13,Avenue:02 Mirpur Dohs, Dhaka,")
+    const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
+    const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
+    const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
+    const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
     const [accountNumber, setAccountNumber] = useState("8790123456789")
     const [accountType, setAccountType] = useState("Monthly Savings Scheme")
     const [accountBalance, setAccountBalance] = useState("1000")
@@ -55,7 +59,7 @@ function CityBankCertificate() {
                         <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
                     </div>
             }
-            <div className=' w-full flex items-end px-14 pt-8'>
+            <div className=' w-full flex items-end px-14 pt-12'>
                 <div className=''>
                     <img src={logo} alt="" className=' w-36' />
                 </div>
@@ -218,23 +222,48 @@ function CityBankCertificate() {
                 </div>
                 <p className=' leading-6 pr-16 mt-6'>This certificate is issued at the request of our valued account holder based on the accounts statement and without assuming any risk or prejudice on the part of this bank or any of its officials.</p>
 
-                <div className=' flex mt-40 pr-10'>
-                    <div className=' w-1/2 relative'>
+                <div className=' flex justify-between items-center mt-40'>
+                    <div className='relative'>
                         <div>
-                            <img src={signature1} alt="" className=' w-44 absolute -top-16' />
-                            <span>Authorized Signature</span>
+                            <img src={signature2} alt="" className=' absolute -top-24' />
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={leftManagerName} onChange={(e) => setLeftManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={leftManagerPost} onChange={(e) => setLeftManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerPost}</p>
+
+                            }
                         </div>
                     </div>
                     <div>
                         <img src={bankSil} alt="" className="w-20" />
                     </div>
-                    <div className=' w-1/2 flex justify-end relative'>
+                    <div className='flex justify-center relative'>
                         <div>
-                            <img src={signature2} alt="" className=' w-44 absolute -top-12 rotate-6 -translate-x-4' />
-                            <span>Authorized Signature</span>
+                            <img src={signature1} alt="" className=' w-44 absolute -top-24' />
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={rightManagerName} onChange={(e) => setRightManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={rightManagerPost} onChange={(e) => setRightManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerPost}</p>
+
+                            }
                         </div>
                     </div>
                 </div>
+
                 <div className=' w-full pb-10 print:fixed bottom-0 font-sans'>
                     <div>
                         <p>Phone:58813488, 58814375, 58813126</p>

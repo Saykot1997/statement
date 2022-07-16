@@ -15,9 +15,13 @@ function EBLBankSolvency() {
     const [branchCountry, setBranchCountry] = useState("Bangladesh");;
     const [ref, setRef] = useState("SIBL/Loha/Ctg/2022/604");
     const [editMode, setEditMode] = useState(false);
-    const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman")
-    const [accountHolderFotherName, setAccountHolderFotherName] = useState("mohd.kabir rahman")
-    const [accountHolderAddress, setAccountHolderAddress] = useState("Mohona 5/1 Block C Pathantula, Sylhet")
+    const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman");
+    const [accountHolderFotherName, setAccountHolderFotherName] = useState("mohd.kabir rahman");
+    const [accountHolderAddress, setAccountHolderAddress] = useState("Mohona 5/1 Block C Pathantula, Sylhet");
+    const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
+    const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
+    const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
+    const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
     const [todaysDate, setTodaysDate] = useState("June 14,2022")
     const [accountNumber, setAccountNumber] = useState("0123456789123")
     const [balanceDate, setBalanceDate] = useState("13-June-2022")
@@ -260,15 +264,48 @@ function EBLBankSolvency() {
                 </div>
 
                 <p className=' font-nuosu mt-8'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>
-                <div className=' w-full flex justify-between items-center mt-28'>
-                    <div>
-                        <img src={signature1} alt="" className=' w-[66%]' />
+
+                <div className=' w-full flex justify-between items-center'>
+                    <div className=' w-full relative'>
+                        <div className=''>
+                            <img src={signature1} alt="" className=' w-52 translate-y-8' />
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={leftManagerName} onChange={(e) => setLeftManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={leftManagerPost} onChange={(e) => setLeftManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{leftManagerPost}</p>
+
+                            }
+                        </div>
                     </div>
+
                     <div>
-                        <img src={midlogo} alt="" className=' w-[100%]' />
+                        <img src={midlogo} alt="" className=' w-[85%] translate-y-5' />
                     </div>
-                    <div className=' flex justify-end'>
-                        <img src={signature2} alt="" className=' w-[66%]' />
+
+                    <div className=' w-full relative flex justify-end translate-y-3 '>
+                        <div className=''>
+                            <img src={signature2} alt="" className=' w-40 translate-y-8' />
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Name' value={rightManagerName} onChange={(e) => setRightManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerName}</p>
+                            }
+                            {
+                                editMode ?
+                                    <input type="text" placeholder='Manager Post' value={rightManagerPost} onChange={(e) => setRightManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    :
+                                    <p>{rightManagerPost}</p>
+
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
