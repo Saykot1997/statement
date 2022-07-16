@@ -27,8 +27,8 @@ function IslamiBankCertificate() {
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
     const toWords = new ToWords();
-    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
-    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -39,8 +39,8 @@ function IslamiBankCertificate() {
     }
 
     const convertNumberToWord = () => {
-        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
-        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+        setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
+        setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))
     }
 
 
@@ -222,7 +222,18 @@ function IslamiBankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
+                    {
+                        editMode ?
+                            <div>
+                                <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>
+                                    <input type="text" placeholder='BD Word Taka' value={bdWordConvertMoney} onChange={(e) => setBdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only or <span className=' font-semibold text-gray-800'>USD.</span>
+                                    <input type="text" placeholder='Usd Word Taka' value={usdWordConvertMoney} onChange={(e) => setUsdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only.</p>
+                            </div>
+                            :
+                            <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{bdWordConvertMoney} only or <span className=' font-semibold text-gray-800'>USD.</span>{usdWordConvertMoney} only.</p>
+                    }
                 </div>
 
                 <p className=' my-3'>To the best of our knowledge the client is financially sound and solvent.</p>

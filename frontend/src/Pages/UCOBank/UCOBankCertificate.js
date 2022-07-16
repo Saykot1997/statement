@@ -17,15 +17,13 @@ function UCObankCertificate() {
     const [accountType, setAccountType] = useState("Saving")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
-    const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
-    const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
     const [leftManagerName, setLeftManagerName] = useState("Mohammad Mahabub Alam");
     const [leftManagerposition, setLeftManagerPosition] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManagerName] = useState("Kazi Muzibul Islam");
     const [rightManagerposition, setRightManagerPosition] = useState("EVP & Head of Branch");
     const toWords = new ToWords();
-    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
-    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -36,10 +34,9 @@ function UCObankCertificate() {
     }
 
     const convertNumberToWord = () => {
-        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
-        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+        setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
+        setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))
     }
-
 
     return (
         <div className=" w-full py-20  font-lora print:p-10 print:pb-2  bg-uco-background bg-center backdrop-opacity-40 bg-cover print:bg-85% bg-no-repeat">
@@ -164,7 +161,18 @@ function UCObankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
+                    {
+                        editMode ?
+                            <div>
+                                <p>In word: <span className=' font-semibold text-gray-800'>INR.</span>
+                                    <input type="text" placeholder='BD Word Taka' value={bdWordConvertMoney} onChange={(e) => setBdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only or <span className=' font-semibold text-gray-800'>USD.</span>
+                                    <input type="text" placeholder='Usd Word Taka' value={usdWordConvertMoney} onChange={(e) => setUsdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only.</p>
+                            </div>
+                            :
+                            <p>In word: <span className=' font-semibold text-gray-800'>INR.</span>{bdWordConvertMoney} only or <span className=' font-semibold text-gray-800'>USD.</span>{usdWordConvertMoney} only.</p>
+                    }
                 </div>
                 <div className=' my-5'>
                     <p>To the best of our knowledge, the client is financially sound and solvent.</p>

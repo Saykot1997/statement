@@ -17,7 +17,6 @@ function EBLBankSolvency() {
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman")
     const [accountHolderFotherName, setAccountHolderFotherName] = useState("mohd.kabir rahman")
-
     const [accountHolderAddress, setAccountHolderAddress] = useState("Mohona 5/1 Block C Pathantula, Sylhet")
     const [todaysDate, setTodaysDate] = useState("June 14,2022")
     const [accountNumber, setAccountNumber] = useState("0123456789123")
@@ -27,8 +26,8 @@ function EBLBankSolvency() {
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
     const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
     const toWords = new ToWords();
-    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
-    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -38,10 +37,9 @@ function EBLBankSolvency() {
         window.print();
     }
 
-
     const convertNumberToWord = () => {
-        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
-        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+        setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
+        setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))
     }
 
     return (
@@ -246,8 +244,19 @@ function EBLBankSolvency() {
                         </tbody>
                     </table>
                 </div>
-                <div className=' text-center font-nuosu'>
-                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
+                <div className=' text-center'>
+                    {
+                        editMode ?
+                            <div>
+                                <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>
+                                    <input type="text" placeholder='BD Word Taka' value={bdWordConvertMoney} onChange={(e) => setBdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only or <span className=' font-semibold text-gray-800'>USD.</span>
+                                    <input type="text" placeholder='Usd Word Taka' value={usdWordConvertMoney} onChange={(e) => setUsdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only.</p>
+                            </div>
+                            :
+                            <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{bdWordConvertMoney} only or <span className=' font-semibold text-gray-800'>USD.</span>{usdWordConvertMoney} only.</p>
+                    }
                 </div>
 
                 <p className=' font-nuosu mt-8'>This certificate is issued at the request of the account holder without any risk and prejudice on the part of Eastern Bank Limitted or any of its officials.</p>

@@ -18,15 +18,13 @@ function CanarabankCertificate() {
     const [accountType, setAccountType] = useState("Saving Accounts")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
-    const [inWordBdTaka, setInWordBdTaka] = useState("Thirty-One Lac Fifty-Three Thousand Six Hundred Twenty-Six Point Seventy only")
-    const [inWordUsdTaka, setInWordUsdTaka] = useState("Thirty-three Thousand Nine Hundred Nine Point Ninety-Six only")
     const [leftManagerName, setLeftManagerName] = useState("Mohammad Mahabub Alam");
     const [leftManagerposition, setLeftManagerPosition] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManagerName] = useState("Kazi Muzibul Islam");
     const [rightManagerposition, setRightManagerPosition] = useState("EVP & Head of Branch");
     const toWords = new ToWords();
-    const [bdWordConvertMoney, setBdWordConvertMoney] = useState(1000);
-    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState(1000);
+    const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
+    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thoousand");
 
 
 
@@ -39,8 +37,8 @@ function CanarabankCertificate() {
     }
 
     const convertNumberToWord = () => {
-        setBdWordConvertMoney(parseFloat(accountBalance).toFixed(2))
-        setUsdWordConvertMoney(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))
+        setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
+        setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))
     }
 
 
@@ -167,14 +165,23 @@ function CanarabankCertificate() {
                     </tbody>
                 </table>
                 <div className=' text-center'>
-                    <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{toWords.convert(parseFloat(bdWordConvertMoney))} only or <span className=' font-semibold text-gray-800'>USD.</span>{toWords.convert(parseFloat(usdWordConvertMoney))} only.</p>
+                    {
+                        editMode ?
+                            <div>
+                                <p>In word: <span className=' font-semibold text-gray-800'>INR.</span>
+                                    <input type="text" placeholder='BD Word Taka' value={bdWordConvertMoney} onChange={(e) => setBdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only or <span className=' font-semibold text-gray-800'>USD.</span>
+                                    <input type="text" placeholder='Usd Word Taka' value={usdWordConvertMoney} onChange={(e) => setUsdWordConvertMoney(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                    only.</p>
+                            </div>
+                            :
+                            <p>In word: <span className=' font-semibold text-gray-800'>INR.</span>{bdWordConvertMoney} only or <span className=' font-semibold text-gray-800'>USD.</span>{usdWordConvertMoney} only.</p>
+                    }
                 </div>
                 <div className=' my-5'>
                     <p>To the best of our knowledge, the client is financially sound and solvent.</p>
                 </div>
-                {/* <div className=' text-center mt-10'>
-                    <p className=' font-semibold text-gray-800'>FOR UNITED COMMERCIAL BANK PLC.</p>
-                </div> */}
+
                 <div className=' grid grid-cols-3 mt-8 items-center'>
                     <div className=' w-full relative'>
                         <div className=''>
@@ -196,9 +203,6 @@ function CanarabankCertificate() {
                         </div>
                     </div>
                     <div className=' w-full'>
-                        {/* <div>
-                            <img src={signe} alt="" className=" w-60 translate-y-5" />
-                        </div> */}
                         <div>
                             <img src={sile} alt="" className=' w-28 ml-10' />
                         </div>

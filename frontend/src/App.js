@@ -21,6 +21,7 @@ import UCObankCertificate from "./Pages/UCOBank/UCOBankCertificate"
 import CanarabankCertificate from "./Pages/CanaraBank/CanaraBankCertificate"
 import CityBankTran from "./Pages/CityBank/CityBankTran";
 import CityBankStatement from "./Pages/CityBank/CityBankStatement";
+import CityBankCertificate from "./Pages/CityBank/CityBankCertificate";
 
 
 function App() {
@@ -141,6 +142,11 @@ function App() {
         <Route path="/canara_bank_solvency"
           element={<PrivateRoute>
             <CanarabankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/city_bank_solvency"
+          element={<PrivateRoute>
+            <CityBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />

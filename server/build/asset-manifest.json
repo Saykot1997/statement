@@ -1,12 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.5f40b50a.css",
-    "main.js": "/static/js/main.85acf8d6.js",
+    "main.css": "/static/css/main.68670215.css",
+    "main.js": "/static/js/main.f4cbbbde.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
     "static/media/sil.png": "/static/media/sil.5cd2b74578ed5348a248.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
+    "static/media/sig 1.png": "/static/media/sig 1.4e588591798fcbb38531.png",
     "static/media/islami_bank_signature.png": "/static/media/islami_bank_signature.d1a8e7a45a9b0b23753a.png",
     "static/media/signature1.png": "/static/media/signature1.5d565d1d49c99ddd4459.png",
+    "static/media/sig 2.png": "/static/media/sig 2.06ab1e4448c91362db3b.png",
     "static/media/signature2.png": "/static/media/signature2.d4e00b0fdd1c9f7eb554.png",
     "static/media/logo.jpg": "/static/media/logo.3f08bf331841e452054b.jpg",
     "static/media/mid_logo.png": "/static/media/mid_logo.2f8e3209bc0ace747f6e.png",
@@ -14,15 +16,15 @@
     "static/media/logo.png": "/static/media/logo.4a8bd0f74a5d18ad0c1d.png",
     "static/media/islami_bank_logo.png": "/static/media/islami_bank_logo.48318346f60bef270eab.png",
     "static/media/sif 1.png": "/static/media/sif 1.f3d626b9a56593093eb6.png",
-    "static/media/sig 2.png": "/static/media/sig 2.06ab1e4448c91362db3b.png",
     "static/media/islami_bank_water_mark.png": "/static/media/islami_bank_water_mark.128695360681074190c3.png",
+    "static/media/logo1.png": "/static/media/logo1.c1ed888d46a76e8bffb8.png",
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
-    "main.5f40b50a.css.map": "/static/css/main.5f40b50a.css.map",
-    "main.85acf8d6.js.map": "/static/js/main.85acf8d6.js.map"
+    "main.68670215.css.map": "/static/css/main.68670215.css.map",
+    "main.f4cbbbde.js.map": "/static/js/main.f4cbbbde.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f40b50a.css",
-    "static/js/main.85acf8d6.js"
+    "static/css/main.68670215.css",
+    "static/js/main.f4cbbbde.js"
   ]
 }
