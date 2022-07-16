@@ -225,7 +225,7 @@ function CityBankCertificate() {
                 <div className=' flex justify-between items-center mt-40'>
                     <div className='relative'>
                         <div>
-                            <img src={signature2} alt="" className=' absolute -top-24' />
+                            <img src={signature2} alt="" className=' w-44 absolute -top-36 print:-top-20' />
                             {
                                 editMode ?
                                     <input type="text" placeholder='Manager Name' value={leftManagerName} onChange={(e) => setLeftManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
@@ -246,7 +246,7 @@ function CityBankCertificate() {
                     </div>
                     <div className='flex justify-center relative'>
                         <div>
-                            <img src={signature1} alt="" className=' w-44 absolute -top-24' />
+                            <img src={signature1} alt="" className=' w-44 absolute -top-40 print:-top-20' />
                             {
                                 editMode ?
                                     <input type="text" placeholder='Manager Name' value={rightManagerName} onChange={(e) => setRightManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />

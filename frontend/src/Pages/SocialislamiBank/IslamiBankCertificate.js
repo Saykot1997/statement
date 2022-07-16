@@ -269,7 +269,7 @@ function IslamiBankCertificate() {
                     </div>
                     <div className='flex justify-center relative'>
                         <div>
-                            <img src={signature1} alt="" className=' w-44 absolute -top-[70px]' />
+                            <img src={signature1} alt="" className=' w-44 absolute -top-28 print:-top-[55px]' />
                             {
                                 editMode ?
                                     <input type="text" placeholder='Manager Name' value={rightManagerName} onChange={(e) => setRightManegerName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
