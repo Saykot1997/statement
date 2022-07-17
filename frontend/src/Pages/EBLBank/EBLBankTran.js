@@ -28,6 +28,8 @@ function EBLBankTran() {
     const [currentTransactionRef, setCurrentTransactionRef] = useState('');
     const [currentTransectionName, setCurrentTransectionName] = useState('');
     const transectionMethod = ['cash', 'cheque', 'online', "atm"];
+    const [debitCount, setDebitCount] = useState(0)
+    const [creditCount, setCreditCount] = useState(0)
 
 
     const toggleAddTransactionMode = () => {
@@ -128,18 +130,41 @@ function EBLBankTran() {
     }
 
     useEffect(() => {
-
         getTransaction()
-
     }, [path])
 
+    useEffect(() => {
+        if (Transaction.length > 0) {
+
+            let debCount = 0
+            let crCount = 0
+
+            Transaction.forEach(element => {
+                if (element.transactionType === "debit") {
+                    debCount = debCount + 1
+                } else {
+                    crCount = crCount + 1
+                }
+            });
+
+            setCreditCount(crCount)
+            setDebitCount(debCount)
+        }
+
+    }, [Transaction])
+
+    console.log(debitCount)
+    console.log(creditCount)
 
     return (
         <div className='w-full h-[calc(100vh-64px)] bg-gray-100 overflow-y-scroll p-5'>
             <button onClick={toggleAddTransactionMode} className=' absolute top-20 right-5 shadow shadow-blue-300 p-1 rounded text-blue-600 hover:scale-105 transition-all ease-in'>Add Transactions</button>
             {
                 Transaction.length > 0 ?
-                    <p className='text-center font-medium'>{Transaction[0].bankName} Transaction Details {Transaction.length}</p>
+                    <div>
+                        <p className='text-center font-medium'>{Transaction[0].bankName} Transaction Details {Transaction.length}</p>
+                        {/* <p className='text-center font-medium'>Debits : {debitCount}  Credits : {creditCount}</p> */}
+                    </div>
                     :
                     <div>
                         <p className=' text-center font-medium'>No Transactions Added</p>

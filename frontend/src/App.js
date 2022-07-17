@@ -24,6 +24,7 @@ import CityBankStatement from "./Pages/CityBank/CityBankStatement";
 import CityBankCertificate from "./Pages/CityBank/CityBankCertificate";
 import OneBankTran from "./Pages/OneBank/OneBankTran";
 import OneBankStatement from "./Pages/OneBank/OneBankStatement";
+import OnebankCertificate from "./Pages/OneBank/OneBankCertificate";
 
 
 function App() {
@@ -159,6 +160,11 @@ function App() {
         <Route path="/city_bank_solvency"
           element={<PrivateRoute>
             <CityBankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/one_bank_solvency"
+          element={<PrivateRoute>
+            <OnebankCertificate />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />
