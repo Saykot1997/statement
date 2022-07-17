@@ -22,6 +22,8 @@ import CanarabankCertificate from "./Pages/CanaraBank/CanaraBankCertificate"
 import CityBankTran from "./Pages/CityBank/CityBankTran";
 import CityBankStatement from "./Pages/CityBank/CityBankStatement";
 import CityBankCertificate from "./Pages/CityBank/CityBankCertificate";
+import OneBankTran from "./Pages/OneBank/OneBankTran";
+import OneBankStatement from "./Pages/OneBank/OneBankStatement";
 
 
 function App() {
@@ -84,9 +86,14 @@ function App() {
               <CityBankTran />
             </Laout>
           </PrivateRoute>} />
+        <Route path="/transactions/one_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <OneBankTran />
+            </Laout>
+          </PrivateRoute>} />
 
         {/* statement formate routes */}
-
 
         <Route path="/ebl_bank"
           element={<PrivateRoute>
@@ -116,6 +123,11 @@ function App() {
         <Route path="/city_bank"
           element={<PrivateRoute>
             <CityBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/one_bank"
+          element={<PrivateRoute>
+            <OneBankStatement />
           </PrivateRoute>} />
 
         {/* cirtificate formate routes */}

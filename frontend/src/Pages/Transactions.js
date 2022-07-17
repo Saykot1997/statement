@@ -37,6 +37,11 @@ function Transactions() {
                         <span className=' font-medium '>City Bank</span>
                     </div>
                 </Link>
+                <Link to={`/transactions/one_bank`}>
+                    <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
+                        <span className=' font-medium '>One Bank</span>
+                    </div>
+                </Link>
 
             </div>
         </div>

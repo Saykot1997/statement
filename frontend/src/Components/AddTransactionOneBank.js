@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
 import { transactionsAddSuccess } from "../Redux/Transactions_slice";
 
-function CityBankAddTransaction({ toggleAddTransactionMode }) {
+function One({ toggleAddTransactionMode }) {
 
     const User = useSelector(state => state.User.User);
     const location = useLocation();
@@ -16,21 +16,21 @@ function CityBankAddTransaction({ toggleAddTransactionMode }) {
     const [transactionName, setTransactionName] = useState('');
     const [transactionType, setTransactionType] = useState('');
     const [transactionMethod, setTransactionMethod] = useState('');
-    const [cheque, setCheque] = useState('');
+    const [ref, setRef] = useState('');
     const [bankName, setBankName] = useState('');
-    const transectionMethods = ['cash', 'cheque', 'online', "atm"];
+    const transectionMethod = ['cash', 'cheque', 'online', "atm"];
 
 
     const clearFields = () => {
         setTransactionName('');
         setTransactionType('');
         setTransactionMethod('');
-        setCheque('');
+        setRef('');
     }
 
     const CreateTransaction = async () => {
 
-        if (transactionName === '' || transactionType === '' || transactionMethod === '' || bankName === '') {
+        if (transactionName === '' || transactionType === '' || transactionMethod === '' || ref === '' || bankName === '') {
 
             return toast.error('Please fill all the fields')
         }
@@ -39,12 +39,11 @@ function CityBankAddTransaction({ toggleAddTransactionMode }) {
             transactionName,
             transactionType,
             transactionMethod,
+            ref,
             bankName,
         };
 
-        if (cheque) {
-            data.cheque = cheque
-        }
+        console.log(data)
 
         try {
 
@@ -77,6 +76,8 @@ function CityBankAddTransaction({ toggleAddTransactionMode }) {
     }, [path])
 
 
+
+
     return (
         <div className=' w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-25 p-5 z-20'>
             <div className=' px-10 flex justify-end'>
@@ -85,17 +86,16 @@ function CityBankAddTransaction({ toggleAddTransactionMode }) {
             <div className=' flex justify-center w-full'>
                 <div className=' bg-white shadow rounded w-[350px] px-7 py-5 mt-10'>
                     <p className=' text-center font-medium'>Create Transactions</p>
-                    <input type="text" value={transactionName} onChange={(e) => setTransactionName(e.target.value)} placeholder='DESCRIPTION' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
-                    <input type="text" value={cheque} onChange={(e) => setCheque(e.target.value)} placeholder='CHQ.NO.' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                    <input type="text" value={transactionName} onChange={(e) => setTransactionName(e.target.value)} placeholder='Description' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
+                    <input type="text" value={ref} onChange={(e) => setRef(e.target.value)} placeholder='Reference' className='mt-5 border border-blue-500 rounded p-1 focus:outline-none w-full' />
                     <select value={transactionType} onChange={(e) => setTransactionType(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none mt-4 mb-2'>
                         <option value="">Select Transection Type</option>
                         <option value="credit">Credit</option>
                         <option value="debit">Debit</option>
                     </select>
-
                     <select value={transactionMethod} onChange={(e) => setTransactionMethod(e.target.value)} name="" id="" className=' border border-blue-500 p-1 rounded focus:outline-none my-2'>
                         <option value="">Select Transection Method</option>
-                        {transectionMethods.map((item, index) => {
+                        {transectionMethod.map((item, index) => {
                             return <option key={index} value={item}>{item}</option>
                         })}
                     </select>
@@ -117,4 +117,4 @@ function CityBankAddTransaction({ toggleAddTransactionMode }) {
     )
 }
 
-export default CityBankAddTransaction
+export default One
