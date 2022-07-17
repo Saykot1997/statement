@@ -394,7 +394,7 @@ function CityBankStatement() {
                                             editMode ?
                                                 <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                                 :
-                                                <p>{item.particular} <span className=' capitalize'>on Date {GetFormatedDate(item.date)}</span></p>
+                                                <p>{item.particular}</p>
                                         }
                                     </td>
                                     <td className='p-2 print:py-[2px] print:px-1 print:text-[11px]'>
