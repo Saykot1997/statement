@@ -17,7 +17,7 @@ function OneBankStatement() {
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
     const [initialBalance, setInitialBalance] = useState(700000);
-    const [customerId, setCustomerId] = useState("095017190")
+    const [customerId, setCustomerId] = useState("000450803")
     const [editMode, setEditMode] = useState(false);
     const [todayDate, setTodayDate] = useState("01-01-2021");
     const [bankAddress, setBankAddress] = useState("504/C, KHILGAON, DHAKA-1219")

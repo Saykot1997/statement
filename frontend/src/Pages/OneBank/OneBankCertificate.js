@@ -1,25 +1,27 @@
 import React, { useState } from 'react'
 import logo from "../../Photos/one_bank/logo.png";
-import signature2 from "../../Photos/ucb_bank/sig 2.png";
-import signature1 from "../../Photos/ucb_bank/sif 1.png";
-import sile from "../../Photos/ucb_bank/sil.png"
+import signature2 from "../../Photos/one_bank/1.png";
+import signature1 from "../../Photos/one_bank/3.png";
+import sile from "../../Photos/one_bank/sil.png"
 import commaNumber from 'comma-number';
 import { ToWords } from 'to-words';
 
 function OnebankCertificate() {
     const [branchAddress, setBranchAddress] = useState('Tamij Uddin Tower, 01 DIT Road, Malibagh Chowdhurypara, Dhaka')
-    const [printDate, setPrintDate] = useState("18.05.2022");
-    const [ref, setRef] = useState("UCBL/GB/NEB/2022");
+    // const [printDate, setPrintDate] = useState("18.05.2022");
+    const [ref, setRef] = useState("OBL/MALIBAGH BRANCH/GB/2022");
     const [editMode, setEditMode] = useState(false);
-    const [accountHolderName, setAccountHolderName] = useState("Mahedi Hasan Munna")
-    const [accountHolderFotherName, setAccountHolderFotherName] = useState("Md Alamgir Miah")
+    const [accountHolderName, setAccountHolderName] = useState("SMART INTERIOR SOLUTION")
+    const [accountOpeningDate, setAccountOpeningDate] = useState("Oct 24, 2019")
+    // const [accountHolderFotherName, setAccountHolderFotherName] = useState("Md Alamgir Miah")
     const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
     const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
     const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
-    const [accountHolderAddress, setAccountHolderAddress] = useState("40/A, Holding No-20, Cantonment-4, Mohakhali, Dhaka Cantonment, Bangladesh")
-    const [accountNumber, setAccountNumber] = useState("0943211000001452")
-    const [accountType, setAccountType] = useState("Saving Deposit")
+    const [accountHolderAddress, setAccountHolderAddress] = useState("504/C,KHILGAON, DHAKA-1219")
+    const [accountNumber, setAccountNumber] = useState("0921020001424")
+    const [accountTitle, setAccountTitle] = useState("SMART INTERIOR SOLUTION")
+    const [accountType, setAccountType] = useState("CDCL-CURRENT-DEPOSIT - CLIENT")
     const [accountBalance, setAccountBalance] = useState(1000)
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState(87.60)
     const [todayDate, setTodayDate] = useState("30-06-2022");
@@ -44,7 +46,7 @@ function OnebankCertificate() {
 
 
     return (
-        <div className=" w-full p-10">
+        <div className=" w-full p-12 font-Poppins">
             <div className=''>
                 {
                     editMode ?
@@ -62,7 +64,7 @@ function OnebankCertificate() {
 
                 <div className=' w-full flex justify-between items-center'>
                     <div className=''>
-                        <img src={logo} alt="" className=' w-[280px]' />
+                        <img src={logo} alt="" className=' w-[260px] -translate-x-2' />
                     </div>
                     <div className='text-gray-500 print:leading-[14px]'>
 
@@ -91,60 +93,78 @@ function OnebankCertificate() {
                     </div>
                 </div>
 
-                <div className=' w-full print:px-5 print:text-[12px] print:leading-[14px] text-gray-900'>
-                    <div className=' my-8'>
-                        <div className=' flex justify-between'>
-                            <p className=' font-semibold text-gray-900'>Ref: {ref}</p>
-                            <div>
-                                <p className=''>Issuing Branch:{branchName}</p>
-                                <p>Issue Date:{todayDate}</p>
-                                <p>Generation Time:{genarationTime}</p>
+                <div className=' w-full '>
+                    <div className=' px-1'>
+                        <div className=' flex justify-between print:text-[12px] print:leading-[14px] my-8'>
+                            {
+                                editMode ?
+                                    <div className=' flex items-center'>
+                                        <span>Ref</span>
+                                        <span>:</span>
+                                        <input type="text" placeholder='Ref' value={ref} onChange={(e) => setRef(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    </div>
+                                    :
+                                    <p className=''>Ref: {ref}</p>
+                            }
+
+                            <div className=' text-right pr-2'>
+                                <p className=''>Issuing Branch:<span className=' uppercase'>{branchName}</span> </p>
+                                {
+                                    editMode ?
+                                        <div className=' flex items-center'>
+                                            <span>Issue Date</span>
+                                            <span>:</span>
+                                            <input type="text" placeholder='Issue Date' value={todayDate} onChange={(e) => setTodayDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                        </div>
+                                        :
+                                        <p>Issue Date:{todayDate}</p>
+                                }
+                                {
+                                    editMode ?
+                                        <div className=' flex items-center'>
+                                            <span>Generation Time</span>
+                                            <span>:</span>
+                                            <input type="text" placeholder='Issue Date' value={genarationTime} onChange={(e) => setGenarationTime(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                        </div>
+                                        :
+                                        <p>Generation Time:{genarationTime}</p>
+                                }
                             </div>
                         </div>
+                        <div className=' text-center my-9'>
+                            <span className=' font-medium uppercase print:text-lg'>To Whom It May Concern</span>
+                        </div>
+                        <div className=' print:text-sm'>
+                            <p>This is to certify that the following person(s) having address as mentioned below has / have been banking with ONE Bank Limited.</p>
+                        </div>
                     </div>
-
-                    <div className=' text-center my-9'>
-                        <span className='font-semibold uppercase print:text-lg'>To Whom It May Concern</span>
-                    </div>
-                    <div className=' px-2'>
-                        <p className='leading-7 text-justify'>This is to inform that
-                            {
-                                editMode ?
-                                    <input type="text" placeholder='Account Holder Name' value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                    :
-                                    <span className=''> {accountHolderName}, </span>
-                            }Son of
-                            {
-                                editMode ?
-                                    <input type="text" placeholder='Father Name' value={accountHolderFotherName} onChange={(e) => setAccountHolderFotherName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                    :
-                                    <span className=''> {accountHolderFotherName}, </span>
-                            }
-                            at
-                            {
-                                editMode ?
-                                    <input type="text" placeholder='Address ' value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
-                                    :
-                                    <span className=''> {accountHolderAddress} </span>
-                            }
-                            has been maintainnig the following
-
-                            {
-                                editMode ?
-                                    <input type="text" placeholder='Account Number' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                    :
-                                    <span className=''> {accountType} </span>
-                            }
-                            account bearing No.
-                            {
-                                editMode ?
-                                    <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                    :
-                                    <span className=''>{accountNumber} </span>
-                            }
-                            with us. Details as follows:
-                        </p>
-                    </div>
+                    <table className=' w-full my-3'>
+                        <tbody className='print:text-[12px]'>
+                            <tr className=' bg-gray-100 '>
+                                <td className=' border border-gray-600 px-1'>Customer Name</td>
+                                <td className=' border border-gray-600 px-1'>Address</td>
+                            </tr>
+                            <tr className=''>
+                                <td className=' border border-gray-600 px-1'>
+                                    {
+                                        editMode ?
+                                            <input type="text" placeholder='Customer Name' value={accountHolderName} onChange={(e) => { setAccountHolderName(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                            :
+                                            <span className=''>{accountHolderName}</span>
+                                    }
+                                </td>
+                                <td className=' border border-gray-600 px-1'>
+                                    {
+                                        editMode ?
+                                            <input type="text" placeholder='Address' value={accountHolderAddress} onChange={(e) => { setAccountHolderAddress(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                            :
+                                            <span className=''>{accountHolderAddress}</span>
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p className=' print:text-sm mt-2 mb-4 px-1'>The details of the accounts maintained with the Branch are mentioned as under:</p>
                     {
                         editMode &&
 
@@ -155,56 +175,63 @@ function OnebankCertificate() {
                         </div>
                     }
                     <table className=' w-full mt-2'>
-                        <thead>
-                            <tr>
-                                <th className=' border border-gray-600 pb-2 px-[2px] w-[10%] text-gray-900'>SL no</th>
-                                <th className=' border border-gray-600 pb-2 px-[2px] w-[23%] text-gray-900'>Account Number</th>
-                                <th className=' border border-gray-600 pb-2 px-[2px] w-[23%] text-gray-900'>Account Type</th>
-                                <th className=' border border-gray-600 pb-2 px-[2px] text-gray-900'>
+                        <tbody className=' align-text-top print:text-[12px]'>
+                            <tr className=' bg-gray-100 '>
+                                <td className=' border border-gray-600 px-2'>Account Number</td>
+                                <td className=' border border-gray-600 px-2 w-[30%]'>Account Title</td>
+                                <td className=' border border-gray-600 px-2 w-[27%]'>Account Type</td>
+                                <td className=' border border-gray-600 px-2 w-[12%] text-center'>Account Opening Date</td>
+                                <td className=' border border-gray-600 px-2 text-right'>Amount (BDT)</td>
+                            </tr>
+                            <tr className='' >
+                                <td className=' border border-gray-500 px-[2px] text-center'>
                                     {
                                         editMode ?
-                                            <div>
-                                                <span>Balance</span>
-                                                <input type="text" placeholder='Print Date' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-[2px] my-[2px] border border-blue-500 focus:outline-none block' />
-                                            </div>
+                                            <input type="text" placeholder='Account Number' value={accountNumber} onChange={(e) => { setAccountNumber(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                             :
-                                            <div>
-                                                <p>Balance on</p>
-                                                <span className=' text-gray-800 font-normal'>{printDate}</span>
-                                            </div>
+                                            <span className=''>{accountNumber}</span>
                                     }
-                                </th>
-                                <th className=' border border-gray-600 pb-2 w-[25%] text-gray-900'>
-                                    <p>Equivalent to USD</p>
-                                    <p className=' text-sm font-normal'>(USD.1.00 = BDT.{parseFloat(usdCurrancyConversionRate).toFixed(2)})</p>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr >
-                                <td className=' border border-gray-500 px-[2px] text-center w-[10%]'>01</td>
-                                <td className=' border border-gray-500 px-[2px] text-center w-[23%] '>{accountNumber}</td>
-                                <td className=' border border-gray-500 px-[2px] text-center w-[23%]'>{accountType}</td>
+                                </td>
+                                <td className=' border border-gray-500 px-[2px] text-left'>
+                                    {
+                                        editMode ?
+                                            <input type="text" placeholder='Account Title' value={accountTitle} onChange={(e) => { setAccountTitle(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                            :
+                                            <span className=''>{accountTitle}</span>
+                                    }
+                                </td>
+                                <td className=' border border-gray-500 px-[2px]'>
+                                    {
+                                        editMode ?
+                                            <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => { setAccountType(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                            :
+                                            <span className=''>{accountType}</span>
+                                    }
+                                </td>
                                 <td className=' border border-gray-500 px-[2px] text-center '>
                                     {
                                         editMode ?
-                                            <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => { setAccountBalance(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            <input type="text" placeholder='Account Opening Date' value={accountOpeningDate} onChange={(e) => { setAccountOpeningDate(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                            :
+                                            <span className=''>{commaNumber(accountOpeningDate)}</span>
+                                    }
+                                </td>
+                                <td className=' border border-gray-500 px-[2px] text-right'>
+                                    {
+                                        editMode ?
+                                            <input type="text" placeholder='Present Balance' value={accountBalance} onChange={(e) => { setAccountBalance(e.target.value) }} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                             :
                                             <span className=''>{commaNumber(accountBalance)}</span>
                                     }
                                 </td>
-                                <td className=' border border-gray-500 px-[2px] text-center w-[23%]'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
                             </tr>
                             <tr >
-                                <td className=' border border-gray-500 text-center font-semibold text-gray-900 w-[10%]'></td>
-                                <td className=' border border-gray-500 px-[2px] text-left w-[23%] font-semibold text-gray-800'>Total</td>
-                                <td className=' border border-gray-500 px-[2px] w-[23%]'></td>
-                                <td className=' border border-gray-500 text-center px-2 font-semibold text-gray-800'>{commaNumber(accountBalance)}</td>
-                                <td className=' border border-gray-500 text-center px-2 w-[23%] font-semibold text-gray-800'>{commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</td>
+                                <td colSpan={4} className=' border border-gray-500 px-[2px] text-right'>Total Amount in BDT</td>
+                                <td className=' border border-gray-500 text-right px-1'>{commaNumber(accountBalance)}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <div className=' text-center'>
+                    <div className=' text-center print:text-sm'>
                         {
                             editMode ?
                                 <div>
@@ -218,12 +245,10 @@ function OnebankCertificate() {
                                 <p>In word: <span className=' font-semibold text-gray-800'>BDT.</span>{bdWordConvertMoney} only or <span className=' font-semibold text-gray-800'>USD.</span>{usdWordConvertMoney} only.</p>
                         }
                     </div>
-                    <div className=' mt-10 mb-5'>
-                        <p>To the best of our knowledge, the client is financially sound and solvent.</p>
-                    </div>
-                    <div className=' text-center mt-10'>
-                        <p className=' font-semibold text-lg text-gray-900'>FOR UNITED COMMERCIAL BANK PLC.</p>
-                    </div>
+
+                    <p className=' print:text-sm px-1 mt-5'>Total Amount in Equivalent USD (Exchange rate @ BDT..{usdCurrancyConversionRate}..../ 1 USD) {commaNumber(parseFloat(parseFloat(accountBalance) / parseFloat(usdCurrancyConversionRate)).toFixed(2))}</p>
+                    <p className=' print:text-sm px-1 mt-3'>The customer is financially sound and solvent to the best of our knowledge.</p>
+                    <p className=' print:text-sm px-1 mt-3'>The certificate is issued as per request of the customer and without any prejudice on the part of the Bank and its officials.</p>
 
                     <div className=' grid grid-cols-3 mt-6 items-center px-5 '>
                         <div className=' w-full relative'>
@@ -247,7 +272,7 @@ function OnebankCertificate() {
 
                         <div className=' w-full flex justify-center'>
                             <div>
-                                <img src={sile} alt="" className=' w-48' />
+                                <img src={sile} alt="" className='w-24 translate-y-5 translate-x-3' />
                             </div>
                         </div>
 
