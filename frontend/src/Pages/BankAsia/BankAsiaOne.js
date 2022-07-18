@@ -3,12 +3,12 @@ import commaNumber from 'comma-number';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Host } from '../../Data';
-import logo from "../Photos/bankasia.jpg"
+import logo from "../../Photos/bank_asia/bankasia.jpg"
 import { fatchSuccess } from '../../Redux/Banks_slice';
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
-import anybranchLogo from "../Photos/BankAsiaAnyBranchLogo.png"
+import anybranchLogo from "../../Photos/bank_asia/BankAsiaAnyBranchLogo.png"
 
 function BankAsiaOne() {
 
@@ -39,7 +39,6 @@ function BankAsiaOne() {
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
     const [totalDeposit, setTotalDeposit] = useState(0);
     const Transactions = useSelector(state => state.Transactions.Transactions);
-    const Banks = useSelector(state => state.Banks.Banks);
     const User = useSelector(state => state.User.User);
     const dispatch = useDispatch();
     const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
@@ -48,7 +47,7 @@ function BankAsiaOne() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/bank_asia`, {
+            const res = await axios.get(`${Host}/api/user/transaction/asia_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -111,22 +110,6 @@ function BankAsiaOne() {
         window.print();
     }
 
-    const getBanks = async () => {
-
-        try {
-
-            const response = await axios.get(`${Host}/api/user/banks`, {
-                headers: {
-                    Authorization: `Bearer ${User}`
-                }
-            });
-            dispatch(fatchSuccess(response.data));
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const getTransectionsAmounts = async () => {
 
         try {
@@ -150,11 +133,9 @@ function BankAsiaOne() {
         getBankTransactions()
     }, [])
 
-    console.log(randomTransictions)
-
 
     return (
-        <div className=' w-full min-h-screen p-5'>
+        <div className=' w-full min-h-screen p-10 print:p-0'>
             {
                 editMode ?
                     <div className='absolute top-5 right-0 print:hidden'>
@@ -308,7 +289,7 @@ function BankAsiaOne() {
                                                     <input type="date" placeholder='Start stetment date' value={hideEndStatementDate} onChange={(e) => statementDateChange("endStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
                                                 :
-                                                <p className=" leading-7 print:text-[10px] print:leading-[22px] print:font-medium">Statement of Account for the Period: {startStatementDate} to {endStatementDate}</p>
+                                                <p className=" leading-7 print:text-[10px] print:leading-[22px] print:font-medium">Statement of Account for the Period: {startStatementDate} <span className=' mx-1'>to</span> {endStatementDate}</p>
                                         }
                                         {
                                             editMode ?
@@ -470,9 +451,6 @@ function BankAsiaOne() {
                             </div>
                         </th>
                     </tr>
-                </thead>
-
-                <thead>
                     <tr className=''>
                         <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>SL#</td>
                         <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Date</td>
@@ -483,27 +461,42 @@ function BankAsiaOne() {
                         <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center w-[27%]'>Remarks</td>
                     </tr>
                 </thead>
-                <tbody className=''>
+
+                <tbody className=' align-text-top'>
                     <tr>
                         <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-center'></td>
                         <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-center'></td>
                         <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] w-[20%]'></td>
                         <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right'></td>
                         <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>Opening Balance :</td>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>{commaNumber(initialBalance)}</td>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-left w-[27%]'></td>
+                        <td className=' p-2  border border-r-0 border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>{commaNumber(initialBalance)}</td>
+                        <td className=' p-2  border border-l-0 border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-left w-[27%]'></td>
                     </tr>
                     {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                             return (
                                 <tr>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-center'>{index + 1}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-center'>{item.date}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] w-[20%]'>{item.branchCode}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-right'>{commaNumber(item.balance)}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[10px] text-left w-[27%]'>{item.particular}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-center'>{index + 1}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-center'>{item.date}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] w-[20%]'>{item.branchCode}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
+                                        {
+                                            item.withdrawal > 0 ?
+                                                <span>{commaNumber(item.withdrawal)}</span>
+                                                :
+                                                <span>00.0</span>
+                                        }
+                                    </td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
+                                        {
+                                            item.deposit > 0 ?
+                                                <span>{commaNumber(item.deposit)}</span>
+                                                :
+                                                <span>0.00</span>
+                                        }
+                                    </td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>{commaNumber(item.balance)}</td>
+                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-left w-[27%]'>{item.particular}</td>
                                 </tr>
                             )
                         })
@@ -515,19 +508,21 @@ function BankAsiaOne() {
                         <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0' colspan="2 border-t-0"></td>
                     </tr>
                 </tbody>
-
-                <tfoot class="table-footer-group">
+                <tfoot className="table-footer-group">
                     <tr>
-                        <td class=" " colspan="7">
-                            <div className=' w-full'>
-                                <p className=' text-center font-medium pt-5 print:text-[10px]'>Thanks for banking with us.</p>
-                                <hr className=' h-[2px] bg-gray-400 w-full' />
-                                <p className=' print:text-[9px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
+                        <td colSpan={7}>
+                            <div className=' w-full py-12'>
                             </div>
                         </td>
                     </tr>
                 </tfoot>
             </table>
+
+            <div className=' print:fixed bottom-3 w-full print:text-[11px]'>
+                <p className=' text-center font-medium pt-5 print:text-[10px]'>Thanks for banking with us.</p>
+                <hr className=' h-[2px] bg-gray-400 w-full' />
+                <p className=' print:text-[9px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
+            </div>
         </div>
 
     )

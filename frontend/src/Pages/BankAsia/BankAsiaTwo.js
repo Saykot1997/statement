@@ -1,5 +1,5 @@
 
-import logo from "../Photos/bankasia.jpg"
+import logo from "../../Photos/bank_asia/bankasia.jpg"
 import { useState } from 'react';
 import commaNumber from "comma-number";
 
@@ -24,7 +24,7 @@ function BankAsiaTwo() {
 
     return (
 
-        <div className=' w-full min-h-screen p-5 print:p-0'>
+        <div className=' w-full min-h-screen p-5 print:p-10 font-lora'>
             {
                 editMode ?
                     <div className='absolute top-5 right-5 print:hidden'>
@@ -66,7 +66,7 @@ function BankAsiaTwo() {
             }
 
             <div className=' mt-10'>
-                <p >This is to certify that
+                <p className=" text-justify" >This is to certify that
 
                     {
                         editMode ?
@@ -77,7 +77,7 @@ function BankAsiaTwo() {
                     Address :
                     {
                         editMode ?
-                            <input value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} type="text" className=' border border-blue-500 rounded p-1 focus:outline-none' />
+                            <input value={accountHolderAddress} onChange={(e) => setAccountHolderAddress(e.target.value)} type="text" className=' border border-blue-500 rounded p-1 focus:outline-none w-full' />
                             :
                             <span className=" mx-1">{accountHolderAddress}</span>
                     }

@@ -25,6 +25,11 @@ import CityBankCertificate from "./Pages/CityBank/CityBankCertificate";
 import OneBankTran from "./Pages/OneBank/OneBankTran";
 import OneBankStatement from "./Pages/OneBank/OneBankStatement";
 import OnebankCertificate from "./Pages/OneBank/OneBankCertificate";
+import SCBBankTran from "./Pages/SCBBank/SCBBankTran";
+import BankAsiaTwo from "./Pages/BankAsia/BankAsiaTwo";
+import BankAsiaOne from "./Pages/BankAsia/BankAsiaOne";
+import BankAsiaTransaction from "./Pages/BankAsia/BankAsiaTran";
+import SCBBankStatement from "./Pages/SCBBank/SCBBankStatement";
 
 
 function App() {
@@ -75,22 +80,39 @@ function App() {
               <UCOBankTran />
             </Laout>
           </PrivateRoute>} />
+
         <Route path="/transactions/canara_bank"
           element={<PrivateRoute>
             <Laout>
               <CanaraTransaction />
             </Laout>
           </PrivateRoute>} />
+
         <Route path="/transactions/city_bank"
           element={<PrivateRoute>
             <Laout>
               <CityBankTran />
             </Laout>
           </PrivateRoute>} />
+
         <Route path="/transactions/one_bank"
           element={<PrivateRoute>
             <Laout>
               <OneBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
+        <Route path="/transactions/scb_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <SCBBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
+        <Route path="/transactions/asia_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <BankAsiaTransaction />
             </Laout>
           </PrivateRoute>} />
 
@@ -131,6 +153,16 @@ function App() {
             <OneBankStatement />
           </PrivateRoute>} />
 
+        <Route path="/scb_bank"
+          element={<PrivateRoute>
+            <SCBBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/asia_bank"
+          element={<PrivateRoute>
+            <BankAsiaOne />
+          </PrivateRoute>} />
+
         {/* cirtificate formate routes */}
         <Route path="/islami_bank_certificate"
           element={<PrivateRoute>
@@ -165,6 +197,11 @@ function App() {
         <Route path="/one_bank_solvency"
           element={<PrivateRoute>
             <OnebankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/asia_bank_solvency"
+          element={<PrivateRoute>
+            <BankAsiaTwo />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />
