@@ -153,8 +153,6 @@ function EBLBankTran() {
 
     }, [Transaction])
 
-    console.log(debitCount)
-    console.log(creditCount)
 
     return (
         <div className='w-full h-[calc(100vh-64px)] bg-gray-100 overflow-y-scroll p-5'>

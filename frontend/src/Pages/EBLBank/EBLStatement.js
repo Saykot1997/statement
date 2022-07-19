@@ -1,42 +1,38 @@
+import axios from 'axios';
+import commaNumber from 'comma-number';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { Host } from "../../Data"
-import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
-import commaNumber from 'comma-number'
-import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
+import { Host } from '../../Data';
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
-import logo from "../../Photos/ebl_bank/logo.png"
-import sile from "../../Photos/ebl_bank/mid_logo.png"
-import GetFormatedDate from "../../Utils/GetFormatedDate"
-import changeFields from '../../Utils/ChangeFields';
+import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
+import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
+import logo from "../../Photos/ebl_bank/logo.png";
+import bankSil from "../../Photos/ebl_bank/mid_logo.png";
 import EditButtonComponent from '../../Components/EditButtonComponent';
+import changeFields from '../../Utils/ChangeFields';
 
-function EBLStatement() {
+function EBLBankStatement() {
 
     const [randomTransictions, setRandomTransictions] = useState([])
     const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
-    const [initialBalance, setInitialBalance] = useState(700000.00);
+    const [initialBalance, setInitialBalance] = useState(700000);
+    const [joinName, setJoinName] = useState("")
+    const [customerId, setCustomerId] = useState("095017190")
+    const [fhp, setFhp] = useState("MOHD JAYNUDDIN MIAH")
     const [editMode, setEditMode] = useState(false);
-    const [todayDate, setTodayDate] = useState("14-DEC-21");
-    const [creditCount, setCreditCount] = useState(0)
-    const [debitCount, setDebitCount] = useState(0)
-    const [branchName, setBranchName] = useState("Chouhatta");
-    const [branchAddress, setBranchAddress] = useState("Plot-1 Tea Board Building");
-    const [branchRoad, setBranchRoad] = useState("Zindabaza");
-    const [branchPoint, setBranchPoint] = useState("Chouhatta Point");
-    const [branchCity, setBranchCity] = useState("Sylet")
-    const [customerId, setCustomerId] = useState("871641872328")
-    const [accountType, setAccountType] = useState("EBL Platinum Plus Savings");
-    const [accountNumber, setAccountNumber] = useState("0009-03100007098");
-    const [accountHoldersName, setAccountHoldersName] = useState("IKPAM RASHID");
-    const [accountHoldersAddress, setAccountHoldersAddress] = useState("MOHONOB 5/1 C JOYNOB RESIDENCY");
-    const [accountHolderState, setAccountHolderState] = useState("PATHAN TULA")
-    const [accountHolderCity, setAccountHolderCity] = useState("SYLET")
-    const [accountCurrency, setAccountCurrency] = useState("Bangladeshi Taka");
-    const [startStatementDate, setStartStatementDate] = useState("01-OCT-21");
-    const [endStatementDate, setEndStatementDate] = useState("13-MAR-22");
+    const [accountCurrancy, setAccountCurrancy] = useState("BDT")
+    const [branchName, setBranchName] = useState("New Eskaton Branch");
+    const [accountType, setAccountType] = useState("Saving");
+    const [accountNumber, setAccountNumber] = useState("0943211000003412");
+    const [preAccountNumber, setPreAccountNumber] = useState("0943211000003412")
+    const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
+    const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD, NARINDA, DHAKA SADAR, GANDARIA, DHAKA");
+    const [accountHolderCity, setAccountHolderCity] = useState("Dhaka")
+    const [accountHoldersPhone, setAccountHoldersPhone] = useState("M:01715077361");
+    const [accountStatus, setAccountStatus] = useState("Active");
+    const [startStatementDate, setStartStatementDate] = useState("01-10-2021");
+    const [endStatementDate, setEndStatementDate] = useState("31-03-2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
     const [hideEndStatementDate, setHideEndStatementDate] = useState("2022-03-31");
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
@@ -45,6 +41,8 @@ function EBLStatement() {
     const User = useSelector(state => state.User.User);
     const dispatch = useDispatch();
     const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
+    const [generationDate, setGenarationDate] = useState("12/06/2022 13:02:53 PM")
+
 
     const getBankTransactions = async (value) => {
 
@@ -77,40 +75,7 @@ function EBLStatement() {
             let startStatementDateMonth = startStatementDate[1];
             let startStatementDateDay = startStatementDate[2];
 
-            let month = ""
-
-            if (startStatementDateMonth.toString() === "01") {
-                month = "JAN"
-            } else if (startStatementDateMonth.toString() === "02") {
-                month = "FEB"
-            } else if (startStatementDateMonth.toString() === "03") {
-                month = "MAR"
-            } else if (startStatementDateMonth.toString() === "04") {
-                month = "APR"
-            } else if (startStatementDateMonth.toString() === "05") {
-                month = "MAY"
-            } else if (startStatementDateMonth.toString() === "06") {
-                month = "JUN"
-            } else if (startStatementDateMonth.toString() === "07") {
-                month = "JUL"
-            } else if (startStatementDateMonth.toString() === "08") {
-                month = "AUG"
-            } else if (startStatementDateMonth.toString() === "09") {
-                month = "SEP"
-            } else if (startStatementDateMonth.toString() === "10") {
-                month = "OCT"
-            } else if (startStatementDateMonth.toString() === "11") {
-                month = "NOV"
-            } else if (startStatementDateMonth.toString() === "12") {
-                month = "DEC"
-            } else {
-                month = ""
-            }
-
-            let sprateYear = [...startStatementDateYear]
-
-            setStartStatementDate(`${startStatementDateDay}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`);
-
+            setStartStatementDate(`${startStatementDateDay}-${startStatementDateMonth}-${startStatementDateYear}`);
             setHideStartStatementDate(`${startStatementDateYear}-${startStatementDateMonth}-${startStatementDateDay}`);
 
         } else if (option === "endStatementDate") {
@@ -120,42 +85,12 @@ function EBLStatement() {
             let endStatementDateMonth = endStatementDate[1];
             let endStatementDateDay = endStatementDate[2];
 
-            let month = ""
-
-            if (endStatementDateMonth.toString() === "01") {
-                month = "JAN"
-            } else if (endStatementDateMonth.toString() === "02") {
-                month = "FEB"
-            } else if (endStatementDateMonth.toString() === "03") {
-                month = "MAR"
-            } else if (endStatementDateMonth.toString() === "04") {
-                month = "APR"
-            } else if (endStatementDateMonth.toString() === "05") {
-                month = "MAY"
-            } else if (endStatementDateMonth.toString() === "06") {
-                month = "JUN"
-            } else if (endStatementDateMonth.toString() === "07") {
-                month = "JUL"
-            } else if (endStatementDateMonth.toString() === "08") {
-                month = "AUG"
-            } else if (endStatementDateMonth.toString() === "09") {
-                month = "SEP"
-            } else if (endStatementDateMonth.toString() === "10") {
-                month = "OCT"
-            } else if (endStatementDateMonth.toString() === "12") {
-                month = "NOV"
-            } else if (endStatementDateMonth.toString() === "12") {
-                month = "DEC"
-            } else {
-                month = ""
-            }
-
-            let sprateYear = [...endStatementDateYear]
-
-            setEndStatementDate(`${endStatementDateDay}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`);
+            setEndStatementDate(`${endStatementDateDay}-${endStatementDateMonth}-${endStatementDateYear}`);
             setHideEndStatementDate(`${endStatementDateYear}-${endStatementDateMonth}-${endStatementDateDay}`);
         }
     }
+
+
 
     const GenerateTranjections = () => {
 
@@ -167,28 +102,12 @@ function EBLStatement() {
             return alert("No Transaction Amount Found. Please insert Transaction Amount First.")
         }
 
-        const allData = GenerateRandomTranjections(hideStartStatementDate, hideEndStatementDate, Transactions, transactionQuantity, initialBalance, TransactionAmount.ATM, TransactionAmount.Cheque);
+        const allData = GenerateRandomTranjections(hideStartStatementDate, hideEndStatementDate, Transactions, transactionQuantity, initialBalance, TransactionAmount.ATM, TransactionAmount.Cheque, "islami_bank");
         setTotalWithdrawal(allData.TotalWithdrawal);
         setTotalDeposit(allData.TotalDeposit);
         setRandomTransictions(allData.RandomTransictions);
-
-        let inerdebitCount = 0
-        let inercreditCount = 0
-
-        allData.RandomTransictions.forEach((item, index) => {
-
-            if (item.withdrawal > 0) {
-                inerdebitCount = inerdebitCount + 1
-            } else {
-                inercreditCount = inercreditCount + 1
-            }
-        })
-
-        setDebitCount(inerdebitCount)
-        setCreditCount(inercreditCount)
         toggleEditMode();
     }
-
 
     const getTransectionsAmounts = async () => {
 
@@ -208,377 +127,399 @@ function EBLStatement() {
         }
     }
 
+    const GetFormateDate = (date) => {
+
+        if (date === undefined) {
+            return null
+        }
+
+        let splitDate = date.split("/")
+
+        return `${splitDate[0]}-${splitDate[1]}-${splitDate[2]}`
+    }
+
 
     useEffect(() => {
         getTransectionsAmounts()
         getBankTransactions()
     }, [])
 
-    // typeWriter
 
     return (
-        <div className=" typeWriter p-5 print:p-0 print:text-[8px] print:leading-3 font-semibold print:tracking-widest">
-
+        <div className='w-full p-10 print:p-3'>
             <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
-
-            <div className=' py-8 px-12'>
-                <table className=' w-full'>
-                    <thead className=' table-header-group'>
-                        <tr>
-                            <th colSpan={6}>
-                                <div className=' py-2 w-full'>
-                                </div>
-                            </th>
-                        </tr>
-                        <tr className=' w-full '>
-                            <th className=" w-full report-header-cell font-normal" colspan="6">
-                                <div className=' w-full flex justify-between'>
-                                    <div className='self-end flex flex-col items-start font-semibold translate-y-3'>
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Name</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} placeholder='Name' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{accountHoldersName}</p>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Address</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} placeholder='address' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{accountHoldersAddress}</p>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>State</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountHolderState} onChange={(e) => setAccountHolderState(e.target.value)} placeholder='state' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{accountHolderState}</p>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>State</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountHolderCity} onChange={(e) => setAccountHolderCity(e.target.value)} placeholder='state' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{accountHolderCity}</p>
-                                        }
-                                    </div>
-                                    <div>
-                                        <img src={logo} alt="" className=' w-24' />
-                                    </div>
-                                </div>
-                                <div className=' flex justify-between text-left font-semibold'>
-                                    <div className='self-end'>
-                                        <p>EASTERN BANK LIMITED</p>
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={branchName} onChange={(e) => setBranchName(e.target.value)} placeholder='state' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{branchName} Branch</p>
-                                        }
-
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Address</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} placeholder='Address' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{branchAddress}</p>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Road</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={branchRoad} onChange={(e) => setBranchRoad(e.target.value)} placeholder='Road' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-
-                                                <p>{branchRoad} Road</p>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div>
-                                                    <div className=' flex items-center my-[2px]'>
-                                                        <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Point</span>
-                                                        <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                        <input type="text" value={branchPoint} onChange={(e) => setBranchPoint(e.target.value)} placeholder='Point' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                    </div>
-                                                    <div className=' flex items-center my-[2px]'>
-                                                        <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch City</span>
-                                                        <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                        <input type="text" value={branchCity} onChange={(e) => setBranchCity(e.target.value)} placeholder='Point' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                    </div>
-                                                </div>
-                                                :
-
-                                                <p>{branchPoint} Point, {branchCity}</p>
-                                        }
-                                    </div>
-                                    {/* <div className=' self-end pb-3'>
-                                        <p className=''>ONLINE STATEMENT</p>
-                                    </div> */}
-                                    <div className='text-left pt-8 pb-6 -translate-x-12'>
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Account Number</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} placeholder='Account Number' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-                                                <div>
-                                                    <span className=' w-28 print:w-20 inline-block'>Account Number</span>
-                                                    <span className=' mx-[6px]'>:</span>
-                                                    <span>{accountNumber}</span>
-                                                </div>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Product Name</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountType} onChange={(e) => setAccountType(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-                                                <div>
-                                                    <span className=' w-28 print:w-20 inline-block'>Product Name</span>
-                                                    <span className=' mx-[6px]'>:</span>
-                                                    <span>{accountType}</span>
-                                                </div>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=" leading-7 print:leading-[22px] flex">
-                                                    <span className='inline-block w-32 text-right font-medium print:font-medium'>Statement Date</span>
-
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="date" placeholder='Start stetment date' value={hideStartStatementDate} onChange={(e) => statementDateChange("startStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
-
-                                                    to
-
-                                                    <input type="date" placeholder='Start stetment date' value={hideEndStatementDate} onChange={(e) => statementDateChange("endStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
-                                                </div>
-                                                :
-                                                <div>
-                                                    <span className=' w-28 print:w-20 inline-block'>Period From</span>
-                                                    <span className=' mx-[6px]'>:</span>
-                                                    <span>{startStatementDate} - {endStatementDate}</span>
-                                                </div>
-                                        }
-                                        {/* <div>
-                                            <span className=' w-28 print:w-20 inline-block'>Page</span>
-                                            <span className=' mx-[6px]'>:</span>
-                                            <span>1</span>
-                                        </div> */}
-
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Currancy Name</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={accountCurrency} onChange={(e) => setAccountCurrency(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-                                                <div>
-                                                    <span className=' w-28 print:w-20 inline-block'>Currancy Name</span>
-                                                    <span className=' mx-[6px]'>:</span>
-                                                    <span>{accountCurrency}</span>
-                                                </div>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Branch Code</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Account Type' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-                                                <div>
-                                                    <span className=' w-28 print:w-20 inline-block'>Branch Code</span>
-                                                    <span className=' mx-[6px]'>:</span>
-                                                    <span>{initialBranchCode}</span>
-                                                </div>
-                                        }
-                                        {
-                                            editMode ?
-                                                <div className=' flex items-center my-[2px]'>
-                                                    <span className=' inline-block w-32 text-right font-medium print:font-medium'>Customer Id</span>
-                                                    <span className=' mx-2 font-medium print:font-medium'>:</span>
-                                                    <input type="text" value={customerId} onChange={(e) => setCustomerId(e.target.value)} placeholder='Customer Id' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                </div>
-                                                :
-                                                <div>
-                                                    <span className=' w-28 print:w-20 inline-block'>Customer Id</span>
-                                                    <span className=' mx-[6px]'>:</span>
-                                                    <span>{customerId}</span>
-                                                </div>
-                                        }
-
-                                    </div>
-                                </div>
-
-                                {
-                                    editMode &&
-                                    <div className=' flex flex-col items-end pr-28'>
-                                        <div className=' flex items-center my-1'>
-                                            <span className=' mr-2'>Initial Blance</span>
-                                            <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                        </div>
-                                        <div className=' flex items-center my-1'>
-                                            <span className=' mr-2'>Initial Branch Code</span>
-                                            <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                        </div>
-                                        <div className=' flex items-center'>
-                                            <span className=' mr-2'>Number of row</span>
-                                            <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                        </div>
-
-                                    </div>
-                                }
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <thead className=''>
-                        <tr className=''>
-                            <td className='w-[10%]'>TRN. DATE</td>
-                            <td className='w-[25%] text-left'>DESCRIPTIONS</td>
-                            <td className='w-[10%] text-left pl-3'>REFERENCES</td>
-                            <td className='text-right'>DEBITS</td>
-                            <td className='text-right pr-3'>CREDITS</td>
-                            <td className='text-right pr-3'>BALANCE</td>
-                        </tr>
-                    </thead>
-
-                    <tbody className=''>
-                        <tr>
-                            <td className='text-left py-[4px]'>{
-                                editMode ?
-                                    <input type="text" value={todayDate} onChange={(e) => setTodayDate(e.target.value)} placeholder='Todays Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                    :
-                                    <span>{todayDate}</span>
-                            }</td>
-                            <td className='py-[4px] pl-1'>Opening Balance</td>
-                            <td className='pl-3'></td>
-                            <td></td>
-                            <td className='text-right py-[4px]'>{commaNumber(initialBalance)}</td>
-                            <td className='text-right py-[4px]'>{commaNumber(initialBalance)}</td>
-                        </tr>
+            <div className=' w-full pb-3'>
+                <div className=' w-full grid grid-cols-4 print:pt-2'>
+                    <div className=' flex'>
+                        <img src={logo} alt="" className='w-24 ml-16 -translate-y-1' />
+                    </div>
+                    <div className=' flex flex-col items-center col-span-2 leading-5 font-medium'>
+                        <p className=' print:text-lg'>Eastern Bank Ltd.</p>
                         {
-                            randomTransictions.length > 0 && randomTransictions.map((item, index) => {
-                                return (
-                                    <tr className='align-text-top'>
-                                        <td className='text-left py-[4px]'>
-                                            {
-                                                editMode ?
-                                                    <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                    :
-                                                    <span> {item.date && GetFormatedDate(item.date)}</span>
-                                            }
+                            editMode ?
+                                <div className=' flex items-center'>
+                                    <span className=' font-semibold'>Branch Name :</span>
+                                    <input type="text" placeholder='Branch Name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                </div>
+                                :
 
-                                        </td>
-                                        <td className='text-left pl-1 py-[4px]'>
-                                            {
-                                                editMode ?
-                                                    <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
-                                                    :
-                                                    <span>{item.particular}</span>
-                                            }
-                                        </td>
-                                        <td className='text-left pl-3 py-[4px]'>
-                                            {
-                                                editMode ?
-                                                    <input type="text" value={item.ref} onChange={(e) => changeFields(e.target.value, index, "ref", randomTransictions, setRandomTransictions)} placeholder='References' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
-                                                    :
-                                                    <span>{item.ref}</span>
-                                            }
-                                        </td>
-                                        <td className='text-right py-[4px] pr-3'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
-                                        <td className='text-right py-[4px]'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
-                                        <td className='text-right py-[4px]'>{commaNumber(item.balance)}</td>
-                                    </tr>
-                                )
-                            })
+                                <p className=' mt-[2px]'>{branchName}</p>
                         }
-                        <tr className='w-full'>
-                            <td colSpan={6}>
-                                <div className=' w-full pt-5'>
-                                    <div className=' w-full border-t border-dashed border-gray-600'>
-                                        <div className=' pl-28 pt-3'>
-                                            <div>
-                                                <span className=' w-60 print:w-40 inline-block'>OPENING BALANCE</span>
-                                                <span className=' w-44 print:w-20 inline-block'>{commaNumber(initialBalance)}</span>
-                                                <span></span>
-                                            </div>
-                                            <div>
-                                                <span className=' w-60 print:w-40 inline-block'>DEBITS</span>
-                                                <span className=' w-44 print:w-20 inline-block'>{commaNumber(totalWithdrawal)}</span>
-                                                <span className=''>DRCOUNT {debitCount}</span>
-                                            </div>
-                                            <div>
-                                                <span className=' w-60 print:w-40 inline-block'>CREDITS</span>
-                                                <span className=' w-44 print:w-20 inline-block'>{commaNumber(totalDeposit)}</span>
-                                                <span className=''>CRCOUNT {creditCount}</span>
-                                            </div>
-                                            <div className=' '>
-                                                <span className=' w-60 print:w-40 inline-block'>UNCOLLECTED FUNDS</span>
-                                                <span className=' w-44 print:w-[53px] inline-block'></span>
-                                                <span className=''>SWITCH AMOUNT 0</span>
-                                            </div>
-                                            <div>
-                                                <span className=' w-60 print:w-48 inline-block'>* = UNAUTH ENTRY / R = REVERSAL</span>
-                                                <span className=' w-44 print:w-36 inline-block'></span>
-                                                <span></span>
-                                            </div>
-                                        </div>
+                        <p className=''>Statement Of Account</p>
+                    </div>
+                    <div className=''>
+
+                    </div>
+                </div>
+                <div className=' w-full flex font-medium print:text-[12px] print:leading-[16px] pb-5'>
+                    <div className=' w-[55%] pl-1'>
+                        {
+                            editMode ?
+                                <div className=' my-1'>
+                                    <span className=' inline-block w-24 font-semibold print:font-semibold'>Name</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Account Holder Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' flex'>
+                                    <span className='font-semibold text-left inline-block w-20 print:font-semibold'>Name</span>
+                                    <div>
+                                        <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                        <span className=''>{accountHoldersName}</span>
                                     </div>
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot class="table-footer-group" id='pageFooter'>
-                        <tr>
-                            <td class=" " colspan="6">
-                                <div className=' w-full -translate-y-5 pb-3'>
-                                    <div className=' flex justify-center'>
-                                        <img src={sile} alt="" className=" w-28" />
+                        }
+                        {
+                            editMode ?
+                                <div className=' my-1'>
+                                    <span className=' inline-block w-24 font-semibold print:font-semibold'>Join Name</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Join Name' value={joinName} onChange={(e) => setJoinName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' flex mt-2'>
+                                    <span className='font-semibold text-left inline-block w-20 print:font-semibold'>Join Name</span>
+                                    <div>
+                                        <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                        <span className=''>{joinName}</span>
                                     </div>
                                 </div>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-                {/* yeallo border */}
-                <div className=' w-full h-6 bg-yellow-400 print:fixed left-0 bottom-0'>
+                        }
+                        {
+                            editMode ?
+                                <div className=' my-1'>
+                                    <span className=' inline-block w-24 font-semibold print:font-semibold'>F/H/P</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='fhp' value={fhp} onChange={(e) => setFhp(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' flex text-left'>
+                                    <span className='font-semibold text-left inline-block w-20 print:font-semibold'>F/H/P</span>
+                                    <div className=''>
+                                        <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                        <span className=''>{fhp}</span>
+                                    </div>
+                                </div>
+                        }
+
+
+                        {
+                            editMode ?
+                                <div className=' my-1'>
+                                    <span className=' inline-block w-24 font-semibold print:font-semibold'>Address</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' flex w-full text-left'>
+                                    <div className=' flex justify-between w-[86px] '>
+                                        <span className='font-semibold text-left inline-block w-20 print:font-semibold'>Address</span>
+                                        <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                    </div>
+                                    <span className=''>{accountHoldersAddress}</span>
+                                </div>
+                        }
+                        {
+                            editMode ?
+                                <div className=' my-1'>
+                                    <span className=' inline-block w-24 font-semibold print:font-semibold'>City</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='City' value={accountHolderCity} onChange={(e) => setAccountHolderCity(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' flex mt-3'>
+                                    <span className='font-semibold text-left inline-block w-20 print:font-semibold'>City</span>
+                                    <div>
+                                        <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                        <span className=''>{accountHolderCity}</span>
+                                    </div>
+                                </div>
+                        }
+                        {
+                            editMode ?
+                                <div className=' my-1'>
+                                    <span className=' inline-block w-24 font-semibold print:font-semibold'>Phone</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Phone' value={accountHoldersPhone} onChange={(e) => setAccountHoldersPhone(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' flex'>
+                                    <span className='font-semibold text-left inline-block w-20 print:font-semibold'>Phone</span>
+                                    <div>
+                                        <span className='font-semibold print:font-semibold mr-1'>:</span>
+                                        <span className=''>{accountHoldersPhone}</span>
+                                    </div>
+                                </div>
+                        }
+
+                    </div>
+                    <div className=' w-[45%] print:text-[12px]'>
+
+                        {
+                            editMode ?
+
+                                <div className=' my-[2px] flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Customer ID</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='customer id' value={customerId} onChange={(e) => setCustomerId(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className='flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Customer ID</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <p className=''>{customerId}</p>
+                                </div>
+                        }
+
+                        {
+                            editMode ?
+
+                                <div className=' my-[2px] flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>A/c N0.</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='account number' value={accountNumber} onChange={(e) => setAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className='flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>A/C No.</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <p className=''>{accountNumber}</p>
+                                </div>
+                        }
+
+                        {
+                            editMode ?
+
+                                <div className=' my-[2px] flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Prev. A/c No.</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='previous account number' value={preAccountNumber} onChange={(e) => setPreAccountNumber(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className='flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Prev. A/C No.</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <p className=''>{preAccountNumber}</p>
+                                </div>
+                        }
+
+                        {
+                            editMode ?
+
+                                <div className=' my-[2px] flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>A/C Type</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Account Type' value={accountType} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className='flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>A/C Type</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <p className=''>{accountType}</p>
+                                </div>
+                        }
+                        {
+                            editMode ?
+
+                                <div className=' my-[2px] flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Account Currency</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Account Type' value={accountCurrancy} onChange={(e) => setAccountCurrancy(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className='flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Currency</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <p className=''>{accountCurrancy}</p>
+                                </div>
+                        }
+
+                        {
+                            editMode ?
+                                <div className=' my-[2px] flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>A/C Status</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" placeholder='Account Number' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <div className=' my-[2px] flex mt-3'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>A/C Status</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <span className=' uppercase'>{accountStatus}</span>
+                                </div>
+                        }
+
+                        {
+                            editMode ?
+
+                                <div className=" leading-7 print:leading-[22px] flex">
+                                    <span className='inline-block w-32 text-right font-semibold print:font-semibold'>Statement Date</span>
+
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="date" placeholder='Start stetment date' value={hideStartStatementDate} onChange={(e) => statementDateChange("startStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+
+                                    to
+
+                                    <input type="date" placeholder='Start stetment date' value={hideEndStatementDate} onChange={(e) => statementDateChange("endStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+
+                                <div className='flex'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Period</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <p className=' font-semibold print:font-semibold'> <span> {startStatementDate}</span> To <span>{endStatementDate}</span></p>
+                                </div>
+                        }
+
+
+                        {
+                            editMode &&
+                            <div>
+                                <div className=' flex my-[2px]'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>initialBalance</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" value={initialBalance} onChange={(e) => setInitialBalance(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                </div>
+                                <div className=' flex my-[2px]'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Initial Branch Code</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" value={initialBranchCode} onChange={(e) => setInitialBranchCode(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                </div>
+
+                                <div className=' flex my-[2px]'>
+                                    <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>Number of Rows</span>
+                                    <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                    <input type="text" value={transactionQuantity} onChange={(e) => setTransactionQuantity(e.target.value)} placeholder='Blance' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <table className='w-full'>
+                <thead class=" table-header-group w-full">
+                    <tr>
+                        <th colSpan={6} className="py-1">
+                        </th>
+                    </tr>
+                    <tr className=' bg-gray-100'>
+                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600'>TRN. DATE</th>
+                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600 w-[35%]'>DESCRIPTIONS</th>
+                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600'>REFERENCES</th>
+                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600 w-[14%]'>DEBITS</th>
+                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600 w-[14%]'>CREDITS</th>
+                        <th className=' font-semibold px-2 print:text-[12px] border-x border-t border-gray-600 w-[14%]'>BALANCE</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr className='leading-[14px]'>
+                        <td className=' font-semibold print:px-2 py-0 print:text-[12px] border-l border-t border-gray-600 p-2  '>Balance Forward</td>
+                        <td className=' font-semibold print:px-2 py-0 print:text-[12px] border-l border-t border-gray-600 p-2'></td>
+                        <td className=' font-semibold print:px-2 py-0 print:text-[12px] border-l border-t border-gray-600 p-2'></td>
+                        <td className=' font-semibold print:px-2 py-0 print:text-[12px] border-l border-t border-gray-600 p-2'></td>
+                        <td className=' font-semibold print:px-2 py-0 print:text-[12px] border-l border-t border-gray-600 p-2 '></td>
+                        <td className=' font-semibold print:px-2 py-0 print:text-[12px] border-x border-t border-gray-600 p-2 text-right '>{commaNumber(initialBalance)}</td>
+                    </tr>
+
+                    {
+                        randomTransictions.length > 0 && randomTransictions.map((item, index) => {
+
+                            return (
+                                <tr className='print:leading-[14px]'>
+                                    <td className=' border-l border-t border-gray-600 p-2 print:py-0 print:px-2 print:text-[11px]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{GetFormateDate(item.date)}</span>
+                                        }
+                                    </td>
+                                    <td className=' border-l border-t border-gray-600 p-2 print:py-0 print:px-1 print:text-[11px]'>
+
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <span>{item.particular}</span>
+                                        }
+                                    </td>
+
+                                    <td className=' border-l border-t border-gray-600 p-2 print:py-0 print:px-2 print:text-[11px]'>
+
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.ref} onChange={(e) => changeFields(e.target.value, index, "ref", randomTransictions, setRandomTransictions)} placeholder='Ref' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
+                                                :
+                                                <span>{item.ref}</span>
+                                        }
+                                    </td>
+
+                                    <td className=' border-l border-t border-gray-600 p-2 print:py-0 print:px-2 print:text-[11px] text-right'>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</td>
+                                    <td className=' border-l border-t border-gray-600 p-2 print:py-0 print:px-2 print:text-[11px] text-right'>{item.deposit > 0 && commaNumber(item.deposit)}</td>
+                                    <td className=' border-x border-t border-gray-600 p-2 print:py-0 print:px-2 print:text-[11px] text-right'>{commaNumber(item.balance)}</td>
+                                </tr>
+                            )
+                        })
+                    }
+                    <tr className=''>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0 text-right pr-5 font-medium' colSpan="3">Total </td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0 uppercase text-right font-medium'>{commaNumber(totalWithdrawal)}</td>
+                        <td className='p-2  border-t border-l border-b border-gray-600 print:px-1 print:text-[10px] print:py-0 text-right font-medium'>{commaNumber(totalDeposit)}</td>
+                        <td className='p-2  border-t border-l border-b border-r border-gray-600 print:px-1 print:text-[10px] print:py-0'></td>
+                    </tr>
+                </tbody>
+                <tfoot className="table-footer-group">
+                    <tr>
+                        <td colSpan={6}>
+                            <div className=' w-full flex justify-center py-2'>
+                                <img src={bankSil} alt="" className='w-24' />
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div className=' print:fixed bottom-8 w-full pl-5 pr-10 flex justify-between italic print:text-[10px] font-medium font-Poppins print:text-gray-800'>
+                <div className=''>
+                    {
+                        editMode ?
+                            <div className=' flex'>
+                                <span>Generation Date :</span>
+                                <input type="text" value={generationDate} onChange={(e) => setGenarationDate(e.target.value)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                            </div>
+                            :
+                            <p>Generation Date : {generationDate}</p>
+
+                    }
+                </div>
+                <div className=''>
+                    <p>Page 1 of 1</p>
                 </div>
             </div>
         </div>
     )
 }
 
-export default EBLStatement
+export default EBLBankStatement
