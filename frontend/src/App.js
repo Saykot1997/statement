@@ -30,6 +30,7 @@ import BankAsiaTwo from "./Pages/BankAsia/BankAsiaTwo";
 import BankAsiaOne from "./Pages/BankAsia/BankAsiaOne";
 import BankAsiaTransaction from "./Pages/BankAsia/BankAsiaTran";
 import SCBBankStatement from "./Pages/SCBBank/SCBBankStatement";
+import SCBbankCertificate from "./Pages/SCBBank/SCBBankCertificate";
 
 
 function App() {
@@ -197,6 +198,11 @@ function App() {
         <Route path="/one_bank_solvency"
           element={<PrivateRoute>
             <OnebankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/scb_bank_solvency"
+          element={<PrivateRoute>
+            <SCBbankCertificate />
           </PrivateRoute>} />
 
         <Route path="/asia_bank_solvency"

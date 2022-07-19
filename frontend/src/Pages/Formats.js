@@ -93,6 +93,11 @@ function Formats() {
                         <p className=' text-center font-medium'>One Bank Solvency</p>
                     </div>
                 </Link>
+                <Link to={`/scb_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>SCB Bank Solvency</p>
+                    </div>
+                </Link>
                 {/* <Link to={`/asia_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Bank Asia Solvency</p>
