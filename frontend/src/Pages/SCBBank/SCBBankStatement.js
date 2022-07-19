@@ -7,26 +7,20 @@ import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_sli
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/scb_bank/logo.png";
-import GetFormatedDate from '../../Utils/GetFormatedDate';
+import DateFormate from '../../Utils/DateFormate';
 import EditButtonComponent from '../../Components/EditButtonComponent';
 import changeFields from '../../Utils/ChangeFields';
-import sil from "../../Photos/city_bank/sil.png"
+import sil from "../../Photos/scb_bank/sil.png"
 
 function SCBBankStatement() {
 
     const [randomTransictions, setRandomTransictions] = useState([])
-    const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
     const [initialBalance, setInitialBalance] = useState(700000.00);
     const [editMode, setEditMode] = useState(false);
     const [printDate, setPrintDate] = useState("26JUN22");
     const [branchName, setBranchName] = useState("Sonargaon Booth");
     const [branchPhone, setBranchPhone] = useState("019666777111");
-    const [branchAddress, setBranchAddress] = useState("THE CITY BANK LIMITED,UTTARA BRANCH");
-    const [branchAddress2, setBranchAddress2] = useState("HOUSE-8, SECTOR-7 UTTRA MODEL TOWN,DHAKA");
-    const [openingDate, setOpeningDate] = useState("01/01/2020");
-    const [lastTRDate, setLastTRDate] = useState("01/01/2020");
-    const [customerId, setCustomerId] = useState("CB2889932");
     const [accountCurrency, setAccountCurrency] = useState("BANGLADESH TAKA");
     const [accountType, setAccountType] = useState("CURRENT ACCOUNTS");
     const [accountNumber, setAccountNumber] = useState("01 1196519 01");
@@ -134,7 +128,7 @@ function SCBBankStatement() {
 
 
     return (
-        <div className=' w-full min-h-screen p-10 print:p-0'>
+        <div className=' w-full min-h-screen p-10 print:p-0 print:px-1'>
 
             <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
 
@@ -250,7 +244,8 @@ function SCBBankStatement() {
                                                     <span className=''>ENQUIRY TEL NO.</span>
                                                 </div>
                                                 <div className=' text-left ml-1 w-[calc(100%-theme(space.32))]'>
-                                                    <span className=' font-semibold'>{printDate}</span>
+                                                    <span className=' font-semibold ml-2 mr-7'>1</span>
+                                                    <span className=' font-semibold'>/{printDate}</span>
                                                 </div>
                                             </div>
                                     }
@@ -310,6 +305,16 @@ function SCBBankStatement() {
                                     {
                                         editMode &&
                                         <div>
+                                            <div className=" leading-7 print:leading-[22px] flex">
+                                                <span className='inline-block w-32 text-right font-semibold print:font-semibold'>Statement Date</span>
+
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <input type="date" placeholder='Start stetment date' value={hideStartStatementDate} onChange={(e) => statementDateChange("startStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+
+                                                to
+
+                                                <input type="date" placeholder='Start stetment date' value={hideEndStatementDate} onChange={(e) => statementDateChange("endStatementDate", e.target.value)} className=' rounded px-1 py-[1px] my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
                                             <div className=' flex my-[2px]'>
                                                 <span className=' inline-block w-32 text-right font-semibold print:font-semibold'>initialBalance</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
@@ -327,11 +332,11 @@ function SCBBankStatement() {
                         </th>
                     </tr>
                     <tr className=' text-gray-900'>
-                        <td className=' font-semibold print:px-1 py-1 print:text-[11px] border border-r-0 border-gray-700 p-2'>DATE</td>
-                        <td className=' font-semibold print:px-1 py-1 print:text-[11px] border-y border-gray-700 p-2 w-[40%]'>DESCRIPTION</td>
-                        <td className=' font-semibold print:px-1 py-1 print:text-[11px] border-y border-gray-700 p-2 text-right w-[15%]'>WITHDRAWAL</td>
-                        <td className=' font-semibold print:px-1 py-1 print:text-[11px] border-y border-gray-700 p-2 text-right w-[15%]'>DEPOSIT</td>
-                        <td className=' font-semibold print:px-1 py-1 print:text-[11px] border border-l-0 border-gray-700 p-2 text-right w-[15%]'>BALANCE[BDT]</td>
+                        <td className=' font-semibold print:px-1 pt-2 pb-[2px] print:text-[11px] border border-r-0 border-gray-700 p-2'>Date</td>
+                        <td className=' font-semibold print:px-1 pt-2 pb-[2px] print:text-[11px] border-y border-gray-700 p-2 w-[40%] text-center'>Description</td>
+                        <td className=' font-semibold print:px-1 pt-2 pb-[2px] print:text-[11px] border-y border-gray-700 p-2 w-[15%] text-center'>Withdrawal</td>
+                        <td className=' font-semibold print:px-1 pt-2 pb-[2px] print:text-[11px] border-y border-gray-700 p-2 w-[15%] text-center'>Deposit</td>
+                        <td className=' font-semibold print:px-1 pt-2 pb-[2px] print:text-[11px] border border-l-0 border-gray-700 p-2 w-[15%] text-center'>Balance</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -353,7 +358,7 @@ function SCBBankStatement() {
                                             editMode ?
                                                 <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none block' />
                                                 :
-                                                <span>{item.date}</span>
+                                                <span>{DateFormate(item.date)}</span>
                                         }
                                     </td>
                                     <td className='p-2 border-r border-gray-700 print:py-[2px] print:px-[6px] print:text-[11px]'>
@@ -375,18 +380,23 @@ function SCBBankStatement() {
 
                 </tbody>
                 <tfoot class="table-footer-group">
+                    <tr className='border-t border-gray-700'>
+                        <td class="  w-full" colspan="5">
+                        </td>
+                    </tr>
                     <tr>
                         <td class=" " colspan="5">
-                            <div className=' w-full print:text-[10px] font-medium my-3'>
+                            <div className=' w-full print:text-[10px] font-medium mb-3 mt-1 relative'>
+                                <img src={sil} alt="" className=' absolute -top-5 w-[70px] right-10' />
                                 <p className=' pl-5'>Note: Please advise the Bank of discrepancies, if any, within 14 days from date of receipt, otherwise this statement is considered correct.</p>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="" colspan="5">
-                            <div className=' w-full text-center border border-gray-700  py-5'>
-                                <p className=' print:text-sm'>Thank you for banking with Standard Chartered. We are pleased to be of service to you.</p>
-                                <p className=' print:text-[12px] mt-3'>This is aDuplicate Statement</p>
+                            <div className=' w-full text-center py-5 border border-gray-700'>
+                                <p className=' font-medium print:text-[12px]'>Thank you for banking with Standard Chartered. We are pleased to be of service to you.</p>
+                                <p className=' font-medium print:text-[11px] mt-3'>This is a Duplicate Statement</p>
                             </div>
                         </td>
                     </tr>

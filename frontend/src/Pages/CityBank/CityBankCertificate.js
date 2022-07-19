@@ -66,19 +66,7 @@ function CityBankCertificate() {
                 <div className=' ml-3 mr-2 h-8 w-[1px] bg-gray-500'></div>
                 <div className=' font-sans'>
                     <p className=''>The City Bank Limited</p>
-                    {
-                        editMode ?
-
-                            <div className=' flex items-center'>
-                                <span>Branch Address</span>
-                                <span className=' mx-2 '>:</span>
-                                <input type="text" placeholder='Branch Name' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                            </div>
-
-                            :
-
-                            <p className=''>Head Office : {branchAddress}</p>
-                    }
+                    <p className=''>Head Office : {branchAddress}</p>
                 </div>
             </div>
             <div className=' px-16 mt-3'>

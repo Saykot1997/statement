@@ -443,7 +443,7 @@ function CityBankStatement() {
                                     </div>
                                     <div className=' flex'>
                                         <div className='text-right'>
-                                            <span> Balance: ({startStatementDate})</span>
+                                            <span> Balance: ({endStatementDate})</span>
                                         </div>
                                         <span className=' inline-block w-24 text-right'>{randomTransictions.length > 0 && commaNumber(randomTransictions[randomTransictions.length - 1].balance)} (Cr)</span>
                                     </div>

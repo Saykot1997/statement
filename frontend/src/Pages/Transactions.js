@@ -44,7 +44,7 @@ function Transactions() {
                 </Link>
                 <Link to={`/transactions/scb_bank`}>
                     <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
-                        <span className=' font-medium '>Standard Chartered Bank</span>
+                        <span className=' font-medium '>SCB Bank</span>
                     </div>
                 </Link>
                 {/* <Link to={`/transactions/asia_bank`}>
