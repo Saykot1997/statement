@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9275f963.css",
-    "main.js": "/static/js/main.75253105.js",
+    "main.css": "/static/css/main.e8b95ead.css",
+    "main.js": "/static/js/main.93eadcdb.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
     "static/media/sil.png": "/static/media/sil.5cd2b74578ed5348a248.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
@@ -22,14 +22,15 @@
     "static/media/1.png": "/static/media/1.dfa4bc812b4caee6466b.png",
     "static/media/logo1.png": "/static/media/logo1.c1ed888d46a76e8bffb8.png",
     "static/media/signature2.png": "/static/media/signature2.c7d873ffa2e74fe052cb.png",
+    "static/media/logo 3.png": "/static/media/logo 3.149967ba99bc002c2c52.png",
     "static/media/BankAsiaAnyBranchLogo.png": "/static/media/BankAsiaAnyBranchLogo.d7197f807fdae029759d.png",
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
-    "main.9275f963.css.map": "/static/css/main.9275f963.css.map",
-    "main.75253105.js.map": "/static/js/main.75253105.js.map"
+    "main.e8b95ead.css.map": "/static/css/main.e8b95ead.css.map",
+    "main.93eadcdb.js.map": "/static/js/main.93eadcdb.js.map"
   },
   "entrypoints": [
-    "static/css/main.9275f963.css",
-    "static/js/main.75253105.js"
+    "static/css/main.e8b95ead.css",
+    "static/js/main.93eadcdb.js"
   ]
 }

@@ -514,9 +514,9 @@ function EBLBankStatement() {
 
                     }
                 </div>
-                <div className=''>
+                {/* <div className=''>
                     <p>Page 1 of 1</p>
-                </div>
+                </div> */}
             </div>
         </div>
     )

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Logout } from "../Redux/User_slice"
-import logo from "../Photos/gic-logo.jpg"
 
 function Topbar() {
 
@@ -33,7 +32,7 @@ function Topbar() {
         <div className=' w-full bg-white shadow h-16 z-10 flex justify-between items-center px-10 relative'>
             <div>
                 <Link to="/">
-                    <img src={logo} alt="" className=' w-16' />
+                    <span>Home</span>
                 </Link>
             </div>
             <div>

@@ -502,11 +502,11 @@ function IslamiBankStatement() {
                     </tr>
                 </tfoot>
             </table>
-            <div className=' print:fixed bottom-3 w-full pr-10 flex justify-end italic print:text-[10px] font-semibold font-Poppins print:text-gray-800'>
+            {/* <div className=' print:fixed bottom-3 w-full pr-10 flex justify-end italic print:text-[10px] font-semibold font-Poppins print:text-gray-800'>
                 <div className=''>
                     <p>Page 1 of 1</p>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

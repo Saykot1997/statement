@@ -31,6 +31,8 @@ import BankAsiaOne from "./Pages/BankAsia/BankAsiaOne";
 import BankAsiaTransaction from "./Pages/BankAsia/BankAsiaTran";
 import SCBBankStatement from "./Pages/SCBBank/SCBBankStatement";
 import SCBbankCertificate from "./Pages/SCBBank/SCBBankCertificate";
+import SoutheastBankTran from "./Pages/SoutheastBank/SoutheastBankTran";
+import SoutheastBankStatement from "./Pages/SoutheastBank/SoutheastBankStatement";
 
 
 function App() {
@@ -110,6 +112,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/southeast_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <SoutheastBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
         <Route path="/transactions/asia_bank"
           element={<PrivateRoute>
             <Laout>
@@ -157,6 +166,11 @@ function App() {
         <Route path="/scb_bank"
           element={<PrivateRoute>
             <SCBBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/southeast_bank"
+          element={<PrivateRoute>
+            <SoutheastBankStatement />
           </PrivateRoute>} />
 
         <Route path="/asia_bank"

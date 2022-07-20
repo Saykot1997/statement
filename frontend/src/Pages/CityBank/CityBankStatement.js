@@ -464,11 +464,11 @@ function CityBankStatement() {
                                 <div className=' w-full border border-gray-800 py-[2px] px-1'>
                                     <p className=' text-center'>Note.Please verify the items and balance on this statement and advice the bank of any discrepancy within 14 days of th statement date.</p>
                                 </div>
-                                <div className=' w-full flex justify-end'>
+                                {/* <div className=' w-full flex justify-end'>
                                     <div className=' mt-1 pr-20'>
                                         <p>Page 1 of 1</p>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className=' w-full flex justify-center '>
                                 <img src={sil} alt="" className=' w-20' />

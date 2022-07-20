@@ -24,6 +24,7 @@ function OneBankStatement() {
     const [branchName, setBranchName] = useState("MALIBAGH")
     const [branchAddress, setBranchAddress] = useState("TAMIJ UDDIN TOWER, 01, DIT ROAD MALIBAGH, CHOWDHURYPARA, DHAKA")
     const [accountCurrancy, setAccountCurrancy] = useState("BDT")
+    const [accountHolderName, setAccountHoldersName] = useState("SMART INTERIOR SOLUTION")
     const [accountType, setAccountType] = useState("CURRENT DEPOSIT - CLIENT");
     const [accountNumber, setAccountNumber] = useState("0921020001424");
     const [accountStatus, setAccountStatus] = useState("NORM");
@@ -178,11 +179,21 @@ function OneBankStatement() {
                                 <div className=' w-full flex '>
                                     <div className=' w-[54%] text-left'>
                                         <img src={logo} alt="" className=' -translate-y-2 -translate-x-3' />
-                                        <p>SMART INTERIOR SOLUTION</p>
+
                                         {
                                             editMode ?
                                                 <div className=' my-[2px] flex items-center'>
-                                                    <span className=''>Bank Address</span>
+                                                    <span className=''>Name</span>
+                                                    <span className=' mx-2 '>:</span>
+                                                    <input type="text" placeholder='Name' value={accountHolderName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                </div>
+                                                :
+                                                <p>{accountHolderName}</p>
+                                        }
+                                        {
+                                            editMode ?
+                                                <div className=' my-[2px] flex items-center'>
+                                                    <span className=''>Address</span>
                                                     <span className=' mx-2 '>:</span>
                                                     <input type="text" placeholder='bank address' value={bankAddress} onChange={(e) => setBankAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
@@ -204,7 +215,7 @@ function OneBankStatement() {
                                             {
                                                 editMode ?
                                                     <div className=' my-[2px] flex items-center'>
-                                                        <span className=''>Branch Address</span>
+                                                        <span className=''>Address</span>
                                                         <span className=' mx-2 '>:</span>
                                                         <input type="text" placeholder='Branch Address' value={branchAddress} onChange={(e) => setBranchAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                     </div>
@@ -497,9 +508,9 @@ function OneBankStatement() {
                 <div className=' w-full print:w-[94%] flex justify-center'>
                     <hr className=' print:-translate-x-5 w-full h-[2px] bg-black' />
                 </div>
-                <div className=''>
+                {/* <div className=''>
                     <p className=' print:text-[11px] text-center'>Page No.:1</p>
-                </div>
+                </div> */}
                 <img src={bankSil} alt="" className='w-24 print:absolute -top-5 right-20' />
             </div>
         </div>
