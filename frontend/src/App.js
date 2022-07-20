@@ -33,6 +33,7 @@ import SCBBankStatement from "./Pages/SCBBank/SCBBankStatement";
 import SCBbankCertificate from "./Pages/SCBBank/SCBBankCertificate";
 import SoutheastBankTran from "./Pages/SoutheastBank/SoutheastBankTran";
 import SoutheastBankStatement from "./Pages/SoutheastBank/SoutheastBankStatement";
+import SoutheastBankCertificate from "./Pages/SoutheastBank/SoutheastBankCertificate";
 
 
 function App() {
@@ -217,6 +218,11 @@ function App() {
         <Route path="/scb_bank_solvency"
           element={<PrivateRoute>
             <SCBbankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/southeast_bank_solvency"
+          element={<PrivateRoute>
+            <SoutheastBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/asia_bank_solvency"

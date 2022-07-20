@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.e8b95ead.css",
-    "main.js": "/static/js/main.93eadcdb.js",
+    "main.css": "/static/css/main.a83958f1.css",
+    "main.js": "/static/js/main.a892494c.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
     "static/media/sil.png": "/static/media/sil.5cd2b74578ed5348a248.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
     "static/media/sig2.png": "/static/media/sig2.90e76c9cc780829d9f8c.png",
-    "static/media/sig1.png": "/static/media/sig1.fec31f868ab875023294.png",
+    "static/media/sig1.png": "/static/media/sig1.7191fe9448c20064d771.png",
+    "static/media/footer.png": "/static/media/footer.3c8adf55cef937c27212.png",
     "static/media/logo.jpg": "/static/media/logo.3f08bf331841e452054b.jpg",
     "static/media/mid_logo.png": "/static/media/mid_logo.2f8e3209bc0ace747f6e.png",
     "static/media/islami_bank_sil.png": "/static/media/islami_bank_sil.e4019a8f3d378a954002.png",
-    "static/media/logo.png": "/static/media/logo.c292a9682fca491f36c3.png",
+    "static/media/logo.png": "/static/media/logo.7b01f99a8b2ac1c6d2d3.png",
     "static/media/signature1.png": "/static/media/signature1.2ffc5c43352c1475ed86.png",
     "static/media/islami_bank_logo.png": "/static/media/islami_bank_logo.48318346f60bef270eab.png",
     "static/media/sif 1.png": "/static/media/sif 1.f3d626b9a56593093eb6.png",
@@ -26,11 +27,11 @@
     "static/media/BankAsiaAnyBranchLogo.png": "/static/media/BankAsiaAnyBranchLogo.d7197f807fdae029759d.png",
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
-    "main.e8b95ead.css.map": "/static/css/main.e8b95ead.css.map",
-    "main.93eadcdb.js.map": "/static/js/main.93eadcdb.js.map"
+    "main.a83958f1.css.map": "/static/css/main.a83958f1.css.map",
+    "main.a892494c.js.map": "/static/js/main.a892494c.js.map"
   },
   "entrypoints": [
-    "static/css/main.e8b95ead.css",
-    "static/js/main.93eadcdb.js"
+    "static/css/main.a83958f1.css",
+    "static/js/main.a892494c.js"
   ]
 }

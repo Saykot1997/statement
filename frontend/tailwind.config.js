@@ -14,7 +14,8 @@ module.exports = {
         'water-mark': "url('./Photos/islami_bank/islami_bank_water_mark.png')",
         'ucb-water-mark': "url('./Photos/ucb_bank/water_mark.png')",
         'uco-background': "url('./Photos/uco_bank/bg2.png')",
-        'canara-background': "url('./Photos/canara_bank/water_mark.png')"
+        'canara-background': "url('./Photos/canara_bank/water_mark.png')",
+        'southeast-background': "url('./Photos/southeast_bank/water_mark.png')"
       },
       backgroundSize: {
         'auto': 'auto',
@@ -23,7 +24,7 @@ module.exports = {
         '50%': '50%',
         '75%': '75%',
         '85%': "85%",
-        "100": "100%"
+        "100%": "100%"
       },
       backgroundPosition: {
         'left-custom': '0% 100%',

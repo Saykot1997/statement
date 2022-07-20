@@ -48,11 +48,11 @@ function Formats() {
                         <p className=' text-center font-medium'>SCB Bank</p>
                     </div>
                 </Link>
-                {/* <Link to={`/southeast_bank`}>
+                <Link to={`/southeast_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Southeast Bank</p>
                     </div>
-                </Link> */}
+                </Link>
                 {/* <Link to={`/asia_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Asia Bank</p>
@@ -101,6 +101,11 @@ function Formats() {
                 <Link to={`/scb_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>SCB Bank Solvency</p>
+                    </div>
+                </Link>
+                <Link to={`/southeast_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>Southeast Bank Solvency</p>
                     </div>
                 </Link>
                 {/* <Link to={`/asia_bank_solvency`}>
