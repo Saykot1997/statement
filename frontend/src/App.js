@@ -34,6 +34,9 @@ import SCBbankCertificate from "./Pages/SCBBank/SCBBankCertificate";
 import SoutheastBankTran from "./Pages/SoutheastBank/SoutheastBankTran";
 import SoutheastBankStatement from "./Pages/SoutheastBank/SoutheastBankStatement";
 import SoutheastBankCertificate from "./Pages/SoutheastBank/SoutheastBankCertificate";
+import UttraBankTran from "./Pages/UttaraBank/UttraBankTran";
+import UttraBankStatement from "./Pages/UttaraBank/UttraBankStatement";
+import UttaraBankCertificate from "./Pages/UttaraBank/UttaraBankCertificate";
 
 
 function App() {
@@ -120,6 +123,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/uttra_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <UttraBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
         <Route path="/transactions/asia_bank"
           element={<PrivateRoute>
             <Laout>
@@ -174,6 +184,11 @@ function App() {
             <SoutheastBankStatement />
           </PrivateRoute>} />
 
+        <Route path="/uttra_bank"
+          element={<PrivateRoute>
+            <UttraBankStatement />
+          </PrivateRoute>} />
+
         <Route path="/asia_bank"
           element={<PrivateRoute>
             <BankAsiaOne />
@@ -223,6 +238,11 @@ function App() {
         <Route path="/southeast_bank_solvency"
           element={<PrivateRoute>
             <SoutheastBankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/uttara_bank_solvency"
+          element={<PrivateRoute>
+            <UttaraBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/asia_bank_solvency"

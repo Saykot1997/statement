@@ -47,7 +47,7 @@ function SoutheastBankStatement() {
 
         try {
 
-            const res = await axios.get(`${Host}/api/user/transaction/city_bank`, {
+            const res = await axios.get(`${Host}/api/user/transaction/southeast_bank`, {
                 headers: {
                     "Authorization": `Bearer ${User}`
                 }
@@ -444,7 +444,7 @@ function SoutheastBankStatement() {
                             <span className=" mr-2">:</span>
                         </div>
                         <div className=' text-left ml-1 w-[calc(100%-theme(space.32))]'>
-                            <span className=' '>9,843,275 BDT</span>
+                            <span className=' '>{randomTransictions.length > 0 && commaNumber(randomTransictions[randomTransictions.length - 1].balance)} BDT</span>
                         </div>
                     </div>
 
