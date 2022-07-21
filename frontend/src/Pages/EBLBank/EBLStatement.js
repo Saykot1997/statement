@@ -423,7 +423,7 @@ function EBLBankStatement() {
                         </th>
                     </tr>
                     <tr className=' bg-gray-100'>
-                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600'>TRN. DATE</th>
+                        <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600 w-[13%]'>TRN. DATE</th>
                         <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600 w-[35%]'>DESCRIPTIONS</th>
                         <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600'>REFERENCES</th>
                         <th className=' font-semibold px-2 print:text-[12px] border-l border-t border-gray-600 w-[14%]'>DEBITS</th>
