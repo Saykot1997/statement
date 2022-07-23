@@ -39,6 +39,7 @@ import UttraBankStatement from "./Pages/UttaraBank/UttraBankStatement";
 import UttaraBankCertificate from "./Pages/UttaraBank/UttaraBankCertificate";
 import ABBankTran from "./Pages/ABBank/ABBankTran";
 import ABBankStatement from "./Pages/ABBank/ABBankStatement";
+import ABBankCertificate from "./Pages/ABBank/ABBankCertificate";
 
 
 function App() {
@@ -257,6 +258,11 @@ function App() {
         <Route path="/uttara_bank_solvency"
           element={<PrivateRoute>
             <UttaraBankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/ab_bank_solvency"
+          element={<PrivateRoute>
+            <ABBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/asia_bank_solvency"

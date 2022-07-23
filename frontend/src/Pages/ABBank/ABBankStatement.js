@@ -578,7 +578,7 @@ function ABBankStatement() {
                     }
 
                 </div>
-                <img src={bankSil} alt="" className='w-24 absolute -bottom-8 right-20' />
+                {/* <img src={bankSil} alt="" className='w-24 absolute -bottom-8 right-20' /> */}
             </div>
         </div>
     )

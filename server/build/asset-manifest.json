@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f4504f0e.css",
-    "main.js": "/static/js/main.b45dac42.js",
+    "main.css": "/static/css/main.e3c621be.css",
+    "main.js": "/static/js/main.5c74686e.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
     "static/media/sil.png": "/static/media/sil.5cd2b74578ed5348a248.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
@@ -19,6 +19,7 @@
     "static/media/sig 2.png": "/static/media/sig 2.06ab1e4448c91362db3b.png",
     "static/media/islami_bank_signature.png": "/static/media/islami_bank_signature.a95c3493c61d5c5fb782.png",
     "static/media/islami_bank_water_mark.png": "/static/media/islami_bank_water_mark.128695360681074190c3.png",
+    "static/media/solvency_logo.png": "/static/media/solvency_logo.7031b9dc647b153bbdea.png",
     "static/media/3.png": "/static/media/3.1a6392fff933484e678d.png",
     "static/media/1.png": "/static/media/1.dfa4bc812b4caee6466b.png",
     "static/media/logo1.png": "/static/media/logo1.c1ed888d46a76e8bffb8.png",
@@ -27,11 +28,11 @@
     "static/media/BankAsiaAnyBranchLogo.png": "/static/media/BankAsiaAnyBranchLogo.d7197f807fdae029759d.png",
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
-    "main.f4504f0e.css.map": "/static/css/main.f4504f0e.css.map",
-    "main.b45dac42.js.map": "/static/js/main.b45dac42.js.map"
+    "main.e3c621be.css.map": "/static/css/main.e3c621be.css.map",
+    "main.5c74686e.js.map": "/static/js/main.5c74686e.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4504f0e.css",
-    "static/js/main.b45dac42.js"
+    "static/css/main.e3c621be.css",
+    "static/js/main.5c74686e.js"
   ]
 }
