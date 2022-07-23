@@ -57,6 +57,11 @@ function Transactions() {
                         <span className=' font-medium '>Uttra Bank</span>
                     </div>
                 </Link>
+                <Link to={`/transactions/ab_bank`}>
+                    <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
+                        <span className=' font-medium '>AB Bank</span>
+                    </div>
+                </Link>
                 {/* <Link to={`/transactions/asia_bank`}>
                     <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
                         <span className=' font-medium '>Bank Asia</span>

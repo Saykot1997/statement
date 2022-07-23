@@ -7,7 +7,6 @@ import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_sli
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/city_bank/logo.png";
-import GetFormatedDate from '../../Utils/GetFormatedDate';
 import EditButtonComponent from '../../Components/EditButtonComponent';
 import changeFields from '../../Utils/ChangeFields';
 import sil from "../../Photos/city_bank/sil.png"
@@ -15,7 +14,6 @@ import sil from "../../Photos/city_bank/sil.png"
 function CityBankStatement() {
 
     const [randomTransictions, setRandomTransictions] = useState([])
-    const [initialBranchCode, setInitialBranchCode] = useState(32)
     const [transactionQuantity, setTransactionQuantity] = useState(40);
     const [initialBalance, setInitialBalance] = useState(700000.00);
     const [editMode, setEditMode] = useState(false);
@@ -23,16 +21,13 @@ function CityBankStatement() {
     const [branchName, setBranchName] = useState("UTTRA BRANCH");
     const [branchAddress, setBranchAddress] = useState("THE CITY BANK LIMITED,UTTARA BRANCH");
     const [branchAddress2, setBranchAddress2] = useState("HOUSE-8, SECTOR-7 UTTRA MODEL TOWN,DHAKA");
-    const [openingDate, setOpeningDate] = useState("01/01/2020");
     const [statementNumber, setStatementNumber] = useState("CBL/Statement/01/761966/2011");
-    const [lastTRDate, setLastTRDate] = useState("01/01/2020");
     const [customerId, setCustomerId] = useState("CB2889932");
     const [accountCurrency, setAccountCurrency] = useState("BDT");
     const [accountType, setAccountType] = useState("CURRENT ACCOUNT [RB-DS]");
     const [accountNumber, setAccountNumber] = useState("1302889932001");
     const [accountHoldersName, setAccountHoldersName] = useState("S M MASUKUR RAHMAN");
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("HOUSE:1324,RD:13,AVENUE:02 MIRPUR DOSH, DHAKA, BANGLADESH");
-    const [accountHoldersPhone, setAccountHoldersPhone] = useState("8355179");
     const [accountStatus, setAccountStatus] = useState("ACTIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
@@ -304,7 +299,7 @@ function CityBankStatement() {
                                             <div className=' my-1'>
                                                 <span className=' inline-block w-32 font-semibold print:font-semibold'>Status</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
-                                                <input type="text" placeholder='Account Status' value={accountStatus} onChange={(e) => setAccountType(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                <input type="text" placeholder='Account Status' value={accountStatus} onChange={(e) => setAccountStatus(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
                                             <div className=' flex'>

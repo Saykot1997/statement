@@ -37,6 +37,8 @@ import SoutheastBankCertificate from "./Pages/SoutheastBank/SoutheastBankCertifi
 import UttraBankTran from "./Pages/UttaraBank/UttraBankTran";
 import UttraBankStatement from "./Pages/UttaraBank/UttraBankStatement";
 import UttaraBankCertificate from "./Pages/UttaraBank/UttaraBankCertificate";
+import ABBankTran from "./Pages/ABBank/ABBankTran";
+import ABBankStatement from "./Pages/ABBank/ABBankStatement";
 
 
 function App() {
@@ -130,6 +132,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/ab_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <ABBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
         <Route path="/transactions/asia_bank"
           element={<PrivateRoute>
             <Laout>
@@ -187,6 +196,11 @@ function App() {
         <Route path="/uttra_bank"
           element={<PrivateRoute>
             <UttraBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/ab_bank"
+          element={<PrivateRoute>
+            <ABBankStatement />
           </PrivateRoute>} />
 
         <Route path="/asia_bank"

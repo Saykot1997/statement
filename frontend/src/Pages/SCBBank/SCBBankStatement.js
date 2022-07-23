@@ -28,7 +28,6 @@ function SCBBankStatement() {
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("HOUSE-56/B (1ST FLOOR) ROAD-132, GULSHAN-1 Postal/Zip Code 1212");
     const [accountHoldersCity, setAccountHoldersCity] = useState("DHAKA");
     const [accountHoldersCountry, setAccountHoldersCountry] = useState("BANGLADESH");
-    const [accountStatus, setAccountStatus] = useState("ACTIVE");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
     const [hideStartStatementDate, setHideStartStatementDate] = useState("2021-10-01");
@@ -241,7 +240,7 @@ function SCBBankStatement() {
                                             :
                                             <div className=' flex'>
                                                 <div className=' w-48 print:w-32'>
-                                                    <span className=''>ENQUIRY TEL NO.</span>
+                                                    <span className=''>STMT NO: / DATE</span>
                                                 </div>
                                                 <div className=' text-left ml-1 w-[calc(100%-theme(space.32))]'>
                                                     <span className=' font-semibold ml-2 mr-7'>1</span>
