@@ -462,7 +462,6 @@ function ABBankStatement() {
                                         }
                                     </td>
                                     <td className=' border-l border-t border-gray-400 p-2 print:py-0 print:px-1 print:text-[11px]'>
-
                                         {
                                             editMode ?
                                                 <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />

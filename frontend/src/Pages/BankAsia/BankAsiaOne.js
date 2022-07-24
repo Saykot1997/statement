@@ -3,12 +3,13 @@ import commaNumber from 'comma-number';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Host } from '../../Data';
-import logo from "../../Photos/bank_asia/bankasia.jpg"
-import { fatchSuccess } from '../../Redux/Banks_slice';
+import logo from "../../Photos/bank_asia/logo.png"
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import anybranchLogo from "../../Photos/bank_asia/BankAsiaAnyBranchLogo.png"
+import EditButtonComponent from '../../Components/EditButtonComponent';
+import changeFields from '../../Utils/ChangeFields';
 
 function BankAsiaOne() {
 
@@ -23,14 +24,14 @@ function BankAsiaOne() {
     const [branchHouse, setBranchHouse] = useState("MOHIUDDIN MARKET (1ST Floor)");
     const [branchCity, setBranchCity] = useState("Bangladesh");
     const [branchState, setBranchState] = useState("CHITAGONG");
-    const [branchPhone, setBranchPhone] = useState("8355179");
-    const [branchFax, setBranchFax] = useState("8355649");
-    const [accountType, setAccountType] = useState("Saving");
-    const [accountNumber, setAccountNumber] = useState("0009-03100007098");
+    const [branchPhone, setBranchPhone] = useState("88-031-2850934,2850935");
+    const [branchFax, setBranchFax] = useState("88-031-2850936");
+    const [accountType, setAccountType] = useState("C01-Current Deposit Account");
+    const [accountNumber, setAccountNumber] = useState("02233002348");
     const [accountHoldersName, setAccountHoldersName] = useState("MOHD MOMINUR RAHMAN");
-    const [accountHoldersAddress, setAccountHoldersAddress] = useState("33/1 SARAT GUPTA ROAD NARINDA DHAKA");
-    const [customerId, setCustomerId] = useState("CUST-0009");
-    const [accountCurrency, setAccountCurrency] = useState("TK");
+    const [accountHoldersAddress, setAccountHoldersAddress] = useState("Shop:12 Gazi Tower(1st FI), Jubilee Rd Reaz Uddin Bazar Chattogram");
+    const [customerId, setCustomerId] = useState("01708775");
+    const [accountCurrency, setAccountCurrency] = useState("BDT-BANGLADESH TAKA");
     const [accountInterestRate, setAccountInterestRate] = useState("0");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
     const [endStatementDate, setEndStatementDate] = useState("31/03/2022");
@@ -106,10 +107,6 @@ function BankAsiaOne() {
         toggleEditMode();
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-
     const getTransectionsAmounts = async () => {
 
         try {
@@ -136,31 +133,19 @@ function BankAsiaOne() {
 
     return (
         <div className=' w-full min-h-screen p-10 print:p-0'>
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
-
+            <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
             <table className=' w-full'>
                 <thead class=" table-header-group w-full">
-                    <tr className=' w-full'>
-                        <th class="report-header-cell w-full border-t border-x border-gray-400" colspan="7">
+                    <tr className=' w-full border-t border-x border-gray-400'>
+                        <th class="report-header-cell w-full " colspan="7">
                             <div className=' w-full'>
                                 <div className=' w-full'>
                                     <div className=' w-full flex justify-between font-normal'>
                                         <div className=' w-1/2 flex justify-between'>
-                                            <div className='pt-1 pl-1'>
+                                            <div className=''>
                                                 <div>
                                                     <img src={logo} alt="" className=' w-40' />
-                                                    <p className=' print:text-[10px] -mt-3 ml-3'>mpbank.bankasia-bd.com</p>
+                                                    <p className=' print:text-[10px] text-left pl-1'>mpbank.bankasia-bd.com</p>
                                                 </div>
                                             </div>
                                             <div className=''>
@@ -187,21 +172,6 @@ function BankAsiaOne() {
 
                                                         <div className=' flex items-center'>
                                                             <div className=' flex justify-between mr-2'>
-                                                                <span className=' font-medium'>Branch Street</span>
-                                                                <span className='ml-2'>:</span>
-                                                            </div>
-                                                            <input type="text" placeholder='Branch Road' value={branchStreet} onChange={(e) => setBranchStreet(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
-                                                        </div>
-
-                                                        :
-                                                        <p className='print:leading-[14px] text-sm print:text-[10px]'>{branchStreet}</p>
-
-                                                }
-                                                {
-                                                    editMode ?
-
-                                                        <div className=' flex items-center'>
-                                                            <div className=' flex justify-between mr-2'>
                                                                 <span className=' font-medium'>Branch House</span>
                                                                 <span className='ml-2'>:</span>
                                                             </div>
@@ -213,6 +183,22 @@ function BankAsiaOne() {
                                                         <p className='print:leading-[14px] text-sm print:text-[10px]'>{branchHouse}</p>
 
                                                 }
+                                                {
+                                                    editMode ?
+
+                                                        <div className=' flex items-center'>
+                                                            <div className=' flex justify-between mr-2'>
+                                                                <span className=' font-medium'>Branch Street</span>
+                                                                <span className='ml-2'>:</span>
+                                                            </div>
+                                                            <input type="text" placeholder='Branch Road' value={branchStreet} onChange={(e) => setBranchStreet(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                        </div>
+
+                                                        :
+                                                        <p className='print:leading-[14px] text-sm print:text-[10px]'>{branchStreet}</p>
+
+                                                }
+
                                                 {
                                                     editMode ?
 
@@ -306,42 +292,41 @@ function BankAsiaOne() {
 
                                 <div className=' border-t border-gray-400 w-full flex justify-between px-1 pb-10 print:pb-5 print:text-[10px] print:leading-[18px] font-normal'>
                                     <div className='w-2/5'>
+
                                         {
                                             editMode ?
-                                                <div className='flex'>
-                                                    <div className=' flex justify-between w-40'>
-                                                        <span >Customer Name</span>
-                                                        <span className=' mx-2 font-semibold'>:</span>
-                                                    </div>
-                                                    <input type="text" placeholder='Account Number' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none' />
+                                                <div className=' my-1'>
+                                                    <span className=' inline-block w-32'>Customer Name</span>
+                                                    <span className=' mx-2'>:</span>
+                                                    <input type="text" placeholder='Customer Name' value={accountHoldersName} onChange={(e) => setAccountHoldersName(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
                                                 :
-
                                                 <div className=' flex'>
-                                                    <div className='w-40 print:w-24 flex justify-between mr-2'>
+                                                    <div className=' flex justify-between w-32 print:w-20'>
                                                         <span className=''>Customer Name</span>
-                                                        <span className='font-semibold'>:</span>
+                                                        <span className="">:</span>
                                                     </div>
-                                                    <p className=' font-medium text-left'>{accountHoldersName}</p>
+                                                    <div className=' text-left pl-2 w-[calc(100%-theme(space.32))] print:w-[calc(100%-theme(space.20))]'>
+                                                        <span className=' font-medium'>{accountHoldersName}</span>
+                                                    </div>
                                                 </div>
                                         }
-
                                         {
                                             editMode ?
-                                                <div className=' flex'>
-                                                    <div className=' flex w-40 justify-between'>
-                                                        <span className=''>Address</span>
-                                                        <span className='mx-2 font-semibold'>:</span>
-                                                    </div>
-                                                    <input type="text" placeholder='Account Number' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 print:text-[10px] my-[2px] border border-blue-500 focus:outline-none' />
+                                                <div className=' my-1'>
+                                                    <span className=' inline-block w-32'>Address</span>
+                                                    <span className=' mx-2'>:</span>
+                                                    <input type="text" placeholder='Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                                 </div>
                                                 :
                                                 <div className=' flex'>
-                                                    <div className='w-40 print:w-28 flex justify-between mr-2'>
+                                                    <div className=' flex justify-between w-32 print:w-20'>
                                                         <span className=''>Address</span>
-                                                        <span className=' font-semibold'>:</span>
+                                                        <span className="">:</span>
                                                     </div>
-                                                    <p className='text-left print:leading-4'>{accountHoldersAddress}</p>
+                                                    <div className=' text-left pl-2 w-[calc(100%-theme(space.32))] print:w-[calc(100%-theme(space.32))]'>
+                                                        <span className=''>{accountHoldersAddress}</span>
+                                                    </div>
                                                 </div>
                                         }
                                     </div>
@@ -452,34 +437,47 @@ function BankAsiaOne() {
                         </th>
                     </tr>
                     <tr className=''>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>SL#</td>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Date</td>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center w-[20%]'>Trands. Code / Chq No</td>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Debit Amount</td>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Credit Amount</td>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Balance Amount</td>
-                        <td className=' font-medium  border border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center w-[27%]'>Remarks</td>
+                        <td className=' font-medium  border-t border-x border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>SL#</td>
+                        <td className=' font-medium  border-t border-r border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Date</td>
+                        <td className=' font-medium  border-t border-r border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center w-[20%]'>Trands. Code / Chq No</td>
+                        <td className=' font-medium  border-t border-r border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Debit Amount</td>
+                        <td className=' font-medium  border-t border-r border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Credit Amount</td>
+                        <td className=' font-medium  border-t border-r border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center'>Balance Amount</td>
+                        <td className=' font-medium  border-t border-r border-gray-400 p-2 print:text-[10px] print:px-1 print:py-0 text-center w-[27%]'>Remarks</td>
                     </tr>
                 </thead>
 
                 <tbody className=' align-text-top'>
                     <tr>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-center'></td>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-center'></td>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] w-[20%]'></td>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right'></td>
-                        <td className=' p-2  border border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>Opening Balance :</td>
-                        <td className=' p-2  border border-r-0 border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>{commaNumber(initialBalance)}</td>
-                        <td className=' p-2  border border-l-0 border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-left w-[27%]'></td>
+                        <td className=' p-2 border-t border-x border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-center'></td>
+                        <td className=' p-2 border-t border-r border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-center'></td>
+                        <td className=' p-2 border-t border-r border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] w-[20%]'></td>
+                        <td className=' p-2 border-t border-r border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right'></td>
+                        <td className=' p-2 border-t border-r border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>Opening Balance :</td>
+                        <td className=' p-2 border-t border-r-0 border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-right font-medium'>{commaNumber(initialBalance)}</td>
+                        <td className=' p-2 border-t border-l-0 border-r border-gray-400 print:px-1 py-0 print:leading-4 print:text-[10px] text-left w-[27%]'></td>
                     </tr>
                     {
                         randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                             return (
                                 <tr>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-center'>{index + 1}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-center'>{item.date}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] w-[20%]'>{item.branchCode}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
+                                    <td className='p-2  border-t  border-x border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-center'>{index + 1}</td>
+                                    <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-center'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <span>{item.date}</span>
+                                        }
+                                    </td>
+                                    <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] w-[20%]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.branchCode} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Cheque' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <span>{item.branchCode}</span>
+                                        }</td>
+                                    <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
                                         {
                                             item.withdrawal > 0 ?
                                                 <span>{commaNumber(item.withdrawal)}</span>
@@ -487,7 +485,7 @@ function BankAsiaOne() {
                                                 <span>00.0</span>
                                         }
                                     </td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
+                                    <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
                                         {
                                             item.deposit > 0 ?
                                                 <span>{commaNumber(item.deposit)}</span>
@@ -495,17 +493,23 @@ function BankAsiaOne() {
                                                 <span>0.00</span>
                                         }
                                     </td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>{commaNumber(item.balance)}</td>
-                                    <td className='p-2  border border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-left w-[27%]'>{item.particular}</td>
+                                    <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>{commaNumber(item.balance)}</td>
+                                    <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-left w-[27%]'>
+                                        {
+                                            editMode ?
+                                                <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                :
+                                                <span>{item.particular}</span>
+                                        }</td>
                                 </tr>
                             )
                         })
                     }
                     <tr className=''>
-                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right pr-5' colSpan="3">Total Debit/Credit : {"-->"} </td>
-                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0 uppercase text-right'>{commaNumber(totalWithdrawal)}</td>
-                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
-                        <td className='p-2 border-t-0 border border-gray-400 print:px-1 print:text-[10px] print:py-0' colspan="2 border-t-0"></td>
+                        <td className='p-2 border-y border-x border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right pr-5' colSpan="3">Total Debit/Credit : {"-->"} </td>
+                        <td className='p-2 border-y border-r border-gray-400 print:px-1 print:text-[10px] print:py-0 uppercase text-right'>{commaNumber(totalWithdrawal)}</td>
+                        <td className='p-2 border-y border-r border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right'>{commaNumber(totalDeposit)}</td>
+                        <td className='p-2 border-y border-r border-gray-400 print:px-1 print:text-[10px] print:py-0' colspan="2 border-t-0"></td>
                     </tr>
                 </tbody>
                 <tfoot className="table-footer-group">
@@ -521,7 +525,7 @@ function BankAsiaOne() {
             <div className=' print:fixed bottom-3 w-full print:text-[11px]'>
                 <p className=' text-center font-medium pt-5 print:text-[10px]'>Thanks for banking with us.</p>
                 <hr className=' h-[2px] bg-gray-400 w-full' />
-                <p className=' print:text-[9px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
+                <p className=' print:text-[10px] print:leading-[12px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
             </div>
         </div>
 
