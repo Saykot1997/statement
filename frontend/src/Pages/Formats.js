@@ -68,8 +68,12 @@ function Formats() {
                         <p className=' text-center font-medium'>Bank Asia</p>
                     </div>
                 </Link>
+                <Link to={`/jamuna_bank`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>Jamuna Bank</p>
+                    </div>
+                </Link>
             </div>
-
             <p className=' text-center font-medium text-gray-800 my-5'>Certificate Formats</p>
 
             <div className=' w-full grid grid-cols-3 gap-5'>
@@ -131,6 +135,11 @@ function Formats() {
                 <Link to={`/asia_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Bank Asia Solvency</p>
+                    </div>
+                </Link>
+                <Link to={`/jamuna_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>Jamuna Bank Solvency</p>
                     </div>
                 </Link>
             </div>

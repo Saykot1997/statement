@@ -40,6 +40,9 @@ import UttaraBankCertificate from "./Pages/UttaraBank/UttaraBankCertificate";
 import ABBankTran from "./Pages/ABBank/ABBankTran";
 import ABBankStatement from "./Pages/ABBank/ABBankStatement";
 import ABBankCertificate from "./Pages/ABBank/ABBankCertificate";
+import JamunaBankOne from "./Pages/JamunaBank/JamunaBankOne";
+import JamunaBankThree from "./Pages/JamunaBank/JamunaBankThree";
+import JamunaBankOneTran from "./Pages/JamunaBank/JamunaBankOneTran";
 
 
 function App() {
@@ -147,6 +150,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/jamuna_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <JamunaBankOneTran />
+            </Laout>
+          </PrivateRoute>} />
+
         {/* statement formate routes */}
 
         <Route path="/ebl_bank"
@@ -209,6 +219,11 @@ function App() {
             <BankAsiaOne />
           </PrivateRoute>} />
 
+        <Route path="/jamuna_bank"
+          element={<PrivateRoute>
+            <JamunaBankOne />
+          </PrivateRoute>} />
+
         {/* cirtificate formate routes */}
         <Route path="/islami_bank_certificate"
           element={<PrivateRoute>
@@ -268,6 +283,11 @@ function App() {
         <Route path="/asia_bank_solvency"
           element={<PrivateRoute>
             <BankAsiaTwo />
+          </PrivateRoute>} />
+
+        <Route path="/jamuna_bank_solvency"
+          element={<PrivateRoute>
+            <JamunaBankThree />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />

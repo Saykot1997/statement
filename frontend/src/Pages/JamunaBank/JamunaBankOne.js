@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import logo from "../Photos/jamunabank.jpg"
+import logo from "../../Photos/jamuna_bank/jamunabank.jpg"
 import axios from 'axios';
 import { Host } from "../../Data"
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import commaNumber from 'comma-number'
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
+import EditButtonComponent from '../../Components/EditButtonComponent';
+import changeFields from '../../Utils/ChangeFields';
 
 function JamunaBankOne() {
 
@@ -102,9 +104,6 @@ function JamunaBankOne() {
         toggleEditMode();
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
 
 
     const getTransectionsAmounts = async () => {
@@ -137,18 +136,7 @@ function JamunaBankOne() {
 
     return (
         <div className="p-5">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={GenerateTranjections} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
             {/* topbar start */}
             <div className=" w-full flex justify-between">
                 <div className=" w-2/3 flex items-center">
@@ -312,14 +300,14 @@ function JamunaBankOne() {
                 <table className=' w-full mt-10 print:mt-5'>
                     <thead className=''>
                         <tr className=" border border-dashed">
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left">Date</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left">Value Date</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-left w-[27%]">Particular</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Withdrawal(Dr)</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Deposit(Cr)</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Balance</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Branch</th>
-                            <th className=" font-medium print:font-normal print:text-[10px] pb-1 text-right">Time</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-left">Date</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-left">Value Date</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-left w-[27%]">Particular</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Withdrawal(Dr)</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Deposit(Cr)</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Balance</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Branch</th>
+                            <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -332,21 +320,32 @@ function JamunaBankOne() {
                             <td className="text-sm print:text-[10px] print:mr-[2px] text-right"></td>
                             <td className="text-sm print:text-[10px] print:mr-[2px] text-right">{commaNumber(initialBalance)} CR</td>
                             <td className="text-sm print:text-[10px] print:mr-[2px] text-right">{initialBranchCode}</td>
-                            <td className="text-right text-sm print:text-[9px] print:ml-[2px]">12:00</td>
+                            <td className="text-right text-sm print:text-[9px] print:ml-[2px]">00:00</td>
                         </tr>
 
                         {
                             randomTransictions.length > 0 && randomTransictions.map((item, index) => {
                                 return (
-                                    <tr className="" key={index}>
+                                    <tr className=" align-text-top" key={index}>
                                         <td className=" text-sm print:text-[10px] print:leading-[13px] uppercase">
-                                            <p>{item.date}</p>
+                                            {/* <p>{item.date}</p> */}
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.date} onChange={(e) => changeFields(e.target.value, index, "date", randomTransictions, setRandomTransictions)} placeholder='Date' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                    :
+                                                    <span>{item.date}</span>
+                                            }
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[13px] uppercase">
                                             <p>{item.date}</p>
                                         </td>
-                                        <td className="text-sm print:text-[10px] print:leading-[13px] w-[27%] pr-2">
-                                            <p>{item.particular}</p>
+                                        <td className="text-sm print:text-[10px] print:leading-[13px] pr-2">
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
+                                                    :
+                                                    <span>{item.particular}</span>
+                                            }
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
                                             <p>{item.withdrawal > 0 && commaNumber(item.withdrawal)}</p>
@@ -358,10 +357,21 @@ function JamunaBankOne() {
                                             <p>{commaNumber(item.balance)} CR</p>
                                         </td>
                                         <td className="text-sm print:text-[10px] print:leading-[13px] uppercase text-right">
-                                            <p>{item.branchCode}</p>
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.branchCode} onChange={(e) => changeFields(e.target.value, index, "branchCode", randomTransictions, setRandomTransictions)} placeholder='branch code' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                                    :
+                                                    <span>{item.branchCode}</span>
+                                            }
                                         </td>
                                         <td className=" text-right text-sm print:text-[10px] print:leading-[13px] uppercase">
-                                            <p>{item.time}</p>
+                                            {/* <p>{item.time}</p> */}
+                                            {
+                                                editMode ?
+                                                    <input type="text" value={item.time} onChange={(e) => changeFields(e.target.value, index, "time", randomTransictions, setRandomTransictions)} placeholder='branch code' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none ' />
+                                                    :
+                                                    <span>{item.time}</span>
+                                            }
                                         </td>
                                     </tr>
                                 )

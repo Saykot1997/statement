@@ -476,7 +476,8 @@ function BankAsiaOne() {
                                                 <input type="text" value={item.branchCode} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Cheque' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                                 :
                                                 <span>{item.branchCode}</span>
-                                        }</td>
+                                        }
+                                    </td>
                                     <td className='p-2  border-t border-r border-gray-400 print:px-[1px] print:py-0 print:text-[10px] print:leading-[14px] text-right'>
                                         {
                                             item.withdrawal > 0 ?
@@ -500,7 +501,8 @@ function BankAsiaOne() {
                                                 <input type="text" value={item.particular} onChange={(e) => changeFields(e.target.value, index, "particular", randomTransictions, setRandomTransictions)} placeholder='Particulars' className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none w-full' />
                                                 :
                                                 <span>{item.particular}</span>
-                                        }</td>
+                                        }
+                                    </td>
                                 </tr>
                             )
                         })
