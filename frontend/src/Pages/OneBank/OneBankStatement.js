@@ -383,7 +383,7 @@ function OneBankStatement() {
                         <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800 w-[11%]'>TRANSACTION DATE</th>
                         <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800'>DESCRIPTION</th>
                         <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800 text-left w-[18%]'>REFERENCE</th>
-                        <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800 text-center w-[10%]'>VALU DATE</th>
+                        <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800 text-center w-[10%]'>VALUE DATE</th>
                         <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800 text-right w-[12%]'>DEBITS</th>
                         <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-l border-y border-gray-800 text-right w-[12%]'>CREDITS</th>
                         <th className=' font-semibold px-2 print:px-[2px] print:text-[11px] border-x border-y border-gray-800 text-right w-[14%]'>BALANCE</th>
@@ -484,23 +484,7 @@ function OneBankStatement() {
                             </div>
                         </td>
                     </tr>
-                    {/* <tr>
-                        <td colSpan={7}>
-                            <div className=' w-full py-2'>
-                            </div>
-                        </td>
-                    </tr> */}
-                    {/* <tr>
-                        <td colSpan={7} className="relative pb-16">
-                            <div className=' w-full print:w-[105%] flex justify-center'>
-                                <hr className=' print:-translate-x-5 w-full h-[2px] bg-black' />
-                            </div>
-                            <div className=''>
-                                <p className=' print:text-[11px] text-center'>Page No.:1</p>
-                            </div>
-                            <img src={bankSil} alt="" className='w-24 absolute -top-7 right-10' />
-                        </td>
-                    </tr> */}
+
                 </tfoot>
             </table>
 
@@ -508,9 +492,7 @@ function OneBankStatement() {
                 <div className=' w-full print:w-[94%] flex justify-center'>
                     <hr className=' print:-translate-x-5 w-full h-[2px] bg-black' />
                 </div>
-                {/* <div className=''>
-                    <p className=' print:text-[11px] text-center'>Page No.:1</p>
-                </div> */}
+
                 <img src={bankSil} alt="" className='w-24 print:absolute -top-5 right-20' />
             </div>
         </div>

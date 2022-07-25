@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e51b3a9b.css",
-    "main.js": "/static/js/main.eb2950a5.js",
+    "main.css": "/static/css/main.f271bf58.css",
+    "main.js": "/static/js/main.98f7570d.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
     "static/media/sil.png": "/static/media/sil.5cd2b74578ed5348a248.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
@@ -29,11 +29,11 @@
     "static/media/BankAsiaAnyBranchLogo.png": "/static/media/BankAsiaAnyBranchLogo.d7197f807fdae029759d.png",
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
-    "main.e51b3a9b.css.map": "/static/css/main.e51b3a9b.css.map",
-    "main.eb2950a5.js.map": "/static/js/main.eb2950a5.js.map"
+    "main.f271bf58.css.map": "/static/css/main.f271bf58.css.map",
+    "main.98f7570d.js.map": "/static/js/main.98f7570d.js.map"
   },
   "entrypoints": [
-    "static/css/main.e51b3a9b.css",
-    "static/js/main.eb2950a5.js"
+    "static/css/main.f271bf58.css",
+    "static/js/main.98f7570d.js"
   ]
 }
