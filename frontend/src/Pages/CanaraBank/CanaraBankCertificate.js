@@ -6,6 +6,7 @@ import sile from "../../Photos/canara_bank/sil.png"
 // import signe from "../Photos/canara_bank/sil1.png";
 import commaNumber from 'comma-number';
 import { ToWords } from 'to-words';
+import SolvencyEditComponent from "../../Components/SolvencyEditComponent"
 
 function CanarabankCertificate() {
 
@@ -26,14 +27,8 @@ function CanarabankCertificate() {
     const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
     const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thoousand");
 
-
-
     const toggleEditMode = () => {
         setEditMode(!editMode);
-    }
-
-    const printWebPage = () => {
-        window.print();
     }
 
     const convertNumberToWord = () => {
@@ -46,20 +41,7 @@ function CanarabankCertificate() {
         <div className=" w-full py-20  font-lora print:p-10 print:pb-2  bg-canara-background bg-center backdrop-opacity-40 bg-cover print:bg-85% bg-no-repeat">
 
             {/* bg-uco-background bg-center backdrop-opacity-40 bg-50% bg-no-repeat */}
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
-
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={convertNumberToWord} convertWord={true} />
 
             <div className=' w-full pt-5 py-16 px-10'>
                 <div className=' w-full flex justify-center'>

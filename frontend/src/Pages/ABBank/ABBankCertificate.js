@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import logo from "../../Photos/ab_bank/solvency_logo.png";
 import signature2 from "../../Photos/southeast_bank/sig1.png"
 import commaNumber from 'comma-number';
-import bankSil from "../../Photos/uttara_bank/sil.png";
-// import { ToWords } from 'to-words';
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function ABBankCertificate() {
 
@@ -16,47 +15,20 @@ function ABBankCertificate() {
     const [serviceHolderPosition, setServiceHolderPosition] = useState("UAE High Commission");
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState(`AL-HAJ SK MAMTAZUDDIN AHMED`)
-    // const [accountHolderAddress, setAccountHolderAddress] = useState("140, Nawabpur Road, Dhaka - l100, Bangladesh")
     const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
     const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
     const [accountNumber, setAccountNumber] = useState("4103-223549-300")
-    // const [accountType, setAccountType] = useState("Curtent Account")
     const [accountBalance, setAccountBalance] = useState("1000")
-    // const [todayDate, setTodayDate] = useState("19 June 2022")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
-    // const toWords = new ToWords();
-    // const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
-    // const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-    // const convertNumberToWord = () => {
-    //     setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
-    //     setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))
-    // }
-
-
 
     return (
         <div className=" w-full relative">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        {/* <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button> */}
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={"not require"} convertWord={false} />
             <div className=' w-full pt-6'>
                 <div>
                     <img src={logo} alt="" className=' w-64' />

@@ -4,6 +4,7 @@ import signature2 from "../../Photos/southeast_bank/sig1.png"
 import commaNumber from 'comma-number';
 import bankSil from "../../Photos/uttara_bank/sil.png";
 import { ToWords } from 'to-words';
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function UttaraBankCertificate() {
 
@@ -41,19 +42,8 @@ function UttaraBankCertificate() {
 
     return (
         <div className=" w-full font-nuosu relative">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={convertNumberToWord} convertWord={true} />
+
             <div className=' w-full px-16 pt-10'>
                 <div>
                     <img src={logo} alt="" className=' w-64' />

@@ -5,6 +5,7 @@ import signature1 from "../../Photos/ucb_bank/sif 1.png";
 import sile from "../../Photos/ucb_bank/sil.png"
 import commaNumber from 'comma-number';
 import { ToWords } from 'to-words';
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function UCBbankCertificate() {
 
@@ -50,19 +51,7 @@ function UCBbankCertificate() {
     return (
         <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom bg-cover h-full bg-no-repeat">
             <div className=' px-10 pb-0'>
-                {
-                    editMode ?
-                        <div className='absolute top-5 right-0 print:hidden'>
-                            <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
-                            <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                            <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                        </div>
-                        :
-                        <div className='absolute top-5 right-0 print:hidden'>
-                            <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                            <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                        </div>
-                }
+                <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={convertNumberToWord} convertWord={true} />
 
                 <div className=' w-full flex justify-between'>
                     <div>
@@ -172,7 +161,7 @@ function UCBbankCertificate() {
                                     :
                                     <span className=''> {accountHolderAddress} </span>
                             }
-                            has been maintainnig the following
+                            has been maintaining the following
 
                             {
                                 editMode ?

@@ -5,6 +5,7 @@ import signature1 from "../../Photos/ebl_bank/signature1.png"
 import commaNumber from 'comma-number';
 import midlogo from "../../Photos/ebl_bank/mid_logo.png"
 import { ToWords } from 'to-words';
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function EBLBankSolvency() {
 
@@ -48,19 +49,7 @@ function EBLBankSolvency() {
 
     return (
         <div className=" w-full">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={convertNumberToWord} convertWord={true} />
 
             <div className=' p-20'>
                 <div className=' w-full flex justify-end'>

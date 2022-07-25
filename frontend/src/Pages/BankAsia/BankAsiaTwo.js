@@ -4,6 +4,7 @@ import commaNumber from "comma-number";
 import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
 import sile from "../../Photos/ucb_bank/sil.png"
+import SolvencyEditComponent from "../../Components/SolvencyEditComponent";
 
 function BankAsiaTwo() {
 
@@ -20,30 +21,15 @@ function BankAsiaTwo() {
     const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
     const [rightManagerPost, setRightManegerPost] = useState("EVP & Head of Branch");
 
-
     const toggleEditMode = () => {
         setEditMode(!editMode);
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
 
     return (
 
         <div className=' w-full min-h-screen p-5 print:p-14 font-lora'>
-            {
-                editMode ?
-                    <div className='absolute top-5 right-5 print:hidden'>
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-5 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={"not require"} convertWord={false} />
             <div className='flex flex-col justify-center  items-center'>
                 <img src={logo} alt="" className=' w-64' />
                 <p className=" uppercase font-medium text-lg">limited</p>

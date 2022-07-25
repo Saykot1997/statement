@@ -43,6 +43,9 @@ import ABBankCertificate from "./Pages/ABBank/ABBankCertificate";
 import JamunaBankOne from "./Pages/JamunaBank/JamunaBankOne";
 import JamunaBankThree from "./Pages/JamunaBank/JamunaBankThree";
 import JamunaBankOneTran from "./Pages/JamunaBank/JamunaBankOneTran";
+import NCCBankStatement from "./Pages/NCCBank/NCCBankStatement";
+import NCCBankTran from "./Pages/NCCBank/NCCBankTran";
+import NCCBankCertificate from "./Pages/NCCBank/NCCBankCertificate";
 
 
 function App() {
@@ -157,6 +160,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/ncc_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <NCCBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
         {/* statement formate routes */}
 
         <Route path="/ebl_bank"
@@ -224,6 +234,11 @@ function App() {
             <JamunaBankOne />
           </PrivateRoute>} />
 
+        <Route path="/ncc_bank"
+          element={<PrivateRoute>
+            <NCCBankStatement />
+          </PrivateRoute>} />
+
         {/* cirtificate formate routes */}
         <Route path="/islami_bank_certificate"
           element={<PrivateRoute>
@@ -288,6 +303,11 @@ function App() {
         <Route path="/jamuna_bank_solvency"
           element={<PrivateRoute>
             <JamunaBankThree />
+          </PrivateRoute>} />
+
+        <Route path="/ncc_bank_solvency"
+          element={<PrivateRoute>
+            <NCCBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />

@@ -5,15 +5,14 @@ import signature1 from "../../Photos/one_bank/3.png";
 import sile from "../../Photos/one_bank/sil.png"
 import commaNumber from 'comma-number';
 import { ToWords } from 'to-words';
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function OnebankCertificate() {
     const [branchAddress, setBranchAddress] = useState('Tamij Uddin Tower, 01 DIT Road, Malibagh Chowdhurypara, Dhaka')
-    // const [printDate, setPrintDate] = useState("18.05.2022");
     const [ref, setRef] = useState("OBL/MALIBAGH BRANCH/GB/2022");
     const [editMode, setEditMode] = useState(false);
     const [accountHolderName, setAccountHolderName] = useState("SMART INTERIOR SOLUTION")
     const [accountOpeningDate, setAccountOpeningDate] = useState("Oct 24, 2019")
-    // const [accountHolderFotherName, setAccountHolderFotherName] = useState("Md Alamgir Miah")
     const [leftManagerName, setLeftManegerName] = useState("Mohammad Mahabub Alam");
     const [leftManagerPost, setLeftManegerPost] = useState("FAVP & Operation Manager");
     const [rightManagerName, setRightManegerName] = useState("Kazi Muzibul Islam");
@@ -48,19 +47,7 @@ function OnebankCertificate() {
     return (
         <div className=" w-full p-12 font-Poppins">
             <div className=''>
-                {
-                    editMode ?
-                        <div className='absolute top-5 right-0 print:hidden'>
-                            <button onClick={convertNumberToWord} className="bg-green-500 px-2 py-[6px] rounded text-white hover:bg-green-700 mr-2">Convert Money</button>
-                            <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                            <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                        </div>
-                        :
-                        <div className='absolute top-5 right-0 print:hidden'>
-                            <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                            <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                        </div>
-                }
+                <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={convertNumberToWord} convertWord={true} />
 
                 <div className=' w-full flex justify-between items-center'>
                     <div className=''>

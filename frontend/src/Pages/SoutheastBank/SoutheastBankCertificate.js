@@ -6,6 +6,7 @@ import footer from "../../Photos/southeast_bank/footer.png";
 import commaNumber from 'comma-number';
 import bankSil from "../../Photos/southeast_bank/sil.png";
 import { ToWords } from 'to-words';
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function SoutheastBankCertificate() {
 
@@ -39,18 +40,8 @@ function SoutheastBankCertificate() {
 
     return (
         <div className=" w-full font-nuosu relative">
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={"not require"} convertWord={false} />
+
             <div className=' w-full flex justify-between px-10 pt-10'>
                 <div className=' w-[80%]'>
                     <img src={logo} alt="" className=' w-64' />

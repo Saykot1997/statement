@@ -4,6 +4,7 @@ import logo from "../../Photos/jamuna_bank/jamunabank.jpg"
 import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
 import sile from "../../Photos/ucb_bank/sil.png"
+import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function JamunaBankThree() {
 
@@ -34,25 +35,10 @@ function JamunaBankThree() {
         setEditMode(!editMode);
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-
-
     return (
         <div className=' w-full min-h-screen px-20 print:px-14 print:py-5'>
-            {
-                editMode ?
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className="bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700 ">Save</button>
-                        <button onClick={toggleEditMode} className="bg-red-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-red-700 ">Cencel</button>
-                    </div>
-                    :
-                    <div className='absolute top-5 right-0 print:hidden'>
-                        <button onClick={toggleEditMode} className=' bg-blue-500 px-2 py-[6px] rounded text-white hover:bg-blue-700'>Edit</button>
-                        <button onClick={printWebPage} className=' bg-green-500 ml-2 px-2 py-[6px] rounded text-white hover:bg-green-700'>Print</button>
-                    </div>
-            }
+            <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={"not require"} convertWord={false} />
+
             <div className=' flex justify-between items-center'>
                 <div className=' w-1/2'>
                     <img src={logo} alt="" className='w-52' />
