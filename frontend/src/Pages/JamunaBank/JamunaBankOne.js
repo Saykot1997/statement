@@ -125,13 +125,11 @@ function JamunaBankOne() {
     }
 
     useEffect(() => {
-
         getTransectionsAmounts()
         getBankTransactions()
-
     }, [])
 
-    console.log(Transactions)
+    // console.log(Transactions)
 
 
     return (
@@ -173,7 +171,6 @@ function JamunaBankOne() {
                     </div>
                 </div>
                 <div className=" w-1/3 print:text-[12px]">
-
                     <p className=" font-semibold text-center text-xl print:text-lg mb-10 print:mb-5">STATEMENT OF ACCOUNT</p>
                     <div className=" flex justify-between">
                         <span className=" font-medium print:font-normal">Account opening date:</span>
@@ -298,8 +295,8 @@ function JamunaBankOne() {
                 <div className=' w-full flex justify-end print:hidden'>
                 </div>
                 <table className=' w-full mt-10 print:mt-5'>
-                    <thead className=''>
-                        <tr className=" border border-dashed">
+                    <tbody>
+                        <tr className=" border-y border-dashed">
                             <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-left">Date</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-left">Value Date</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-left w-[27%]">Particular</th>
@@ -309,9 +306,6 @@ function JamunaBankOne() {
                             <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Branch</th>
                             <th className=" font-medium print:font-normal print:text-[10px] pb-2 text-right">Time</th>
                         </tr>
-                    </thead>
-                    <tbody>
-
                         <tr className="">
                             <td className=" text-sm print:text-[10px] print:mr-[2px]">{startStatementDate}</td>
                             <td className="text-sm print:text-[10px] print:mr-[2px]">{startStatementDate}</td>

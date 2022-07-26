@@ -233,18 +233,18 @@ function SCBBankStatement() {
                                     {
                                         editMode ?
                                             <div className=' my-1'>
-                                                <span className=' inline-block w-32 font-semibold print:font-semibold'>STMT NO: / DATE</span>
+                                                <span className=' inline-block w-32 font-semibold print:font-semibold'>STMT DATE</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='STMT NO: / DATE' value={printDate} onChange={(e) => setPrintDate(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
                                             <div className=' flex'>
                                                 <div className=' w-48 print:w-32'>
-                                                    <span className=''>STMT NO: / DATE</span>
+                                                    <span className=''>STMT DATE</span>
                                                 </div>
                                                 <div className=' text-left ml-1 w-[calc(100%-theme(space.32))]'>
-                                                    <span className=' font-semibold ml-2 mr-7'>1</span>
-                                                    <span className=' font-semibold'>/{printDate}</span>
+
+                                                    <span className=' font-semibold'>{printDate}</span>
                                                 </div>
                                             </div>
                                     }

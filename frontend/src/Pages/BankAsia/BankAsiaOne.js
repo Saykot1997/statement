@@ -136,8 +136,8 @@ function BankAsiaOne() {
             <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
             <table className=' w-full'>
                 <thead class=" table-header-group w-full">
-                    <tr className=' w-full border-t border-x border-gray-400'>
-                        <th class="report-header-cell w-full " colspan="7">
+                    <tr className=' w-full '>
+                        <th class="report-header-cell w-full border-t border-x border-gray-400" colspan="7">
                             <div className=' w-full'>
                                 <div className=' w-full'>
                                     <div className=' w-full flex justify-between font-normal'>
@@ -507,6 +507,7 @@ function BankAsiaOne() {
                             )
                         })
                     }
+
                     <tr className=''>
                         <td className='p-2 border-y border-x border-gray-400 print:px-1 print:text-[10px] print:py-0 text-right pr-5' colSpan="3">Total Debit/Credit : {"-->"} </td>
                         <td className='p-2 border-y border-r border-gray-400 print:px-1 print:text-[10px] print:py-0 uppercase text-right'>{commaNumber(totalWithdrawal)}</td>

@@ -131,8 +131,8 @@ function SoutheastBankStatement() {
 
 
     return (
-        <div className=' w-full min-h-screen p-10 print:p-0 bg-southeast-background bg-repeat-y bg-100% bg-center'>
-
+        <div className=' w-full min-h-screen p-10 print:p-0'>
+            {/* bg-southeast-background bg-repeat-y bg-100% bg-center */}
             <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
 
             <div className=' flex justify-between pb-[2px]'>
