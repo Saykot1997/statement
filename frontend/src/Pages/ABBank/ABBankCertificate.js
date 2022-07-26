@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import logo from "../../Photos/ab_bank/solvency_logo.png";
 import signature2 from "../../Photos/southeast_bank/sig1.png"
+import bankSil from "../../Photos/ab_bank/sil.png"
 import commaNumber from 'comma-number';
 import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
@@ -178,7 +179,7 @@ function ABBankCertificate() {
                         </div>
                     </div>
                     <div className=' ml-60 print:ml-32'>
-                        {/* <img src={bankSil} alt="" className="w-24" /> */}
+                        <img src={bankSil} alt="" className="w-24" />
                     </div>
                 </div>
 

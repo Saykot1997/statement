@@ -21,6 +21,9 @@ function NCCBankCertificate() {
     const [leftManagerPost, setLeftManegerPost] = useState("SEO & GB Incharge");
     const [rightManagerName, setRightManegerName] = useState("K.M Khairul Islam");
     const [rightManagerPost, setRightManegerPost] = useState("FAVP & Manager Operations");
+    const [branchName, setBranchName] = useState("Banani")
+    const [footerAddress, setFooterAddress] = useState("Tower-52,House-52 (1st & 2nd Floor), Road-11, Block-C, Banani, Dhaka-1213, Bangladesh")
+
 
 
     const toggleEditMode = () => {
@@ -79,7 +82,7 @@ function NCCBankCertificate() {
                             editMode ?
                                 <input type="text" value={accountHolderName} onChange={(e) => setAccountHolderName(e.target.value)} className=' border border-blue-500 rounded p-1 focus:outline-none' />
                                 :
-                                <span className='font-semibold'> {accountHolderName} </span>
+                                <span className='font-semibold print:text-[14px]'> {accountHolderName} </span>
                         }
                         of
 
@@ -154,7 +157,7 @@ function NCCBankCertificate() {
                             </tr>
                         </tbody>
                     </table>
-                    <p className=' my-5'> <span className=' font-medium uppercase'>{accountHolderName}</span> has been maintaing above Saving deposite account satisfactory with our branch. Based on transactions of the account with us he is deemed financially sound and solvend. </p>
+                    <p className=' my-5 text-justify'> <span className=' font-semibold uppercase print:text-[14px]'>{accountHolderName}</span> has been maintaing above Saving deposite account satisfactory with our branch. Based on transactions of the account with us he is deemed financially sound and solvend. </p>
                     <p>We wish him every success in life.</p>
                     <p className=' pt-20 mb-10'>For NCC Bank Ltd</p>
                     <div className=' flex justify-between items-center '>
@@ -195,6 +198,20 @@ function NCCBankCertificate() {
                                 }
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className=' print:fixed bottom-0 left-0 w-full flex justify-center font-Poppins'>
+                    <div className=' py-5'>
+                        {
+                            editMode ?
+                                <div>
+                                    <input type="text" placeholder='Branch name' value={branchName} onChange={(e) => setBranchName(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                    <input type="text" placeholder='footer address' value={footerAddress} onChange={(e) => setFooterAddress(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                </div>
+                                :
+                                <p className=' text-center print:text-[12px]'> <span className=' font-semibold'>{branchName} Branch :</span> {footerAddress}</p>
+                        }
+                        <p className=' text-center print:text-[12px]'>Phone: (PABX) :9861626,9861627, Email : bm_<span className=' lowercase'>{branchName}</span>@nccbank.com.bd, Web : www.nccbank.com.bd</p>
                     </div>
                 </div>
             </div>

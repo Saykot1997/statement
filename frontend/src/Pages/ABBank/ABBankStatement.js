@@ -7,7 +7,7 @@ import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_sli
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import logo from "../../Photos/ab_bank/logo.png";
-import bankSil from "../../Photos/ebl_bank/mid_logo.png";
+import bankSil from "../../Photos/ab_bank/sil.png";
 import EditButtonComponent from '../../Components/EditButtonComponent';
 import changeFields from '../../Utils/ChangeFields';
 
@@ -577,7 +577,7 @@ function ABBankStatement() {
                     }
 
                 </div>
-                {/* <img src={bankSil} alt="" className='w-24 absolute -bottom-8 right-20' /> */}
+                <img src={bankSil} alt="" className='w-24 absolute -bottom-8 right-20' />
             </div>
         </div>
     )

@@ -82,7 +82,6 @@ Router.post('/register', async (req, res) => {
 });
 
 
-
 // create transaction
 Router.post('/transaction', Authguard, async (req, res) => {
 
@@ -94,18 +93,6 @@ Router.post('/transaction', Authguard, async (req, res) => {
     }
 
     try {
-
-        const isExist = await Transiction.findOne({
-            $and: [
-                { transactionName },
-                { bankName },
-            ]
-        });
-
-        if (isExist) {
-
-            return res.status(400).json("Transaction already exists")
-        }
 
         const savedTransaction = await new Transiction({
             ...req.body,
@@ -134,18 +121,6 @@ Router.put('/transaction/:id', Authguard, async (req, res) => {
     }
 
     try {
-
-        const isExist = await Transiction.findOne({
-            $and: [
-                { transactionName },
-                { bankName },
-            ]
-        });
-
-        if (isExist && isExist._id.toString() !== id) {
-
-            return res.status(400).json("Transaction name already exists")
-        }
 
         const updatedTransaction = await Transiction.findByIdAndUpdate(id, {
             ...req.body,

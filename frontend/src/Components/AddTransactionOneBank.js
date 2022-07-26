@@ -43,8 +43,6 @@ function One({ toggleAddTransactionMode }) {
             bankName,
         };
 
-        console.log(data)
-
         try {
 
             const response = await axios.post(`${Host}/api/user/transaction`, data, {

@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.e50799f7.css",
-    "main.js": "/static/js/main.1f33e932.js",
+    "main.js": "/static/js/main.891aa870.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
-    "static/media/sil.png": "/static/media/sil.5cd2b74578ed5348a248.png",
+    "static/media/sil.png": "/static/media/sil.e67b520cdef7c9f10b91.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
     "static/media/sig2.png": "/static/media/sig2.90e76c9cc780829d9f8c.png",
     "static/media/sig1.png": "/static/media/sig1.7191fe9448c20064d771.png",
@@ -30,10 +30,10 @@
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
     "main.e50799f7.css.map": "/static/css/main.e50799f7.css.map",
-    "main.1f33e932.js.map": "/static/js/main.1f33e932.js.map"
+    "main.891aa870.js.map": "/static/js/main.891aa870.js.map"
   },
   "entrypoints": [
     "static/css/main.e50799f7.css",
-    "static/js/main.1f33e932.js"
+    "static/js/main.891aa870.js"
   ]
 }
