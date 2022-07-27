@@ -46,6 +46,8 @@ import JamunaBankOneTran from "./Pages/JamunaBank/JamunaBankOneTran";
 import NCCBankStatement from "./Pages/NCCBank/NCCBankStatement";
 import NCCBankTran from "./Pages/NCCBank/NCCBankTran";
 import NCCBankCertificate from "./Pages/NCCBank/NCCBankCertificate";
+import AgraniBankTran from "./Pages/AgraniBank/AgraniBankTran";
+import AgraniBankStatement from "./Pages/AgraniBank/AgraniBankStatement";
 
 
 function App() {
@@ -167,6 +169,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/agrani_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <AgraniBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
         {/* statement formate routes */}
 
         <Route path="/ebl_bank"
@@ -237,6 +246,11 @@ function App() {
         <Route path="/ncc_bank"
           element={<PrivateRoute>
             <NCCBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/agrani_bank"
+          element={<PrivateRoute>
+            <AgraniBankStatement />
           </PrivateRoute>} />
 
         {/* cirtificate formate routes */}

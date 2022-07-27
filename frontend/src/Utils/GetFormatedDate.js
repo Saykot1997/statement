@@ -1,4 +1,4 @@
-const GetFormatedDate = (date) => {
+const GetFormatedDate = (date, option) => {
 
     if (date === undefined) {
         return null
@@ -37,7 +37,14 @@ const GetFormatedDate = (date) => {
 
     let sprateYear = [...splitDate[2]]
 
-    return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
+    if (option === "space") {
+
+        return `${splitDate[0]} ${month} ${`${sprateYear[2]}${sprateYear[3]}`}`
+
+    } else {
+        return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
+    }
+
 }
 
 export default GetFormatedDate

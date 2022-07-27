@@ -77,7 +77,11 @@ function Transactions() {
                         <span className=' font-medium '>NCC Bank</span>
                     </div>
                 </Link>
-
+                <Link to={`/transactions/agrani_bank`}>
+                    <div className=' bg-white p-5 rounded shadow flex items-center justify-between hover:bg-gray-50'>
+                        <span className=' font-medium '>Agrani Bank</span>
+                    </div>
+                </Link>
             </div>
         </div>
     )

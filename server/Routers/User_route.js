@@ -4,7 +4,6 @@ const User = require('../Models/User_model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Transiction = require('../Models/Transiction_model');
-const Bank = require('../Models/Bank_model');
 const Authguard = require('../Authgurd/Authgurd');
 const TAmount = require('../Models/TAmount_model');
 
@@ -85,13 +84,6 @@ Router.post('/register', async (req, res) => {
 // create transaction
 Router.post('/transaction', Authguard, async (req, res) => {
 
-    const { transactionName, bankName, transactionType, transactionMethod } = req.body
-
-    if (!transactionName || !bankName || !transactionType || !transactionMethod) {
-
-        return res.status(400).json("Please fill all fields")
-    }
-
     try {
 
         const savedTransaction = await new Transiction({
@@ -112,13 +104,6 @@ Router.post('/transaction', Authguard, async (req, res) => {
 Router.put('/transaction/:id', Authguard, async (req, res) => {
 
     const { id } = req.params;
-
-    const { transactionName, bankName, transactionType, transactionMethod } = req.body;
-
-    if (!transactionName || !bankName || !transactionType || !transactionMethod) {
-
-        return res.status(400).json("Please fill all fields")
-    }
 
     try {
 

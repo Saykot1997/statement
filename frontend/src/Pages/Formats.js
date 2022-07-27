@@ -78,6 +78,11 @@ function Formats() {
                         <p className=' text-center font-medium'>NCC Bank</p>
                     </div>
                 </Link>
+                {/* <Link to={`/agrani_bank`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>Agrani Bank</p>
+                    </div>
+                </Link> */}
             </div>
             <p className=' text-center font-medium text-gray-800 my-5'>Certificate Formats</p>
 

@@ -24,8 +24,8 @@ function SCBBankStatement() {
     const [accountCurrency, setAccountCurrency] = useState("BANGLADESH TAKA");
     const [accountType, setAccountType] = useState("CURRENT ACCOUNTS");
     const [accountNumber, setAccountNumber] = useState("01 1196519 01");
-    const [accountHoldersName, setAccountHoldersName] = useState("GLOBAL IMMIGRATION CONSULTANTS LTD.");
-    const [accountHoldersAddress, setAccountHoldersAddress] = useState("HOUSE-56/B (1ST FLOOR) ROAD-132, GULSHAN-1 Postal/Zip Code 1212");
+    const [accountHoldersName, setAccountHoldersName] = useState("ZAYD MAHMUD & NSEEM TOFIL MAHMUD");
+    const [accountHoldersAddress, setAccountHoldersAddress] = useState("MALONCHO APARTMENT HOUSE-1/C, ROAD-35, PS-GULSHAN");
     const [accountHoldersCity, setAccountHoldersCity] = useState("DHAKA");
     const [accountHoldersCountry, setAccountHoldersCountry] = useState("BANGLADESH");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
@@ -168,7 +168,7 @@ function SCBBankStatement() {
                                                 <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <p className=' font-semibold w-[190px] print:w-[140px]'>{accountHoldersAddress}</p>
+                                            <p className=' font-semibold w-[190px] print:w-[185px]'>{accountHoldersAddress}</p>
 
                                     }
                                     {

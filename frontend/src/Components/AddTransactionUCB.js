@@ -53,7 +53,6 @@ function UCB({ toggleAddTransactionMode }) {
             data.cheque = cheque
         }
 
-        console.log(data)
 
         try {
 

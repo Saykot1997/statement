@@ -4,7 +4,6 @@ const BankTransictionSchema = new mongoose.Schema({
 
     transactionName: {
         type: String,
-        required: true,
     },
     bankName: {
         type: String,
