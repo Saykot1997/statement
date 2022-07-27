@@ -38,10 +38,6 @@ function UCBbankCertificate() {
         setEditMode(!editMode);
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-
     const convertNumberToWord = () => {
         setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
         setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))
@@ -49,7 +45,7 @@ function UCBbankCertificate() {
 
 
     return (
-        <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom bg-cover h-full bg-no-repeat">
+        <div className=" w-full p-10  font-lora print:p-0 print:pb-14 bg-ucb-water-mark bg-100% bg-left-bottom print:bg-left-custom h-full bg-no-repeat">
             <div className=' px-10 pb-0'>
                 <SolvencyEditComponent editMode={editMode} toggleEditMode={toggleEditMode} convertNumberToWord={convertNumberToWord} convertWord={true} />
 

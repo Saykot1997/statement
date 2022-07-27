@@ -24,7 +24,7 @@ function CityBankStatement() {
     const [statementNumber, setStatementNumber] = useState("CBL/Statement/01/761966/2011");
     const [customerId, setCustomerId] = useState("CB2889932");
     const [accountCurrency, setAccountCurrency] = useState("BDT");
-    const [accountType, setAccountType] = useState("CURRENT ACCOUNT [RB-DS]");
+    const [accountType, setAccountType] = useState("SAVINGS ACCOUNT");
     const [accountNumber, setAccountNumber] = useState("1302889932001");
     const [accountHoldersName, setAccountHoldersName] = useState("S M MASUKUR RAHMAN");
     const [accountHoldersAddress, setAccountHoldersAddress] = useState("HOUSE:1324,RD:13,AVENUE:02 MIRPUR DOSH, DHAKA, BANGLADESH");

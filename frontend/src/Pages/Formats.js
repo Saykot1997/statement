@@ -55,7 +55,7 @@ function Formats() {
                 </Link>
                 <Link to={`/uttra_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
-                        <p className=' text-center font-medium'>Uttra Bank</p>
+                        <p className=' text-center font-medium'>Uttara Bank</p>
                     </div>
                 </Link>
                 <Link to={`/ab_bank`}>
@@ -78,11 +78,11 @@ function Formats() {
                         <p className=' text-center font-medium'>NCC Bank</p>
                     </div>
                 </Link>
-                {/* <Link to={`/agrani_bank`}>
+                <Link to={`/agrani_bank`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>Agrani Bank</p>
                     </div>
-                </Link> */}
+                </Link>
             </div>
             <p className=' text-center font-medium text-gray-800 my-5'>Certificate Formats</p>
 
@@ -155,6 +155,11 @@ function Formats() {
                 <Link to={`/ncc_bank_solvency`}>
                     <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
                         <p className=' text-center font-medium'>NCC Bank Solvency</p>
+                    </div>
+                </Link>
+                <Link to={`/agrani_bank_solvency`}>
+                    <div className=' bg-white rounded px-5 py-3 shadow hover:bg-gray-50'>
+                        <p className=' text-center font-medium'>Agrani Bank Solvency</p>
                     </div>
                 </Link>
             </div>

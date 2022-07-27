@@ -199,7 +199,6 @@ const GenerateRandomTranjections = (startStatementDate, endStatementDate, transa
 
             randomTransictions.push(randomTransictionsObject);
         }
-
     }
 
     return {

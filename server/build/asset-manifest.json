@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.a24b9b8b.css",
-    "main.js": "/static/js/main.405aabae.js",
+    "main.css": "/static/css/main.48f4e008.css",
+    "main.js": "/static/js/main.d24ff48c.js",
     "static/media/water_mark.png": "/static/media/water_mark.65b783f1086a53ba6de4.png",
     "static/media/sil.png": "/static/media/sil.e67b520cdef7c9f10b91.png",
     "static/media/islami_bank_footer.png": "/static/media/islami_bank_footer.2e477214a946d35e88b9.png",
-    "static/media/sig2.png": "/static/media/sig2.90e76c9cc780829d9f8c.png",
+    "static/media/sig2.png": "/static/media/sig2.2e1a5a661963e7f06392.png",
     "static/media/sig1.png": "/static/media/sig1.7191fe9448c20064d771.png",
     "static/media/footer.png": "/static/media/footer.3c8adf55cef937c27212.png",
     "static/media/logo.jpg": "/static/media/logo.3f08bf331841e452054b.jpg",
@@ -20,20 +20,20 @@
     "static/media/islami_bank_signature.png": "/static/media/islami_bank_signature.a95c3493c61d5c5fb782.png",
     "static/media/islami_bank_water_mark.png": "/static/media/islami_bank_water_mark.128695360681074190c3.png",
     "static/media/nccbank.jpg": "/static/media/nccbank.6ac9fac980fafdb91f43.jpg",
+    "static/media/logo1.png": "/static/media/logo1.c1ed888d46a76e8bffb8.png",
     "static/media/solvency_logo.png": "/static/media/solvency_logo.7031b9dc647b153bbdea.png",
     "static/media/3.png": "/static/media/3.1a6392fff933484e678d.png",
     "static/media/1.png": "/static/media/1.dfa4bc812b4caee6466b.png",
-    "static/media/logo1.png": "/static/media/logo1.c1ed888d46a76e8bffb8.png",
     "static/media/signature2.png": "/static/media/signature2.c7d873ffa2e74fe052cb.png",
     "static/media/logo 3.png": "/static/media/logo 3.149967ba99bc002c2c52.png",
     "static/media/BankAsiaAnyBranchLogo.png": "/static/media/BankAsiaAnyBranchLogo.d7197f807fdae029759d.png",
     "static/media/islami_bank_signature_2.png": "/static/media/islami_bank_signature_2.05265d7b0858408ce1ae.png",
     "index.html": "/index.html",
-    "main.a24b9b8b.css.map": "/static/css/main.a24b9b8b.css.map",
-    "main.405aabae.js.map": "/static/js/main.405aabae.js.map"
+    "main.48f4e008.css.map": "/static/css/main.48f4e008.css.map",
+    "main.d24ff48c.js.map": "/static/js/main.d24ff48c.js.map"
   },
   "entrypoints": [
-    "static/css/main.a24b9b8b.css",
-    "static/js/main.405aabae.js"
+    "static/css/main.48f4e008.css",
+    "static/js/main.d24ff48c.js"
   ]
 }

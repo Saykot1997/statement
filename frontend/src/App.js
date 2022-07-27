@@ -48,6 +48,7 @@ import NCCBankTran from "./Pages/NCCBank/NCCBankTran";
 import NCCBankCertificate from "./Pages/NCCBank/NCCBankCertificate";
 import AgraniBankTran from "./Pages/AgraniBank/AgraniBankTran";
 import AgraniBankStatement from "./Pages/AgraniBank/AgraniBankStatement";
+import AgraniBankCertificate from "./Pages/AgraniBank/AgraniBankCertificate";
 
 
 function App() {
@@ -322,6 +323,11 @@ function App() {
         <Route path="/ncc_bank_solvency"
           element={<PrivateRoute>
             <NCCBankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/agrani_bank_solvency"
+          element={<PrivateRoute>
+            <AgraniBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />

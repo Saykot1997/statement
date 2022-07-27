@@ -25,7 +25,8 @@ function SCBBankStatement() {
     const [accountType, setAccountType] = useState("CURRENT ACCOUNTS");
     const [accountNumber, setAccountNumber] = useState("01 1196519 01");
     const [accountHoldersName, setAccountHoldersName] = useState("ZAYD MAHMUD & NSEEM TOFIL MAHMUD");
-    const [accountHoldersAddress, setAccountHoldersAddress] = useState("MALONCHO APARTMENT HOUSE-1/C, ROAD-35, PS-GULSHAN");
+    const [accountHoldersAddress1, setAccountHoldersAddress1] = useState("MALONCHO APARTMENT");
+    const [accountHoldersAddress, setAccountHoldersAddress] = useState("HOUSE-1/C, ROAD-35, PS-GULSHAN");
     const [accountHoldersCity, setAccountHoldersCity] = useState("DHAKA");
     const [accountHoldersCountry, setAccountHoldersCountry] = useState("BANGLADESH");
     const [startStatementDate, setStartStatementDate] = useState("01/10/2021");
@@ -165,10 +166,21 @@ function SCBBankStatement() {
                                             <div className=' my-1'>
                                                 <span className=' inline-block w-32 font-semibold print:font-semibold'>Account Holder Address</span>
                                                 <span className=' mx-2 font-semibold print:font-semibold'>:</span>
+                                                <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress1} onChange={(e) => setAccountHoldersAddress1(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
+                                            </div>
+                                            :
+                                            <p className=' font-semibold w-[200px]'>{accountHoldersAddress1}</p>
+
+                                    }
+                                    {
+                                        editMode ?
+                                            <div className=' my-1'>
+                                                <span className=' inline-block w-32 font-semibold print:font-semibold'>Account Holder Address</span>
+                                                <span className=' mx-2 font-semibold print:font-semibold'>:</span>
                                                 <input type="text" placeholder='Account Holder Address' value={accountHoldersAddress} onChange={(e) => setAccountHoldersAddress(e.target.value)} className=' rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                             </div>
                                             :
-                                            <p className=' font-semibold w-[190px] print:w-[185px]'>{accountHoldersAddress}</p>
+                                            <p className=' font-semibold w-[200px]'>{accountHoldersAddress}</p>
 
                                     }
                                     {
