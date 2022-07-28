@@ -9,6 +9,7 @@ import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import EditButtonComponent from '../../Components/EditButtonComponent';
 import changeFields from '../../Utils/ChangeFields';
+import sil from "../../Photos/jamuna_bank/sil.png"
 
 function JamunaBankOne() {
 
@@ -382,13 +383,27 @@ function JamunaBankOne() {
                             <td className=" text-center text-sm print:text-[10px] p-2"></td>
                             <td className=" text-right text-sm print:text-[10px] p-2"></td>
                         </tr>
+                        <tr>
+                            <td colSpan={8}>
+                                <p className=' font-medium text-center print:text-[9px] mt-2'>This is a computer generated statement and does not require any signature</p>
+                            </td>
+                        </tr>
 
                     </tbody>
-                </table>
-                <p className=' font-medium text-center print:text-[9px] mt-2'>This is a computer generated statement and does not require any signature</p>
-            </div>
+                    <tfoot className="table-footer-group">
+                        <tr>
+                            <td colSpan={8} className="py-8">
 
-            {/* info end */}
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div className=' print:fixed bottom-0 left-0 w-full'>
+                    <div className=' w-full flex justify-center'>
+                        <img src={sil} alt="" className='w-20' />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

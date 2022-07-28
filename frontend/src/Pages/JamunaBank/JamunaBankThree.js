@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import logo from "../../Photos/jamuna_bank/jamunabank.jpg"
 import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
-import sile from "../../Photos/ucb_bank/sil.png"
+import sile from "../../Photos/jamuna_bank/sil.png"
 import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 
 function JamunaBankThree() {
@@ -16,7 +16,6 @@ function JamunaBankThree() {
     const [pabx, setPabx] = useState("8300524,8300545,8300547")
     const [swift, setSwift] = useState("JAMUBDDH041")
     const [printDate, setPrintDate] = useState("22.05.2022")
-    // const [jbl, setJbl] = useState("JBL/SNB/GB/2020/522")
     const [accountHolderName, setAccountHolderName] = useState("mohd.momiur rahman")
     const [accountHolderAddress, setAccountHolderAddress] = useState("31/1 SARAT GUPTA ROAD, SHANTINAGAR, GREEN CITY EDGE, BANGLADESH")
     const [todaysDate, setTodaysDate] = useState("May 22,2020")
@@ -249,7 +248,7 @@ function JamunaBankThree() {
 
                     <div className=' w-full flex justify-center'>
                         <div>
-                            {/* <img src={sile} alt="" className=' w-48' /> */}
+                            <img src={sile} alt="" className=' w-20 translate-y-10' />
                         </div>
                     </div>
 
@@ -267,7 +266,6 @@ function JamunaBankThree() {
                                     <input type="text" placeholder='Manager Post' value={rightManagerPost} onChange={(e) => setRightManegerPost(e.target.value)} className=' w-full rounded p-1 my-[2px] border border-blue-500 focus:outline-none' />
                                     :
                                     <p>{rightManagerPost}</p>
-
                             }
                         </div>
                     </div>

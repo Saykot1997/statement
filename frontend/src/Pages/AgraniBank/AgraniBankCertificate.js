@@ -2,6 +2,7 @@ import logo1 from "../../Photos/agrani_bank/logo1.png"
 import { useState } from 'react';
 import commaNumber from "comma-number";
 import signature from "../../Photos/agrani_bank/sig2.png";
+import sil from "../../Photos/agrani_bank/sil.png";
 import SolvencyEditComponent from "../../Components/SolvencyEditComponent";
 import { ToWords } from 'to-words';
 
@@ -18,7 +19,7 @@ function AgraniBankCertificate() {
     const [printDate, setPrintDate] = useState("05/07/2022");
     const toWords = new ToWords();
     const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
-    const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
+    // const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -117,8 +118,9 @@ function AgraniBankCertificate() {
 
                 <p className=" font-Poppins mt-1">They are reported to be financially sound and solvent.</p>
             </div>
-            <div>
+            <div className=" flex ">
                 <img src={signature} alt="" className=" w-52 print:absolute right-32 bottom-60" />
+                <img src={sil} alt="" className=" w-20 print:absolute right-96 bottom-72" />
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import commaNumber from "comma-number";
 import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
-import sile from "../../Photos/ucb_bank/sil.png"
+import sile from "../../Photos/bank_asia/sil.png"
 import SolvencyEditComponent from "../../Components/SolvencyEditComponent";
 
 function BankAsiaTwo() {
@@ -125,7 +125,7 @@ function BankAsiaTwo() {
 
                 <div className=' w-full flex justify-center'>
                     <div>
-                        {/* <img src={sile} alt="" className=' w-48' /> */}
+                        <img src={sile} alt="" className=' w-28 translate-y-10' />
                     </div>
                 </div>
 

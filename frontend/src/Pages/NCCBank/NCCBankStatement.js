@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import EditButtonComponent from '../../Components/EditButtonComponent';
 import { Host } from '../../Data';
 import logo from "../../Photos/ncc_bank/nccbank.jpg";
+import sil from "../../Photos/ncc_bank/sil.png";
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
@@ -36,7 +37,6 @@ function NCCBankStatement() {
     const [totalWithdrawal, setTotalWithdrawal] = useState(0);
     const [totalDeposit, setTotalDeposit] = useState(0);
     const Transactions = useSelector(state => state.Transactions.Transactions);
-    const Banks = useSelector(state => state.Banks.Banks);
     const User = useSelector(state => state.User.User);
     const dispatch = useDispatch();
     const TransactionAmount = useSelector(state => state.TransactionAmount.TransactionAmount);
@@ -350,12 +350,19 @@ function NCCBankStatement() {
                         <td className=" text-center text-sm print:text-[10px] p-2"></td>
                         <td className=" text-right text-sm print:text-[10px] p-2"></td>
                     </tr>
-
                 </tbody>
+                <tfoot className="table-footer-group">
+                    <tr>
+                        <td colSpan={8} className="py-8">
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-
-            {/* table end */}
-
+            <div className=' print:fixed bottom-0 left-0 w-full'>
+                <div className=' w-full flex justify-center'>
+                    <img src={sil} alt="" className='w-20' />
+                </div>
+            </div>
         </div>
     )
 }

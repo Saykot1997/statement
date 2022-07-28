@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import logo from "../../Photos/jamuna_bank/jamunabank.jpg"
+import sil from "../../Photos/agrani_bank/sil.png"
 import axios from 'axios';
 import { Host } from "../../Data"
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
@@ -130,7 +130,7 @@ function AgraniBankStatement() {
 
 
     return (
-        <div className="p-5 font-nuosu">
+        <div className="p-5 print:p-0 font-nuosu">
             <EditButtonComponent editMode={editMode} toggleEditMode={toggleEditMode} GenerateTranjections={GenerateTranjections} />
             <table className=' w-full'>
                 <thead class=" table-header-group w-full">
@@ -402,7 +402,18 @@ function AgraniBankStatement() {
                         </td>
                     </tr>
                 </tbody>
+                <tfoot className="table-footer-group">
+                    <tr>
+                        <td colSpan={8} className="py-10">
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
+            <div className=' print:fixed bottom-0 left-0 w-full'>
+                <div className=' w-full flex justify-center'>
+                    <img src={sil} alt="" className='w-20' />
+                </div>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Host } from '../../Data';
 import logo from "../../Photos/bank_asia/logo.png"
+import sil from "../../Photos/bank_asia/sil.png"
 import { TransactionAmountFatchSuccess } from '../../Redux/TransactionAmount_slice';
 import { transactionsFatchSuccess } from '../../Redux/Transactions_slice';
 import GenerateRandomTranjections from '../../Utils/GenerateRandomTransaction';
@@ -525,10 +526,11 @@ function BankAsiaOne() {
                 </tfoot>
             </table>
 
-            <div className=' print:fixed bottom-3 w-full print:text-[11px]'>
+            <div className=' print:fixed bottom-3 w-full print:text-[11px] relative'>
                 <p className=' text-center font-medium pt-5 print:text-[10px]'>Thanks for banking with us.</p>
                 <hr className=' h-[2px] bg-gray-400 w-full' />
                 <p className=' print:text-[10px] print:leading-[12px]'>The Customer should examine promptly the statement received and notify the bank in writing within 15 calendar days after the statement is maild,transmitted, or otherwise made available to customer of any errors,discrepancies or irregularities detected failng,failing which the statement will deem to be correct. This is a computer generated statement and does not require any signature.</p>
+                <img src={sil} alt="" className='w-28 absolute bottom-2 right-6' />
             </div>
         </div>
 

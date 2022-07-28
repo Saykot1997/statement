@@ -534,9 +534,6 @@ function UCBBankStatement() {
 
                     }
                 </div>
-                {/* <div className=''>
-                    <p>Page 1 of 1</p>
-                </div> */}
             </div>
         </div>
     )

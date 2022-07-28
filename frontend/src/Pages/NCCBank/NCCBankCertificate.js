@@ -2,6 +2,7 @@ import commaNumber from 'comma-number';
 import React, { useState } from 'react'
 import SolvencyEditComponent from '../../Components/SolvencyEditComponent';
 import logo from "../../Photos/ncc_bank/nccbank.jpg"
+import sil from "../../Photos/ncc_bank/sil.png"
 import signature2 from "../../Photos/ucb_bank/sig 2.png";
 import signature1 from "../../Photos/ucb_bank/sif 1.png";
 
@@ -161,7 +162,7 @@ function NCCBankCertificate() {
                     <p>We wish him every success in life.</p>
                     <p className=' pt-20 mb-10'>For NCC Bank Ltd</p>
                     <div className=' flex justify-between items-center '>
-                        <div className=' w-full relative'>
+                        <div className=' relative'>
                             <div className=''>
                                 <img src={signature1} alt="" className=' w-52 translate-y-10' />
                                 {
@@ -180,7 +181,13 @@ function NCCBankCertificate() {
                             </div>
                         </div>
 
-                        <div className=' w-full relative flex justify-end translate-y-3 '>
+                        <div className=' flex justify-center'>
+                            <div>
+                                <img src={sil} alt="" className=' w-20 translate-y-5' />
+                            </div>
+                        </div>
+
+                        <div className=' relative flex justify-end translate-y-3 '>
                             <div className=''>
                                 <img src={signature2} alt="" className=' w-40 translate-y-3' />
                                 {
