@@ -24,7 +24,7 @@ function AlfalahBankCertificate() {
     const [accountType, setAccountType] = useState("an Alfalah Premiup Plus")
     const [accountBalance, setAccountBalance] = useState("1000")
     const [usdCurrancyConversionRate, setUsdCurrancyConversionRate] = useState("87.60")
-    const [accountOpeningDate, setAccountOpeningDate] = useState("04/08/2004")
+    const [accountOpeningDate, setAccountOpeningDate] = useState("August 06, 2017")
     const toWords = new ToWords();
     const [bdWordConvertMoney, setBdWordConvertMoney] = useState("One Thousand");
     const [usdWordConvertMoney, setUsdWordConvertMoney] = useState("One Thousand");
