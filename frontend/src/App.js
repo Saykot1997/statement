@@ -49,6 +49,9 @@ import NCCBankCertificate from "./Pages/NCCBank/NCCBankCertificate";
 import AgraniBankTran from "./Pages/AgraniBank/AgraniBankTran";
 import AgraniBankStatement from "./Pages/AgraniBank/AgraniBankStatement";
 import AgraniBankCertificate from "./Pages/AgraniBank/AgraniBankCertificate";
+import AlfalahBankTransaction from "./Pages/AlfalahBank/AlfalahBankTran";
+import AlfalahBankStatement from "./Pages/AlfalahBank/AlfalaBankStatement";
+import AlfalahBankCertificate from "./Pages/AlfalahBank/AlfalahBankCertificate";
 
 
 function App() {
@@ -177,6 +180,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/alfalah_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <AlfalahBankTransaction />
+            </Laout>
+          </PrivateRoute>} />
+
         {/* statement formate routes */}
 
         <Route path="/ebl_bank"
@@ -254,6 +264,11 @@ function App() {
             <AgraniBankStatement />
           </PrivateRoute>} />
 
+        <Route path="/alfalah_bank"
+          element={<PrivateRoute>
+            <AlfalahBankStatement />
+          </PrivateRoute>} />
+
         {/* cirtificate formate routes */}
         <Route path="/islami_bank_certificate"
           element={<PrivateRoute>
@@ -328,6 +343,11 @@ function App() {
         <Route path="/agrani_bank_solvency"
           element={<PrivateRoute>
             <AgraniBankCertificate />
+          </PrivateRoute>} />
+
+        <Route path="/alfalah_bank_solvency"
+          element={<PrivateRoute>
+            <AlfalahBankCertificate />
           </PrivateRoute>} />
 
         <Route path="/login" element={<Login />} />

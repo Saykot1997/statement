@@ -39,10 +39,6 @@ function IslamiBankCertificate() {
         setEditMode(!editMode);
     }
 
-    const printWebPage = () => {
-        window.print();
-    }
-
     const convertNumberToWord = () => {
         setBdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance).toFixed(2))))
         setUsdWordConvertMoney(toWords.convert(parseFloat(parseFloat(accountBalance / usdCurrancyConversionRate).toFixed(2))))

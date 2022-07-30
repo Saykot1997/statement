@@ -1,10 +1,14 @@
 const GetFormatedDate = (date, option) => {
 
+
+    console.log(date)
+
     if (date === undefined) {
         return null
     }
 
     let splitDate = date.split("/")
+
 
     let month = ""
     if (splitDate[1].toString() === "01") {
@@ -41,7 +45,12 @@ const GetFormatedDate = (date, option) => {
 
         return `${splitDate[0]} ${month} ${`${sprateYear[2]}${sprateYear[3]}`}`
 
-    } else {
+    } else if ("full-year") {
+
+        return `${splitDate[0]} ${month} ${`${splitDate[2]}`}`
+    }
+
+    else {
         return `${splitDate[0]}-${month}-${`${sprateYear[2]}${sprateYear[3]}`}`
     }
 
