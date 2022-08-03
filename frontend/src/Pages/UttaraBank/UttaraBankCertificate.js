@@ -179,7 +179,7 @@ function UttaraBankCertificate() {
                     </p>
                 </div>
 
-                <p className=' mt-16 mb-10'>We wish him every success in his life.</p>
+                <p className=' mt-16 mb-10'>We wish him/her every success in his life.</p>
 
                 <div className=' flex items-center mt-24'>
                     <div className='relative'>
