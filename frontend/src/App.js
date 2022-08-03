@@ -52,6 +52,8 @@ import AgraniBankCertificate from "./Pages/AgraniBank/AgraniBankCertificate";
 import AlfalahBankTransaction from "./Pages/AlfalahBank/AlfalahBankTran";
 import AlfalahBankStatement from "./Pages/AlfalahBank/AlfalaBankStatement";
 import AlfalahBankCertificate from "./Pages/AlfalahBank/AlfalahBankCertificate";
+import SBACBankTran from "./Pages/SBACBank/SBACBankTran";
+import SBACBankStatement from "./Pages/SBACBank/SBACBankStatement";
 
 
 function App() {
@@ -187,6 +189,13 @@ function App() {
             </Laout>
           </PrivateRoute>} />
 
+        <Route path="/transactions/sbac_bank"
+          element={<PrivateRoute>
+            <Laout>
+              <SBACBankTran />
+            </Laout>
+          </PrivateRoute>} />
+
         {/* statement formate routes */}
 
         <Route path="/ebl_bank"
@@ -267,6 +276,11 @@ function App() {
         <Route path="/alfalah_bank"
           element={<PrivateRoute>
             <AlfalahBankStatement />
+          </PrivateRoute>} />
+
+        <Route path="/sbac_bank"
+          element={<PrivateRoute>
+            <SBACBankStatement />
           </PrivateRoute>} />
 
         {/* cirtificate formate routes */}
