@@ -538,22 +538,14 @@ function UttraBankStatement() {
                 </tbody>
                 <tfoot class="table-footer-group">
                     <tr>
-                        <td class=" py-8" colspan="7">
+                        <td class=" py-3" colspan="7">
+                            <div className=' w-full flex justify-center'>
+                                <img src={sil} alt="" className="w-24" />
+                            </div>
                         </td>
                     </tr>
                 </tfoot>
             </table>
-
-            <div className=' print:fixed bottom-10 w-full print:text-[12px] relative'>
-                <span className=' w-full h-[1px] bg-gray-700 block'></span>
-                <div className=' flex justify-between'>
-                    <p>BankUltimus</p>
-                    <p>This is a system generated statement and does not require any signature</p>
-                    <span></span>
-                </div>
-                <img src={sil} alt="" className="absolute -top-3 right-7 w-24" />
-
-            </div>
         </div>
     )
 }
